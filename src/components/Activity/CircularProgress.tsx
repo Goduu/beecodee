@@ -1,13 +1,15 @@
-import React, { FC, useState } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { ActivityPath } from './ActivityPath';
 import { Lesson } from '@contentlayer/generated';
 
 
 type CircularProgressProps = {
     percent: number
-    lesson: Lesson
+    children: ReactNode
+
 }
-export const CircularProgress: FC<CircularProgressProps> = ({ percent = 50, lesson }) => {
+
+export const CircularProgress: FC<CircularProgressProps> = ({ percent = 50, children }) => {
     const radius = 70;
     const circumference = 2 * Math.PI * radius;
 
@@ -36,8 +38,8 @@ export const CircularProgress: FC<CircularProgressProps> = ({ percent = 50, less
                         className="text-amber-500 rounded-xl"
                     />
                 </svg>
-                <div className="absolute drop-shadow-xl hover:scale-105 duration-300">
-                    <ActivityPath lesson={lesson} />
+                <div className="absolute drop-shadow-xl">
+                    {children}
                 </div>
             </div>
         </div>

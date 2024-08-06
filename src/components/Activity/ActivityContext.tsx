@@ -32,7 +32,6 @@ export const ActivityContextWrapper: FC<ActivityContextWrapperProps> = ({ childr
     }, [currentActivityIndex, activities])
 
     const increaseCurrentActivity = () => {
-        console.log('activities', activities)
         setCurrentActivityIndex(prevActivity => prevActivity + 1)
     }
 

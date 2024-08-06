@@ -1,22 +1,25 @@
 "use client"
 import React, { FC, useEffect, useState } from 'react'
-import { useActivityContext } from '../ActivityContext'
+import { useActivityContext } from './ActivityContext'
 import { Button } from '../Button'
 import { highlightCode, Token } from '../token_colors/highlightCode'
 import { TokenChip } from './TokenChip'
 import { AnswerBlock } from './AnswerBlock'
 import { AnswerStatus } from './types'
-import Link from 'next/link'
 import { LuCheckCircle } from '../Icons'
+import { redirect } from 'next/navigation'
+import { useUnitStore } from '../Unit/unitStore'
 
 type ActivityProps = {
 }
+
 export const ActivityBlock: FC<ActivityProps> = () => {
     const { currentActivityIndex, currentActivity, increaseCurrentActivity } = useActivityContext()
     const [answer, setAnswer] = useState<Token[]>([])
     const [options, setOptions] = useState<Token[]>([])
     const [status, setStatus] = useState<AnswerStatus>('neutral')
     const correctAnswer = status === 'correct'
+    const { currentUnit, goToNextLesson } = useUnitStore();
 
     useEffect(() => {
         if (!currentActivity) return
@@ -27,18 +30,21 @@ export const ActivityBlock: FC<ActivityProps> = () => {
     if (currentActivityIndex === -1) {
         return (
             <div>
-                <Button handleClick={increaseCurrentActivity}>Start Lesson</Button>
+                <Button onClick={increaseCurrentActivity}>Start Lesson</Button>
             </div>
         )
+    }
+
+    const handleFinishLesson = () => {
+        goToNextLesson(currentUnit.slugAsParams)
+        redirect('/')
     }
 
     if (!currentActivity) {
         return (
             <>
                 <LuCheckCircle className='w-32 text-white rounded-full bg-green-500 p-5' />
-                <Link href='/'>
-                    <Button >Finish Lesson</Button>
-                </Link>
+                <Button onClick={handleFinishLesson}>Finish Lesson X</Button>
             </>
         )
     }
@@ -64,6 +70,7 @@ export const ActivityBlock: FC<ActivityProps> = () => {
             setStatus('incorrect');
         }
     }
+
     const handleContinue = () => {
         increaseCurrentActivity();
         setAnswer([]);
@@ -83,8 +90,8 @@ export const ActivityBlock: FC<ActivityProps> = () => {
                     ))}
                 </div>
                 {status === "neutral" || status === "incorrect" ?
-                    <Button handleClick={handleCheck}>Check</Button> :
-                    <Button handleClick={handleContinue}>Continue</Button>
+                    <Button onClick={handleCheck}>Check</Button> :
+                    <Button onClick={handleContinue}>Continue</Button>
                 }
             </div>
 

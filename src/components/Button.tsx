@@ -8,14 +8,14 @@ type ButtonProps = {
     ping?: boolean
     color?: "primary" | "secondary"
     size?: "small" | "medium" | "large"
-    handleClick?: () => void
+    onClick?: () => void
 }
 
-export const Button: FC<ButtonProps> = ({ children, className, disabled, ping = false, size, color = "primary", handleClick }) => {
+export const Button: FC<ButtonProps> = ({ children, className, disabled, ping = false, size, color = "primary", onClick }) => {
 
     const handleClicks = () => {
         if (disabled) return
-        handleClick?.()
+        onClick?.()
     }
 
     return (

@@ -1,29 +1,39 @@
 import { Unit } from '@contentlayer/generated'
 import { create } from 'zustand'
 
-type CurrentLesson = number
+type LessonData = {
+  currentLessonIndex: number
+  lastLessonIndex: number
+  concluded: boolean
+}
 
 type UnitStore = {
-  currentLessonByUnitSlug: {
-    [unitSlug: string]: {
-      currentLessonIndex: CurrentLesson
-      lastLessonIndex: number
-      concluded: boolean
-    }
+  unitDataByUnitSlug: {
+    [unitSlug: string]: LessonData
   }
-  setCurrentLesson: (unitSlug: string, lesson: number, lastLesson: number) => void
+  currentUnit: Unit
+  goToNextLesson: (unitSlug: string) => void
+  setLesson: (unitSlug: string, lesson: number, lastLesson: number) => void
+  setCurrentUnit: (unit: Unit) => void
+  selectLessonByUnitSlug: (unit: Unit) => LessonData
+
 }
 
 export const useUnitStore = create<UnitStore>((set, get) => ({
-  currentLessonByUnitSlug: {},
-  passLesson: (unitSlug: string) => set((state) => {
-    const currentLesson = state.currentLessonByUnitSlug[unitSlug]?.currentLessonIndex ?? 0
-    const lastLesson = state.currentLessonByUnitSlug[unitSlug]?.lastLessonIndex ?? 0
+  unitDataByUnitSlug: {},
+  setCurrentUnit: (unit: Unit) => set((state) => {
+    return {
+      currentUnit: unit
+    }
+  }),
+  goToNextLesson: (unitSlug: string) => set((state) => {
+    const currentLesson = state.unitDataByUnitSlug[unitSlug]?.currentLessonIndex ?? 0
+    const lastLesson = state.unitDataByUnitSlug[unitSlug]?.lastLessonIndex ?? 0
     const nextLesson = currentLesson + 1
     if (currentLesson < lastLesson) {
       return {
-        currentLessonByUnitSlug: {
-          ...state.currentLessonByUnitSlug,
+        unitDataByUnitSlug: {
+          ...state.unitDataByUnitSlug,
           [unitSlug]: {
             currentLessonIndex: nextLesson,
             lastLessonIndex: lastLesson,
@@ -36,10 +46,10 @@ export const useUnitStore = create<UnitStore>((set, get) => ({
     }
   }
   ),
-  setCurrentLesson: (unitSlug: string, lesson: number, lastLesson: number) => set((state: UnitStore) => {
+  setLesson: (unitSlug: string, lesson: number, lastLesson: number) => set((state: UnitStore) => {
     return {
-      currentLessonByUnitSlug: {
-        ...state.currentLessonByUnitSlug,
+      unitDataByUnitSlug: {
+        ...state.unitDataByUnitSlug,
         [unitSlug]: {
           currentLessonIndex: lesson,
           lastLessonIndex: lastLesson,
@@ -50,8 +60,8 @@ export const useUnitStore = create<UnitStore>((set, get) => ({
   }),
   resetUnit: (unitSlug: string) => set((state: UnitStore) => {
     return {
-      currentLessonByUnitSlug: {
-        ...state.currentLessonByUnitSlug,
+      unitDataByUnitSlug: {
+        ...state.unitDataByUnitSlug,
         [unitSlug]: {
           currentLessonIndex: 0,
           lastLessonIndex: 0,
@@ -60,14 +70,26 @@ export const useUnitStore = create<UnitStore>((set, get) => ({
       },
     }
   }),
+  selectLessonByUnitSlug: (unit: Unit) => {
+    const unitSlug = unit.slugAsParams
+    const lessonData = get().unitDataByUnitSlug[unitSlug]
+    if (!lessonData) {
+      set(() => {
+        return {
+          unitDataByUnitSlug: {
+            ...get().unitDataByUnitSlug,
+            [unitSlug]: {
+              currentLessonIndex: 0,
+              lastLessonIndex: unit.lessons.length,
+              concluded: false
+            }
+          },
+          currentUnit: unit
+        }
+      })
+      return get().unitDataByUnitSlug[unitSlug]
+    }
+    return lessonData
+  },
+  currentUnit: {} as Unit
 }))
-
-export const selectLessonByUnitSlug = (unit: Unit) => (state: UnitStore) => {
-  const unitSlug = unit.slugAsParams;
-  const lessonData = state.currentLessonByUnitSlug[unitSlug];
-  if (!lessonData) {
-    state.setCurrentLesson(unitSlug, 0, unit.lessons.length);
-    return state.currentLessonByUnitSlug[unitSlug]
-  }
-  return lessonData
-};

@@ -1,4 +1,4 @@
-import { ActivityContextWrapper } from "@/components/ActivityContext"
+import { ActivityContextWrapper } from "@/components/Activity/ActivityContext"
 import ProgressBar from "@/components/ProgressBar"
 import { Activity, allActivities, allLessons } from "@contentlayer/generated"
 import { Inter } from "next/font/google"

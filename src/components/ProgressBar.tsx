@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect, FC } from 'react';
-import { useActivityContext } from './ActivityContext';
+import { useActivityContext } from './Activity/ActivityContext';
 import { IoClose } from './Icons';
 
 type ProgressBarProps = {

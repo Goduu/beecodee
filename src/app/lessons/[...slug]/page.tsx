@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation"
 
 import { Metadata } from "next"
-import { allActivities, allLessons } from "@contentlayer/generated"
+import { allLessons } from "@contentlayer/generated"
 import { ActivityBlock } from "@/components/Activity/Activity"
 
 interface ActivityProps {

@@ -34,7 +34,7 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson }) => {
             <div className='
                 star-div
                 rounded-full flex items-center justify-center 
-                cursor-pointer
+                cursor-pointer hover:scale-105 duration-300
                 bg-gray-800 w-24 h-24'
                 onClick={() => setTooltipVisible(true)}>
                 <FaStar className='w-10' />
