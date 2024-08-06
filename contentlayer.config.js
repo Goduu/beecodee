@@ -63,6 +63,7 @@ export const Unit = defineNestedType(() => ({
   filePathPattern: `units/*.mdx`,
   contentType: "mdx",
   fields: {
+    id: { type: 'number', required: true },
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
     lessons: {

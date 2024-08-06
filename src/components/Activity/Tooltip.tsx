@@ -12,7 +12,7 @@ export const Tooltip: FC<TooltipProps> = ({ children, position = "top", content,
         <div className={`relative flex justify-between`}>
             {children}
             <div className={`
-                ${visible ? "opacity-100" : "opacity-0"} group-hover:opacity-100 
+                ${visible ? "scale-100" : "scale-0"} group-hover:opacity-100 
                 transition duration-200 delay-150 ease-in-out
                 absolute left-1/2 transform -translate-x-1/2 min-w-80
                 ${position === "top" ? "bottom-full mb-1 sm:mb-2" : "top-full mt-1 sm:mt-2"}

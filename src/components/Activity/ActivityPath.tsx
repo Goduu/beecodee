@@ -1,23 +1,26 @@
 "use client"
-import Link from 'next/link'
-import React, { FC, useState } from 'react'
+import React, { FC, useRef, useState } from 'react'
 import { FaStar } from '../Icons'
 import { Tooltip } from './Tooltip'
 import { Button } from '../Button'
 import { useEffect } from 'react'
-import { Lesson } from '@contentlayer/generated'
+import { Lesson, Unit } from '@contentlayer/generated'
+import { redirect } from 'next/navigation'
+import { useUnitStore } from '../Unit/unitStore'
 
 type ActivityLinkProps = {
     lesson: Lesson
+    unit: Unit
 }
-export const ActivityPath: FC<ActivityLinkProps> = ({ lesson }) => {
+export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit }) => {
     const [tooltipVisible, setTooltipVisible] = useState(false)
+    const clickOutSideRef = useRef<HTMLDivElement>(null)
 
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             const target = event.target as HTMLElement
-            if (target && !target.closest('.star-div')) {
+            if (target && clickOutSideRef?.current && !clickOutSideRef.current.contains(target)) {
                 setTooltipVisible(false)
             }
         }
@@ -30,27 +33,34 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson }) => {
     }, [])
 
     return (
-        <Tooltip content={<ActivityTooltipContent lesson={lesson} />} visible={tooltipVisible}>
-            <div className='
+        <Tooltip content={<ActivityTooltipContent lesson={lesson} unit={unit} />} visible={tooltipVisible}>
+            <div
+                ref={clickOutSideRef}
+                className='
                 star-div
                 rounded-full flex items-center justify-center 
                 cursor-pointer hover:scale-105 duration-300
                 bg-gray-800 w-24 h-24'
-                onClick={() => setTooltipVisible(true)}>
+                onClick={() => setTooltipVisible(!tooltipVisible)}>
                 <FaStar className='w-10' />
             </div>
         </Tooltip>
     )
 }
 
-const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson }) => {
+const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit }) => {
+    const { setCurrentUnit } = useUnitStore();
+
+    const handleStartLesson = () => {
+        setCurrentUnit(unit)
+        redirect(lesson.slug)
+    }
+
     return (
         <div className='star-div flex flex-col items-center gap-4'>
             {lesson.description}
-            <Button>
-                <Link href={lesson.slug}>
-                    Start Lesson
-                </Link>
+            <Button onClick={handleStartLesson}>
+                Start Lesson
             </Button>
         </div>
     )

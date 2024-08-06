@@ -14,7 +14,7 @@ type ActivityProps = {
 }
 
 export const ActivityBlock: FC<ActivityProps> = () => {
-    const { currentActivityIndex, currentActivity, increaseCurrentActivity } = useActivityContext()
+    const { currentActivity, increaseCurrentActivity } = useActivityContext()
     const [answer, setAnswer] = useState<Token[]>([])
     const [options, setOptions] = useState<Token[]>([])
     const [status, setStatus] = useState<AnswerStatus>('neutral')
@@ -26,14 +26,6 @@ export const ActivityBlock: FC<ActivityProps> = () => {
         const optionTokens = highlightCode(currentActivity.options || [], currentActivity.language)
         setOptions(optionTokens)
     }, [currentActivity])
-
-    if (currentActivityIndex === -1) {
-        return (
-            <div>
-                <Button onClick={increaseCurrentActivity}>Start Lesson</Button>
-            </div>
-        )
-    }
 
     const handleFinishLesson = () => {
         goToNextLesson(currentUnit.slugAsParams)
@@ -78,23 +70,20 @@ export const ActivityBlock: FC<ActivityProps> = () => {
     }
 
     return (
-        <div>
-            <div className='flex flex-col gap-8'>
-                <div className='text-2xl font-extrabold'>
-                    {currentActivity.description}
-                </div>
-                <AnswerBlock removeToken={removeTokenFromAnswer} tokens={answer} status={status} />
-                <div className='flex gap-2 justify-center'>
-                    {options.map((token, index) => (
-                        <TokenChip onClick={() => handleClick(token)} key={index} token={token} />
-                    ))}
-                </div>
-                {status === "neutral" || status === "incorrect" ?
-                    <Button onClick={handleCheck}>Check</Button> :
-                    <Button onClick={handleContinue}>Continue</Button>
-                }
+        <div className='flex flex-col gap-8'>
+            <div className='text-2xl font-extrabold'>
+                {currentActivity.description}
             </div>
-
+            <AnswerBlock removeToken={removeTokenFromAnswer} tokens={answer} status={status} />
+            <div className='flex gap-2 justify-center'>
+                {options.map((token, index) => (
+                    <TokenChip onClick={() => handleClick(token)} key={index} token={token} />
+                ))}
+            </div>
+            {status === "neutral" || status === "incorrect" ?
+                <Button onClick={handleCheck}>Check</Button> :
+                <Button onClick={handleContinue}>Continue</Button>
+            }
         </div>
     )
 }

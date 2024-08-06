@@ -19,8 +19,8 @@ export const UnitPath: FC<UnitProps> = ({ unit, lessons }) => {
   const currentLesson = lessons.find((lesson) => lesson.slugAsParams === currentLessonSlug)
   const percentage = (currentLessonIndex / unit.lessons.length) * 100
 
-  if (!currentLesson && concluded) {
-    return <CircularProgress percent={percentage}>
+  if (concluded) {
+    return (
       <div className='
                 star-div
                 rounded-full flex items-center justify-center 
@@ -28,16 +28,16 @@ export const UnitPath: FC<UnitProps> = ({ unit, lessons }) => {
                 bg-green-500 w-24 h-24'
       >
         <LuCheckCircle className='w-10' />
-      </div>
-    </CircularProgress>
+      </div>)
   }
+
   if (!currentLesson) {
     return null
   }
 
   return (
     <CircularProgress percent={percentage} >
-      <ActivityPath lesson={currentLesson} />
+      <ActivityPath lesson={currentLesson} unit={unit} />
     </CircularProgress>
   )
 }

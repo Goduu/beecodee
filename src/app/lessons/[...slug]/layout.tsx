@@ -42,9 +42,11 @@ export default async function Layout({ children, params }: RootLayoutProps) {
 
   return (
     <ActivityContextWrapper activities={activities}>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-20">
         <ProgressBar size="medium" />
-        {children}
+        <div>
+          {children}
+        </div>
       </div>
     </ActivityContextWrapper>
   )

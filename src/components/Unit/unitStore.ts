@@ -84,7 +84,6 @@ export const useUnitStore = create<UnitStore>((set, get) => ({
               concluded: false
             }
           },
-          currentUnit: unit
         }
       })
       return get().unitDataByUnitSlug[unitSlug]
