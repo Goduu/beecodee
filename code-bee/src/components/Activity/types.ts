@@ -1,0 +1,1 @@
+export type AnswerStatus = 'correct' | 'incorrect' | 'neutral'
