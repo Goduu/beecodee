@@ -1,6 +1,6 @@
 "use client"
 import React, { FC, useRef, useState } from 'react'
-import { FaStar } from '../Icons'
+import { IoMdFlower } from '../Icons'
 import { Tooltip } from './Tooltip'
 import { Button } from '../Button'
 import { useEffect } from 'react'
@@ -42,7 +42,7 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit }) => {
                 cursor-pointer hover:scale-105 duration-300
                 bg-gray-800 w-24 h-24'
                 onClick={() => setTooltipVisible(!tooltipVisible)}>
-                <FaStar className='w-10' />
+                <IoMdFlower className='w-16' />
             </div>
         </Tooltip>
     )
