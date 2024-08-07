@@ -5,7 +5,7 @@ import { highlightCode, Token } from '../token_colors/highlightCode'
 import { AnswerStatus } from './types'
 import { redirect } from 'next/navigation'
 import { useUnitStore } from '../Unit/unitStore'
-import { correctAnswer, playSound, wrongAnswer } from '../SoundEffect'
+import { useAudio } from '../useAudio'
 
 export const useActivityStates = () => {
     const { currentActivity, increaseCurrentActivity } = useActivityContext()
@@ -13,17 +13,18 @@ export const useActivityStates = () => {
     const [options, setOptions] = useState<Token[]>([])
     const [status, setStatus] = useState<AnswerStatus>('neutral')
     const { currentUnit, goToNextLesson } = useUnitStore()
-
-    useEffect(() => {
-        if (currentActivity) {
-            initializeOptions()
-        }
-    }, [currentActivity])
+    const { playSound, correctAnswer, wrongAnswer } = useAudio()
 
     const initializeOptions = useCallback(() => {
         const optionTokens = highlightCode(currentActivity?.options || [], currentActivity?.language || "javascript")
         setOptions(optionTokens)
     }, [currentActivity])
+
+    useEffect(() => {
+        if (currentActivity) {
+            initializeOptions()
+        }
+    }, [currentActivity, initializeOptions])
 
     const handleFinishLesson = useCallback(() => {
         goToNextLesson(currentUnit.slugAsParams)

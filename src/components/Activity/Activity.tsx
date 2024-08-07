@@ -6,7 +6,6 @@ import { AnswerBlock } from './Answer/AnswerBlock'
 import { LuCheckCircle } from '../Icons'
 import { CompleteCodeAnswer } from './Answer/CompleteCodeAnswer'
 import { useActivityStates } from './useActivityStates'
-import { correctAnswer } from '../SoundEffect'
 
 type ActivityProps = {
 }
