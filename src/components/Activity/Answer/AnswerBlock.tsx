@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
-import { TokenChip } from './TokenChip'
-import { Token } from '../token_colors/highlightCode'
-import { AnswerStatus } from './types'
+import { TokenChip } from '../TokenChip'
+import { Token } from '../../token_colors/highlightCode'
+import { AnswerStatus } from '../types'
 
 type AnswerBlockProps = {
     tokens: Token[]
@@ -15,7 +15,7 @@ export const AnswerBlock: FC<AnswerBlockProps> = ({ tokens, status, removeToken 
 
     return (
         <div>
-            <div className={`flex flex-col border-2 rounded-xl min-w-96 min-h-40 justify-center drop-shadow-xl bg-cyan-900 ${statusClass}`}>
+            <div className={`flex flex-col border-2 rounded-xl min-w-96 min-h-40 justify-center drop-shadow-xl ${statusClass}`}>
                 <div>
                     {tokens.map((token, index) => (
                         <TokenChip onClick={() => removeToken(token)} key={index} token={token} />

@@ -10,7 +10,7 @@ type CircularProgressProps = {
 }
 
 export const CircularProgress: FC<CircularProgressProps> = ({ percent = 50, children }) => {
-    const radius = 70;
+    const radius = 62;
     const circumference = 2 * Math.PI * radius;
 
     return (
@@ -22,7 +22,7 @@ export const CircularProgress: FC<CircularProgressProps> = ({ percent = 50, chil
                         cy="145"
                         r={radius}
                         stroke="currentColor"
-                        strokeWidth="20"
+                        strokeWidth="15"
                         fill="transparent"
                         className="text-gray-700"
                     />
@@ -31,7 +31,7 @@ export const CircularProgress: FC<CircularProgressProps> = ({ percent = 50, chil
                         cy="145"
                         r={radius}
                         stroke="currentColor"
-                        strokeWidth="20"
+                        strokeWidth="15"
                         fill="transparent"
                         strokeDasharray={circumference}
                         strokeDashoffset={circumference - (percent / 100) * circumference}

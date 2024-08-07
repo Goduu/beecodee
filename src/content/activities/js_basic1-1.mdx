@@ -1,7 +1,17 @@
 ---
 type: Activity
-description: "Xongas paha"
-questionType: multipleChoice
-options: [ "let","variable", "10", "=", "==", "foo"]
-answer: ["let", "foo", "=", "10"]
+description: "If the result of the console.log is 10, what should be the value of the gap?"
+questionType: completeCode
+options: [ "ab", "5", "10", "1"]
+answer: ["5"]
+segments:
+  - type: "Segment"
+    sType: "text"
+    content: "const a = "
+  - type: "Segment"
+    sType: "gap"
+    content: "5"
+  - type: "Segment"
+    sType: "text"
+    content: "; \nconst b = 5; \nconsole.log(a + b);"
 ---

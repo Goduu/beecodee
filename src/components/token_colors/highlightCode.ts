@@ -24,8 +24,13 @@ export function highlightCode(code: string | string[], language: string): Token[
 
   const processToken = (token: Prism.Token | string) => {
     if (typeof token === 'string') {
+      if (token.includes("\n")) {
+        tokens.push({ content: "\n", type: "format" });
+      }
       if (token.replace(/\s/g, '') !== '') {
-        tokens.push({ content: token.replace(/\s/g, ''), type: null });
+        if (token.replace(/\n/g, '') !== '') {
+          tokens.push({ content: token.replace(/\s/g, ''), type: null });
+        }
       }
     } else {
       if (typeof token.content === 'string') {
@@ -38,7 +43,14 @@ export function highlightCode(code: string | string[], language: string): Token[
         token.content.forEach(processToken);
       }
     }
-  };
+  }
+
   codeTokenized.forEach(processToken);
   return tokens;
+}
+
+export const tokenizeCode = (code: string, language: string) => {
+  const codeTokenized = Prism.highlight(code, Prism.languages[language] || Prism.languages.javascript, language);
+
+  return codeTokenized;
 }

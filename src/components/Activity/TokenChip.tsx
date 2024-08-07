@@ -8,18 +8,26 @@ type TokenChipProps = {
 }
 
 export const TokenChip: FC<TokenChipProps> = ({ token, onClick }) => {
+    if (token.content === "\n") {
+        return <br />
+    }
+
     return (
         <span
             onClick={onClick}
             className={`
-                inline-block px-2 py-1 my-1 rounded-md 
-                bg-gray-800 bg-opacity-90
+                inline-block px-2 py-1 my-1 -mx-1 rounded-md 
+                bg-gray-800
                 shadow-md text-xl font-extrabold
-                cursor-pointer
+                ${onClick && "cursor-pointer"}
                 ${token.type ? tokenTypeToTailwindClass(token.type) : ''}
                 `}
         >
-            {token.content}
+            {token.type === 'gap' ? (
+                <p className='text-opacity-0 text-red-50'>
+                    {'_'.repeat(Number(token.content))}
+                </p>
+            ) : token.content}
         </span>
     );
 }

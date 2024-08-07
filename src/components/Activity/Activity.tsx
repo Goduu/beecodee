@@ -4,11 +4,12 @@ import { useActivityContext } from './ActivityContext'
 import { Button } from '../Button'
 import { highlightCode, Token } from '../token_colors/highlightCode'
 import { TokenChip } from './TokenChip'
-import { AnswerBlock } from './AnswerBlock'
+import { AnswerBlock } from './Answer/AnswerBlock'
 import { AnswerStatus } from './types'
 import { LuCheckCircle } from '../Icons'
 import { redirect } from 'next/navigation'
 import { useUnitStore } from '../Unit/unitStore'
+import { CompleteCodeAnswer } from './Answer/CompleteCodeAnswer'
 
 type ActivityProps = {
 }
@@ -71,11 +72,15 @@ export const ActivityBlock: FC<ActivityProps> = () => {
 
     return (
         <div className='flex flex-col gap-8'>
-            <div className='text-2xl font-extrabold'>
+            <div className='text-xl sm:text-2xl font-extrabold flex-wrap'>
                 {currentActivity.description}
             </div>
-            <AnswerBlock removeToken={removeTokenFromAnswer} tokens={answer} status={status} />
-            <div className='flex gap-2 justify-center'>
+            {currentActivity.questionType === 'completeCode' ? (
+                <CompleteCodeAnswer tokens={answer} segments={currentActivity.segments} status={status} removeToken={removeTokenFromAnswer} />
+            ) :
+                <AnswerBlock tokens={answer} status={status} removeToken={removeTokenFromAnswer} />
+            }
+            <div className='flex gap-4 justify-center flex-wrap'>
                 {options.map((token, index) => (
                     <TokenChip onClick={() => handleClick(token)} key={index} token={token} />
                 ))}

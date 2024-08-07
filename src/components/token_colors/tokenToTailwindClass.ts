@@ -36,6 +36,9 @@ export const tokenTypeToTailwindClass = (type: string | null): string => {
         case 'regex':
         case 'important':
             return 'text-orange-600';
+        // Custom token types
+        case 'gap':
+            return 'border-2 border-dashed border-gray-600 bg-gray-500 mx-1';
         default:
             return '';
     }

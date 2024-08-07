@@ -12,6 +12,21 @@ const computedFields = {
   },
 }
 
+const Segment = defineNestedType(() => ({
+  name: "Segment",
+  fields: {
+    sType: {
+      type: 'enum',
+      options: ['text', 'gap'],
+      required: true,
+    },
+    content: {
+      type: 'string',
+      required: true,
+    },
+  },
+}));
+
 export const Activity = defineNestedType(() => ({
   name: "Activity",
   filePathPattern: `activities/*.mdx`,
@@ -26,7 +41,7 @@ export const Activity = defineNestedType(() => ({
     },
     questionType: {
       type: 'enum',
-      options: ['multipleChoice', 'singleChoice'],
+      options: ['multipleChoice', 'singleChoice', 'completeCode'],
       default: 'singleChoice',
       required: true
     },
@@ -37,7 +52,11 @@ export const Activity = defineNestedType(() => ({
     answer: {
       type: 'list',
       of: { type: 'string' }
-    }
+    },
+    segments: {
+      type: 'list',
+      of: Segment,
+    },
   },
   computedFields,
 }))
