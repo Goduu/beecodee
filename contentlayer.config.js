@@ -124,6 +124,7 @@ export const Lesson = defineNestedType(() => ({
   fields: {
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
+    xp: { type: 'number', required: true },
     activities: {
       type: 'list',
       of: { type: 'string' },

@@ -29,6 +29,12 @@
       "@/*": [
         "./src/*"
       ],
+      "@/lib": [
+        "./src/lib"
+      ],
+      "@/components": [
+        "./src/components"
+      ],
       "@contentlayer/generated": [
         ".contentlayer/generated"
       ]
