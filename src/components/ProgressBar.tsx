@@ -2,6 +2,7 @@
 import React, { useState, useEffect, FC } from 'react';
 import { useActivityContext } from './Activity/ActivityContext';
 import { IoClose } from './Icons';
+import Link from 'next/link';
 
 type ProgressBarProps = {
     size: "small" | "medium" | "large";
@@ -24,7 +25,9 @@ export const ProgressBar: FC<ProgressBarProps> = ({ size = "medium" }) => {
 
     return (
         <div className='flex gap-4 w-screen justify-center items-center'>
-            <IoClose className='w-6 h-6 cursor-pointer' />
+            <Link href={"/"}>
+                <IoClose className='w-6 h-6 cursor-pointer' />
+            </Link>
             <div className="w-9/12 sm:w-10/12">
                 <div
                     className={`bg-gray-200 rounded ${heightClass}`}

@@ -5,8 +5,9 @@ import { Token } from '../token_colors/highlightCode'
 type TokenChipProps = {
     token: Token
     onClick?: () => void
+    className?: string
 }
-export const TokenChip: FC<TokenChipProps> = ({ token, onClick }) => {
+export const TokenChip: FC<TokenChipProps> = ({ token, onClick, className }) => {
     if (token.content === "\n") {
         return <br />;
     }
@@ -20,6 +21,7 @@ export const TokenChip: FC<TokenChipProps> = ({ token, onClick }) => {
                 text-xl font-extrabold
                 ${onClick ? "cursor-pointer" : ""}
                 ${token.type ? tokenTypeToTailwindClass(token.type) : ''}
+                ${className}
             `}
         >
             {token.type === 'gap' ? (

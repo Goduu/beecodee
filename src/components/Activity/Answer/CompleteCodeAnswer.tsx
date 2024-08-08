@@ -1,33 +1,53 @@
-import { highlightCode, Token, tokenizeCode } from '@/components/token_colors/highlightCode'
-import { Segment } from '@contentlayer/generated'
+import { highlightCode, Token } from '@/components/token_colors/highlightCode'
+import { CompleteCodeQuestion, Segment } from '@contentlayer/generated'
 import React, { FC, Fragment } from 'react'
 import { AnswerStatus } from '../types'
 import { TokenChip } from '../TokenChip'
+import { useAnswerStates } from './useAnswerStates'
+import { CheckContinueButton } from './CheckContinueButton'
 
 type CompleteCodeAnswerProps = {
-    tokens: Token[],
-    segments?: Segment[],
-    status: AnswerStatus,
-    removeToken: (token: Token) => void
+    question: CompleteCodeQuestion
+    language: string
+    handleGoToNextActivity: () => void
 }
 
-export const CompleteCodeAnswer: FC<CompleteCodeAnswerProps> = ({ tokens, segments, status, removeToken }) => {
+export const CompleteCodeAnswer: FC<CompleteCodeAnswerProps> = ({ question, language, handleGoToNextActivity }) => {
+    const {
+        status,
+        options,
+        answer,
+        handleCheckStatus,
+        removeTokenFromAnswer,
+        addTokenToAnswer,
+    } = useAnswerStates(question, language)
+    const segments = question.segments;
+
     if (!segments) return null;
 
     const statusClass = getStatusClass(status);
     let gapCounter = -1;
 
     return (
-        <div className={`flex rounded-xl border-2 min-w-96 min-h-40 justify-center drop-shadow-xl ${statusClass}`}>
-            <div>
-                {segments.map((segment, index) => {
-                    if (segment.sType === 'text') {
-                        return renderTextSegment(segment, index);
-                    }
-                    gapCounter++;
-                    return renderGapSegment(tokens, gapCounter, segment, index, removeToken);
-                })}
+        <div className='flex flex-col gap-4'>
+            <div className={`flex rounded-xl border-2 min-w-96 min-h-40 justify-center drop-shadow-xl ${statusClass}`}>
+                <div>
+                    {segments.map((segment, index) => {
+                        if (segment.sType === 'text') {
+                            return renderTextSegment(segment, index);
+                        }
+                        gapCounter++;
+                        return renderGapSegment(answer, gapCounter, segment, index, removeTokenFromAnswer);
+                    })}
+                </div>
             </div>
+            <div className='flex gap-4 justify-center flex-wrap'>
+                {options.map((token, index) => (
+                    <TokenChip onClick={() => addTokenToAnswer(token)} key={index} token={token}
+                    />
+                ))}
+            </div>
+            <CheckContinueButton status={status} handleCheck={handleCheckStatus} handleGoToNextActivity={handleGoToNextActivity} />
         </div>
     );
 }
@@ -60,7 +80,7 @@ const getStatusClass = (status: AnswerStatus): string => {
     switch (status) {
         case 'correct':
             return 'border-green-500';
-        case 'incorrect':
+        case 'wrong':
             return 'border-red-600';
         default:
             return 'border-gray-500';

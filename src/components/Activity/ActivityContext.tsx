@@ -6,7 +6,7 @@ type ActivityContextProps = {
     activities: Activity[] | undefined
     currentActivityIndex: number
     currentActivity: Activity | null | undefined
-    increaseCurrentActivity: () => void
+    goToNextActivity: () => void
 }
 
 type ActivityContextWrapperProps = {
@@ -18,7 +18,7 @@ const ActivityContext = createContext<ActivityContextProps>({
     activities: [],
     currentActivityIndex: 0,
     currentActivity: null,
-    increaseCurrentActivity: () => { }
+    goToNextActivity: () => { }
 })
 
 export const ActivityContextWrapper: FC<ActivityContextWrapperProps> = ({ children, activities = [] }) => {
@@ -31,12 +31,12 @@ export const ActivityContextWrapper: FC<ActivityContextWrapperProps> = ({ childr
 
     }, [currentActivityIndex, activities])
 
-    const increaseCurrentActivity = () => {
+    const goToNextActivity = () => {
         setCurrentActivityIndex(prevActivity => prevActivity + 1)
     }
 
     return (
-        <ActivityContext.Provider value={{ activities, currentActivityIndex, currentActivity, increaseCurrentActivity }} >
+        <ActivityContext.Provider value={{ activities, currentActivityIndex, currentActivity, goToNextActivity }} >
             {children}
         </ActivityContext.Provider>
     )

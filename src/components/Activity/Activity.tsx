@@ -1,26 +1,20 @@
 "use client"
 import React, { FC } from 'react'
 import { Button } from '../Button'
-import { TokenChip } from './TokenChip'
-import { AnswerBlock } from './Answer/AnswerBlock'
 import { LuCheckCircle } from '../Icons'
-import { CompleteCodeAnswer } from './Answer/CompleteCodeAnswer'
 import { useActivityStates } from './useActivityStates'
+import { SingleChoiceAnswer } from './Answer/SingleChoiceAnswer'
+import { CompleteCodeAnswer } from './Answer/CompleteCodeAnswer'
+import { MultipleChoiceAnswer } from './Answer/MultipleChoiceAnswer'
 
 type ActivityProps = {
 }
 
 export const ActivityBlock: FC<ActivityProps> = () => {
     const {
-        answer,
-        status,
-        options,
         currentActivity,
-        handleCheck,
-        handleClick,
-        handleContinue,
+        handleGoToNextActivity,
         handleFinishLesson,
-        removeTokenFromAnswer,
     } = useActivityStates()
 
 
@@ -32,28 +26,28 @@ export const ActivityBlock: FC<ActivityProps> = () => {
             </>
         )
     }
-    
+
 
     return (
         <div className='flex flex-col gap-8'>
-            <div className='text-xl sm:text-2xl font-extrabold flex-wrap'>
-                {currentActivity.description}
-            </div>
-            {currentActivity.questionType === 'completeCode' ? (
-                <CompleteCodeAnswer tokens={answer} segments={currentActivity.segments} status={status} removeToken={removeTokenFromAnswer} />
+            {currentActivity.question.type === 'CompleteCodeQuestion' ? (
+                <CompleteCodeAnswer
+                    question={currentActivity.question}
+                    language={currentActivity.language}
+                    handleGoToNextActivity={handleGoToNextActivity} />
             ) :
-                <AnswerBlock tokens={answer} status={status} removeToken={removeTokenFromAnswer} />
+
+                currentActivity.question.type === "MultipleChoiceQuestion" ? (
+                    <MultipleChoiceAnswer
+                        question={currentActivity.question}
+                        language={currentActivity.language}
+                        handleGoToNextActivity={handleGoToNextActivity} />
+                ) : <SingleChoiceAnswer
+                    question={currentActivity.question}
+                    language={currentActivity.language}
+                    handleGoToNextActivity={handleGoToNextActivity} />
+
             }
-            <div className='flex gap-4 justify-center flex-wrap'>
-                {options.map((token, index) => (
-                    <TokenChip onClick={() => handleClick(token)} key={index} token={token} />
-                ))}
-            </div>
-            {status === 'neutral' || status === 'incorrect' ? (
-                <Button onClick={handleCheck}>Check</Button>
-            ) : (
-                <Button onClick={handleContinue}>Continue</Button>
-            )}
-        </div>
+        </div >
     )
 }
