@@ -7,7 +7,6 @@ import { HoverTooltip } from './HoverTooltip'
 
 export const Header = async () => {
     const userData = await userMetadata()
-    console.log("userData", userData)
 
     return (
         <header className='flex items-center w-full justify-between'>

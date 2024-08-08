@@ -12,7 +12,7 @@ export async function signInWithGithub() {
     },
   })
 
-  console.log(data, error)
+  console.error(data, error)
 
   if (data.url) {
     redirect(data.url) // use the redirect API for your server framework
