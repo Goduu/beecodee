@@ -1,4 +1,4 @@
-import { highlightCode, Token } from '@/components/token_colors/highlightCode'
+import { highlightArray, Token } from '@/components/token_colors/highlightCode'
 import { useCallback, useEffect, useState } from 'react'
 import { AnswerStatus } from '../types'
 import { useAudio } from '@/components/useAudio'
@@ -12,7 +12,7 @@ export const useAnswerStates = (question: Activity["question"], language: string
     const { playSound, correctAnswerSound, wrongAnswerSound } = useAudio()
 
     const initializeOptions = useCallback(() => {
-        const optionTokens = highlightCode(question.options || [], language || "javascript")
+        const optionTokens = highlightArray(question.options || [], language || "javascript")
         setOptions(optionTokens)
     }, [question, language])
 

@@ -67,8 +67,8 @@ export const SingleChoiceQuestion = defineNestedType(() => ({
   },
 }));
 
-export const CompleteCodeQuestion = defineNestedType(() => ({
-  name: "CompleteCodeQuestion",
+export const FillInTheBlankQuestion = defineNestedType(() => ({
+  name: "FillInTheBlankQuestion",
   fields: {
     description: {
       type: 'string',
@@ -110,7 +110,7 @@ export const Activity = defineNestedType(() => ({
     },
     question: {
       type: 'nested',
-      of: [MultipleChoiceQuestion, SingleChoiceQuestion, CompleteCodeQuestion],
+      of: [MultipleChoiceQuestion, SingleChoiceQuestion, FillInTheBlankQuestion],
       required: true,
     },
   },

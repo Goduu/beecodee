@@ -1,6 +1,4 @@
 import React, { FC, ReactNode } from 'react';
-import { ActivityPath } from './ActivityPath';
-import { Lesson } from '@contentlayer/generated';
 
 
 type CircularProgressProps = {

@@ -4,7 +4,7 @@ import { Button } from '../Button'
 import { LuCheckCircle } from '../Icons'
 import { useActivityStates } from './useActivityStates'
 import { SingleChoiceAnswer } from './Answer/SingleChoiceAnswer'
-import { CompleteCodeAnswer } from './Answer/CompleteCodeAnswer'
+import { FillInTheBlankAnswer } from './Answer/FillInTheBlankAnswer'
 import { MultipleChoiceAnswer } from './Answer/MultipleChoiceAnswer'
 
 type ActivityProps = {
@@ -30,8 +30,8 @@ export const ActivityBlock: FC<ActivityProps> = () => {
 
     return (
         <div className='flex flex-col gap-8'>
-            {currentActivity.question.type === 'CompleteCodeQuestion' ? (
-                <CompleteCodeAnswer
+            {currentActivity.question.type === 'FillInTheBlankQuestion' ? (
+                <FillInTheBlankAnswer
                     question={currentActivity.question}
                     language={currentActivity.language}
                     handleGoToNextActivity={handleGoToNextActivity} />

@@ -3,10 +3,10 @@ import React, { FC, useRef, useState } from 'react'
 import { IoMdFlower } from '../Icons'
 import { Tooltip } from './Tooltip'
 import { Button } from '../Button'
-import { useEffect } from 'react'
 import { Lesson, Unit } from '@contentlayer/generated'
 import { redirect } from 'next/navigation'
 import { useUnitStore } from '../Unit/unitStore'
+import { useDetectOuterClick } from '../useDetectOuterClick'
 
 type ActivityLinkProps = {
     lesson: Lesson
@@ -15,22 +15,7 @@ type ActivityLinkProps = {
 export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit }) => {
     const [tooltipVisible, setTooltipVisible] = useState(false)
     const clickOutSideRef = useRef<HTMLDivElement>(null)
-
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            const target = event.target as HTMLElement
-            if (target && clickOutSideRef?.current && !clickOutSideRef.current.contains(target)) {
-                setTooltipVisible(false)
-            }
-        }
-
-        document.addEventListener('mousedown', handleClickOutside)
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside)
-        }
-    }, [])
+    useDetectOuterClick({ ref: clickOutSideRef, onOuterClick: () => setTooltipVisible(false) })
 
     return (
         <Tooltip content={<ActivityTooltipContent lesson={lesson} unit={unit} />} visible={tooltipVisible}>

@@ -27,10 +27,8 @@ export function highlightCode(code: string | string[], language: string): Token[
       if (token.includes("\n")) {
         tokens.push({ content: "\n", type: "format" });
       }
-      if (token.replace(/\s/g, '') !== '') {
-        if (token.replace(/\n/g, '') !== '') {
-          tokens.push({ content: token.replace(/\s/g, ''), type: null });
-        }
+      if (token.replace(/\n/g, '') !== '') {
+        tokens.push({ content: token, type: null });
       }
     } else {
       if (typeof token.content === 'string') {
@@ -46,6 +44,37 @@ export function highlightCode(code: string | string[], language: string): Token[
   }
 
   codeTokenized.forEach(processToken);
+  return tokens;
+}
+
+export function highlightArray(code: string[], language: string): Token[] {
+  const tokens: Token[] = [];
+  const processToken = (token: Prism.Token | string) => {
+    if (typeof token === 'string') {
+      if (token.includes("\n")) {
+        tokens.push({ content: "\n", type: "format" });
+      }
+      if (token.replace(/\n/g, '') !== '') {
+        tokens.push({ content: token, type: null });
+      }
+    } else {
+      if (typeof token.content === 'string') {
+        tokens.push({
+          content: token.content,
+          type: token.type,
+        });
+      }
+      if (Array.isArray(token.content)) {
+        token.content.forEach(processToken);
+      }
+    }
+  }
+
+  code.forEach((codeStr) => {
+    const tokenizedCode = Prism.tokenize(codeStr, Prism.languages[language] || Prism.languages.javascript);
+    tokenizedCode.forEach(processToken);
+  })
+
   return tokens;
 }
 

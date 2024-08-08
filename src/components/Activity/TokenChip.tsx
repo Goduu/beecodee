@@ -1,34 +1,38 @@
-import React, { FC } from 'react'
-import { tokenTypeToTailwindClass } from '../token_colors/tokenToTailwindClass'
+import { FC } from 'react'
 import { Token } from '../token_colors/highlightCode'
+import { TokenWrapper } from './TokenChipWrapper'
 
 type TokenChipProps = {
     token: Token
     onClick?: () => void
     className?: string
 }
-export const TokenChip: FC<TokenChipProps> = ({ token, onClick, className }) => {
+export const TokenChip: FC<TokenChipProps> = ({ token, onClick, className = "" }) => {
+
     if (token.content === "\n") {
         return <br />;
     }
 
+    const renderGapContent = () => (
+        <p className="text-opacity-0 text-red-50">
+            {'_'.repeat(Number(token.content))}
+        </p>
+    );
+
+    const renderTokenContent = () => {
+        switch (token.content) {
+            case ' ':
+                return <>&nbsp;</>;
+            case '\n':
+                return <br />;
+            default:
+                return token.type === 'gap' ? renderGapContent() : token.content;
+        }
+    };
+
     return (
-        <span
-            onClick={onClick}
-            className={`
-                inline-block px-2 py-1 my-1 -mx-1 rounded-md 
-                bg-gray-800
-                text-xl font-extrabold
-                ${onClick ? "cursor-pointer" : ""}
-                ${token.type ? tokenTypeToTailwindClass(token.type) : ''}
-                ${className}
-            `}
-        >
-            {token.type === 'gap' ? (
-                <p className='text-opacity-0 text-red-50'>
-                    {'_'.repeat(Number(token.content))}
-                </p>
-            ) : token.content}
-        </span>
+        <TokenWrapper className={className} tokenType={token.type} onClick={onClick}>
+            {renderTokenContent()}
+        </TokenWrapper>
     );
 }

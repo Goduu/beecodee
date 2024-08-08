@@ -38,7 +38,7 @@ export const tokenTypeToTailwindClass = (type: string | null): string => {
             return 'text-orange-600';
         // Custom token types
         case 'gap':
-            return 'border-2 border-dashed border-gray-600 bg-gray-500 mx-1';
+            return 'border border-dashed border-gray-500';
         default:
             return '';
     }

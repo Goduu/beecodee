@@ -6,16 +6,22 @@ tags: [beginner, console.log, variables, addition]
 question:
   type: FillInTheBlankQuestion
   description: "If the result of the console.log is 10, what should be the value of the gap?"
-  options: [ "ab", "5", "10", "1"]
-  correctAnswer: ["5"]
+  options: [ "7", "5", "10", "5"]
+  correctAnswer: ["5", "5"]
   segments:
   - type: "Segment"
     sType: "text"
     content: "const a = "
   - type: "Segment"
     sType: "gap"
-    content: "5"
+    content: "3"
   - type: "Segment"
     sType: "text"
-    content: "; \nconst b = 5; \nconsole.log(a + b);"
+    content: ";\nconst b = "
+  - type: "Segment"
+    sType: "gap"
+    content: "3"
+  - type: "Segment"
+    sType: "text"
+    content: ";\nconsole.log(a + b);"
 ---

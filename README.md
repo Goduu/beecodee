@@ -18,10 +18,10 @@ Current development time: 2 days
     - [x] Structure and link between them 
     - [x] Unit Conclusion
     - [ ] Review an Unit
-    - [ ] Activity Types 
+    - [x] Activity Types 
         - [x] Multi completion questions
-        - [x] Gap completion questions
-        - [ ] Single choice questions
+        - [x] Fill-in-the-blank questions
+        - [x] Single choice questions
         - [ ]  ... ? 
 - [ ] Activity Content
     - [ ] JS Course
