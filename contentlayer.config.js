@@ -27,35 +27,91 @@ const Segment = defineNestedType(() => ({
   },
 }));
 
+export const MultipleChoiceQuestion = defineNestedType(() => ({
+  name: "MultipleChoiceQuestion",
+  fields: {
+    description: {
+      type: 'string',
+      required: true,
+    },
+    options: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
+    },
+    correctAnswer: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
+    },
+  },
+}));
+
+export const SingleChoiceQuestion = defineNestedType(() => ({
+  name: "SingleChoiceQuestion",
+  fields: {
+    description: {
+      type: 'string',
+      required: true,
+    },
+    options: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
+    },
+    correctAnswer: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
+    },
+  },
+}));
+
+export const CompleteCodeQuestion = defineNestedType(() => ({
+  name: "CompleteCodeQuestion",
+  fields: {
+    description: {
+      type: 'string',
+      required: true,
+    },
+    segments: {
+      type: 'list',
+      of: Segment,
+    },
+    options: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
+    },
+    correctAnswer: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
+    },
+  },
+}));
+
 export const Activity = defineNestedType(() => ({
   name: "Activity",
   filePathPattern: `activities/*.mdx`,
   contentType: "mdx",
   fields: {
-    description: { type: 'string', required: true },
+    id: { type: 'string', required: true },
+    tags: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
+    },
     language: {
       type: 'enum',
       options: ['javascript'],
       default: 'javascript',
       required: true
     },
-    questionType: {
-      type: 'enum',
-      options: ['multipleChoice', 'singleChoice', 'completeCode'],
-      default: 'singleChoice',
-      required: true
-    },
-    options: {
-      type: 'list',
-      of: { type: 'string' }
-    },
-    answer: {
-      type: 'list',
-      of: { type: 'string' }
-    },
-    segments: {
-      type: 'list',
-      of: Segment,
+    question: {
+      type: 'nested',
+      of: [MultipleChoiceQuestion, SingleChoiceQuestion, CompleteCodeQuestion],
+      required: true,
     },
   },
   computedFields,
