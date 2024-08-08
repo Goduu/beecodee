@@ -13,11 +13,18 @@ export const useDetectOuterClick = ({ onOuterClick, ref }: DetectOuterClickProps
                 onOuterClick()
             }
         }
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                onOuterClick()
+            }
+        }
 
         document.addEventListener('mousedown', handleClickOutside)
+        document.addEventListener('keydown', handleKeyDown)
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside)
+            document.removeEventListener('keydown', handleKeyDown)
         }
     }, [])
 

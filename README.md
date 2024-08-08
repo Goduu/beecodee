@@ -61,7 +61,7 @@ Current development time: 2 days
 - [ ] Deploy 🚀
     - [x] Deployed version on Vercel
     - [ ] SEO 🌐
-    - [ ] Analytics
+    - [x] Vercel Analytics
 - [ ] Accessibility ♿
     - [ ] Screen Reader
     - [ ] Keyboard Navigation
@@ -78,11 +78,11 @@ Current development time: 2 days
     - [ ] Integration Testing
     - [ ] End-to-End Testing
 - [ ] Documentation 📚
-    - [ ] Readme
+    - [x] Readme
     - [ ] Code Documentation
     - [ ] User Documentation
 - [ ] Community 🌍
-    - [ ] Discord
+    - [x] [TikTok](https://www.tiktok.com/@go_duu)
     - [ ] Twitter
     - [ ] Instagram
     - [ ] Facebook
