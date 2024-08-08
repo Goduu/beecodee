@@ -25,10 +25,10 @@ export const UnitPath: FC<UnitProps> = ({ unit, lessons }) => {
         <div className='
                 border-b-8 border-green-600
                 rounded-full flex justify-center 
-                cursor-pointer hover:scale-105 duration-300 hover:border-b-2
-                bg-green-500 w-24 h-24'
+                cursor-pointer hover:scale-105 hover:border-b-2 duration-300
+                bg-green-500 w-32 h-32'
         >
-          <LuCheckCircle className='w-10' />
+          <LuCheckCircle className='w-16' />
         </div>
       </div>
     )
