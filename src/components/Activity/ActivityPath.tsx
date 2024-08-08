@@ -38,8 +38,9 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit }) => {
                 ref={clickOutSideRef}
                 className='
                 star-div
+                border-b-8 border-gray-900
                 rounded-full flex items-center justify-center 
-                cursor-pointer hover:scale-105 duration-300
+                cursor-pointer hover:scale-105 duration-300 hover:border-b-2
                 bg-gray-800 w-24 h-24'
                 onClick={() => setTooltipVisible(!tooltipVisible)}>
                 <IoMdFlower className='w-16' />

@@ -21,14 +21,17 @@ export const UnitPath: FC<UnitProps> = ({ unit, lessons }) => {
 
   if (concluded) {
     return (
-      <div className='
-                star-div
-                rounded-full flex items-center justify-center 
-                cursor-pointer hover:scale-105 duration-300
+      <div className="flex justify-center star-div w-72 h-72 items-center " >
+        <div className='
+                border-b-8 border-green-600
+                rounded-full flex justify-center 
+                cursor-pointer hover:scale-105 duration-300 hover:border-b-2
                 bg-green-500 w-24 h-24'
-      >
-        <LuCheckCircle className='w-10' />
-      </div>)
+        >
+          <LuCheckCircle className='w-10' />
+        </div>
+      </div>
+    )
   }
 
   if (!currentLesson) {
