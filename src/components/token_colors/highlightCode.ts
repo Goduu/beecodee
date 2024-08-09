@@ -42,7 +42,6 @@ export function highlightCode(code: string | string[], language: string): Token[
       }
     }
   }
-
   codeTokenized.forEach(processToken);
   return tokens;
 }

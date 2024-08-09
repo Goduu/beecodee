@@ -12,7 +12,7 @@ export const TokenWrapper: FC<TokenWrapperProps> = ({ children, tokenType, onCli
 
     const getClassNames = () => {
         return `
-            inline-block py-1 my-1 rounded-md 
+            inline-block py-1 rounded-md 
             bg-gray-800 text-xl font-extrabold
             ${onClick ? 'cursor-pointer' : ''}
             ${tokenType ? tokenTypeToTailwindClass(tokenType) : ''}

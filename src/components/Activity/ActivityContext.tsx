@@ -27,6 +27,7 @@ export const ActivityContextWrapper: FC<ActivityContextWrapperProps> = ({ childr
 
     useEffect(() => {
         if (!activities.length) return
+
         setCurrentActivity(activities[currentActivityIndex])
 
     }, [currentActivityIndex, activities])

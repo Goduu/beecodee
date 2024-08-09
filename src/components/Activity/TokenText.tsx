@@ -1,13 +1,14 @@
 import { FC } from 'react'
 import { Token } from '../token_colors/highlightCode'
 import { TokenWrapper } from './TokenChipWrapper'
+import { tokenTypeToTailwindClass } from '../token_colors/tokenToTailwindClass'
 
-type TokenChipProps = {
+type TokenTextProps = {
     token: Token
     onClick?: () => void
     className?: string
 }
-export const TokenChip: FC<TokenChipProps> = ({ token, onClick, className = "" }) => {
+export const TokenText: FC<TokenTextProps> = ({ token, onClick, className = "" }) => {
 
     if (token.content === "\n") {
         return <br />;
@@ -27,10 +28,10 @@ export const TokenChip: FC<TokenChipProps> = ({ token, onClick, className = "" }
                 return token.type === 'gap' ? renderGapContent() : token.content.replace(/ /g, '\u00A0');
         }
     };
-    
+
     return (
-        <TokenWrapper className={className} tokenType={token.type} onClick={onClick}>
+        <span className={`${token.type ? tokenTypeToTailwindClass(token.type) : ''} text-xl font-extrabold py-1`} >
             {renderTokenContent()}
-        </TokenWrapper>
+        </span>
     );
 }

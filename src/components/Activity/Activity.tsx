@@ -7,10 +7,7 @@ import { SingleChoiceAnswer } from './Answer/SingleChoiceAnswer'
 import { FillInTheBlankAnswer } from './Answer/FillInTheBlankAnswer'
 import { MultipleChoiceAnswer } from './Answer/MultipleChoiceAnswer'
 
-type ActivityProps = {
-}
-
-export const ActivityBlock: FC<ActivityProps> = () => {
+export const ActivityBlock: FC = () => {
     const {
         currentActivity,
         handleGoToNextActivity,

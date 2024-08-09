@@ -1,7 +1,7 @@
-# beecode
+# beecodee
 What if we had a Duolingo for learning to code? 
 
-### Presenting beecode!
+### Presenting beecodee!
 
 ![Alt text](public/images/ss.png)
 

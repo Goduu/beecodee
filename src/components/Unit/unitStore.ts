@@ -27,17 +27,17 @@ export const useUnitStore = create<UnitStore>((set, get) => ({
     }
   }),
   goToNextLesson: (unitSlug: string) => set((state) => {
-    const currentLesson = state.unitDataByUnitSlug[unitSlug]?.currentLessonIndex ?? 0
-    const lastLesson = state.unitDataByUnitSlug[unitSlug]?.lastLessonIndex ?? 0
-    const nextLesson = currentLesson + 1
-    if (currentLesson < lastLesson) {
+    const currentLessonIndex = state.unitDataByUnitSlug[unitSlug]?.currentLessonIndex ?? 0
+    const lastLessonIndex = state.unitDataByUnitSlug[unitSlug]?.lastLessonIndex ?? 0
+    const nextLessonIndex = currentLessonIndex + 1
+    if (currentLessonIndex <= lastLessonIndex) {
       return {
         unitDataByUnitSlug: {
           ...state.unitDataByUnitSlug,
           [unitSlug]: {
-            currentLessonIndex: nextLesson,
-            lastLessonIndex: lastLesson,
-            concluded: nextLesson === lastLesson,
+            currentLessonIndex: nextLessonIndex,
+            lastLessonIndex: lastLessonIndex,
+            concluded: nextLessonIndex === lastLessonIndex,
           },
         },
       }

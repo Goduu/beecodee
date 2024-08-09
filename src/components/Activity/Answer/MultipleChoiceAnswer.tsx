@@ -30,13 +30,13 @@ export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({ question, 
             <div className={`flex flex-col border-2 rounded-xl min-w-96 min-h-40 justify-center drop-shadow-xl ${statusClass}`}>
                 <div>
                     {answer.map((token, index) => (
-                        <TokenChip onClick={() => removeTokenFromAnswer(token)} key={index} token={token} className='px-2' />
+                        <TokenChip key={`tokenAnswer-${index}-${token.content}`} onClick={() => removeTokenFromAnswer(token)} token={token} className='px-2' />
                     ))}
                 </div>
             </div>
             <div className='flex gap-4 justify-center flex-wrap'>
                 {options.map((token, index) => (
-                    <TokenChip onClick={() => addTokenToAnswer(token)} key={index} token={token} className='px-2'
+                    <TokenChip key={`tokenOption-${index}-${token.content}`} onClick={() => addTokenToAnswer(token)} token={token} className='px-2'
                     />
                 ))}
             </div>
