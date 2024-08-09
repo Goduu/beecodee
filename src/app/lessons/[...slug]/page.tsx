@@ -51,11 +51,6 @@ export default async function PostPage({ params }: ActivityProps) {
   return (
     <div className="text-center">
       <div className="justify-center items-center w-full flex flex-col gap-8 h-96">
-        {post.description && (
-          <p className="text-xl mt-0 text-slate-700 dark:text-slate-200">
-            {post.description}
-          </p>
-        )}
         <ActivityBlock />
       </div>
     </div>

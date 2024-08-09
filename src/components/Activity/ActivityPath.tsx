@@ -6,7 +6,7 @@ import { Button } from '../Button'
 import { Lesson, Unit } from '@contentlayer/generated'
 import { redirect } from 'next/navigation'
 import { useDetectOuterClick } from '../useDetectOuterClick'
-import { setCurrentUnitId } from '../Unit/unitStore'
+import { resetLessonProgress, setCurrentUnitId } from '../Unit/unitStore'
 
 type ActivityLinkProps = {
     lesson: Lesson
@@ -38,6 +38,7 @@ const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit }) => {
 
     const handleStartLesson = () => {
         setCurrentUnitId(unit)
+        resetLessonProgress(unit)
         redirect(lesson.slug)
     }
 

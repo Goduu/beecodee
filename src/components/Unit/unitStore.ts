@@ -50,10 +50,9 @@ export const initializeUnit = (unitId: string, lessons: Lesson[]) => {
       state.units[unitId] = {
         currentLessonIndex: 0,
         concluded: false,
-        lessons: lessons.map((lesson) => ({
-          activities: lesson.activities.map((activity) => ({
+        lessons: lessons.map<StoreLesson>((lesson) => ({
+          activities: lesson.activities.map<StoreActivity>((activity) => ({
             id: activity,
-            concluded: false,
           })),
           currentActivityIndex: 0,
           concluded: false,
@@ -70,6 +69,27 @@ export const setCurrentUnitId = (unit: Unit) => {
   unitStore.setState((state) => {
     return {
       currentUnitId: unit.slugAsParams
+    }
+  })
+}
+
+export const resetLessonProgress = (unit: Unit) => {
+  unitStore.setState((state) => {
+    return {
+      currentUnitId: unit.slugAsParams,
+      units: {
+        ...state.units,
+        [unit.slugAsParams]: {
+          ...state.units[unit.slugAsParams],
+          lessons: state.units[unit.slugAsParams].lessons.map((lesson) => {
+            return {
+              ...lesson,
+              currentActivityIndex: 0,
+              concluded: false
+            }
+          })
+        }
+      }
     }
   })
 }
