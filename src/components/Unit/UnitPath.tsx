@@ -10,9 +10,10 @@ import { useStore } from './useStore'
 type UnitProps = {
   unit: Unit
   lessons: Lesson[]
+  pathPosition: number
 }
 
-export const UnitPath: FC<UnitProps> = ({ unit, lessons }) => {
+export const UnitPath: FC<UnitProps> = ({ unit, lessons, pathPosition }) => {
   const currentUnit = useStore(unitStore, (state) => state.units[unit.slugAsParams])
   const currentLessonIndex = currentUnit?.currentLessonIndex || 0
   const currentLesson = lessons[currentLessonIndex]
@@ -26,12 +27,42 @@ export const UnitPath: FC<UnitProps> = ({ unit, lessons }) => {
   const percentage = (currentLessonIndex / unit.lessons.length) * 100
 
   if (currentUnit?.concluded) {
-    return <ReviewUnit unit={unit} />
+    return (
+      <div className={getPathDescription(pathPosition)}>
+        <ReviewUnit unit={unit} />
+      </div >
+    )
   }
 
   return (
-    <CircularProgress percent={percentage} >
-      <ActivityPath lesson={currentLesson} unit={unit} />
-    </CircularProgress>
+    <div className={getPathDescription(pathPosition)}>
+      <CircularProgress percent={percentage} >
+        <ActivityPath lesson={currentLesson} unit={unit} />
+      </CircularProgress>
+    </div>
   )
+}
+
+
+function getPathDescription(pathIndex: number): string {
+  switch (pathIndex % 8) {
+    case 0:
+      return "";
+    case 7:
+      return "-pr-48";
+    case 6:
+      return "-pr-96";
+    case 5:
+      return "-pr-48";
+    case 4:
+      return "";
+    case 3:
+      return "pr-48";
+    case 2:
+      return "pr-96";
+    case 1:
+      return "pr-48";
+    default:
+      return "";
+  }
 }
