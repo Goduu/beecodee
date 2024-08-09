@@ -1,31 +1,35 @@
 "use client"
 import React, { useState, useEffect, FC } from 'react';
-import { useActivityContext } from './Activity/ActivityContext';
 import { IoClose } from './Icons';
 import Link from 'next/link';
+import { getCurrentLessonData } from './Unit/unitStore';
 
 type ProgressBarProps = {
     size: "small" | "medium" | "large";
 }
 export const ProgressBar: FC<ProgressBarProps> = ({ size = "medium" }) => {
-    const { activities, currentActivityIndex } = useActivityContext();
-    // State for the width of the progress bars
-    const [width, setWidth] = useState(50);
-    const heightClass = size === "small" ? "h-1" : size === "medium" ? "h-4" : "h-6";
-    const progressWidth = currentActivityIndex < 0 ? 0 : Math.min((currentActivityIndex / (activities?.length || 1)) * 100, 100);
+    // const { activities, currentActivityIndex } = useActivityContext();
+    // const currentLessonStoreData = getCurrentLessonData();
+    // const activitiesLengthDivisor = currentLessonStoreData?.activities.length || 1;
+    // if (!currentLessonStoreData) return null;
 
-    // Effect to handle width constraints
-    useEffect(() => {
-        if (width > 100) {
-            setWidth(100);
-        } else if (width < 1) {
-            setWidth(10);
-        }
-    }, [width]);
+    // // State for the width of the progress bars
+    // const [width, setWidth] = useState(50);
+    // const heightClass = size === "small" ? "h-1" : size === "medium" ? "h-4" : "h-6";
+    // const progressWidth = currentLessonStoreData.currentActivityIndex < 0 ? 0 : Math.min((currentLessonStoreData.currentActivityIndex / (activitiesLengthDivisor)) * 100, 100);
+
+    // // Effect to handle width constraints
+    // useEffect(() => {
+    //     if (width > 100) {
+    //         setWidth(100);
+    //     } else if (width < 1) {
+    //         setWidth(10);
+    //     }
+    // }, [width]);
 
     return (
         <div className='flex gap-4 w-screen justify-center items-center'>
-            <Link href={"/"}>
+            {/* <Link href={"/"}>
                 <IoClose className='w-6 h-6 cursor-pointer' />
             </Link>
             <div className="w-9/12 sm:w-10/12">
@@ -38,7 +42,7 @@ export const ProgressBar: FC<ProgressBarProps> = ({ size = "medium" }) => {
                         style={{ width: `${progressWidth}%`, transition: 'width 2s' }}
                     />
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

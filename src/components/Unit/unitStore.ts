@@ -1,94 +1,167 @@
-import { Unit } from '@contentlayer/generated'
-import { create } from 'zustand'
+import { Activity, allActivities, Lesson, Unit } from "@contentlayer/generated";
+import { create as createStore } from "zustand";
+import { localStoragePersist } from "./localStoragePersist";
+import { useStore } from "./useStore";
 
-type LessonData = {
-  currentLessonIndex: number
-  lastLessonIndex: number
-  concluded: boolean
+type StoreActivity = {
+  id: string;
 }
 
-type UnitStore = {
-  unitDataByUnitSlug: {
-    [unitSlug: string]: LessonData
-  }
-  currentUnit: Unit
-  goToNextLesson: (unitSlug: string) => void
-  setLesson: (unitSlug: string, lesson: number, lastLesson: number) => void
-  setCurrentUnit: (unit: Unit) => void
-  selectLessonByUnitSlug: (unit: Unit) => LessonData
-
+type StoreLesson = {
+  activities: StoreActivity[];
+  currentActivityIndex: number;
+  concluded: boolean;
 }
 
-export const useUnitStore = create<UnitStore>((set, get) => ({
-  unitDataByUnitSlug: {},
-  setCurrentUnit: (unit: Unit) => set((state) => {
-    return {
-      currentUnit: unit
-    }
-  }),
-  goToNextLesson: (unitSlug: string) => set((state) => {
-    const currentLessonIndex = state.unitDataByUnitSlug[unitSlug]?.currentLessonIndex ?? 0
-    const lastLessonIndex = state.unitDataByUnitSlug[unitSlug]?.lastLessonIndex ?? 0
-    const nextLessonIndex = currentLessonIndex + 1
-    if (currentLessonIndex <= lastLessonIndex) {
-      return {
-        unitDataByUnitSlug: {
-          ...state.unitDataByUnitSlug,
-          [unitSlug]: {
-            currentLessonIndex: nextLessonIndex,
-            lastLessonIndex: lastLessonIndex,
-            concluded: nextLessonIndex === lastLessonIndex,
-          },
-        },
-      }
-    } else {
-      return state
-    }
-  }
-  ),
-  setLesson: (unitSlug: string, lesson: number, lastLesson: number) => set((state: UnitStore) => {
-    return {
-      unitDataByUnitSlug: {
-        ...state.unitDataByUnitSlug,
-        [unitSlug]: {
-          currentLessonIndex: lesson,
-          lastLessonIndex: lastLesson,
-          concluded: lesson === lastLesson,
-        },
-      },
-    }
-  }),
-  resetUnit: (unitSlug: string) => set((state: UnitStore) => {
-    return {
-      unitDataByUnitSlug: {
-        ...state.unitDataByUnitSlug,
-        [unitSlug]: {
-          currentLessonIndex: 0,
-          lastLessonIndex: 0,
+type StoreUnit = {
+  currentLessonIndex: number;
+  lessons: StoreLesson[];
+  concluded: boolean;
+}
+
+type UnitsState = {
+  [unitId: string]: StoreUnit;
+}
+
+// Zustand store types
+type StoreState = {
+  units: UnitsState;
+  currentUnitId?: string | null;
+  currentActivityData?: Activity | null;
+}
+
+type StoreActions = {
+  increaseNumber: (unitId: string) => void;
+}
+
+const defaultState: StoreState = {
+  units: {},
+}
+
+function getDefaultState(): StoreState {
+  return defaultState
+}
+
+export const unitStore = createStore(localStoragePersist(getDefaultState, { name: "unit" }))
+
+export const initializeUnit = (unitId: string, lessons: Lesson[]) => {
+  unitStore.setState((state) => {
+    if (!state.units[unitId]) {
+      state.units[unitId] = {
+        currentLessonIndex: 0,
+        concluded: false,
+        lessons: lessons.map((lesson) => ({
+          activities: lesson.activities.map((activity) => ({
+            id: activity,
+            concluded: false,
+          })),
+          currentActivityIndex: 0,
           concluded: false,
-        },
-      },
+        })),
+      };
+      state.currentActivityData = allActivities.find((activity) => activity.slugAsParams === lessons[0].activities[0])
     }
-  }),
-  selectLessonByUnitSlug: (unit: Unit) => {
-    const unitSlug = unit.slugAsParams
-    const lessonData = get().unitDataByUnitSlug[unitSlug]
-    if (!lessonData) {
-      set(() => {
-        return {
-          unitDataByUnitSlug: {
-            ...get().unitDataByUnitSlug,
-            [unitSlug]: {
-              currentLessonIndex: 0,
-              lastLessonIndex: unit.lessons.length,
-              concluded: false
+    return state;
+  })
+
+}
+
+export const setCurrentUnitId = (unit: Unit) => {
+  unitStore.setState((state) => {
+    return {
+      currentUnitId: unit.slugAsParams
+    }
+  })
+}
+
+
+// @Attention point of rerendering
+export const getCurrentLessonData = () => {
+  const currentUnitId = unitStore.getState().currentUnitId
+  if (!currentUnitId) return null
+
+  const currentUnit = unitStore.getState().units[currentUnitId]
+  if (!currentUnit) return null
+
+  const currentLesson = currentUnit.lessons[currentUnit.currentLessonIndex]
+  return currentLesson
+}
+
+export const goToNextActivity = () => {
+  const currentUnitId = unitStore.getState().currentUnitId
+  if (!currentUnitId) return
+
+  const units = unitStore.getState().units
+  if (!currentUnitId) return null
+
+  const currentUnit = units[currentUnitId]
+
+  if (!currentUnit) return null
+
+  const currentLesson = currentUnit.lessons[currentUnit.currentLessonIndex]
+
+  if (!currentLesson) return
+
+  // If it's the last lesson, conclude the lesson 
+  if (currentLesson.currentActivityIndex === currentLesson.activities.length - 1) {
+    currentLesson.concluded = true
+    currentLesson.currentActivityIndex = 0
+  } else {
+    currentLesson.currentActivityIndex += 1
+  }
+
+  const activityData = allActivities.find((activity) => {
+    const activitySlug = currentUnit.lessons[currentUnit.currentLessonIndex].activities[currentLesson.currentActivityIndex].id
+    return (
+      activity.slugAsParams === activitySlug
+    )
+  })
+
+  unitStore.setState((state) => {
+    return {
+      currentActivityData: activityData,
+      units: {
+        ...state.units,
+        [currentUnitId]: {
+          ...currentUnit,
+          lessons: state.units[currentUnitId].lessons.map((lesson, index) => {
+            if (index === state.units[currentUnitId].currentLessonIndex) {
+              return currentLesson
             }
-          },
+            return lesson
+          })
         }
-      })
-      return get().unitDataByUnitSlug[unitSlug]
+
+      }
     }
-    return lessonData
-  },
-  currentUnit: {} as Unit
-}))
+  })
+
+}
+
+export const goToNextLesson = () => {
+  const currentUnitId = unitStore.getState().currentUnitId
+  if (!currentUnitId) return
+
+  const units = unitStore.getState().units
+  if (!currentUnitId) return null
+
+  const currentUnit = units[currentUnitId]
+
+  if (!currentUnit) return null
+
+  if (currentUnit.currentLessonIndex === currentUnit.lessons.length - 1) {
+    currentUnit.concluded = true
+  } else {
+    currentUnit.currentLessonIndex += 1
+  }
+
+  unitStore.setState((state) => {
+    return {
+      units: {
+        ...state.units,
+        [currentUnitId]: currentUnit
+      }
+    }
+  })
+
+}

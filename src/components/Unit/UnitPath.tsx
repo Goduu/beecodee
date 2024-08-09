@@ -1,10 +1,11 @@
 "use client"
 import { Lesson, Unit } from '@contentlayer/generated'
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { CircularProgress } from '../Activity/CircularProgress'
-import { useUnitStore } from './unitStore'
 import { ActivityPath } from '../Activity/ActivityPath'
+import { initializeUnit, unitStore } from './unitStore'
 import { ReviewUnit } from './ReviewUnit'
+import { useStore } from './useStore'
 
 type UnitProps = {
   unit: Unit
@@ -12,21 +13,20 @@ type UnitProps = {
 }
 
 export const UnitPath: FC<UnitProps> = ({ unit, lessons }) => {
-  const { selectLessonByUnitSlug } = useUnitStore();
-  const { currentLessonIndex, concluded } = selectLessonByUnitSlug(unit)
+  const currentUnit = useStore(unitStore, (state) => state.units[unit.slugAsParams])
+  const currentLessonIndex = currentUnit?.currentLessonIndex || 0
+  const currentLesson = lessons[currentLessonIndex]
 
-  const currentLessonSlug = unit.lessons[currentLessonIndex]
-  const currentLesson = lessons.find((lesson) => lesson.slugAsParams === currentLessonSlug)
+  useEffect(() => {
+    initializeUnit(unit.slugAsParams, lessons);
+  }, [unit, lessons, initializeUnit]);
+
+  initializeUnit(unit.slugAsParams, lessons)
+
   const percentage = (currentLessonIndex / unit.lessons.length) * 100
 
-  if (concluded) {
-    return (
-      <ReviewUnit unit={unit}/> 
-    )
-  }
-
-  if (!currentLesson) {
-    return null
+  if (currentUnit?.concluded) {
+    return <ReviewUnit unit={unit} />
   }
 
   return (

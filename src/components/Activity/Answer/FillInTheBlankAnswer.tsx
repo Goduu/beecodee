@@ -61,7 +61,7 @@ const renderTextSegment = (segment: Segment, language: string) => {
     return (
         < >
             {tokenizedCode.map((token, i) => (
-                <TokenText key={`text-segment-${segment.id}`} token={token} />
+                <TokenText key={`text-segment-${segment._id}`} token={token} />
             ))}
         </>
     );

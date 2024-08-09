@@ -5,8 +5,8 @@ import { Tooltip } from './Tooltip'
 import { Button } from '../Button'
 import { Lesson, Unit } from '@contentlayer/generated'
 import { redirect } from 'next/navigation'
-import { useUnitStore } from '../Unit/unitStore'
 import { useDetectOuterClick } from '../useDetectOuterClick'
+import { setCurrentUnitId } from '../Unit/unitStore'
 
 type ActivityLinkProps = {
     lesson: Lesson
@@ -35,10 +35,9 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit }) => {
 }
 
 const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit }) => {
-    const { setCurrentUnit } = useUnitStore();
 
     const handleStartLesson = () => {
-        setCurrentUnit(unit)
+        setCurrentUnitId(unit)
         redirect(lesson.slug)
     }
 

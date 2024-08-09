@@ -2,47 +2,55 @@
 import React, { FC } from 'react'
 import { Button } from '../Button'
 import { LuCheckCircle } from '../Icons'
-import { useActivityStates } from './useActivityStates'
 import { SingleChoiceAnswer } from './Answer/SingleChoiceAnswer'
 import { FillInTheBlankAnswer } from './Answer/FillInTheBlankAnswer'
 import { MultipleChoiceAnswer } from './Answer/MultipleChoiceAnswer'
+import { redirect } from 'next/navigation'
+import { goToNextActivity, goToNextLesson, unitStore } from '../Unit/unitStore'
+import { useStore } from 'zustand'
+import { Loading } from '../Loading'
 
 export const ActivityBlock: FC = () => {
-    const {
-        currentActivity,
-        handleGoToNextActivity,
-        handleFinishLesson,
-    } = useActivityStates()
+    const currentActivityData = useStore(unitStore, (state) => state.currentActivityData)
+    const currentUnitId = useStore(unitStore, (state) => state.currentUnitId)
+    const unit = useStore(unitStore, (state) => state.units[currentUnitId || ''])
 
+    const currentLessonIndex = unit?.currentLessonIndex || 0
+    const currentLesson = unit?.lessons[currentLessonIndex]
 
-    if (!currentActivity) {
+    if (currentLesson?.concluded) {
         return (
             <>
                 <LuCheckCircle className='w-32 text-white rounded-full bg-green-500 p-5' />
-                <Button onClick={handleFinishLesson}>Finish Lesson</Button>
+                <Button onClick={() => { goToNextLesson(); redirect("/") }}>Finish Lesson</Button>
             </>
         )
     }
 
+    if (!currentActivityData) return <Loading visible={true} />
+
+    const handlePassActivity = () => {
+        goToNextActivity()
+    }
 
     return (
         <div className='flex flex-col gap-8'>
-            {currentActivity.question.type === 'FillInTheBlankQuestion' ? (
+            {currentActivityData.question.type === 'FillInTheBlankQuestion' ? (
                 <FillInTheBlankAnswer
-                    question={currentActivity.question}
-                    language={currentActivity.language}
-                    handleGoToNextActivity={handleGoToNextActivity} />
+                    question={currentActivityData.question}
+                    language={currentActivityData.language}
+                    handleGoToNextActivity={handlePassActivity} />
             ) :
 
-                currentActivity.question.type === "MultipleChoiceQuestion" ? (
+                currentActivityData.question.type === "MultipleChoiceQuestion" ? (
                     <MultipleChoiceAnswer
-                        question={currentActivity.question}
-                        language={currentActivity.language}
-                        handleGoToNextActivity={handleGoToNextActivity} />
+                        question={currentActivityData.question}
+                        language={currentActivityData.language}
+                        handleGoToNextActivity={handlePassActivity} />
                 ) : <SingleChoiceAnswer
-                    question={currentActivity.question}
-                    language={currentActivity.language}
-                    handleGoToNextActivity={handleGoToNextActivity} />
+                    question={currentActivityData.question}
+                    language={currentActivityData.language}
+                    handleGoToNextActivity={handlePassActivity} />
 
             }
         </div >

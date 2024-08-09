@@ -2,14 +2,17 @@
 import { useCallback} from 'react'
 import { useActivityContext } from './ActivityContext'
 import { redirect } from 'next/navigation'
-import { useUnitStore } from '../Unit/unitStore'
+import { goToNextLesson, unitStore } from '../Unit/unitStore'
+import { useStore } from '../Unit/useStore'
 
 export const useActivityStates = () => {
     const { currentActivity, goToNextActivity } = useActivityContext()
-    const { currentUnit, goToNextLesson } = useUnitStore()
+    const currentUnitId = useStore(unitStore, (state) => state.currentUnitId)
+    const currentUnit = useStore(unitStore, (state) => state.units[currentUnitId || ''])
 
     const handleFinishLesson = useCallback(() => {
-        goToNextLesson(currentUnit.slugAsParams)
+        if(!currentUnit) return
+        goToNextLesson()
         redirect('/')
     }, [goToNextLesson, currentUnit])
 

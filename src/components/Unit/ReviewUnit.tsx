@@ -2,7 +2,6 @@ import React, { FC, useRef, useState } from 'react'
 import { LuCheckCircle } from '../Icons'
 import { Unit } from '@contentlayer/generated'
 import { Tooltip } from '../Activity/Tooltip'
-import { useUnitStore } from './unitStore'
 import { Button } from '../Button'
 import { useDetectOuterClick } from '../useDetectOuterClick'
 
@@ -35,7 +34,6 @@ export const ReviewUnit: FC<ReviewUnitProps> = ({ unit }) => {
 
 
 const ReviewUnitTooltipContent: FC<ReviewUnitProps> = ({ unit }) => {
-    const { setCurrentUnit } = useUnitStore();
 
     const handleStartLesson = () => {
         console.log('toBeImplemented')
@@ -45,7 +43,7 @@ const ReviewUnitTooltipContent: FC<ReviewUnitProps> = ({ unit }) => {
         <div className='star-div flex flex-col items-center gap-4'>
             {unit.description}
             <Button onClick={handleStartLesson}>
-                Review Unit
+                Review Unit (ToBeImplemented)
             </Button>
         </div>
     )
