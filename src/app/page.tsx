@@ -11,7 +11,6 @@ export default function Home() {
         const unitLessons = allLessons.filter((lesson) => unit.lessons.includes(lesson.slugAsParams))
 
         return <UnitPath key={unit._id} unit={unit} lessons={unitLessons} />
-
       })}
 
     </main>

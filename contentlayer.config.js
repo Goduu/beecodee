@@ -17,7 +17,7 @@ const Segment = defineNestedType(() => ({
   fields: {
     sType: {
       type: 'enum',
-      options: ['text', 'gap'],
+      options: ['code', 'text', 'gap'],
       required: true,
     },
     content: {

@@ -24,7 +24,6 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
         addTokenToAnswer,
     } = useAnswerStates(question, language)
     const segments = question.segments;
-
     if (!segments) return null;
 
     const statusClass = getStatusClass(status);
@@ -36,8 +35,11 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
                 <div className='flex justify-start text-left'>
                     <div>
                         {segments.map((segment) => {
+                            if (segment.sType === 'code') {
+                                return renderCodeSegment(segment, language);
+                            }
                             if (segment.sType === 'text') {
-                                return renderTextSegment(segment, language);
+                                return renderTextSegment(segment);
                             }
                             gapCounter++;
                             return renderGapSegment(answer, gapCounter, segment, removeTokenFromAnswer);
@@ -56,7 +58,7 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
     );
 }
 
-const renderTextSegment = (segment: Segment, language: string) => {
+const renderCodeSegment = (segment: Segment, language: string) => {
     const tokenizedCode = highlightCode(segment.content, language);
     return (
         < >
@@ -64,6 +66,15 @@ const renderTextSegment = (segment: Segment, language: string) => {
                 <TokenText key={`text-segment-${segment._id}`} token={token} />
             ))}
         </>
+    );
+}
+
+const renderTextSegment = (segment: Segment) => {
+    console.log("render text segment");
+    return (
+        <span className='text-xl font-extrabold flex-wrap'>
+            {segment.content}
+        </span>
     );
 }
 
