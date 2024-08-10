@@ -47,7 +47,7 @@ const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit }) => {
                 {lesson.description}
             </div>
             <div className='flex gap-2 items-center text-sm'>
-                <Pollen className='w-7' /> Get {lesson.xp} XPolen
+                <Pollen className='w-7' /> Get {lesson.xp} XPollen
             </div>
             <Button onClick={handleStartLesson}>
                 Start Lesson

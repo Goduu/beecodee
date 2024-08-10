@@ -43,7 +43,7 @@ const ReviewUnitTooltipContent: FC<ReviewUnitProps> = ({ unit }) => {
         <div className='flex flex-col items-center gap-4'>
             {unit.description}
             <Button onClick={handleStartLesson}>
-                Review Unit (ToBeImplemented)
+                Review Unit @TODO
             </Button>
         </div>
     )

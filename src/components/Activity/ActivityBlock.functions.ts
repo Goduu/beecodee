@@ -1,4 +1,4 @@
-import { insertXpolen } from "@/lib/supabase/api/insertXpolen";
+import { insertXpollen } from "@/lib/supabase/api/insertXpollen";
 import { goToNextLesson } from "../Unit/unitStore";
 
 
@@ -6,10 +6,10 @@ export const handleFinishLesson = async (unitId: string | null | undefined, less
     if (!unitId) return
 
     try {
-        await insertXpolen({
+        await insertXpollen({
             unitId,
             lessonId,
-            xpolen: lessonXp
+            xpollen: lessonXp
         })
     } catch (error) {
         console.error('Error finishing lesson:', error)

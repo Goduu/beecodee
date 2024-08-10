@@ -4,7 +4,7 @@ import { Beecodee, BeeHead, BiLogIn, RiJavascriptFill } from './Icons'
 import { IconButton } from './IconButton'
 import { userMetadata } from '@/lib/auth'
 import { TooltipHover } from './TooltipHover'
-import { XpolenHeader } from './XPollen/XpolenHeader'
+import { XpollenHeader } from './XPollen/XpollenHeader'
 
 export const Header = async () => {
     const userData = await userMetadata()
@@ -20,7 +20,7 @@ export const Header = async () => {
                         <RiJavascriptFill className="w-16 pr-5" />
                     </IconButton>
                 </TooltipHover>
-                <XpolenHeader />
+                <XpollenHeader />
                 {!userData ?
                     <IconButton>
                         <Link href={"/login"}>
