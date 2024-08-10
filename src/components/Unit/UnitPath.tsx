@@ -26,6 +26,8 @@ export const UnitPath: FC<UnitProps> = ({ unit, lessons, pathPosition }) => {
 
   const percentage = (currentLessonIndex / unit.lessons.length) * 100
 
+  if(!currentLesson) return null
+
   if (currentUnit?.concluded) {
     return (
       <div className={getPathDescription(pathPosition)}>

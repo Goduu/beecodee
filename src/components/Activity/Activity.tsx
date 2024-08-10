@@ -29,28 +29,24 @@ export const ActivityBlock: FC = () => {
 
     if (!currentActivityData) return <Loading visible={true} />
 
-    const handlePassActivity = () => {
-        goToNextActivity()
-    }
-
     return (
         <div className='flex flex-col gap-8'>
             {currentActivityData.question.type === 'FillInTheBlankQuestion' ? (
                 <FillInTheBlankAnswer
                     question={currentActivityData.question}
                     language={currentActivityData.language}
-                    handleGoToNextActivity={handlePassActivity} />
+                    handleGoToNextActivity={goToNextActivity} />
             ) :
 
                 currentActivityData.question.type === "MultipleChoiceQuestion" ? (
                     <MultipleChoiceAnswer
                         question={currentActivityData.question}
                         language={currentActivityData.language}
-                        handleGoToNextActivity={handlePassActivity} />
+                        handleGoToNextActivity={goToNextActivity} />
                 ) : <SingleChoiceAnswer
                     question={currentActivityData.question}
                     language={currentActivityData.language}
-                    handleGoToNextActivity={handlePassActivity} />
+                    handleGoToNextActivity={goToNextActivity} />
 
             }
         </div >

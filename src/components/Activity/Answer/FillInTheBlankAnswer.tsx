@@ -26,7 +26,7 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
     const segments = question.segments;
     if (!segments) return null;
 
-    const statusClass = getStatusClass(status);
+    const statusClass = getStatusClass(status); 
     let gapCounter = -1;
     return (
         <div className='flex flex-col gap-16 px-2'>
@@ -48,8 +48,13 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
                 </div>
             </div>
             <div className='flex gap-4 justify-center flex-wrap' >
-                {options.map((token) => (
-                    <TokenChip key={`token-option-${token.content}`} onClick={() => addTokenToAnswer(token)} token={token} className='px-2'
+                {options.map((token, i) => (
+                    <TokenChip
+                        key={`token-option-${token.content}-${i}`}
+                        onClick={() => addTokenToAnswer(token)}
+                        token={token}
+                        className={`px-2`}
+                        used={answer.includes(token)}
                     />
                 ))}
             </div>
@@ -61,18 +66,17 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
 const renderCodeSegment = (segment: Segment, language: string) => {
     const tokenizedCode = highlightCode(segment.content, language);
     return (
-        < >
+        <span key={`code-segment-${segment.content}`}>
             {tokenizedCode.map((token, i) => (
-                <TokenText key={`text-segment-${segment._id}`} token={token} />
+                <TokenText key={`code-segment-${i}-${token.content}`} token={token} />
             ))}
-        </>
+        </span>
     );
 }
 
 const renderTextSegment = (segment: Segment) => {
-    console.log("render text segment");
     return (
-        <span className='text-xl font-extrabold flex-wrap'>
+        <span key={`text-segment-${segment.content}`} className='text-xl font-extrabold flex-wrap'>
             {segment.content}
         </span>
     );
@@ -80,10 +84,10 @@ const renderTextSegment = (segment: Segment) => {
 
 const renderGapSegment = (tokens: Token[], gapCounter: number, segment: Segment, removeToken: (token: Token) => void) => {
     return (
-        <span key={`gap-${segment._id}`} className="relative inline-block">
+        <span key={`gap-${segment.content}`} className="relative inline-block">
             {tokens?.[gapCounter] && (
                 <span className="absolute inset-0 flex justify-center items-center">
-                    <TokenChip onClick={() => removeToken(tokens[gapCounter])} token={tokens[gapCounter]} />
+                    <TokenChip onClick={() => removeToken(tokens[gapCounter])} token={tokens[gapCounter]} className='py-0' />
                 </span>
             )}
             <TokenChip token={{ type: "gap", content: segment.content }} />

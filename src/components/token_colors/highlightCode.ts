@@ -1,3 +1,4 @@
+import { Option } from "@contentlayer/generated";
 import Prism from "prismjs";
 
 export type Token = {
@@ -46,7 +47,7 @@ export function highlightCode(code: string | string[], language: string): Token[
   return tokens;
 }
 
-export function highlightArray(code: string[], language: string): Token[] {
+export function highlightArray(options: Option[], language: string): Token[] {
   const tokens: Token[] = [];
   const processToken = (token: Prism.Token | string) => {
     if (typeof token === 'string') {
@@ -69,9 +70,17 @@ export function highlightArray(code: string[], language: string): Token[] {
     }
   }
 
-  code.forEach((codeStr) => {
-    const tokenizedCode = Prism.tokenize(codeStr, Prism.languages[language] || Prism.languages.javascript);
+  options.forEach((option) => {
+    let grammar
+    if (option.oType === 'text') {
+      grammar = Prism.languages["text"]
+    } else {
+      grammar = Prism.languages[language] || Prism.languages.text
+    }
+
+    const tokenizedCode = Prism.tokenize(option.content, grammar);
     tokenizedCode.forEach(processToken);
+
   })
 
   return tokens;

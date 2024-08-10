@@ -27,6 +27,21 @@ const Segment = defineNestedType(() => ({
   },
 }));
 
+const Option = defineNestedType(() => ({
+  name: "Option",
+  fields: {
+    content: {
+      type: 'string',
+      required: true,
+    },
+    oType: {
+      type: 'enum',
+      options: ['code', 'text'],
+      default: 'code'
+    },
+  },
+}));
+
 export const MultipleChoiceQuestion = defineNestedType(() => ({
   name: "MultipleChoiceQuestion",
   fields: {
@@ -36,7 +51,7 @@ export const MultipleChoiceQuestion = defineNestedType(() => ({
     },
     options: {
       type: 'list',
-      of: { type: 'string' },
+      of: Option,
       required: true,
     },
     correctAnswer: {
@@ -56,7 +71,7 @@ export const SingleChoiceQuestion = defineNestedType(() => ({
     },
     options: {
       type: 'list',
-      of: { type: 'string' },
+      of: Option,
       required: true,
     },
     correctAnswer: {
@@ -80,7 +95,7 @@ export const FillInTheBlankQuestion = defineNestedType(() => ({
     },
     options: {
       type: 'list',
-      of: { type: 'string' },
+      of: Option,
       required: true,
     },
     correctAnswer: {

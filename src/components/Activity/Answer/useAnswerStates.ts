@@ -12,43 +12,51 @@ export const useAnswerStates = (question: Activity["question"], language: string
     const { playSound, correctAnswerSound, wrongAnswerSound } = useAudio()
 
     const initializeOptions = useCallback(() => {
-        const optionTokens = highlightArray(question.options || [], language || "javascript")
+        const optionTokens = highlightArray(question.options || [], language || "text")
         setOptions(optionTokens)
+
     }, [question, language])
+
+    const resetStates = () => {
+        setAnswer([])
+        setStatus('neutral')
+    }
 
     useEffect(() => {
         if (question) {
             initializeOptions()
         }
+        resetStates()
     }, [question, initializeOptions])
 
-    const handleClick = useCallback((token: Token) => {
-        if (status === 'correct') return
-
-        setAnswer((prevAnswer) => [...prevAnswer, token])
-        setOptions((prevOptions) => prevOptions.filter((t) => t !== token))
-    }, [status])
 
     const removeTokenFromAnswer = useCallback((token: Token) => {
         if (status === 'correct') return
 
         setAnswer((prevAnswer) => prevAnswer.filter((t) => t !== token))
-        setOptions((prevOptions) => [...prevOptions, token])
         setStatus('neutral')
 
     }, [status])
 
-    const addTokenToAnswer = useCallback((token: Token) => {
+    const addTokenToAnswer = (token: Token) => {
         if (status === 'correct') return
+
+        if (question.type === 'FillInTheBlankQuestion') {
+            const questionGapsLength = question.segments?.filter((segment) => segment.sType === 'gap').length || 0
+            if (answer.length >= questionGapsLength) return
+            else {
+                setAnswer((prevAnswer) => [...prevAnswer, token])
+            }
+        }
 
         if (question.type === 'SingleChoiceQuestion') {
             setAnswer([token])
-        } else {
-            setOptions((prevOptions) => prevOptions.filter((t) => t !== token))
+        }
+        if (question.type === 'MultipleChoiceQuestion') {
             setAnswer((prevAnswer) => [...prevAnswer, token])
         }
         setStatus('neutral')
-    }, [status])
+    }
 
 
     const handleCheckStatus = useCallback(() => {
@@ -68,7 +76,6 @@ export const useAnswerStates = (question: Activity["question"], language: string
         options,
         status,
         handleCheckStatus,
-        handleClick,
         addTokenToAnswer,
         removeTokenFromAnswer,
     }
