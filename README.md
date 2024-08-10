@@ -38,8 +38,8 @@ Current development time: 2 days
     - [ ] Second course
         - [ ] Data Structure for more courses
 - [ ] Points system 💯
-    - [ ] Data bank connection
-    - [ ] User Login 
+    - [x] Data bank connection
+    - [x] User Login 
     - [ ] User Points system definition
     - [ ] UI/UX Implementation
 - [ ] Small Design Tweaks  🎨
@@ -83,7 +83,7 @@ Current development time: 2 days
     - [ ] User Documentation
 - [ ] Community 🌍
     - [x] [TikTok](https://www.tiktok.com/@go_duu)
-    - [ ] Twitter
+    - [x] [Twitter](https://x.com/Goduu_)
     - [ ] Instagram
     - [ ] Facebook
     - [ ] LinkedIn

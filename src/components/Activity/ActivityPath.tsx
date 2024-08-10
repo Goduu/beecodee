@@ -22,7 +22,6 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit }) => {
             <div
                 ref={clickOutSideRef}
                 className='
-                star-div
                 border-b-8 border-gray-900
                 rounded-full flex items-center justify-center 
                 cursor-pointer hover:scale-105 hover:border-b-2 duration-300
@@ -43,7 +42,7 @@ const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit }) => {
     }
 
     return (
-        <div className='star-div flex flex-col items-center gap-4'>
+        <div className='flex flex-col items-center gap-4'>
             {lesson.description}
             <Button onClick={handleStartLesson}>
                 Start Lesson

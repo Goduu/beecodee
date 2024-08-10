@@ -16,7 +16,7 @@ export const ReviewUnit: FC<ReviewUnitProps> = ({ unit }) => {
 
     return (
         <div ref={clickOutSideRef}
-            className="flex justify-center star-div w-72 h-72 items-center " >
+            className="flex justify-center items-center " >
             <Tooltip content={<ReviewUnitTooltipContent unit={unit} />} visible={tooltipVisible}>
                 <div className='
                     border-b-8 border-green-600
@@ -40,7 +40,7 @@ const ReviewUnitTooltipContent: FC<ReviewUnitProps> = ({ unit }) => {
     }
 
     return (
-        <div className='star-div flex flex-col items-center gap-4'>
+        <div className='flex flex-col items-center gap-4'>
             {unit.description}
             <Button onClick={handleStartLesson}>
                 Review Unit (ToBeImplemented)

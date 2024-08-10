@@ -9,37 +9,41 @@ type CircularProgressProps = {
 
 export const CircularProgress: FC<CircularProgressProps> = ({ percent = 50, children }) => {
     const radius = 62;
+    const stroke = 20;
+    const initialPosition = radius + stroke;
     const circumference = 2 * Math.PI * radius;
 
     return (
-        <div>
-            <div className="flex items-center justify-center relative">
-                <svg className="transform -rotate-90 w-72 h-72">
+            <div className="relative inline-block">
+                <svg
+                    className="transform -rotate-90 justify-center items-center"
+                    width={2 * initialPosition}
+                    height={2 * initialPosition}
+                >
                     <circle
-                        cx="145"
-                        cy="145"
+                        cx={initialPosition}
+                        cy={initialPosition}
                         r={radius}
                         stroke="currentColor"
-                        strokeWidth="15"
+                        strokeWidth={stroke}
                         fill="transparent"
                         className="text-gray-700"
                     />
                     <circle
-                        cx="145"
-                        cy="145"
+                        cx={initialPosition}
+                        cy={initialPosition}
                         r={radius}
                         stroke="currentColor"
-                        strokeWidth="15"
+                        strokeWidth={stroke}
                         fill="transparent"
                         strokeDasharray={circumference}
                         strokeDashoffset={circumference - (percent / 100) * circumference}
                         className="text-amber-500 rounded-xl"
                     />
                 </svg>
-                <div className="absolute drop-shadow-xl">
+                <div className="absolute drop-shadow-xl inset-0 flex justify-center items-center">
                     {children}
                 </div>
             </div>
-        </div>
     );
 };
