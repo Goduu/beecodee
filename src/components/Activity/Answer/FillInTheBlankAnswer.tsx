@@ -1,4 +1,3 @@
-import { highlightCode, Token } from '@/components/token_colors/highlightCode'
 import { FillInTheBlankQuestion, Segment } from '@contentlayer/generated'
 import React, { FC } from 'react'
 import { AnswerStatus } from '../types'
@@ -7,6 +6,7 @@ import { useAnswerStates } from './useAnswerStates'
 import { CheckContinueButton } from './CheckContinueButton'
 import { QuestionDescription } from './QuestionDescription'
 import { TokenText } from '../TokenText'
+import { highlightCode, Token } from '@/components/TokenColors/highlightCode'
 
 type FillInTheBlankQuestionProps = {
     question: FillInTheBlankQuestion
@@ -26,7 +26,7 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
     const segments = question.segments;
     if (!segments) return null;
 
-    const statusClass = getStatusClass(status); 
+    const statusClass = getStatusClass(status);
     let gapCounter = -1;
     return (
         <div className='flex flex-col gap-16 px-2'>

@@ -1,9 +1,9 @@
 import React, { FC, useRef, useState } from 'react'
 import { LuCheckCircle } from '../Icons'
 import { Unit } from '@contentlayer/generated'
-import { Tooltip } from '../Activity/Tooltip'
+import { TooltipClick } from '../TooltipClick'
 import { Button } from '../Button'
-import { useDetectOuterClick } from '../useDetectOuterClick'
+import { useDetectOuterClickAndEsc } from '../useDetectOuterClickAndEsc'
 
 type ReviewUnitProps = {
     unit: Unit
@@ -12,12 +12,12 @@ type ReviewUnitProps = {
 export const ReviewUnit: FC<ReviewUnitProps> = ({ unit }) => {
     const [tooltipVisible, setTooltipVisible] = useState(false)
     const clickOutSideRef = useRef<HTMLDivElement>(null)
-    useDetectOuterClick({ ref: clickOutSideRef, onOuterClick: () => setTooltipVisible(false) })
+    useDetectOuterClickAndEsc({ ref: clickOutSideRef, onOuterClick: () => setTooltipVisible(false) })
 
     return (
         <div ref={clickOutSideRef}
             className="flex justify-center items-center " >
-            <Tooltip content={<ReviewUnitTooltipContent unit={unit} />} visible={tooltipVisible}>
+            <TooltipClick content={<ReviewUnitTooltipContent unit={unit} />} visible={tooltipVisible}>
                 <div className='
                     border-b-8 border-green-600
                     rounded-full flex justify-center 
@@ -27,7 +27,7 @@ export const ReviewUnit: FC<ReviewUnitProps> = ({ unit }) => {
                 >
                     <LuCheckCircle className='w-16' />
                 </div>
-            </Tooltip>
+            </TooltipClick>
         </div>
     )
 }

@@ -5,7 +5,7 @@ import { CircularProgress } from '../Activity/CircularProgress'
 import { ActivityPath } from '../Activity/ActivityPath'
 import { initializeUnit, unitStore } from './unitStore'
 import { ReviewUnit } from './ReviewUnit'
-import { useStore } from './useStore'
+import { useStore } from '../useStore'
 
 type UnitProps = {
   unit: Unit

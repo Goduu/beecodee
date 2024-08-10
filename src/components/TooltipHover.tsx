@@ -1,11 +1,13 @@
 import React, { FC, ReactNode } from 'react'
-export type HoverTooltipProps = {
+
+export type TooltipHoverProps = {
     text: string
     position?: "top" | "bottom"
     disabled?: boolean
     children: ReactNode,
 }
-export const HoverTooltip: FC<HoverTooltipProps> = ({ children, position = "top", text, disabled=false }) => {
+
+export const TooltipHover: FC<TooltipHoverProps> = ({ children, position = "top", text, disabled=false }) => {
 
     return (
         <div className={`${disabled ? "" : "group"} relative flex justify-between w-fit `}>

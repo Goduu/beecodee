@@ -1,7 +1,6 @@
 import { Activity, allActivities, Lesson, Unit } from "@contentlayer/generated";
 import { create as createStore } from "zustand";
-import { localStoragePersist } from "./localStoragePersist";
-import { useStore } from "./useStore";
+import { localStoragePersist } from "../../lib/localStoragePersist";
 
 type StoreActivity = {
   id: string;

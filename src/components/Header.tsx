@@ -3,7 +3,7 @@ import React from 'react'
 import { Beecodee, BeeHead, BiLogIn, RiJavascriptFill } from './Icons'
 import { IconButton } from './IconButton'
 import { userMetadata } from '@/lib/auth'
-import { HoverTooltip } from './HoverTooltip'
+import { TooltipHover } from './TooltipHover'
 
 export const Header = async () => {
     const userData = await userMetadata()
@@ -21,18 +21,18 @@ export const Header = async () => {
                         </Link>
                     </IconButton>
                     :
-                    <HoverTooltip text={userData.name} position='bottom'>
+                    <TooltipHover text={userData.name} position='bottom'>
                         <IconButton color='secondary'>
                             <BeeHead className="w-16 pr-5" />
                         </IconButton>
-                    </HoverTooltip>
+                    </TooltipHover>
                 }
 
-                <HoverTooltip text={"JS"} position='bottom'>
+                <TooltipHover text={"JS"} position='bottom'>
                     <IconButton color='secondary'>
                         <RiJavascriptFill className="w-16 pr-5" />
                     </IconButton>
-                </HoverTooltip>
+                </TooltipHover>
             </div>
         </header>
     )

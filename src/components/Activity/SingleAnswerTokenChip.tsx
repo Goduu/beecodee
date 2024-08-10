@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Token } from '../token_colors/highlightCode'
+import { Token } from '../TokenColors/highlightCode'
 import { TokenWrapper } from './TokenChipWrapper'
 import { AnswerStatus } from './types'
 

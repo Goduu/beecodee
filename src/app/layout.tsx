@@ -4,7 +4,7 @@ import { ReactNode } from "react"
 import { Footer } from "@/components/Footer"
 import { Header } from "@/components/Header"
 import { Analytics } from "@vercel/analytics/react"
-import { MountChecker } from "@/components/Unit/MountChecker"
+import { MountChecker } from "@/lib/MountChecker"
 
 const inter = Inter({ subsets: ["latin"] })
 

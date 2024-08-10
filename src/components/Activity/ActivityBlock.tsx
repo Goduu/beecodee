@@ -1,10 +1,10 @@
 import { Loading } from '@/components/Loading'
 import { goToNextActivity, unitStore } from '@/components/Unit/unitStore'
-import { useStore } from '@/components/Unit/useStore'
+import { useStore } from '@/components/useStore'
 import React, { FC } from 'react'
-import { FillInTheBlankAnswer } from './FillInTheBlankAnswer'
-import { MultipleChoiceAnswer } from './MultipleChoiceAnswer'
-import { SingleChoiceAnswer } from './SingleChoiceAnswer'
+import { FillInTheBlankAnswer } from './Answer/FillInTheBlankAnswer'
+import { MultipleChoiceAnswer } from './Answer/MultipleChoiceAnswer'
+import { SingleChoiceAnswer } from './Answer/SingleChoiceAnswer'
 
 type AnswerBlockProps = {
 }

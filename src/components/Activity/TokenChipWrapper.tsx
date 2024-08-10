@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import { tokenTypeToTailwindClass } from '../token_colors/tokenToTailwindClass'
+import { tokenTypeToTailwindClass } from '../TokenColors/tokenToTailwindClass'
 
 
 type TokenWrapperProps = {

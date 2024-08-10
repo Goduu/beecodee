@@ -3,7 +3,7 @@ import { useCallback} from 'react'
 import { useActivityContext } from './ActivityContext'
 import { redirect } from 'next/navigation'
 import { goToNextLesson, unitStore } from '../Unit/unitStore'
-import { useStore } from '../Unit/useStore'
+import { useStore } from '../useStore'
 
 export const useActivityStates = () => {
     const { currentActivity, goToNextActivity } = useActivityContext()

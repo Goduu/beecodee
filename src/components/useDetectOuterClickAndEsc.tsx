@@ -4,7 +4,7 @@ type DetectOuterClickProps = {
     ref?: RefObject<HTMLDivElement>
     onOuterClick: () => void
 }
-export const useDetectOuterClick = ({ onOuterClick, ref }: DetectOuterClickProps) => {
+export const useDetectOuterClickAndEsc = ({ onOuterClick, ref }: DetectOuterClickProps) => {
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {

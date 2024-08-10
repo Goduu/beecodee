@@ -1,11 +1,11 @@
 "use client"
 import React, { FC, useRef, useState } from 'react'
 import { IoMdFlower } from '../Icons'
-import { Tooltip } from './Tooltip'
+import { TooltipClick } from '../TooltipClick'
 import { Button } from '../Button'
 import { Lesson, Unit } from '@contentlayer/generated'
 import { redirect } from 'next/navigation'
-import { useDetectOuterClick } from '../useDetectOuterClick'
+import { useDetectOuterClickAndEsc } from '../useDetectOuterClickAndEsc'
 import { resetLessonProgress, setCurrentUnitId } from '../Unit/unitStore'
 
 type ActivityLinkProps = {
@@ -15,10 +15,10 @@ type ActivityLinkProps = {
 export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit }) => {
     const [tooltipVisible, setTooltipVisible] = useState(false)
     const clickOutSideRef = useRef<HTMLDivElement>(null)
-    useDetectOuterClick({ ref: clickOutSideRef, onOuterClick: () => setTooltipVisible(false) })
+    useDetectOuterClickAndEsc({ ref: clickOutSideRef, onOuterClick: () => setTooltipVisible(false) })
 
     return (
-        <Tooltip content={<ActivityTooltipContent lesson={lesson} unit={unit} />} visible={tooltipVisible}>
+        <TooltipClick content={<ActivityTooltipContent lesson={lesson} unit={unit} />} visible={tooltipVisible}>
             <div
                 ref={clickOutSideRef}
                 className='
@@ -29,7 +29,7 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit }) => {
                 onClick={() => setTooltipVisible(!tooltipVisible)}>
                 <IoMdFlower className='w-16' />
             </div>
-        </Tooltip>
+        </TooltipClick>
     )
 }
 

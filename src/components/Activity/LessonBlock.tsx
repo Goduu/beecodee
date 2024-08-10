@@ -3,7 +3,7 @@ import React, { FC, useCallback } from 'react'
 import { unitStore } from '../Unit/unitStore'
 import { useStore } from 'zustand'
 import { Lesson } from '@contentlayer/generated'
-import { ActivityBlock } from './Answer/ActivityBlock'
+import { ActivityBlock } from './ActivityBlock'
 import { FinishLessonBlock } from './FinishLessonBlock'
 import { handleFinishLesson } from './ActivityBlock.functions'
 
