@@ -25,6 +25,9 @@ export async function signInWithGithub() {
 export async function signOut() {
   const supabase = createClient();
   const { error } = await supabase.auth.signOut()
+  if (error) {
+    console.error('Error logging out:', error)
+  }
 }
 
 
