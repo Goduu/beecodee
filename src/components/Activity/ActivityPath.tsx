@@ -1,6 +1,6 @@
 "use client"
 import React, { FC, useRef, useState } from 'react'
-import { IoMdFlower } from '../Icons'
+import { IoMdFlower, Pollen } from '../Icons'
 import { TooltipClick } from '../TooltipClick'
 import { Button } from '../Button'
 import { Lesson, Unit } from '@contentlayer/generated'
@@ -42,8 +42,13 @@ const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit }) => {
     }
 
     return (
-        <div className='flex flex-col items-center gap-4'>
-            {lesson.description}
+        <div className='flex flex-col items-center gap-5 text-center'>
+            <div className='text-lg'>
+                {lesson.description}
+            </div>
+            <div className='flex gap-2 items-center text-sm'>
+                <Pollen className='w-7' /> Get {lesson.xp} XPolen
+            </div>
             <Button onClick={handleStartLesson}>
                 Start Lesson
             </Button>

@@ -34,7 +34,7 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
             <div className={`flex rounded-xl border-2 sm:min-w-96 min-h-40 justify-center items-center drop-shadow-xl ${statusClass}`}>
                 <div className='flex justify-start text-left px-2'>
                     <div>
-                        {segments.map((segment) => {
+                        {segments.map((segment, index) => {
                             if (segment.sType === 'code') {
                                 return renderCodeSegment(segment, language);
                             }
@@ -42,7 +42,7 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
                                 return renderTextSegment(segment);
                             }
                             gapCounter++;
-                            return renderGapSegment(answer, gapCounter, segment, removeTokenFromAnswer);
+                            return renderGapSegment(answer, gapCounter, segment, removeTokenFromAnswer, index);
                         })}
                     </div>
                 </div>
@@ -82,9 +82,9 @@ const renderTextSegment = (segment: Segment) => {
     );
 }
 
-const renderGapSegment = (tokens: Token[], gapCounter: number, segment: Segment, removeToken: (token: Token) => void) => {
+const renderGapSegment = (tokens: Token[], gapCounter: number, segment: Segment, removeToken: (token: Token) => void, index: number) => {
     return (
-        <span key={`gap-${segment.content}`} className="relative inline-block">
+        <span key={`gap-${segment.content}${index}`} className="relative inline-block">
             {tokens?.[gapCounter] && (
                 <span className="absolute inset-0 flex justify-center items-center">
                     <TokenChip onClick={() => removeToken(tokens[gapCounter])} token={tokens[gapCounter]} className='py-0' />

@@ -2,6 +2,7 @@
 import { cache } from 'react'
 import { createClient } from '../server';
 import { userMetadata } from '@/lib/auth';
+import { revalidateUserXpolen } from './fetchUserXpolen';
 
 type upsertActivityParams = {
     unitId: string;
@@ -9,11 +10,11 @@ type upsertActivityParams = {
     xpolen: number;
 }
 
-export const insertXpolen = cache(async ({  unitId, lessonId, xpolen }: upsertActivityParams) => {
+export const insertXpolen = cache(async ({ unitId, lessonId, xpolen }: upsertActivityParams) => {
     const userData = await userMetadata()
     const supabase = createClient();
 
-    if(!userData) return false
+    if (!userData) return false
 
     const { error } = await supabase
         .from('xpolen')
@@ -23,6 +24,8 @@ export const insertXpolen = cache(async ({  unitId, lessonId, xpolen }: upsertAc
         console.error('Error inserting xpolen:', error)
         return false
     }
+
+    revalidateUserXpolen()
 
     return true
 
