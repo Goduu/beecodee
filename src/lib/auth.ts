@@ -12,12 +12,15 @@ export async function signInWithGithub() {
     },
   })
 
-  console.error(data, error)
-
-  if (data.url) {
-    redirect(data.url) // use the redirect API for your server framework
+  if (error) {
+    console.error(data, error)
+  } else {
+    if (data.url) {
+      redirect(data.url)
+    }
   }
 }
+
 
 export async function signOut() {
   const supabase = createClient();
@@ -40,7 +43,7 @@ export const userMetadata = async () => {
     return null
   }
 
-  if(!session.data.user?.id) return null
+  if (!session.data.user?.id) return null
 
   const userData: User = {
     id: session.data.user?.id,
