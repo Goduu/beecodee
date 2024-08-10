@@ -40,8 +40,10 @@ export const userMetadata = async () => {
     return null
   }
 
+  if(!session.data.user?.id) return null
+
   const userData: User = {
-    id: metadata.provider_id,
+    id: session.data.user?.id,
     name: metadata?.full_name || metadata.name,
     email: session.data.user?.email || metadata.email,
     avatarUrl: metadata.avatar_url,

@@ -40,11 +40,11 @@ export const ProgressBar: FC<ProgressBarProps> = ({ size = "medium" }) => {
             </Link>
             <div className="w-9/12 sm:w-10/12">
                 <div
-                    className={`bg-gray-200 rounded ${heightClass}`}
+                    className={`bg-gray-200 rounded-full ${heightClass}`}
                     role="progressbar"
                 >
                     <div
-                        className={`bg-green-400 rounded ${heightClass} transition duration-300 ease-in-out`}
+                        className={`bg-green-400 rounded-full ${heightClass} transition duration-300 ease-in-out`}
                         style={{ width: `${progressWidth}%`, transition: 'width 2s' }}
                     />
                 </div>

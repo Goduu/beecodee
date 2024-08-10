@@ -2,7 +2,7 @@ import { notFound } from "next/navigation"
 
 import { Metadata } from "next"
 import { allLessons } from "@contentlayer/generated"
-import { ActivityBlock } from "@/components/Activity/Activity"
+import { LessonBlock } from "@/components/Activity/LessonBlock"
 
 interface ActivityProps {
   params: {
@@ -42,16 +42,16 @@ export async function generateStaticParams(): Promise<ActivityProps["params"][]>
   }))
 }
 
-export default async function PostPage({ params }: ActivityProps) {
-  const post = await getLessonFromParams(params)
-  if (!post) {
+export default async function LessonPage({ params }: ActivityProps) {
+  const lesson = await getLessonFromParams(params)
+  if (!lesson) {
     notFound()
   }
 
   return (
-    <div className="text-center">
-      <div className="justify-center items-center w-full flex flex-col gap-8 h-96">
-        <ActivityBlock />
+    <div className="flex text-center justify-center">
+      <div className="flex flex-col items-center gap-8 min-h-[450px] w-[600px]">
+        <LessonBlock  lesson={lesson}/>
       </div>
     </div>
   )

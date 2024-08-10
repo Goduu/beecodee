@@ -75,18 +75,26 @@ export const setCurrentUnitId = (unit: Unit) => {
 
 export const resetLessonProgress = (unit: Unit) => {
   unitStore.setState((state) => {
+    const currentLessonIndex = state.units[unit.slugAsParams].currentLessonIndex
+    const currentLesson = state.units[unit.slugAsParams].lessons[currentLessonIndex]
+    const currentActivityId = currentLesson.activities[0].id
+
     return {
       currentUnitId: unit.slugAsParams,
+      currentActivityData: allActivities.find((activity) => activity.slugAsParams === currentActivityId),
       units: {
         ...state.units,
         [unit.slugAsParams]: {
           ...state.units[unit.slugAsParams],
           lessons: state.units[unit.slugAsParams].lessons.map((lesson) => {
-            return {
-              ...lesson,
-              currentActivityIndex: 0,
-              concluded: false
+            if(lesson === currentLesson) {
+              return {
+                ...lesson,
+                currentActivityIndex: 0,
+                concluded: false
+              }
             }
+            return lesson
           })
         }
       }
@@ -122,7 +130,7 @@ export const goToNextActivity = () => {
 
   if (!currentLesson) return
 
-  // If it's the last lesson, conclude the lesson 
+  // If it's the last activity, conclude the lesson 
   if (currentLesson.currentActivityIndex === currentLesson.activities.length - 1) {
     currentLesson.concluded = true
     currentLesson.currentActivityIndex = 0

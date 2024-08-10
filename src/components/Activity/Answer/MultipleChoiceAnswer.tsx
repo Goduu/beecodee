@@ -36,7 +36,7 @@ export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({ question, 
             </div>
             <div className='flex gap-4 justify-center flex-wrap'>
                 {options.map((token, index) => (
-                    <TokenChip key={`tokenOption-${index}-${token.content}`} onClick={() => addTokenToAnswer(token)} token={token} className='px-2'
+                    <TokenChip key={`tokenOption-${index}-${token.content}`} used={answer.includes(token)} onClick={() => addTokenToAnswer(token)} token={token} className='px-2'
                     />
                 ))}
             </div>

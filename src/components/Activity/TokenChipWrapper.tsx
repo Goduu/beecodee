@@ -15,15 +15,19 @@ export const TokenWrapper: FC<TokenWrapperProps> = ({ children, tokenType, onCli
         return `
             inline-block py-1 rounded-md
             bg-gray-800 text-xl font-extrabold
-            ${onClick ? 'cursor-pointer' : ''}
+            ${!used && onClick ? 'cursor-pointer' : ''}
             ${tokenType ? tokenTypeToTailwindClass(tokenType) : ''}
             ${used && "text-red-50 text-opacity-0 bg-gray-500"}
             ${className}
         `;
     };
 
+    const handleClick = () => {
+        !used && onClick && onClick();
+    }
+
     return (
-        <span onClick={onClick} className={getClassNames()}>
+        <span onClick={handleClick} className={getClassNames()}>
             {children}
         </span>
     );
