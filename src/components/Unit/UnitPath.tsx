@@ -16,9 +16,8 @@ type UnitProps = {
 
 export const UnitPath: FC<UnitProps> = ({ unit, lessons, pathPosition, completedLessons }) => {
   const currentUnit = useStore(unitStore, (state) => state.units[unit.slugAsParams])
-  const concludedLessons = lessons.filter(lesson => completedLessons.includes(lesson.slugAsParams))
-  const currentLessonIndex = currentUnit?.currentLessonIndex || 0
-  const currentLesson = lessons[currentLessonIndex]
+  const currentLessonId = currentUnit?.currentLessonId
+  const currentLesson = lessons.find((lesson) => lesson.slugAsParams === currentLessonId)
 
   useEffect(() => {
     initializeUnit(unit.slugAsParams, lessons, completedLessons);
@@ -26,17 +25,17 @@ export const UnitPath: FC<UnitProps> = ({ unit, lessons, pathPosition, completed
 
   initializeUnit(unit.slugAsParams, lessons, completedLessons)
 
-  const percentage = (concludedLessons.length / unit.lessons.length) * 100
+  const percentage = (completedLessons.length / unit.lessons.length) * 100
 
-  if (!currentLesson) return null
-
-  if (currentUnit?.concluded) {
+  if (percentage >= 100) {
     return (
       <div className={getPathDescription(pathPosition)}>
         <ReviewUnit unit={unit} />
       </div >
     )
   }
+
+  if (!currentLesson) return null
 
   return (
     <div className={getPathDescription(pathPosition)}>

@@ -12,7 +12,7 @@ type TokenGroupChipProps = {
 export const TokenGroupChip: FC<TokenGroupChipProps> = ({ tokenGroup, onClick, className = "" }) => {
 
     return (
-        <TokenWrapper className={`${getStatusClass(tokenGroup.status)} transition duration-500`} onClick={onClick}>
+        <TokenWrapper className={`${getStatusClass(tokenGroup.status)} transition duration-500 px-2`} onClick={onClick}>
             {tokenGroup.tokens.map((token, index) => (
                 <span key={index} className={tokenTypeToTailwindClass(token.type)}>{token.content}</span>
             ))}
@@ -28,6 +28,10 @@ const getStatusClass = (status: AnswerStatus) => {
             return "border-2 border-b-2 border-green-500 mt-[2px]"
         case "wrong":
             return "border-2 border-b-2 border-red-500 mt-[2px]"
+        case "used":
+            return "border-2 border-b-2 border-gray-800"
+        case "filled":
+            return "border-0"
         default:
             return "border-2 border-b-4 border-gray-500"
     }

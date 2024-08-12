@@ -25,20 +25,20 @@ async function getLessonFromParams(params: ActivityProps["params"]) {
 export async function generateMetadata({
   params,
 }: ActivityProps): Promise<Metadata> {
-  const post = await getLessonFromParams(params)
+  const lesson = await getLessonFromParams(params)
 
-  if (!post) {
+  if (!lesson) {
     return {}
   }
 
   return {
-    description: post.description,
+    title: `Beecodee: ${lesson.description}`
   }
 }
 
 export async function generateStaticParams(): Promise<ActivityProps["params"][]> {
-  return allLessons.map((post) => ({
-    slug: post.slugAsParams.split("/"),
+  return allLessons.map((lesson) => ({
+    slug: lesson.slugAsParams.split("/"),
   }))
 }
 

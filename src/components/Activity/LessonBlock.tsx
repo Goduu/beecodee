@@ -14,8 +14,8 @@ type LessonBlockProps = {
 export const LessonBlock: FC<LessonBlockProps> = ({ lesson }) => {
     const currentUnitId = useStore(unitStore, (state) => state.currentUnitId)
     const unit = useStore(unitStore, (state) => state.units[currentUnitId || ''])
-    const currentLessonIndex = unit?.currentLessonIndex || 0
-    const currentLesson = unit?.lessons[currentLessonIndex]
+    const currentLessonId = unit?.currentLessonId || 0
+    const currentLesson = unit?.lessons.find((lesson) => lesson.id === currentLessonId)
 
     const finishLesson = useCallback(() => {
         return handleFinishLesson(currentUnitId, lesson.slugAsParams, lesson.xp)

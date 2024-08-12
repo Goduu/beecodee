@@ -21,7 +21,7 @@ export const ProgressBar: FC<ProgressBarProps> = ({ size = "medium" }) => {
         }
     }, [width]);
 
-    const currentLessonData = unit?.lessons[unit.currentLessonIndex];
+    const currentLessonData = unit?.lessons.find((lesson) => lesson.id === unit.currentLessonId)
     // const currentLessonStoreData = getCurrentLessonData();
     const activitiesLengthDivisor = currentLessonData?.activities.length || 1;
     if (!currentLessonData) return null;

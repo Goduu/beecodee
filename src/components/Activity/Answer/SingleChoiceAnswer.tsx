@@ -20,9 +20,6 @@ export const SingleChoiceAnswer: FC<SingleChoiceAnswerProps> = ({ question, lang
         handleCheckStatus,
     } = useAnswerStates(question, language)
 
-
-
-
     return (
         <div className='flex flex-col gap-16 items-center'>
             <QuestionDescription description={question.description} />

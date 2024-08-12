@@ -7,15 +7,16 @@ type StoreActivity = {
 }
 
 type StoreLesson = {
+  id: string;
   activities: StoreActivity[];
   currentActivityIndex: number;
   concluded: boolean;
 }
 
 type StoreUnit = {
-  currentLessonIndex: number;
+  currentLessonId: string;
+  completedLessons: string[];
   lessons: StoreLesson[];
-  concluded: boolean;
 }
 
 type UnitsState = {
@@ -44,13 +45,13 @@ function getDefaultState(): StoreState {
 export const unitStore = createStore(localStoragePersist(getDefaultState, { name: "unit" }))
 
 export const initializeUnit = (unitId: string, lessons: Lesson[], completedLessons: string[]) => {
-  const isEveryLessonCompleted = lessons.every((lesson) => completedLessons.includes(lesson.slugAsParams))
   unitStore.setState((state) => {
     if (!state.units[unitId]) {
       state.units[unitId] = {
-        currentLessonIndex: lessons.findIndex((lesson) => !completedLessons.includes(lesson.slugAsParams)),
-        concluded: isEveryLessonCompleted,
+        completedLessons,
+        currentLessonId: lessons.find((lesson) => !completedLessons.includes(lesson.slugAsParams))?.slugAsParams || "",
         lessons: lessons.map<StoreLesson>((lesson) => ({
+          id: lesson.slugAsParams,
           activities: lesson.activities.map<StoreActivity>((activity) => ({
             id: activity,
           })),
@@ -59,7 +60,7 @@ export const initializeUnit = (unitId: string, lessons: Lesson[], completedLesso
         })),
       };
       state.currentActivityData = allActivities.find((activity) => activity.slugAsParams === lessons[0].activities[0])
-    } 
+    }
     return state;
   })
 
@@ -75,8 +76,11 @@ export const setCurrentUnitId = (unit: Unit) => {
 
 export const resetLessonProgress = (unit: Unit) => {
   unitStore.setState((state) => {
-    const currentLessonIndex = state.units[unit.slugAsParams].currentLessonIndex
-    const currentLesson = state.units[unit.slugAsParams].lessons[currentLessonIndex]
+    const currentLessonId = state.units[unit.slugAsParams].currentLessonId
+    const currentLesson = state.units[unit.slugAsParams].lessons.find((lesson) => lesson.id === currentLessonId)
+
+    if (!currentLesson) return state
+
     const currentActivityId = currentLesson.activities[0].id
 
     return {
@@ -111,7 +115,7 @@ export const getCurrentLessonData = () => {
   const currentUnit = unitStore.getState().units[currentUnitId]
   if (!currentUnit) return null
 
-  const currentLesson = currentUnit.lessons[currentUnit.currentLessonIndex]
+  const currentLesson = currentUnit.lessons.find((lesson) => lesson.id === currentUnit.currentLessonId)
   return currentLesson
 }
 
@@ -126,7 +130,7 @@ export const goToNextActivity = () => {
 
   if (!currentUnit) return null
 
-  const currentLesson = currentUnit.lessons[currentUnit.currentLessonIndex]
+  const currentLesson = currentUnit.lessons.find((lesson) => lesson.id === currentUnit.currentLessonId)
 
   if (!currentLesson) return
 
@@ -139,13 +143,17 @@ export const goToNextActivity = () => {
   }
 
   const activityData = allActivities.find((activity) => {
-    const activitySlug = currentUnit.lessons[currentUnit.currentLessonIndex].activities[currentLesson.currentActivityIndex].id
+    const currentLesson = currentUnit.lessons.find((lesson) => lesson.id === currentUnit.currentLessonId)
+
+    const activitySlug = currentLesson?.activities[currentLesson.currentActivityIndex].id
     return (
       activity.slugAsParams === activitySlug
     )
   })
 
   unitStore.setState((state) => {
+    const currentLessonId = currentUnit.lessons.findIndex((lesson) => lesson.id === currentUnit.currentLessonId)
+
     return {
       currentActivityData: activityData,
       units: {
@@ -153,7 +161,8 @@ export const goToNextActivity = () => {
         [currentUnitId]: {
           ...currentUnit,
           lessons: state.units[currentUnitId].lessons.map((lesson, index) => {
-            if (index === state.units[currentUnitId].currentLessonIndex) {
+
+            if (index === currentLessonId) {
               return currentLesson
             }
             return lesson
@@ -177,10 +186,11 @@ export const goToNextLesson = () => {
 
   if (!currentUnit) return null
 
-  if (currentUnit.currentLessonIndex === currentUnit.lessons.length - 1) {
-    currentUnit.concluded = true
-  } else {
-    currentUnit.currentLessonIndex += 1
+  const nextLesson = currentUnit.lessons.find((lesson) => !currentUnit.completedLessons.includes(lesson.id))?.id
+
+  if (nextLesson) {
+    currentUnit.completedLessons.push(currentUnit.currentLessonId)
+    currentUnit.currentLessonId = nextLesson
   }
 
   unitStore.setState((state) => {

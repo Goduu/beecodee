@@ -1,12 +1,13 @@
 import { FillInTheBlankQuestion, Segment } from '@contentlayer/generated'
 import React, { FC } from 'react'
-import { AnswerStatus } from './types'
+import { AnswerStatus, TokenGroup } from './types'
 import { TokenChip } from '../TokenChip'
-import { useAnswerStates } from './useAnswerStates'
 import { CheckContinueButton } from './CheckContinueButton'
 import { QuestionDescription } from './QuestionDescription'
 import { TokenText } from '../TokenText'
-import { highlightCode, Token } from '@/components/TokenColors/highlightCode'
+import { highlightCode } from '@/components/TokenColors/highlightCode'
+import { useFillInTheBlankAnswerStates } from './FillInTheBlankAnswer.states'
+import { TokenGroupChip } from '../TokenGroupChip'
 
 type FillInTheBlankQuestionProps = {
     question: FillInTheBlankQuestion
@@ -22,7 +23,7 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
         handleCheckStatus,
         removeTokenFromAnswer,
         addTokenToAnswer,
-    } = useAnswerStates(question, language)
+    } = useFillInTheBlankAnswerStates(question, language)
     const segments = question.segments;
     if (!segments) return null;
 
@@ -49,12 +50,11 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
             </div>
             <div className='flex gap-4 justify-center flex-wrap' >
                 {options.map((token, i) => (
-                    <TokenChip
-                        key={`token-option-${token.content}-${i}`}
+                    <TokenGroupChip
+                        key={`token-option-${token.status}-${i}`}
                         onClick={() => addTokenToAnswer(token)}
-                        token={token}
+                        tokenGroup={token}
                         className={`px-2`}
-                        used={answer.includes(token)}
                     />
                 ))}
             </div>
@@ -82,12 +82,18 @@ const renderTextSegment = (segment: Segment) => {
     );
 }
 
-const renderGapSegment = (tokens: Token[], gapCounter: number, segment: Segment, removeToken: (token: Token) => void, index: number) => {
+const renderGapSegment = (
+    tokens: TokenGroup[],
+    gapCounter: number,
+    segment: Segment,
+    removeToken: (token: TokenGroup) => void,
+    index: number
+) => {
     return (
         <span key={`gap-${segment.content}${index}`} className="relative inline-block">
             {tokens?.[gapCounter] && (
                 <span className="absolute inset-0 flex justify-center items-center">
-                    <TokenChip onClick={() => removeToken(tokens[gapCounter])} token={tokens[gapCounter]} className='py-0' />
+                    <TokenGroupChip onClick={() => removeToken(tokens[gapCounter])} tokenGroup={tokens[gapCounter]} className='py-0' />
                 </span>
             )}
             <TokenChip token={{ type: "gap", content: segment.content }} />

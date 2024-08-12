@@ -16,7 +16,7 @@ export const TokenChip: FC<TokenChipProps> = ({ token, onClick, className = "", 
 
     const renderGapContent = () => (
         // text-white does not have opacity
-        <p className="text-opacity-0 text-red-50">
+        <p className="text-opacity-0 text-red-50 py-1">
             {'_'.repeat(Number(token.content))}
         </p>
     );

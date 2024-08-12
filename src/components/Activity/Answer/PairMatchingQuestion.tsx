@@ -5,6 +5,7 @@ import { TokenGroup } from './types';
 import { TokenGroupChip } from '../TokenGroupChip';
 import { Button } from '@/components/Button';
 import { generatePairMatchingOptions, hasWrongStatus, updateOptionsStatus } from './PairMatchingQuestion.functions';
+import { useAudio } from '@/components/useAudio';
 
 type PairMatchingAnswerProps = {
     question: PairMatchingQuestion;
@@ -15,11 +16,18 @@ type PairMatchingAnswerProps = {
 export const PairMatchingAnswer: FC<PairMatchingAnswerProps> = ({ question, language, handleGoToNextActivity }) => {
     const [options, setOptions] = useState<TokenGroup[]>([]);
     const wrongStatusTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const { playSound, correctAnswerSound, wrongAnswerSound } = useAudio()
 
     useEffect(() => {
         const pairMatchingOptions = generatePairMatchingOptions(question, language);
         setOptions(pairMatchingOptions);
     }, [question, language]);
+
+    useEffect(()=> {
+        options.every(option => option.status === 'correct') && playSound(correctAnswerSound);
+        options.find(option => option.status === 'wrong') && playSound(wrongAnswerSound);
+    }, [options])
+
 
     const handleSelectOption = (selectedTokenGroup: TokenGroup): void => {
         clearTimeout(wrongStatusTimeoutRef.current!);
