@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Token } from '../TokenColors/highlightCode'
 import { TokenWrapper } from './TokenChipWrapper'
-import { AnswerStatus } from './types'
+import { AnswerStatus } from './Answer/types'
 
 type SingleAnswerTokenChipProps = {
     token: Token

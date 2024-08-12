@@ -23,12 +23,13 @@ export const Button: FC<ButtonProps> = ({ children, className, disabled, ping = 
             <button type="submit"
                 className={`
                     relative hover:mt-1
-                    duration-150  
-                    font-bold hover:shadow-sm rounded-md h-fit p-2
+                    duration-150
+                    border-2 border-b-4 hover:border-b-2 rounded-md
+                    font-bold hover:shadow-sm h-fit p-2
                     ${size === "small" && "p-[3px] text-xs"}
-                    ${color === "primary" && "bg-amber-500 text-gray-50 border-2 border-b-4 border-amber-600 hover:border-b-2"}
-                    ${color === "secondary" && "text-gray-50 border-2 border-b-4 border-gray-300 hover:border-b-2"}
-                    disabled:scale-100 disabled:bg-slate-500
+                    ${color === "primary" && "bg-amber-500 text-gray-50 border-amber-600"}
+                    ${color === "secondary" && "text-gray-50 border-gray-300 "}
+                    disabled:scale-100 disabled:bg-slate-500 disabled:border-slate-500 disabled:border-b-4 disabled:mt-0
                     ${className}
                     `}
                 disabled={disabled}>

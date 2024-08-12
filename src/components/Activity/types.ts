@@ -1,1 +1,0 @@
-export type AnswerStatus = "selected" | "neutral" | "correct" | "wrong"

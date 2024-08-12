@@ -17,7 +17,7 @@ const Segment = defineNestedType(() => ({
   fields: {
     sType: {
       type: 'enum',
-      options: ['code', 'text', 'gap'],
+      options: ['code', 'text', 'gap', 'filledGap'],
       required: true,
     },
     content: {
@@ -38,6 +38,46 @@ const Option = defineNestedType(() => ({
       type: 'enum',
       options: ['code', 'text'],
       default: 'code'
+    },
+  },
+}));
+
+const PairMatchingOption = defineNestedType(() => ({
+  name: "PairMatchingOption",
+  fields: {
+    content: {
+      type: 'string',
+      required: true,
+    },
+    oType: {
+      type: 'enum',
+      options: ['code', 'text'],
+      default: 'code'
+    },
+    position: {
+      type: 'enum',
+      options: ['up', 'down'],
+      required: true,
+    },
+  },
+}));
+
+export const PairMatchingQuestion = defineNestedType(() => ({
+  name: "PairMatchingQuestion",
+  fields: {
+    description: {
+      type: 'string',
+      required: true,
+    },
+    pairMatchingOptions: {
+      type: 'list',
+      of: PairMatchingOption,
+      required: true,
+    },
+    correctAnswer: {
+      type: 'list',
+      of: { type: "json" },
+      required: true,
     },
   },
 }));
@@ -106,6 +146,58 @@ export const FillInTheBlankQuestion = defineNestedType(() => ({
   },
 }));
 
+export const CodeRewriting = defineNestedType(() => ({
+  name: "CodeRewritingQuestion",
+  fields: {
+    description: {
+      type: 'string',
+      required: true,
+    },
+    segments: {
+      type: 'list',
+      of: Segment,
+    },
+    options: {
+      type: 'list',
+      of: Option,
+      required: true,
+    },
+    correctAnswer: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
+    },
+  },
+}));
+
+export const DebuggingQuestion = defineNestedType(() => ({
+  name: "CodeRewritingQuestion",
+  fields: {
+    description: {
+      type: 'string',
+      required: true,
+    },
+    segments: {
+      type: 'list',
+      of: Segment,
+    },
+    expectedOutput: {
+      type: 'string',
+      required: true,
+    },
+    options: {
+      type: 'list',
+      of: Option,
+      required: true,
+    },
+    correctAnswer: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
+    },
+  },
+}));
+
 export const Activity = defineNestedType(() => ({
   name: "Activity",
   filePathPattern: `activities/*.mdx`,
@@ -125,7 +217,7 @@ export const Activity = defineNestedType(() => ({
     },
     question: {
       type: 'nested',
-      of: [MultipleChoiceQuestion, SingleChoiceQuestion, FillInTheBlankQuestion],
+      of: [MultipleChoiceQuestion, SingleChoiceQuestion, FillInTheBlankQuestion, PairMatchingQuestion],
       required: true,
     },
   },

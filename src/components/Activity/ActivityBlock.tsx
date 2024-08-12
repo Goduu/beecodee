@@ -5,6 +5,7 @@ import React, { FC } from 'react'
 import { FillInTheBlankAnswer } from './Answer/FillInTheBlankAnswer'
 import { MultipleChoiceAnswer } from './Answer/MultipleChoiceAnswer'
 import { SingleChoiceAnswer } from './Answer/SingleChoiceAnswer'
+import { PairMatchingAnswer } from './Answer/PairMatchingQuestion'
 
 type AnswerBlockProps = {
 }
@@ -29,10 +30,15 @@ export const ActivityBlock: FC<AnswerBlockProps> = () => {
                         question={currentActivityData.question}
                         language={currentActivityData.language}
                         handleGoToNextActivity={goToNextActivity} />
-                ) : <SingleChoiceAnswer
-                    question={currentActivityData.question}
-                    language={currentActivityData.language}
-                    handleGoToNextActivity={goToNextActivity} />
+                ) : currentActivityData.question.type === "SingleChoiceQuestion" ?
+                    <SingleChoiceAnswer
+                        question={currentActivityData.question}
+                        language={currentActivityData.language}
+                        handleGoToNextActivity={goToNextActivity} /> :
+                    <PairMatchingAnswer
+                        question={currentActivityData.question}
+                        language={currentActivityData.language}
+                        handleGoToNextActivity={goToNextActivity} />
 
             }
         </div >

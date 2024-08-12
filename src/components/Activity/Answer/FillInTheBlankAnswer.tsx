@@ -1,6 +1,6 @@
 import { FillInTheBlankQuestion, Segment } from '@contentlayer/generated'
 import React, { FC } from 'react'
-import { AnswerStatus } from '../types'
+import { AnswerStatus } from './types'
 import { TokenChip } from '../TokenChip'
 import { useAnswerStates } from './useAnswerStates'
 import { CheckContinueButton } from './CheckContinueButton'

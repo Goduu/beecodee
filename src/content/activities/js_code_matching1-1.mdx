@@ -1,0 +1,23 @@
+---
+type: Activity
+id: js_code_matching1-1
+language: javascript
+tags: [beginner, template_strings, code_matching]
+question:
+  type: PairMatchingQuestion
+  description: "Match the following lines of code with their description."
+  pairMatchingOptions:
+    - content: "alert(`Secret number ${secretNumber}`);"
+      oType: "code"
+      position: "up"
+    - content: "alert('Secret number secretNumber');"
+      oType: "code"
+      position: "up"
+    - content: "Displays a static message with the text 'secretNumber' instead of the variable value."
+      oType: "text"
+      position: "down"
+    - content: "Dynamically inserts the value of `secretNumber` into the alert message."
+      oType: "text"
+      position: "down"
+  correctAnswer: [["xongas","paha"],["alert(`Secret number ${secretNumber}`);", "Dynamically inserts the value of `secretNumber` into the alert message."], ["alert('Secret number secretNumber');", "Displays a static message with the text 'secretNumber' instead of the variable value."]]
+---

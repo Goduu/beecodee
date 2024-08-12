@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { AnswerStatus } from '../types'
+import { AnswerStatus } from './types'
 import { Button } from '@/components/Button'
 
 type CheckContinueButtonProps = {
