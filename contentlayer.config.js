@@ -146,7 +146,7 @@ export const FillInTheBlankQuestion = defineNestedType(() => ({
   },
 }));
 
-export const CodeRewriting = defineNestedType(() => ({
+export const CodeRewritingQuestion = defineNestedType(() => ({
   name: "CodeRewritingQuestion",
   fields: {
     description: {
@@ -171,7 +171,7 @@ export const CodeRewriting = defineNestedType(() => ({
 }));
 
 export const DebuggingQuestion = defineNestedType(() => ({
-  name: "CodeRewritingQuestion",
+  name: "DebuggingQuestion",
   fields: {
     description: {
       type: 'string',

@@ -43,22 +43,23 @@ function getDefaultState(): StoreState {
 
 export const unitStore = createStore(localStoragePersist(getDefaultState, { name: "unit" }))
 
-export const initializeUnit = (unitId: string, lessons: Lesson[]) => {
+export const initializeUnit = (unitId: string, lessons: Lesson[], completedLessons: string[]) => {
+  const isEveryLessonCompleted = lessons.every((lesson) => completedLessons.includes(lesson.slugAsParams))
   unitStore.setState((state) => {
     if (!state.units[unitId]) {
       state.units[unitId] = {
-        currentLessonIndex: 0,
-        concluded: false,
+        currentLessonIndex: lessons.findIndex((lesson) => !completedLessons.includes(lesson.slugAsParams)),
+        concluded: isEveryLessonCompleted,
         lessons: lessons.map<StoreLesson>((lesson) => ({
           activities: lesson.activities.map<StoreActivity>((activity) => ({
             id: activity,
           })),
           currentActivityIndex: 0,
-          concluded: false,
+          concluded: completedLessons.includes(lesson.slugAsParams),
         })),
       };
       state.currentActivityData = allActivities.find((activity) => activity.slugAsParams === lessons[0].activities[0])
-    }
+    } 
     return state;
   })
 
@@ -86,7 +87,7 @@ export const resetLessonProgress = (unit: Unit) => {
         [unit.slugAsParams]: {
           ...state.units[unit.slugAsParams],
           lessons: state.units[unit.slugAsParams].lessons.map((lesson) => {
-            if(lesson === currentLesson) {
+            if (lesson === currentLesson) {
               return {
                 ...lesson,
                 currentActivityIndex: 0,
