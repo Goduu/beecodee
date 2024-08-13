@@ -26,7 +26,7 @@ export const FindYourPath: FC = () => {
             </div>
             <div className='flex flex-col items-center text-center sm:w-1/2 gap-4'>
                 <div className='w-4/5 flex flex-col gap-4'>
-                    <p className='text-6xl font-bold'>Find your path</p>
+                    <p className='text-6xl font-bold text-amber-500'>Find your path</p>
                     <p className='text-xl text-center sm:text-start'>Welcome to an adventure where learning meets fun! With our app, you can discover your own unique journey, blending excitement and education seamlessly.</p>
                 </div>
             </div>

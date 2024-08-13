@@ -1,5 +1,5 @@
 import { ActivityContextWrapper } from "@/components/Activity/ActivityContext"
-import ProgressBar from "@/components/ProgressBar"
+import { LessonProgressBar } from "@/components/LessonProgressBar"
 import { Activity, allActivities, allLessons } from "@contentlayer/generated"
 import { Inter } from "next/font/google"
 import { ReactNode } from "react"
@@ -43,7 +43,7 @@ export default async function Layout({ children, params }: RootLayoutProps) {
   return (
     <ActivityContextWrapper activities={activities}>
       <div className="flex flex-col gap-20">
-        <ProgressBar size="medium" />
+        <LessonProgressBar size="medium" />
         <div>
           {children}
         </div>

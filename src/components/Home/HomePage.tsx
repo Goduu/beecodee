@@ -7,6 +7,7 @@ import { LoginInButton } from "./LoginInButton";
 import { FindYourPath } from "./FindYourPath";
 import { BeeSlogan } from "./BeeSlogan";
 import { HomeFooter } from "./HomeFooter";
+import { GetStartedButton } from "./GetStartedButton";
 
 export const HomePage = async () => {
     const userData = await userMetadata()
@@ -23,10 +24,7 @@ export const HomePage = async () => {
                     The free interactive way to learn to code and have fun!
                 </div>
                 <div className="flex flex-col gap-4 items-center">
-
-                    <Button color="primary" className="w-64" >
-                        GET STARTED
-                    </Button>
+                    <GetStartedButton />
                     <LoginInButton />
                 </div>
                 <Carousel />
@@ -35,9 +33,7 @@ export const HomePage = async () => {
                     <FindYourPath />
                     <BeeSlogan />
                     <div className="flex flex-col items-center z-10">
-                        <Button color="primary" className="w-64" >
-                            GET STARTED
-                        </Button>
+                        <GetStartedButton />
                     </div>
                 </div>
             </div>
