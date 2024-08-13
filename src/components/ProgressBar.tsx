@@ -1,6 +1,7 @@
 "use client"
 import React, { FC } from 'react';
 import { IoClose } from './Icons';
+import { IconButton } from './IconButton';
 
 type ProgressBar = {
     size: "small" | "medium" | "large";
@@ -13,7 +14,11 @@ export const ProgressBar: FC<ProgressBar> = ({ size = "medium", progress, onClos
 
     return (
         <div className='flex gap-4 w-screen justify-center items-center'>
-            <IoClose className='w-6 h-6 cursor-pointer' onClick={onClose} />
+            <form action={onClose}>
+                <button type="submit">
+                    <IoClose className='w-6 h-6 cursor-pointer' />
+                </button>
+            </form>
             <div className="w-9/12 sm:w-10/12">
                 <div
                     className={`bg-gray-200 rounded-full ${heightClass}`}

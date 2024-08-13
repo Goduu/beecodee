@@ -50,8 +50,8 @@ export default async function LessonPage({ params }: ActivityProps) {
 
   return (
     <div className="flex text-center justify-center">
-      <div className="flex flex-col items-center gap-8 min-h-[450px] w-[600px]">
-        <LessonBlock  lesson={lesson}/>
+      <div className="flex flex-col items-center gap-8 min-h-[450px] w-[398px] sm:w-[600px]">
+        <LessonBlock lesson={lesson}/>
       </div>
     </div>
   )

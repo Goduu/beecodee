@@ -4,7 +4,8 @@ import { FaTools, GiStarsStack, MdStar, MdStarHalf, SiCss3, SiHtml5, SiJavascrip
 import { TooltipHover } from '../TooltipHover'
 import { Button } from '../Button'
 import { ProgressBar } from '../ProgressBar'
-import { open } from '../LoginModal.states'
+import { open } from '../LoginModal.store'
+import { redirect } from 'next/navigation'
 
 export const WhatToLearn = () => {
     const [selected, setSelected] = useState<string | null>(null)
@@ -21,14 +22,17 @@ export const WhatToLearn = () => {
         }
     }
 
-    if(!currentQuestion) {
+    if (!currentQuestion) {
         open()
         return null
+    }
+    const handleClose = () => {
+        redirect(process.env.NEXT_PUBLIC_URL || '/')
     }
 
     return (
         <div className='flex flex-col gap-20 items-center'>
-            <ProgressBar size='medium' progress={currentQuestionIndex/questions.length * 100} />
+            <ProgressBar onClose={handleClose} size='medium' progress={currentQuestionIndex / questions.length * 100} />
             <div className='text-2xl font-bold'>
                 {currentQuestion.description}
             </div>
@@ -58,7 +62,7 @@ export const WhatToLearn = () => {
                 ))}
             </div>
             <div className='flex gap-4 pb-10'>
-                <Button color="secondary" onClick={() => setCurrentQuestionIndex(prev => Math.max(prev - 1,0))}>Back</Button>
+                <Button color="secondary" onClick={() => setCurrentQuestionIndex(prev => Math.max(prev - 1, 0))}>Back</Button>
                 <Button onClick={handlesContinue} disabled={!selected}>Continue</Button>
             </div>
         </div >

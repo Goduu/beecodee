@@ -1,3 +1,4 @@
+"use client"
 import { Loading } from '@/components/Loading'
 import { goToNextActivity, unitStore } from '@/components/Unit/unitStore'
 import { useStore } from '@/components/useStore'

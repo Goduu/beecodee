@@ -1,5 +1,4 @@
 import { Carousel } from "@/components/Home/Carousel";
-import { Button } from "@/components/Button";
 import { Bee } from "@/components/Icons";
 import { redirect } from "next/navigation";
 import { userMetadata } from "@/lib/auth";

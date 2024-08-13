@@ -1,12 +1,14 @@
 import "./globals.css"
-import { Inter } from "next/font/google"
+import { Varela_Round } from "next/font/google"
 import { ReactNode } from "react"
 import { Analytics } from "@vercel/analytics/react"
 import { MountChecker } from "@/lib/MountChecker"
 import { HomeHeader } from "@/components/Home/HomeHeader"
 import { LoginModal } from "@/components/LoginModal"
+import { DevToolsButton } from "@/components/DevTools/DevToolsButton"
+import { DevToolsModal } from "@/components/DevTools/DevToolsModal"
 
-const inter = Inter({ subsets: ["latin"] })
+const varela = Varela_Round({ subsets: ["latin"], weight: "400" })
 
 type RootLayoutProps = {
   children: ReactNode
@@ -17,7 +19,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body
-        className={`antialiased bg-white dark:bg-cyan-950 text-slate-900 dark:text-slate-50 ${inter.className}`}
+        className={`antialiased bg-white dark:bg-cyan-950 text-slate-900 dark:text-slate-50 ${varela.className}`}
       >
         <HomeHeader />
         <div className="flex flex-col pt-10 px-4 place-items-center min-h-screen leading-relaxed ">
@@ -29,6 +31,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             <Analytics />
           </main>
         </div>
+        <DevToolsModal />
+        <DevToolsButton />
       </body>
     </html>
   )

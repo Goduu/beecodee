@@ -18,7 +18,7 @@ export const IconButton: FC<IconButtonProps> = ({ children, className, disabled,
     }
 
     return (
-        <form action={handleClicks} className='h-12'>
+        <form action={handleClicks}>
             <button type="submit"
                 className={`
                     relative hover:mt-1

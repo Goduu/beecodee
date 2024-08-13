@@ -10,14 +10,14 @@ export default async function Home() {
   const completedLessons = await fetchUserFinishedLessons()
   
   return (
-    <main className="flex flex-col items-center gap-2 w-screen">
+    <main className="flex flex-col items-center gap-2 w-screen py-4">
       <Bee className="w-44 pt-20 hover:animate-pulse ease-in-out duration-300" />
       <Suspense fallback={<Loading visible/>}>
 
       {allUnits.map((unit, index) => {
         const unitLessons = allLessons.filter((lesson) => unit.lessons.includes(lesson.slugAsParams))
         
-        return <UnitPath key={unit._id} unit={unit} lessons={unitLessons} pathPosition={index} completedLessons={completedLessons?.[unit.slugAsParams] || []} />
+        return <UnitPath key={unit._id} unit={unit} lessons={unitLessons} pathPosition={unit.id} completedLessons={completedLessons?.[unit.slugAsParams] || []} />
       })}
       </Suspense>
 

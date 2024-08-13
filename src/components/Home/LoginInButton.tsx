@@ -1,7 +1,7 @@
 "use client"
 import React, { FC } from 'react'
 import { Button } from '../Button'
-import { open } from '../LoginModal.states'
+import { open } from '../LoginModal.store'
 
 export const LoginInButton:FC = () => {
     return (
