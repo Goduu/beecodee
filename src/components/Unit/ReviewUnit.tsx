@@ -1,9 +1,9 @@
 import React, { FC, useRef, useState } from 'react'
-import { LuCheckCircle } from '../Icons'
 import { Unit } from '@contentlayer/generated'
 import { TooltipClick } from '../TooltipClick'
 import { Button } from '../Button'
 import { useDetectOuterClickAndEsc } from '../useDetectOuterClickAndEsc'
+import { PathWayCompleteButton } from './PathWayCompleteButton'
 
 type ReviewUnitProps = {
     unit: Unit
@@ -18,15 +18,7 @@ export const ReviewUnit: FC<ReviewUnitProps> = ({ unit }) => {
         <div ref={clickOutSideRef}
             className="flex justify-center items-center " >
             <TooltipClick content={<ReviewUnitTooltipContent unit={unit} />} visible={tooltipVisible}>
-                <div className='
-                    border-b-8 border-green-600
-                    rounded-full flex justify-center 
-                    cursor-pointer hover:scale-105 hover:border-b-2 duration-300
-                    bg-green-500 w-32 h-32'
-                    onClick={() => setTooltipVisible(!tooltipVisible)}
-                >
-                    <LuCheckCircle className='w-16' />
-                </div>
+                <PathWayCompleteButton onClick={() => setTooltipVisible(!tooltipVisible)} />
             </TooltipClick>
         </div>
     )

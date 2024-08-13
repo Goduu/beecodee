@@ -6,6 +6,7 @@ import { ActivityPath } from '../Activity/ActivityPath'
 import { initializeUnit, unitStore } from './unitStore'
 import { ReviewUnit } from './ReviewUnit'
 import { useStore } from '../useStore'
+import { getPathZigzagPath } from './getPathDescription'
 
 type UnitProps = {
   unit: Unit
@@ -29,7 +30,7 @@ export const UnitPath: FC<UnitProps> = ({ unit, lessons, pathPosition, completed
 
   if (percentage >= 100) {
     return (
-      <div className={getPathDescription(pathPosition)}>
+      <div className={getPathZigzagPath(pathPosition)}>
         <ReviewUnit unit={unit} />
       </div >
     )
@@ -38,7 +39,7 @@ export const UnitPath: FC<UnitProps> = ({ unit, lessons, pathPosition, completed
   if (!currentLesson) return null
 
   return (
-    <div className={getPathDescription(pathPosition)}>
+    <div className={getPathZigzagPath(pathPosition)}>
       <CircularProgress percent={percentage} >
         <ActivityPath lesson={currentLesson} unit={unit} />
       </CircularProgress>
@@ -46,26 +47,3 @@ export const UnitPath: FC<UnitProps> = ({ unit, lessons, pathPosition, completed
   )
 }
 
-
-function getPathDescription(pathIndex: number): string {
-  switch (pathIndex % 8) {
-    case 0:
-      return "";
-    case 7:
-      return "-mr-24 sm:-mr-48 ";
-    case 6:
-      return "-mr-36 sm:-mr-96 ";
-    case 5:
-      return "-mr-24 sm:-mr-48 ";
-    case 4:
-      return "";
-    case 3:
-      return "mr-24 sm:mr-48 ";
-    case 2:
-      return "mr-36 sm:mr-96 ";
-    case 1:
-      return "mr-24 sm:mr-48 ";
-    default:
-      return "";
-  }
-}
