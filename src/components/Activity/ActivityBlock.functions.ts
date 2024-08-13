@@ -2,7 +2,7 @@ import { insertXpollen } from "@/lib/supabase/api/insertXpollen";
 import { goToNextLesson } from "../Unit/unitStore";
 
 
-export const handleFinishLesson = async (unitId: string | null | undefined, lessonId: string, lessonXp: number) => {
+export const finishLesson = async (unitId: string | null | undefined, lessonId: string, lessonXp: number) => {
     if (!unitId) return
 
     try {

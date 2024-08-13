@@ -1,3 +1,4 @@
+"use client"
 import React, { FC } from 'react'
 import { LuCheckCircle } from '../Icons'
 import { Button } from '../Button'
@@ -11,7 +12,7 @@ export const FinishLessonBlock: FC<FinishLessonBlockProps> = ({ finishLesson }) 
 
     const handleFinishLesson = () => {
         finishLesson()
-        redirect('/')
+        redirect('/path')
     }
 
     return (

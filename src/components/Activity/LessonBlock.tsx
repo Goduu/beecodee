@@ -5,7 +5,7 @@ import { useStore } from 'zustand'
 import { Lesson } from '@contentlayer/generated'
 import { ActivityBlock } from './ActivityBlock'
 import { FinishLessonBlock } from './FinishLessonBlock'
-import { handleFinishLesson } from './ActivityBlock.functions'
+import { finishLesson } from './ActivityBlock.functions'
 
 type LessonBlockProps = {
     lesson: Lesson
@@ -17,8 +17,8 @@ export const LessonBlock: FC<LessonBlockProps> = ({ lesson }) => {
     const currentLessonId = unit?.currentLessonId || 0
     const currentLesson = unit?.lessons.find((lesson) => lesson.id === currentLessonId)
 
-    const finishLesson = useCallback(() => {
-        return handleFinishLesson(currentUnitId, lesson.slugAsParams, lesson.xp)
+    const handleFinishLesson = useCallback(() => {
+        return finishLesson(currentUnitId, lesson.slugAsParams, lesson.xp)
     }, [currentUnitId, lesson.slugAsParams, lesson.xp])
 
     if (!currentUnitId) return null
@@ -26,7 +26,7 @@ export const LessonBlock: FC<LessonBlockProps> = ({ lesson }) => {
 
 
     if (currentLesson?.concluded) {
-        return <FinishLessonBlock finishLesson={finishLesson} />
+        return <FinishLessonBlock finishLesson={handleFinishLesson} />
     }
 
 

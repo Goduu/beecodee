@@ -12,6 +12,7 @@ Current development time: 2 days
 ## Development List
 - [x] Initial Concept
 - [x] Home with unit path 🏠
+    - [x] Home UI/UX
     - [x] Unit Path UI/UX
     - [x] Unit Path Functionality
 - [ ] Unit / Lesson / Activity Structure  📒
@@ -22,6 +23,7 @@ Current development time: 2 days
         - [x] Multi completion questions
         - [x] Fill-in-the-blank questions
         - [x] Single choice questions
+        - [x] Pair matching questions
         - [ ]  ... ? 
 - [ ] Activity Content
     - [ ] JS Course

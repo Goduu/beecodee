@@ -4,7 +4,7 @@ import { FaSquareGithub } from './Icons'
 
 export const Footer = () => {
     return (
-        <footer>
+        <footer className='w-screen overflow-hidden'>
             <hr />
             <div className="flex items-center gap-6 justify-center py-10">
                 <Link href="https://github.com/Goduu/gym" target="_blank" >
