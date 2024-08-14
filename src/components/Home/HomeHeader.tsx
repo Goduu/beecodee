@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
-import { Beecodee } from '../Icons'
 import { usePathname } from 'next/navigation'
+import { Beecodee } from '../Svgs/Beecodee'
 
 export const HomeHeader = () => {
     const pathname = usePathname()

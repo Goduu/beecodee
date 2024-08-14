@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { ImSpinner } from './Icons'
+import { ImSpinner } from './Svgs/Icons'
 
 type LoadingProps = {
     visible: boolean

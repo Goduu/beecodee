@@ -1,6 +1,6 @@
 "use client"
 import React, { FC } from 'react';
-import { IoClose } from './Icons';
+import { IoClose } from './Svgs/Icons';
 import { IconButton } from './IconButton';
 
 type ProgressBar = {

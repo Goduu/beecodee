@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { FaTools } from '../Icons'
+import { FaTools } from '../Svgs/Icons'
 import { open } from './DevToolsModal.store'
 
 export const DevToolsButton = () => {

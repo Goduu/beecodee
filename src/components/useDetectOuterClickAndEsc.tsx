@@ -26,6 +26,6 @@ export const useDetectOuterClickAndEsc = ({ onOuterClick, ref }: DetectOuterClic
             document.removeEventListener('mousedown', handleClickOutside)
             document.removeEventListener('keydown', handleKeyDown)
         }
-    }, [])
+    }, [onOuterClick, ref])
 
 }

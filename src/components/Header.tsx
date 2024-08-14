@@ -1,10 +1,11 @@
 import Link from 'next/link'
 import React from 'react'
-import { Beecodee, BeeHead, IoMdLogOut, SiJavascript } from './Icons'
+import { BeeHead, IoMdLogOut, SiJavascript } from './Svgs/Icons'
 import { IconButton } from './IconButton'
 import { signOut, userMetadata } from '@/lib/auth'
 import { TooltipHover } from './TooltipHover'
 import { XpollenHeader } from './XPollen/XpollenHeader'
+import { Beecodee } from './Svgs/Beecodee'
 
 export const Header = async () => {
     const userData = await userMetadata()

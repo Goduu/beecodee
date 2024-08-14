@@ -14,7 +14,7 @@ export const useActivityStates = () => {
         if(!currentUnit) return
         goToNextLesson()
         redirect('/')
-    }, [goToNextLesson, currentUnit])
+    }, [currentUnit])
 
 
     const handleGoToNextActivity = useCallback(() => {

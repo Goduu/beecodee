@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { IconButton } from '../IconButton'
-import { Pollen } from '../Icons'
 import { fetchUserXpollen } from '@/lib/supabase/api/fetchUserXpollen'
+import { Pollen } from '../Svgs/Pollen'
 
 export const XpollenHeader: FC = async () => {
     const userXpollen = await fetchUserXpollen()

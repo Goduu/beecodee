@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaGithub, SiJavascript, SiCss3, SiHtml5, SiPython, SiReact, SiTypescript, FaTools } from '@/components/Icons';
+import { FaGithub, SiJavascript, SiCss3, SiHtml5, SiPython, SiReact, SiTypescript, FaTools } from '@/components/Svgs/Icons';
 import { TooltipHover } from '@/components/TooltipHover';
 
 export const Carousel = () => {

@@ -23,7 +23,7 @@ export const UnitPath: FC<UnitProps> = ({ unit, lessons, pathPosition, completed
 
   useEffect(() => {
     initializeUnit(unit.slugAsParams, lessons, completedLessons);
-  }, [unit, lessons, initializeUnit, completedLessons]);
+  }, [unit, lessons, completedLessons]);
 
   initializeUnit(unit.slugAsParams, lessons, completedLessons)
 

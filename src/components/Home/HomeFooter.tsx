@@ -1,5 +1,5 @@
 import React from 'react'
-import { Bee, FooterHoney } from '../Icons'
+import { FooterHoney } from '../Svgs/FooterHoney'
 
 export const HomeFooter = () => {
     return (

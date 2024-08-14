@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { GiSpellBook } from '../Icons'
+import { GiSpellBook } from '../Svgs/Icons'
 import { open } from './UnitBookModal.store'
 import { Unit } from '@contentlayer/generated'
 

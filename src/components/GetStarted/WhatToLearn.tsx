@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react'
-import { FaTools, GiStarsStack, MdStar, MdStarHalf, SiCss3, SiHtml5, SiJavascript, SiPython, SiReact, SiTypescript } from '../Icons'
+import { FaTools, GiStarsStack, MdStar, MdStarHalf, SiCss3, SiHtml5, SiJavascript, SiPython, SiReact, SiTypescript } from '../Svgs/Icons'
 import { TooltipHover } from '../TooltipHover'
 import { Button } from '../Button'
 import { ProgressBar } from '../ProgressBar'

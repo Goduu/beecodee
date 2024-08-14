@@ -1,6 +1,6 @@
 "use client"
 import React, { FC } from 'react'
-import { LuCheckCircle } from '../Icons'
+import { LuCheckCircle } from '../Svgs/Icons'
 import { Button } from '../Button'
 import { redirect } from 'next/navigation'
 

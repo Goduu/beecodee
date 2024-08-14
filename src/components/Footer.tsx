@@ -1,6 +1,4 @@
-import Link from 'next/link'
 import React from 'react'
-import { FaSquareGithub } from './Icons'
 
 export const Footer = () => {
     return (

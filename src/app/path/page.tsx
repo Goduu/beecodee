@@ -1,5 +1,5 @@
-import { Bee } from "@/components/Icons";
 import { Loading } from "@/components/Loading";
+import { Bee } from "@/components/Svgs/Bee";
 import { UnitPath } from "@/components/Unit/UnitPath";
 import { fetchUserFinishedLessons } from "@/lib/supabase/api/fetchUserFinishedLessons";
 import { allLessons, allUnits } from "@contentlayer/generated";

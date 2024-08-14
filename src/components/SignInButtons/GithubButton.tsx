@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Button } from '../Button'
 import { signInWithGithub } from '@/lib/auth'
-import { FaGithub } from '../Icons'
+import { FaGithub } from '../Svgs/Icons'
 
 export const GithubButton:FC = () => {
     return (

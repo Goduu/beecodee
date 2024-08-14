@@ -12,7 +12,7 @@ export const useSingleChoiceAnswerStates = (question: SingleChoiceQuestion, lang
     const { playSound, correctAnswerSound, wrongAnswerSound } = useAudio()
 
     const isAnswerCorrect = !!options.find(option => option.status === 'correct')
-    
+
     const initializeOptions = useCallback(() => {
         const optionTokens: TokenGroup[] = []
         question.options?.forEach((option) => {
@@ -84,7 +84,7 @@ export const useSingleChoiceAnswerStates = (question: SingleChoiceQuestion, lang
             playSound(wrongAnswerSound)
             changeOptionStatus(answer, 'wrong')
         }
-    }, [question, answer])
+    }, [question, answer, correctAnswerSound])
 
 
     return {

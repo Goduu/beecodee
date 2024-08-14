@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
-import { Bee, Beecodee } from '../Icons'
+import { Beecodee } from '../Svgs/Beecodee'
+import { Bee } from '../Svgs/Bee'
 
 export const BeeSlogan: FC = () => {
     return (

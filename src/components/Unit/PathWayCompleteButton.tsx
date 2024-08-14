@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { IoMdFlower } from '../Icons'
+import { IoMdFlower } from '../Svgs/Icons'
 
 type PathWayCompleteButtonProps = {
     size?: 'small' | 'medium' | 'large'

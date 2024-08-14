@@ -69,7 +69,7 @@ export const useAnswerStates = (question: Activity["question"], language: string
             playSound(wrongAnswerSound)
             setStatus('wrong')
         }
-    }, [question, answer])
+    }, [question, answer, playSound])
 
 
     return {

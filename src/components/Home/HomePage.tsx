@@ -1,5 +1,4 @@
 import { Carousel } from "@/components/Home/Carousel";
-import { Bee } from "@/components/Icons";
 import { redirect } from "next/navigation";
 import { userMetadata } from "@/lib/auth";
 import { LoginInButton } from "./LoginInButton";
@@ -7,6 +6,7 @@ import { FindYourPath } from "./FindYourPath";
 import { BeeSlogan } from "./BeeSlogan";
 import { HomeFooter } from "./HomeFooter";
 import { GetStartedButton } from "./GetStartedButton";
+import { Bee } from "../Svgs/Bee";
 
 export const HomePage = async () => {
     const userData = await userMetadata()

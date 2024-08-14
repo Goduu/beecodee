@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import { close, unitBookModalStore } from './UnitBookModal.store'
 import { useStore } from '../useStore'
 import { useDetectOuterClickAndEsc } from '../useDetectOuterClickAndEsc'
-import { GiSpellBook } from '../Icons'
+import { GiSpellBook } from '../Svgs/Icons'
 import { Mdx } from '../MdxComponents'
 
 export const UnitBookModal = () => {

@@ -1,6 +1,5 @@
 "use client"
 import React, { FC, useRef, useState } from 'react'
-import { Pollen } from '../Icons'
 import { TooltipClick } from '../TooltipClick'
 import { Button } from '../Button'
 import { Lesson, Unit } from '@contentlayer/generated'
@@ -10,6 +9,7 @@ import { resetLessonProgress, setCurrentUnitId } from '../Unit/unitStore'
 import { UnitBookButton } from './UnitBookButton'
 import { UnitBookModal } from './UnitBookModal'
 import { PathwayButton } from './PathwayButton'
+import { Pollen } from '../Svgs/Pollen'
 
 type ActivityLinkProps = {
     lesson: Lesson
