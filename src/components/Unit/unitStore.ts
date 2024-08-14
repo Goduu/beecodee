@@ -52,14 +52,14 @@ export const initializeUnit = (unitId: string, lessons: Lesson[], completedLesso
         currentLessonId: lessons.find((lesson) => !completedLessons.includes(lesson.slugAsParams))?.slugAsParams || "",
         lessons: lessons.map<StoreLesson>((lesson) => ({
           id: lesson.slugAsParams,
-          activities: lesson.activities.map<StoreActivity>((activity) => ({
-            id: activity,
+          activities: lesson.activityRefs.map<StoreActivity>((activityRef) => ({
+            id: activityRef.activity,
           })),
           currentActivityIndex: 0,
           concluded: completedLessons.includes(lesson.slugAsParams),
         })),
       };
-      state.currentActivityData = allActivities.find((activity) => activity.slugAsParams === lessons[0].activities[0])
+      state.currentActivityData = allActivities.find((activity) => activity.slugAsParams === lessons[0].activityRefs[0].activity)
     }
     return state;
   })
@@ -76,21 +76,22 @@ export const setCurrentUnitId = (unit: Unit) => {
 
 export const resetLessonProgress = (unit: Unit) => {
   unitStore.setState((state) => {
-    const currentLessonId = state.units[unit.slugAsParams].currentLessonId
-    const currentLesson = state.units[unit.slugAsParams].lessons.find((lesson) => lesson.id === currentLessonId)
+    const unitSlug = unit.slugAsParams
+    const currentLessonId = state.units[unitSlug].currentLessonId
+    const currentLesson = state.units[unitSlug].lessons.find((lesson) => lesson.id === currentLessonId)
 
     if (!currentLesson) return state
 
     const currentActivityId = currentLesson.activities[0].id
 
     return {
-      currentUnitId: unit.slugAsParams,
+      currentUnitId: unitSlug,
       currentActivityData: allActivities.find((activity) => activity.slugAsParams === currentActivityId),
       units: {
         ...state.units,
         [unit.slugAsParams]: {
-          ...state.units[unit.slugAsParams],
-          lessons: state.units[unit.slugAsParams].lessons.map((lesson) => {
+          ...state.units[unitSlug],
+          lessons: state.units[unitSlug].lessons.map((lesson) => {
             if (lesson === currentLesson) {
               return {
                 ...lesson,

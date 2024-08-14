@@ -1,5 +1,5 @@
 "use client"
-import { Lesson, Unit } from '@contentlayer/generated'
+import { allUnits, Lesson, Unit } from '@contentlayer/generated'
 import React, { FC, useEffect } from 'react'
 import { CircularProgress } from '../Activity/CircularProgress'
 import { ActivityPath } from '../Activity/ActivityPath'
@@ -26,7 +26,7 @@ export const UnitPath: FC<UnitProps> = ({ unit, lessons, pathPosition, completed
 
   initializeUnit(unit.slugAsParams, lessons, completedLessons)
 
-  const percentage = (completedLessons.length / unit.lessons.length) * 100
+  const percentage = (completedLessons.length / unit.lessonRefs.length) * 100
 
   if (percentage >= 100) {
     return (

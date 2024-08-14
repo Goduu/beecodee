@@ -22,11 +22,11 @@ async function getActivitiesFromParams(params: RootLayoutProps["params"]) {
     }
     const spitedActivitySlugArray = activity.slugAsParams.split("/")
     const activitySlug = spitedActivitySlugArray[spitedActivitySlugArray.length - 1]
-    return lesson.activities.includes(activitySlug)
+    return lesson.activityRefs.map(a => a.activity).includes(activitySlug)
   })
 
-  return lesson?.activities.map((activitySlug) => {
-    const activity = activities.find((activity) => activity.slugAsParams.includes(activitySlug))
+  return lesson?.activityRefs.map((activityRef) => {
+    const activity = activities.find((activity) => activity.slugAsParams.includes(activityRef.activity))
     return activity
   }) as Activity[]
 }

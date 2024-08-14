@@ -232,14 +232,30 @@ export const Lesson = defineNestedType(() => ({
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
     xp: { type: 'number', required: true },
-    activities: {
+    activityRefs: {
       type: 'list',
-      of: { type: 'string' },
+      of: ActivityReference,
       required: true
     }
   },
   computedFields,
 }))
+
+export const ActivityReference = defineNestedType(() => ({
+  name: "ActivityReference",
+  fields: {
+    id: { type: 'number', required: true },
+    activity: { type: 'string', required: true },
+  },
+}));
+
+export const LessonReference = defineNestedType(() => ({
+  name: "LessonReference",
+  fields: {
+    id: { type: 'number', required: true },
+    lesson: { type: 'string', required: true },
+  },
+}));
 
 export const Unit = defineNestedType(() => ({
   name: "Unit",
@@ -249,9 +265,9 @@ export const Unit = defineNestedType(() => ({
     id: { type: 'number', required: true },
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
-    lessons: {
+    lessonRefs: {
       type: 'list',
-      of: { type: 'string' },
+      of: LessonReference,
       required: true
     }
   },
