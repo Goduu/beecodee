@@ -36,6 +36,7 @@ export const CircularProgress: FC<CircularProgressProps> = ({ percent = 50, size
                     stroke="currentColor"
                     strokeWidth={stroke}
                     fill="transparent"
+                    strokeLinecap="round"
                     strokeDasharray={circumference}
                     strokeDashoffset={circumference - (percent / 100) * circumference}
                     className="text-amber-500 rounded-xl"

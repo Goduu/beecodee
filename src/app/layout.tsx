@@ -19,7 +19,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body
-        className={`antialiased bg-white dark:bg-cyan-950 text-slate-900 dark:text-slate-50 ${varela.className}`}
+        className={`antialiased bg-white dark:bg-gray-900 text-slate-900 dark:text-slate-50 ${varela.className}`}
       >
         <HomeHeader />
         <div className="flex flex-col pt-10 px-4 place-items-center min-h-screen leading-relaxed ">

@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
 import { AnswerStatus, TokenGroup } from './types'
 import { useAudio } from '@/components/useAudio'
-import { SingleChoiceQuestion } from '@contentlayer/generated'
+import { CodeOutputQuestion } from '@contentlayer/generated'
 import { highlightCode } from '@/components/TokenColors/highlightCode'
 import { isEqual } from 'lodash'
 
-export const useSingleChoiceAnswerStates = (question: SingleChoiceQuestion, language: string) => {
+export const useCodeOutputAnswerStates = (question: CodeOutputQuestion, language: string) => {
 
     const [options, setOptions] = useState<TokenGroup[]>([])
     const [answer, setAnswer] = useState<TokenGroup | undefined>()

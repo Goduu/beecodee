@@ -28,6 +28,9 @@ export function highlightCode(code: string | string[], language: string): Token[
       if (token.includes("\n")) {
         tokens.push({ content: "\n", type: "format" });
       }
+      if (token.includes("\t")) {
+        tokens.push({ content: "\t", type: "format" });
+      }
       if (token.replace(/\n/g, '') !== '') {
         tokens.push({ content: token, type: null });
       }
@@ -53,6 +56,9 @@ export function highlightArray(options: Option[], language: string): Token[] {
     if (typeof token === 'string') {
       if (token.includes("\n")) {
         tokens.push({ content: "\n", type: "format" });
+      }
+      if (token.includes("\t")) {
+        tokens.push({ content: "\t", type: "format" });
       }
       if (token.replace(/\n/g, '') !== '') {
         tokens.push({ content: token, type: null });

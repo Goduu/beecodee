@@ -6,7 +6,7 @@ type PathwayButtonProps = {
     onClick?: () => void
 }
 export const PathwayButton: FC<PathwayButtonProps> = ({ size="medium", onClick }) => {
-    const dimensions = size === "medium" ? "w-20 h-20" : size === "small" ? "w-16 h-16" : "w-24 h-24"
+    const dimensions = size === "medium" ? "w-18 h-18" : size === "small" ? "w-16 h-16" : "w-24 h-24"
     const iconDimensions = size === "medium" ? "w-14" : size === "small" ? "w-12" : "w-16"
 
     return (

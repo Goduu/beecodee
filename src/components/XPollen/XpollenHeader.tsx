@@ -9,9 +9,9 @@ export const XpollenHeader: FC = async () => {
     return (
         <IconButton className='flex items-center gap-1'>
             <Pollen className="w-10" />
-            <p className='text-amber-500 font-black text-lg'>
+            <div className='text-amber-500 text-xl'>
                 {userXpollen || 0}
-            </p>
+            </div>
         </IconButton>
     )
 }

@@ -10,10 +10,6 @@ type TokenTextProps = {
 }
 export const TokenText: FC<TokenTextProps> = ({ token, onClick, className = "" }) => {
 
-    if (token.content === "\n") {
-        return <br />;
-    }
-
     const renderGapContent = () => (
         <p className="text-opacity-0 text-red-50">
             {'_'.repeat(Number(token.content))}
@@ -24,6 +20,8 @@ export const TokenText: FC<TokenTextProps> = ({ token, onClick, className = "" }
         switch (token.content) {
             case '\n':
                 return <br />;
+            case '\t':
+                return <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>;
             default:
                 return token.type === 'gap' ? renderGapContent() : token.content.replace(/ /g, '\u00A0');
         }

@@ -29,6 +29,7 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
 
     const statusClass = getStatusClass(status);
     let gapCounter = -1;
+
     return (
         <div className='flex flex-col gap-16 px-2'>
             <QuestionDescription description={question.description} />
@@ -65,6 +66,7 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
 
 const renderCodeSegment = (segment: Segment, language: string) => {
     const tokenizedCode = highlightCode(segment.content, language);
+
     return (
         <span key={`code-segment-${segment.content}`}>
             {tokenizedCode.map((token, i) => (

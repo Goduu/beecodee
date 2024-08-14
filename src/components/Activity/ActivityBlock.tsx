@@ -7,6 +7,7 @@ import { FillInTheBlankAnswer } from './Answer/FillInTheBlankAnswer'
 import { MultipleChoiceAnswer } from './Answer/MultipleChoiceAnswer'
 import { SingleChoiceAnswer } from './Answer/SingleChoiceAnswer'
 import { PairMatchingAnswer } from './Answer/PairMatchingQuestion'
+import { CodeOutputAnswer } from './Answer/CodeOutputAnswer'
 
 type AnswerBlockProps = {
 }
@@ -25,7 +26,6 @@ export const ActivityBlock: FC<AnswerBlockProps> = () => {
                     language={currentActivityData.language}
                     handleGoToNextActivity={goToNextActivity} />
             ) :
-
                 currentActivityData.question.type === "MultipleChoiceQuestion" ? (
                     <MultipleChoiceAnswer
                         question={currentActivityData.question}
@@ -36,10 +36,15 @@ export const ActivityBlock: FC<AnswerBlockProps> = () => {
                         question={currentActivityData.question}
                         language={currentActivityData.language}
                         handleGoToNextActivity={goToNextActivity} /> :
-                    <PairMatchingAnswer
-                        question={currentActivityData.question}
-                        language={currentActivityData.language}
-                        handleGoToNextActivity={goToNextActivity} />
+                    currentActivityData.question.type === "CodeOutputQuestion" ?
+                        <CodeOutputAnswer
+                            question={currentActivityData.question}
+                            language={currentActivityData.language}
+                            handleGoToNextActivity={goToNextActivity} /> :
+                        <PairMatchingAnswer
+                            question={currentActivityData.question}
+                            language={currentActivityData.language}
+                            handleGoToNextActivity={goToNextActivity} />
 
             }
         </div >

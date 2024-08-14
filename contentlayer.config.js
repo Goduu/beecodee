@@ -102,6 +102,30 @@ export const MultipleChoiceQuestion = defineNestedType(() => ({
   },
 }));
 
+export const CodeOutputQuestion = defineNestedType(() => ({
+  name: "CodeOutputQuestion",
+  fields: {
+    description: {
+      type: 'string',
+      required: true,
+    },
+    codeSnippet: {
+      type: 'string',
+      required: true,
+    },
+    options: {
+      type: 'list',
+      of: Option,
+      required: true,
+    },
+    correctAnswer: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
+    },
+  },
+}));
+
 export const SingleChoiceQuestion = defineNestedType(() => ({
   name: "SingleChoiceQuestion",
   fields: {
@@ -217,7 +241,7 @@ export const Activity = defineNestedType(() => ({
     },
     question: {
       type: 'nested',
-      of: [MultipleChoiceQuestion, SingleChoiceQuestion, FillInTheBlankQuestion, PairMatchingQuestion],
+      of: [MultipleChoiceQuestion, SingleChoiceQuestion, FillInTheBlankQuestion, PairMatchingQuestion, CodeOutputQuestion],
       required: true,
     },
   },

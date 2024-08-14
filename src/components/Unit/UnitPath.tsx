@@ -1,5 +1,5 @@
 "use client"
-import { allUnits, Lesson, Unit } from '@contentlayer/generated'
+import { Lesson, Unit } from '@contentlayer/generated'
 import React, { FC, useEffect } from 'react'
 import { CircularProgress } from '../Activity/CircularProgress'
 import { ActivityPath } from '../Activity/ActivityPath'
@@ -7,6 +7,7 @@ import { initializeUnit, unitStore } from './unitStore'
 import { ReviewUnit } from './ReviewUnit'
 import { useStore } from '../useStore'
 import { getPathZigzagPath } from './getPathDescription'
+import { CircleSkeleton } from '../Skeletons/CircleSkeleton'
 
 type UnitProps = {
   unit: Unit
@@ -28,18 +29,20 @@ export const UnitPath: FC<UnitProps> = ({ unit, lessons, pathPosition, completed
 
   const percentage = (completedLessons.length / unit.lessonRefs.length) * 100
 
+  const zigZagClass = getPathZigzagPath(pathPosition)
+
   if (percentage >= 100) {
     return (
-      <div className={getPathZigzagPath(pathPosition)}>
+      <div className={zigZagClass}>
         <ReviewUnit unit={unit} />
       </div >
     )
   }
 
-  if (!currentLesson) return null
+  if (!currentLesson) return <CircleSkeleton className={zigZagClass} />
 
   return (
-    <div className={getPathZigzagPath(pathPosition)}>
+    <div className={zigZagClass}>
       <CircularProgress percent={percentage} >
         <ActivityPath lesson={currentLesson} unit={unit} />
       </CircularProgress>

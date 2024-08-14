@@ -15,7 +15,7 @@ export const Header = async () => {
                 <Beecodee className="w-44 sm:w-72 hidden sm:block" />
             </Link>
             <div className='flex items-center gap-2'>
-                <TooltipHover text={"JS"} position='bottom'>
+                <TooltipHover text={"Javascript"} position='bottom'>
                     <IconButton color='secondary'>
                         <SiJavascript className="w-16 pr-5" />
                     </IconButton>

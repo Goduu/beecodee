@@ -1,10 +1,7 @@
 import { ActivityContextWrapper } from "@/components/Activity/ActivityContext"
 import { LessonProgressBar } from "@/components/LessonProgressBar"
 import { Activity, allActivities, allLessons } from "@contentlayer/generated"
-import { Inter } from "next/font/google"
 import { ReactNode } from "react"
-
-const inter = Inter({ subsets: ["latin"] })
 
 type RootLayoutProps = {
   children: ReactNode
