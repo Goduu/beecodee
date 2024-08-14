@@ -1,7 +1,46 @@
 ---
 id: 6
 type: Unit
-title: "Comments"
+title: "Console in JavaScript"
 description: "Learn about comments in JavaScript"
 lessons: ["js_console1"]
 ---
+
+The console is a tool that developers use to log information to the browser's console. This information can be used to debug code, track the flow of a program, and more.
+
+The console can help you understand what your code is doing.
+There are many categories that you can output your data to, such as `log`, `info`, `warn`, `error`, and `table`.
+
+
+Example:
+
+```js
+const foo = { name: 'foo', age: 10 };
+console.log(foo);
+```
+The output will be:
+
+```text
+{ name: 'foo', age: 10 }
+```
+
+There are many levels of logging that you can use to orginize your data logs. Here are some examples:
+
+```js
+console.log('log');
+console.info('info');
+console.warn('warn');
+console.error('error');
+console.table([{ name: 'foo', age: 10 }, { name: 'bar', age: 20 }]);
+```
+
+We can also style our logs using CSS:
+
+```js
+console.log(
+    '%cHello World',
+    'color: blue; font-size: 20px'
+ );
+```
+
+It should change the color of Hello World to blue and increase the font size to 20px.

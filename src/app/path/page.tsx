@@ -14,7 +14,7 @@ export default async function Home() {
       <Bee className="w-44 pt-20 hover:animate-pulse ease-in-out duration-300" />
       <Suspense fallback={<Loading visible/>}>
 
-      {allUnits.map((unit, index) => {
+      {allUnits.sort((a,b) => a.id - b.id).map((unit, index) => {
         const unitLessons = allLessons.filter((lesson) => unit.lessons.includes(lesson.slugAsParams))
         
         return <UnitPath key={unit._id} unit={unit} lessons={unitLessons} pathPosition={unit.id} completedLessons={completedLessons?.[unit.slugAsParams] || []} />

@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react"
 import { MountChecker } from "@/lib/MountChecker"
 import { userMetadata } from "@/lib/auth"
 import { redirect } from "next/navigation"
+import { UnitBookModal } from "@/components/Activity/UnitBookModal"
 
 
 type RootLayoutProps = {
@@ -21,6 +22,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <Header />
+      <UnitBookModal />
       <div className="flex flex-col px-4 py-2 place-items-center min-h-screen leading-relaxed">
         {children}
         <MountChecker />
