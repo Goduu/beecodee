@@ -11,6 +11,7 @@ export const UnitBookModal = () => {
   const unit = useStore(unitBookModalStore, (state) => state.unit);
   const modalRef = useRef(null)
   useDetectOuterClickAndEsc({ ref: modalRef, onOuterClick: close })
+
   if (!unit) return null
 
   return (
@@ -28,7 +29,7 @@ export const UnitBookModal = () => {
               <div className="divide-y divide-gray-200">
                 <div className="py-8 text-base leading-6 space-y-4 sm:text-lg sm:leading-7 flex flex-col items-center max-h-96">
                   <div className='overflow-scroll flex-wrap w-full'>
-                    <Mdx code={unit.body.code} />
+                    {isOpen && <Mdx code={unit.body.code} />}
                   </div>
                 </div>
               </div>

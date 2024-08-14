@@ -26,18 +26,10 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@/lib": [
-        "./src/lib"
-      ],
-      "@/components": [
-        "./src/components"
-      ],
-      "@contentlayer/generated": [
-        ".contentlayer/generated"
-      ]
+      "@/*": ["./src/*"],
+      "@/lib": ["./src/lib"],
+      "@/components": ["./src/components"],
+      "@contentlayer/generated": [".contentlayer/generated"]
     }
   },
   "include": [
@@ -47,6 +39,7 @@
     ".next/types/**/*.ts",
     ".contentlayer/generated",
     ".contentlayer/generated/**/*.json",
+    ".next/types/**/*.ts",
   ],
   "exclude": [
     "node_modules"

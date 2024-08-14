@@ -1,7 +1,7 @@
 import { RefObject, useEffect } from 'react'
 
 type DetectOuterClickProps = {
-    ref?: RefObject<HTMLDivElement>
+    ref?: RefObject<HTMLDivElement | null>
     onOuterClick: () => void
 }
 export const useDetectOuterClickAndEsc = ({ onOuterClick, ref }: DetectOuterClickProps) => {

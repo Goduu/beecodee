@@ -7,7 +7,7 @@ import { useDetectOuterClickAndEsc } from './useDetectOuterClickAndEsc'
 
 export const LoginModal = () => {
     const isOpen = useStore(loginModalStore, (state) => state.isOpen);
-    const modalRef = useRef(null)
+    const modalRef = useRef<HTMLDivElement>(null)
     useDetectOuterClickAndEsc({ ref: modalRef, onOuterClick: close })
 
     return (

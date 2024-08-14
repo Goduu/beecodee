@@ -16,6 +16,5 @@ export const Mdx: FC<MdxProps> = ({ code }) => {
     highlightAll()
   }, [])
 
-
   return <MDXContent components={{}} />
 }
