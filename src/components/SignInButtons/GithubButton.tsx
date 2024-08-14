@@ -5,9 +5,9 @@ import { FaGithub } from '../Icons'
 
 export const GithubButton:FC = () => {
     return (
-        <Button onClick={signInWithGithub} className="flex gap-2">
+        <Button onClick={signInWithGithub} className="flex gap-2 items-center">
             <FaGithub className="w-5" />
-            With GitHub
+            Continue with GitHub
         </Button>
     )
 }

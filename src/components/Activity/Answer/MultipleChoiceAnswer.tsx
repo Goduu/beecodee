@@ -40,7 +40,7 @@ export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({ question, 
                     />
                 ))}
             </div>
-            <CheckContinueButton status={status} handleCheck={handleCheckStatus} handleGoToNextActivity={handleGoToNextActivity} />
+            <CheckContinueButton isAnswerCorrect={status==="correct"} handleCheck={handleCheckStatus} handleGoToNextActivity={handleGoToNextActivity} />
         </div >
     )
 }

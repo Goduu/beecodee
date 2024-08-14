@@ -1,15 +1,14 @@
 import React, { FC } from 'react'
-import { AnswerStatus } from './types'
 import { Button } from '@/components/Button'
 
 type CheckContinueButtonProps = {
-    status: AnswerStatus
+    isAnswerCorrect: boolean
     handleCheck: () => void
     handleGoToNextActivity: () => void
 }
-export const CheckContinueButton: FC<CheckContinueButtonProps> = ({ status, handleCheck, handleGoToNextActivity }) => {
+export const CheckContinueButton: FC<CheckContinueButtonProps> = ({ isAnswerCorrect, handleCheck, handleGoToNextActivity }) => {
 
-    if (status === 'neutral' || status === 'wrong') {
+    if (!isAnswerCorrect) {
         return <Button onClick={handleCheck}>Check</Button>
     }
 

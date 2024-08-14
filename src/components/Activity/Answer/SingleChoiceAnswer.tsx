@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import { SingleChoiceQuestion } from '@contentlayer/generated'
-import { useAnswerStates } from './useAnswerStates'
 import { CheckContinueButton } from './CheckContinueButton'
 import { QuestionDescription } from './QuestionDescription'
-import { SingleAnswerTokenChip } from '../SingleAnswerTokenChip'
+import { useSingleChoiceAnswerStates } from './SingleChoiceAnswer.states'
+import { TokenGroupChip } from '../TokenGroupChip'
 
 type SingleChoiceAnswerProps = {
     question: SingleChoiceQuestion
@@ -12,31 +12,23 @@ type SingleChoiceAnswerProps = {
 }
 
 export const SingleChoiceAnswer: FC<SingleChoiceAnswerProps> = ({ question, language, handleGoToNextActivity }) => {
-    const {
-        status,
-        options,
-        answer,
-        addTokenToAnswer,
-        handleCheckStatus,
-    } = useAnswerStates(question, language)
+    const { isAnswerCorrect, selectAnswer, answer, options, handleCheckStatus } = useSingleChoiceAnswerStates(question, language)
 
     return (
         <div className='flex flex-col gap-16 items-center'>
             <QuestionDescription description={question.description} />
             <div className='flex flex-col gap-4 justify-center flex-wrap min-w-48'>
                 {options.map((token, index) => (
-                    <SingleAnswerTokenChip
-                        onClick={() => addTokenToAnswer(token)}
-                        key={token.content}
-                        token={token}
-                        selectedAnswer={answer}
-                        status={status}
+                    <TokenGroupChip
+                        onClick={() => selectAnswer(token)}
+                        key={index}
+                        tokenGroup={token}
                     />
                 ))}
             </div>
 
             <CheckContinueButton
-                status={status}
+                isAnswerCorrect={isAnswerCorrect}
                 handleCheck={handleCheckStatus}
                 handleGoToNextActivity={handleGoToNextActivity}
             />

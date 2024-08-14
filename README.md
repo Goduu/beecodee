@@ -3,16 +3,20 @@ What if we had a Duolingo for learning to code?
 
 ### Presenting beecodee!
 
-![Alt text](public/images/ss.png)
+![Home page](public/images/ss0.png)
 
-![Alt text](public/images/ss2.png)
+![Home page](public/images/ss1.png)
 
-Current development time: 2 days
+![Path page](public/images/ss2.png)
 
 ## Development List
 - [x] Initial Concept
 - [x] Home with unit path 🏠
     - [x] Home UI/UX
+    - [ ] GetStarted Page
+        - [x] GetStarted UI/UX
+        - [ ] Enhance questions
+        - [ ] Save answers on db
     - [x] Unit Path UI/UX
     - [x] Unit Path Functionality
 - [ ] Unit / Lesson / Activity Structure  📒
@@ -54,7 +58,7 @@ Current development time: 2 days
     - [ ] Color Scheme
     - [x] Progress Bar
     - [x] Circular progress bar
-    - [ ] Font
+    - [x] Font
     - [ ] ...?
 - [ ] Responsive Design 📱
     - [x] Mobile

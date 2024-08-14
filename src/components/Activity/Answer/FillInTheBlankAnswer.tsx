@@ -58,7 +58,7 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
                     />
                 ))}
             </div>
-            <CheckContinueButton status={status} handleCheck={handleCheckStatus} handleGoToNextActivity={handleGoToNextActivity} />
+            <CheckContinueButton isAnswerCorrect={status==="correct"} handleCheck={handleCheckStatus} handleGoToNextActivity={handleGoToNextActivity} />
         </div>
     );
 }
