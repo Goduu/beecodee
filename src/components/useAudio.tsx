@@ -8,11 +8,12 @@ export const useAudio = () => {
 
     useEffect(() => {
         setCorrectAnswerSound(new Audio('/sounds/correct.mp3'));
-        setWrongAnswerSound(new Audio('/sounds/false.mp3'));
+        setWrongAnswerSound(new Audio('/sounds/wrong.mp3'));
     }, []);
 
     const playSound = (sound: HTMLAudioElement | null) => {
         if (sound) {
+            sound.volume = 0.4
             sound.play();
         }
     }

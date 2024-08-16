@@ -31,16 +31,23 @@ What if we had a Duolingo for learning to code?
         - [ ]  ... ? 
 - [ ] Activity Content
     - [ ] JS Course
-        - [ ] Syntax
-        - [ ] Variables
-        - [ ] Operators
-        - [ ] Conditionals
-        - [ ] Loops
-        - [ ] Functions
-        - [ ] Arrays
-        - [ ] Objects
-        - [ ] Classes
-        - [ ] ...?
+        - [x] U: Basic Syntax
+            -L: Variables
+                -A: Concept
+                -A: Declaration
+                -A: Assignment
+                -A: Initialization
+                -A: Naming Convention
+            -L: Statements
+                -A: Concept
+                -A: Declaration
+                -A: Expression
+                -A: Block
+                -A: Semicolon
+            -L: Comments
+                -A: Single Line
+                -A: Multi Line
+        - [ ] ...
     - [ ] Second course
         - [ ] Data Structure for more courses
 - [ ] Points system 💯
@@ -52,9 +59,9 @@ What if we had a Duolingo for learning to code?
     - [x] Mascot
     - [x] Name
     - [x] Logo
-    - [ ] Sounds 🔊
+    - [x] Sounds 🔊
         - [x] Sounds implementation
-        - [ ] Find good sounds
+        - [x] Find good sounds
     - [ ] Color Scheme
     - [x] Progress Bar
     - [x] Circular progress bar
@@ -74,9 +81,9 @@ What if we had a Duolingo for learning to code?
     - [ ] Color Blindness
     - [ ] ...?
 - [ ] Performance ⚡
+    - [x] Vercel Speed Insights
     - [ ] Lighthouse
     - [ ] Web Vitals
-    - [ ] Image Optimization
     - [ ] Code Splitting
     - [ ] ...?
 - [ ] Testing 🧪
