@@ -12,7 +12,6 @@ export const FinishLessonBlock: FC<FinishLessonBlockProps> = ({ finishLesson }) 
 
     const handleFinishLesson = () => {
         finishLesson()
-        redirect('/path')
     }
 
     return (

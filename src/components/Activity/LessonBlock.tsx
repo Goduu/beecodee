@@ -5,27 +5,27 @@ import { useStore } from 'zustand'
 import { Lesson } from '@contentlayer/generated'
 import { ActivityBlock } from './ActivityBlock'
 import { FinishLessonBlock } from './FinishLessonBlock'
-import { finishLesson } from './ActivityBlock.functions'
+import { saveFinishedLesson } from './ActivityBlock.functions'
+import { redirect } from 'next/navigation'
 
 type LessonBlockProps = {
     lesson: Lesson
 }
 
 export const LessonBlock: FC<LessonBlockProps> = ({ lesson }) => {
-    const currentUnitId = useStore(unitStore, (state) => state.currentUnitId)
-    const unit = useStore(unitStore, (state) => state.units[currentUnitId || ''])
-    const currentLessonId = unit?.currentLessonId || 0
-    const currentLesson = unit?.lessons.find((lesson) => lesson.id === currentLessonId)
+    const onGoingUnitSlug = useStore(unitStore, (state) => state.onGoingUnitSlug)
+    const onGoingLessonSlug = useStore(unitStore, (state) => state.onGoingLessonSlug)
+    const onGoingLessonToDoActivities = useStore(unitStore, (state) => state.onGoingLessonToDoActivities)
 
-    const handleFinishLesson = useCallback(() => {
-        return finishLesson(currentUnitId, lesson.slugAsParams, lesson.xp)
-    }, [currentUnitId, lesson.slugAsParams, lesson.xp])
+    const handleFinishLesson = () => {
+        if (!onGoingLessonSlug) return
 
-    if (!currentUnitId) return null
+        saveFinishedLesson(onGoingUnitSlug, onGoingLessonSlug, lesson.xp)
+        redirect('/path')
+    }
 
 
-
-    if (currentLesson?.concluded) {
+    if (onGoingLessonToDoActivities?.size === 0) {
         return <FinishLessonBlock finishLesson={handleFinishLesson} />
     }
 

@@ -1,0 +1,26 @@
+---
+type: Activity
+id: js_else_debugging1-1
+language: javascript
+tags: [beginner, conditionals, debugging]
+question:
+  type: Debugging
+  description: "There is a mistake in the following code. Identify the error and correct it."
+  codeSnippet: |
+    if (chute = numeroSecreto) {
+        alert('You guessed correctly!');
+    } else {
+        alert('You guessed wrong :(');
+    }
+  expectedOutput: "If the user's guess matches numeroSecreto, they should see 'You guessed correctly!', otherwise 'You guessed wrong :('."
+  correctAnswer: |
+    The error is in the condition. The single equals sign `=` is used for assignment, not comparison. It should be `==` or `===`.
+    Corrected code:
+    ```javascript
+    if (chute == numeroSecreto) {
+        alert('You guessed correctly!');
+    } else {
+        alert('You guessed wrong :(');
+    }
+    ```
+---

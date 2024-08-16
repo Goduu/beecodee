@@ -3,12 +3,12 @@ import { userMetadata } from "@/lib/auth";
 import { revalidateTag } from "next/cache";
 import { createClient } from "src/lib/supabase/server";
 
-export type CompletedLessonByUnitId = {
-    [unitId: string]: string[],
-}
-export const fetchUserFinishedLessons = async () => {
+export type CompletedLessonIdsByUnitId = Map<string, Set<string>>
+
+export const fetchUserCompletedLessonByUnitId = async () => {
     const userData = await userMetadata()
     if (!userData) return
+
     const supabase = createClient();
     const { data, error } = await supabase.from('xpollen').select('unit_id, lesson_id').eq('user_id', userData.id)
 
@@ -17,14 +17,13 @@ export const fetchUserFinishedLessons = async () => {
         return
     }
 
-    const completedLessonByUnitId = data.reduce((acc: CompletedLessonByUnitId, curr) => {
-        if (acc[curr.unit_id]) {
-            acc[curr.unit_id].push(curr.lesson_id)
-        } else {
-            acc[curr.unit_id] = [curr.lesson_id]
+    const completedLessonByUnitId = data.reduce((acc: CompletedLessonIdsByUnitId, { unit_id: unitId, lesson_id: lessonId }) => {
+        if (!acc.has(unitId)) {
+            acc.set(unitId, new Set());
         }
+        acc.get(unitId)?.add(lessonId);
         return acc
-    }, {})
+    }, new Map<string, Set<string>>())
 
     return completedLessonByUnitId
 

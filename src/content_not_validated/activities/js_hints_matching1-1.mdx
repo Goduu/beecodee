@@ -1,0 +1,24 @@
+---
+type: Activity
+id: js_hints_matching1-1
+language: javascript
+tags: [intermediate, code_matching, hints]
+question:
+  type: CodeMatching
+  description: "Match the code snippets with their correct descriptions for providing hints in the game."
+  options:
+    - content: "if (numeroSecreto > chute) { alert(`O número secreto é maior que ${chute}`); }"
+      oType: "text"
+    - content: "else { alert(`O número secreto é menor que ${chute}`); }"
+      oType: "text"
+    - content: "if (chute > numeroSecreto) { alert(`O número secreto é menor que ${chute}`); }"
+      oType: "text"
+    - content: "else { alert(`O número secreto é maior que ${chute}`); }"
+      oType: "text"
+  correctAnswer: [
+    ["if (numeroSecreto > chute) { alert(`O número secreto é maior que ${chute}`); }", "This code checks if the secret number is greater than the guess and provides the corresponding hint."],
+    ["else { alert(`O número secreto é menor que ${chute}`); }", "This code provides the hint when the guess is greater than the secret number."],
+    ["if (chute > numeroSecreto) { alert(`O número secreto é menor que ${chute}`); }", "This code checks if the guess is greater than the secret number and provides the corresponding hint."],
+    ["else { alert(`O número secreto é maior que ${chute}`); }", "This code provides the hint when the guess is less than the secret number."]
+  ]
+---

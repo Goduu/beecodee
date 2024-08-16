@@ -1,0 +1,24 @@
+---
+type: Activity
+id: js_while_loop_matching1-1
+language: javascript
+tags: [intermediate, code_matching, loops]
+question:
+  type: CodeMatching
+  description: "Match the code snippets with their correct descriptions for implementing a `while` loop in the game."
+  options:
+    - content: "while (chute != numeroSecreto) { /* loop body */ }"
+      oType: "text"
+    - content: "chute = prompt('Escolha um número entre 1 e 100');"
+      oType: "text"
+    - content: "if (chute == numeroSecreto) { alert('Você descobriu o número secreto'); }"
+      oType: "text"
+    - content: "alert('O número secreto é maior que ${chute}');"
+      oType: "text"
+  correctAnswer: [
+    ["while (chute != numeroSecreto) { /* loop body */ }", "This code snippet sets up a `while` loop that continues as long as the condition is true."],
+    ["chute = prompt('Escolha um número entre 1 e 100');", "This code snippet prompts the user to input a number and should be placed inside the `while` loop to allow repeated guesses."],
+    ["if (chute == numeroSecreto) { alert('Você descobriu o número secreto'); }", "This code snippet checks if the user's guess is correct and alerts the user if it is."],
+    ["alert('O número secreto é maior que ${chute}');", "This code snippet alerts the user that the secret number is greater than their guess if the guess is too low."]
+  ]
+---

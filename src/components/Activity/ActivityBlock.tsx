@@ -8,42 +8,45 @@ import { MultipleChoiceAnswer } from './Answer/MultipleChoiceAnswer'
 import { SingleChoiceAnswer } from './Answer/SingleChoiceAnswer'
 import { PairMatchingAnswer } from './Answer/PairMatchingQuestion'
 import { CodeOutputAnswer } from './Answer/CodeOutputAnswer'
+import { allActivities } from '@contentlayer/generated'
 
 type AnswerBlockProps = {
 }
 
 export const ActivityBlock: FC<AnswerBlockProps> = () => {
-    const currentActivityData = useStore(unitStore, (state) => state.currentActivityData)
+    const onGoingActivitySlug = useStore(unitStore, (state) => state.onGoingActivitySlug)
+    // @ToDo implement a map for allActivities to avoid this find
+    const onGoingActivityData = allActivities.find((activity) => activity.slugAsParams === onGoingActivitySlug)
 
-    if (!currentActivityData) return <Loading visible={true} />
+    if (!onGoingActivityData) return null
 
 
     return (
         <div className='flex flex-col gap-8'>
-            {currentActivityData.question.type === 'FillInTheBlankQuestion' ? (
+            {onGoingActivityData.question.type === 'FillInTheBlankQuestion' ? (
                 <FillInTheBlankAnswer
-                    question={currentActivityData.question}
-                    language={currentActivityData.language}
+                    question={onGoingActivityData.question}
+                    language={onGoingActivityData.language}
                     handleGoToNextActivity={goToNextActivity} />
             ) :
-                currentActivityData.question.type === "MultipleChoiceQuestion" ? (
+                onGoingActivityData.question.type === "MultipleChoiceQuestion" ? (
                     <MultipleChoiceAnswer
-                        question={currentActivityData.question}
-                        language={currentActivityData.language}
+                        question={onGoingActivityData.question}
+                        language={onGoingActivityData.language}
                         handleGoToNextActivity={goToNextActivity} />
-                ) : currentActivityData.question.type === "SingleChoiceQuestion" ?
+                ) : onGoingActivityData.question.type === "SingleChoiceQuestion" ?
                     <SingleChoiceAnswer
-                        question={currentActivityData.question}
-                        language={currentActivityData.language}
+                        question={onGoingActivityData.question}
+                        language={onGoingActivityData.language}
                         handleGoToNextActivity={goToNextActivity} /> :
-                    currentActivityData.question.type === "CodeOutputQuestion" ?
+                    onGoingActivityData.question.type === "CodeOutputQuestion" ?
                         <CodeOutputAnswer
-                            question={currentActivityData.question}
-                            language={currentActivityData.language}
+                            question={onGoingActivityData.question}
+                            language={onGoingActivityData.language}
                             handleGoToNextActivity={goToNextActivity} /> :
                         <PairMatchingAnswer
-                            question={currentActivityData.question}
-                            language={currentActivityData.language}
+                            question={onGoingActivityData.question}
+                            language={onGoingActivityData.language}
                             handleGoToNextActivity={goToNextActivity} />
 
             }

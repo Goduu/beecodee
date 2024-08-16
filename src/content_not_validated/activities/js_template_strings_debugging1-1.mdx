@@ -1,0 +1,20 @@
+---
+type: Activity
+id: js_template_strings_debugging1-1
+language: javascript
+tags: [beginner, debugging, template_strings]
+question:
+  type: Debugging
+  description: "There is an error in the following code snippet using template strings. Identify and correct the error."
+  codeSnippet: |
+    let numeroSecreto = 8;
+    alert(`Isso ai! Você descobriu o número secreto numeroSecreto`);
+  expectedOutput: "If numeroSecreto is 8, the alert should display: 'Isso ai! Você descobriu o número secreto 8'."
+  correctAnswer: |
+    The error is that `numeroSecreto` is not being evaluated as a variable but is treated as a string. It should be inside `${}` within the backticks.
+    Corrected code:
+    ```javascript
+    let numeroSecreto = 8;
+    alert(`Isso ai! Você descobriu o número secreto ${numeroSecreto}`);
+    ```
+---

@@ -1,0 +1,29 @@
+---
+type: Activity
+id: js_code_rewriting1-1
+language: javascript
+tags: [beginner, code_rewriting, user_interaction]
+question:
+  type: CodeRewriting
+  description: "Rewrite the code below to display an alert both when the user guesses correctly and when they guess incorrectly."
+  codeSnippet: |
+    let numeroSecreto = 7;
+    let chute = prompt('Escolha um número entre 1 e 10');
+    
+    if (chute == numeroSecreto) {
+        console.log('You guessed correctly!');
+    } else {
+        console.log('You guessed wrong :(');
+    }
+  correctAnswer: |
+    ```javascript
+    let numeroSecreto = 7;
+    let chute = prompt('Escolha um número entre 1 e 10');
+    
+    if (chute == numeroSecreto) {
+        alert('You guessed correctly!');
+    } else {
+        alert('You guessed wrong :(');
+    }
+    ```
+---

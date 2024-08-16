@@ -1,8 +1,8 @@
 import { insertXpollen } from "@/lib/supabase/api/insertXpollen";
-import { goToNextLesson } from "../Unit/unitStore";
+import { finishLesson } from "../Unit/unitStore";
 
 
-export const finishLesson = async (unitId: string | null | undefined, lessonId: string, lessonXp: number) => {
+export const saveFinishedLesson = async (unitId: string | null | undefined, lessonId: string, lessonXp: number) => {
     if (!unitId) return
 
     try {
@@ -15,7 +15,7 @@ export const finishLesson = async (unitId: string | null | undefined, lessonId: 
         console.error('Error finishing lesson:', error)
     }
     finally {
-        goToNextLesson();
+        finishLesson();
     }
 
 }

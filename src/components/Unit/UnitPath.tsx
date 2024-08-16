@@ -1,9 +1,9 @@
 "use client"
-import { Lesson, Unit } from '@contentlayer/generated'
+import { allLessons, Unit } from '@contentlayer/generated'
 import React, { FC, useEffect } from 'react'
 import { CircularProgress } from '../Activity/CircularProgress'
 import { ActivityPath } from '../Activity/ActivityPath'
-import { initializeUnit, unitStore } from './unitStore'
+import { initiateCompletedUnitLessons, startLesson, unitStore } from './unitStore'
 import { ReviewUnit } from './ReviewUnit'
 import { useStore } from '../useStore'
 import { getPathZigzagPath } from './getPathDescription'
@@ -11,23 +11,24 @@ import { CircleSkeleton } from '../Skeletons/CircleSkeleton'
 
 type UnitProps = {
   unit: Unit
-  lessons: Lesson[]
   pathPosition: number
-  completedLessons: string[]
+  completedLessons: Set<string> | undefined
 }
 
-export const UnitPath: FC<UnitProps> = ({ unit, lessons, pathPosition, completedLessons }) => {
-  const currentUnit = useStore(unitStore, (state) => state.units[unit.slugAsParams])
-  const currentLessonId = currentUnit?.currentLessonId
-  const currentLesson = lessons.find((lesson) => lesson.slugAsParams === currentLessonId)
+export const UnitPath: FC<UnitProps> = ({ unit, pathPosition, completedLessons }) => {
+  const onGoingLessonSlug = useStore(unitStore, (state) => state.onGoingLessonSlug)
+  // @ToDo implement a map for allLessons to avoid this find
+  const onGoingLesson = allLessons.find((lesson) => lesson.slugAsParams === onGoingLessonSlug)
 
   useEffect(() => {
-    initializeUnit(unit.slugAsParams, lessons, completedLessons);
-  }, [unit, lessons, completedLessons]);
+    completedLessons && initiateCompletedUnitLessons(completedLessons)
+  }, [completedLessons])
 
-  initializeUnit(unit.slugAsParams, lessons, completedLessons)
+  useEffect(() => {
+    startLesson(unit);
+  }, [unit]);
 
-  const percentage = (completedLessons.length / unit.lessonRefs.length) * 100
+  const percentage = ((completedLessons?.size || 0) / unit.lessonRefs.length) * 100
 
   const zigZagClass = getPathZigzagPath(pathPosition)
 
@@ -39,12 +40,12 @@ export const UnitPath: FC<UnitProps> = ({ unit, lessons, pathPosition, completed
     )
   }
 
-  if (!currentLesson) return <CircleSkeleton className={zigZagClass} />
+  if (!onGoingLesson) return <CircleSkeleton className={zigZagClass} />
 
   return (
     <div className={zigZagClass}>
       <CircularProgress percent={percentage} >
-        <ActivityPath lesson={currentLesson} unit={unit} />
+        <ActivityPath lesson={onGoingLesson} unit={unit} />
       </CircularProgress>
     </div>
   )

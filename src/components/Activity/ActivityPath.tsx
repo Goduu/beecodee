@@ -5,9 +5,8 @@ import { Button } from '../Button'
 import { Lesson, Unit } from '@contentlayer/generated'
 import { redirect } from 'next/navigation'
 import { useDetectOuterClickAndEsc } from '../useDetectOuterClickAndEsc'
-import { resetLessonProgress, setCurrentUnitId } from '../Unit/unitStore'
+import { startLesson } from '../Unit/unitStore'
 import { UnitBookButton } from './UnitBookButton'
-import { UnitBookModal } from './UnitBookModal'
 import { PathwayButton } from './PathwayButton'
 import { Pollen } from '../Svgs/Pollen'
 
@@ -32,8 +31,7 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit }) => {
 const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit }) => {
 
     const handleStartLesson = () => {
-        setCurrentUnitId(unit)
-        resetLessonProgress(unit)
+        startLesson(unit)
         redirect(lesson.slug)
     }
 

@@ -1,11 +1,21 @@
 ---
 type: Activity
-id: js_basic1-1
+id: js_variables_initialization1-2
 language: javascript
 tags: [beginner, console.log, variables, addition]
 question:
   type: FillInTheBlankQuestion
   description: "If the result of the console.log is 10, what should be the value of the gap?"
+  segments:
+  - type: "Segment"
+    sType: "code"
+    content: "const a = "
+  - type: "Segment"
+    sType: "gap"
+    content: "4"
+  - type: "Segment"
+    sType: "code"
+    content: ";\nconst b = 5;\nconsole.log(a + b);"
   options: 
     - content: "ab"
       oType: "code"
@@ -16,14 +26,4 @@ question:
     - content: "1"
       oType: "code"
   correctAnswer: ["5"]
-  segments:
-  - type: "Segment"
-    sType: "code"
-    content: "const a = "
-  - type: "Segment"
-    sType: "gap"
-    content: "5"
-  - type: "Segment"
-    sType: "code"
-    content: ";\nconst b = 5;\nconsole.log(a + b);"
 ---

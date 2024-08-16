@@ -1,0 +1,25 @@
+---
+type: Activity
+id: js_hints_output_prediction1-1
+language: javascript
+tags: [intermediate, prediction, hints]
+question:
+  type: CodeOutputPrediction
+  description: "Predict what will happen when the following code snippet is executed with the secret number set to 5 and a guess of 3."
+  codeSnippet: |
+    let numeroSecreto = 5;
+    let chute = 3;
+    if (numeroSecreto > chute) {
+        alert(`O número secreto é maior que ${chute}`);
+    } else {
+        alert(`O número secreto é menor que ${chute}`);
+    }
+  options:
+    - content: "The alert will display 'O número secreto é maior que 3'."
+      oType: "text"
+    - content: "The alert will display 'O número secreto é menor que 3'."
+      oType: "text"
+    - content: "The alert will display 'O número secreto é igual a 3'."
+      oType: "text"
+  correctAnswer: ["The alert will display 'O número secreto é maior que 3'."]
+---
