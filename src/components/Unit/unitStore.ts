@@ -1,6 +1,7 @@
 import { allLessons, Unit } from "@contentlayer/generated";
 import { create as createStore } from "zustand";
 import { localStoragePersist } from "../../lib/localStoragePersist";
+import { StorageValue } from "zustand/middleware";
 
 // Zustand store types
 type StoreState = {
@@ -25,23 +26,32 @@ function getDefaultState(): StoreState {
 export const unitStore = createStore(localStoragePersist(getDefaultState,
   {
     name: "unit",
-    serialize: (state) => JSON.stringify({
-      state: {
-        ...state.state,
-        completedLessons: Array.from(state.state.completedLessons),
-        onGoingLessonToDoActivities: Array.from(state.state.onGoingLessonToDoActivities),
-        onGoingLessonDoneActivities: Array.from(state.state.onGoingLessonDoneActivities),
+    storage: {
+      getItem: (key) => {
+        const item = localStorage.getItem(key)
+        if (!item) return null;
+        const { state } = JSON.parse(item);
+        return {
+          state: {
+            ...state,
+            completedLessons: new Set(state.completedLessons),
+            onGoingLessonToDoActivities: new Set(state.onGoingLessonToDoActivities),
+            onGoingLessonDoneActivities: new Set(state.onGoingLessonDoneActivities)
+          },
+        }
       },
-    }),
-    deserialize: (str) => {
-      const data = JSON.parse(str);
-      return {
-        ...data,
-        completedLessons: new Set(data.state.completedLessons),
-        onGoingLessonToDoActivities: new Set(data.state.onGoingLessonToDoActivities),
-        onGoingLessonDoneActivities: new Set(data.state.onGoingLessonDoneActivities)
-      };
-
+      setItem: (key, newValue: StorageValue<StoreState>) => {
+        const stringifiedObject = JSON.stringify({
+          state: {
+            ...newValue.state,
+            completedLessons: Array.from(newValue.state.completedLessons),
+            onGoingLessonToDoActivities: Array.from(newValue.state.onGoingLessonToDoActivities),
+            onGoingLessonDoneActivities: Array.from(newValue.state.onGoingLessonDoneActivities),
+          },
+        })
+        localStorage.setItem(key, stringifiedObject)
+      },
+      removeItem: (key) => localStorage.removeItem(key),
     }
   }))
 

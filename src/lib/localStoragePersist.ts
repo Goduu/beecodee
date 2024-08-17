@@ -50,7 +50,8 @@ export const localStoragePersist: typeof persist = (storageConfig, persistConfig
   return persist(storageConfig, {
     ...persistConfig,
     name: `beecodee-${persistConfig.name}`,
-    storage: createJSONStorage(() => storage),
+    // @ToDo Check if there is still a need for the custom storage
+    storage: persistConfig.storage || createJSONStorage(() => storage),
 
     // This function is called when the version changes.
     // By default, reset the state to the default state.

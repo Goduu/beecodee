@@ -1,0 +1,273 @@
+JS program:
+
+- U: Basic Syntax
+    -L: Variables
+        -A: Concept
+        -A: Declaration
+        -A: Assignment
+        -A: Initialization
+        -A: Naming Convention
+    -L: Statements
+        -A: Concept
+        -A: Declaration
+        -A: Expression
+        -A: Block
+        -A: Semicolon
+    -L: Comments
+        -A: Single Line
+        -A: Multi Line
+- U: Syntax Essentials
+    -L: Whitespace
+        -A: Concept
+        -A: Space
+        -A: Tab
+        -A: New Line
+    -L: Line Breaks
+        -A: Concept
+        -A: Line Terminator
+        -A: Line Continuation
+    -L: Indentation
+        -A: Concept
+        -A: Tab
+        -A: Space
+        -A: Mixed
+    -L: Reserved Words
+        -A: Concept
+        -A: Keywords
+        -A: Future Reserved Words
+        -A: Strict Mode Reserved Words
+    -L: Strict Mode
+        -A: Concept
+        -A: Declaration
+        -A: Scope
+        -A: Use
+    -L: Unicode
+        -A: Concept
+        -A: Character Set
+        -A: Escape Sequences
+    
+
+- U: Data Types
+    -L: Primitive Data Types
+        -L: Number
+        -L: String
+        -L: Boolean
+        -L: Undefined
+        -L: Null
+        -L: Symbol
+    -L: Non-Primitive Data Types
+        -L: Object
+            -L: Array
+            -L: Function
+            -L: Date
+            -L: RegExp
+
+- U: Operators
+    -L: Arithmetic Operators
+    -L: Comparison Operators
+    -L: Logical Operators
+    -L: Assignment Operators
+    -L: Conditional Operators
+    -L: Bitwise Operators
+    -L: Special Operators
+
+- U: Control Structures
+    -L: Conditional Statements
+        -L: if
+        -L: if-else
+        -L: if-else-if
+        -L: switch
+    -L: Looping Statements
+        -L: for
+        -L: while
+        -L: do-while
+        -L: for-in
+        -L: for-of
+    -L: Jump Statements
+        -L: break
+        -L: continue
+        -L: return
+
+- U: Scope
+    -L: Global Scope
+    -L: Local Scope
+    -L: Block Scope
+    -L: Lexical Scope
+
+- U: Functions
+    -L: Function Declaration
+    -L: Function Invocation
+    -L: Function Parameters
+    -L: Function Return
+    -L: Function Scope
+    -L: Function Closure
+    -L: Function Hoisting
+    -L: Function Recursion
+
+- U: Objects
+    -L: Object Declaration
+    -L: Object Properties
+    -L: Object Methods
+    -L: Object Constructors
+    -L: Object Prototypes
+    -L: Object Inheritance
+
+- U: Arrays
+    -L: Array Declaration
+    -L: Array Properties
+    -L: Array Methods
+    -L: Array Iteration
+
+- U: Error Handling
+    -L: try-catch
+    -L: throw
+    -L: finally
+
+
+-------------------------------
+
+- U: JSON
+    -L: JSON Syntax
+    -L: JSON Data Types
+    -L: JSON Objects
+    -L: JSON Arrays
+    -L: JSON Parsing
+    -L: JSON Stringify
+
+- U: Type Conversion
+    -L: Implicit Type Conversion
+    -L: Explicit Type Conversion
+
+
+- U: Regular Expressions
+    -L: RegExp Declaration
+    -L: RegExp Methods
+    -L: RegExp Properties
+    -L: RegExp Patterns
+
+- U: Asynchronous Programming
+    -L: Callbacks
+    -L: Promises
+    -L: Async/Await
+
+- U: Hoisting
+    -L: Variable Hoisting
+    -L: Function Hoisting
+
+- U: Closures
+    -L: Closure Declaration
+    -L: Closure Invocation
+    -L: Closure Scope
+
+- U: Prototypes
+    -L: Prototype Declaration
+    -L: Prototype Inheritance
+    -L: Prototype Chain
+
+
+- U: This Keyword
+    -L: Global Context
+    -L: Function Context
+    -L: Object Context
+    -L: Event Context
+    -L: Call, Apply, Bind
+
+- U: Destruc
+    -L: Destructuring Assignment
+    -L: Array Destructuring
+    -L: Object Destructuring
+
+- U: Spread Operator
+    -L: Array Spread
+    -L: Object Spread
+
+- U: Modules
+    -L: Module Declaration
+    -L: Module Import
+    -L: Module Export
+
+- U: Event Handling
+    -L: Event Listener
+    -L: Event Object
+    -L: Event Propagation
+    -L: Event Delegation
+
+-U: Map, Filter, Reduce
+    -L: Array.prototype.map
+    -L: Array.prototype.filter
+    -L: Array.prototype.reduce
+
+- U: ES5 Features
+    -L: Strict Mode
+    -L: JSON
+    -L: Object.defineProperty
+    -L: Object.defineProperties
+    -L: Object.create
+    -L: Object.keys
+    -L: Object.getOwnPropertyNames
+    -L: Array.isArray
+    -L: Array.prototype.forEach
+    -L: Array.prototype.map
+    -L: Array.prototype.filter
+    -L: Array.prototype.reduce
+    -L: Array.prototype.every
+    -L: Array.prototype.some
+    -L: Array.prototype.indexOf
+    -L: Array.prototype.find
+    -L: Function.prototype.bind
+    -L: Date.now
+    -L: Date.prototype.toISOString
+    -L: Date.prototype.toJSON
+    -L: Date.prototype.toDateString
+    -L: Date.prototype.toLocaleString
+    -L: Date.prototype.toLocaleTimeString
+
+- U: ES6 Features
+    -L: let and const
+    -L: Arrow Functions
+    -L: Template Literals
+    -L: Default Parameters
+    -L: Rest Parameters
+    -L: Spread Operator
+    -L: Destructuring Assignment
+    -L: Classes
+    -L: Inheritance
+    -L: Modules
+    -L: Promises
+    -L: Generators
+    -L: Iterators
+    -L: Maps
+    -L: Sets
+    -L: Symbols
+    -L: Proxies
+    -L: Reflect
+    -L: Decorators
+
+- U: Web APIs
+    -L: DOM Manipulation
+        -L: DOM Selection
+        -L: DOM Traversal
+        -L: DOM Manipulation
+        -L: DOM Events
+    -L: AJAX
+    -L: Web Storage
+    -L: Web Workers
+    -L: Service Workers
+    -L: Web Sockets
+    -L: Geolocation
+    -L: Notifications
+    -L: Device Orientation
+    -L: Device Motion
+    -L: Fullscreen
+    -L: Page Visibility
+    -L: Clipboard
+    -L: Screen
+    -L: Speech Recognition
+    -L: Speech Synthesis
+    -L: Vibration
+    -L: Battery Status
+    -L: Network Information
+    -L: Media Capture
+    -L: File API
+    -L: IndexedDB
+    -L: WebRTC
