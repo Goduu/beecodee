@@ -11,9 +11,11 @@ export const TooltipHover: FC<TooltipHoverProps> = ({ children, position = "top"
 
     return (
         <div className={`${disabled ? "" : "group"} relative flex justify-between w-fit `}>
-            {children}
+            <div className='z-0'>
+                {children}
+            </div>
             <div className={`
-                opacity-0 group-hover:opacity-100 
+                opacity-0 group-hover:opacity-100 z-50
                 transition duration-200 delay-150 ease-in-out
                 absolute left-1/2 transform -translate-x-1/2
                 ${position === "top" ? "bottom-full mb-1 sm:mb-2" : "top-full mt-1 sm:mt-2"}

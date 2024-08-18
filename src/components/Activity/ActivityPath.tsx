@@ -6,9 +6,9 @@ import { Lesson, Unit } from '@contentlayer/generated'
 import { redirect } from 'next/navigation'
 import { useDetectOuterClickAndEsc } from '../useDetectOuterClickAndEsc'
 import { startLesson } from '../Unit/unitStore'
-import { UnitBookButton } from './UnitBookButton'
 import { PathwayButton } from './PathwayButton'
 import { Pollen } from '../Svgs/Pollen'
+import { HoneyComb } from '../HoneyComb/HoneyComb'
 
 type ActivityLinkProps = {
     lesson: Lesson
@@ -44,12 +44,12 @@ const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit }) => {
                 <div className='flex gap-2 items-center text-sm'>
                     <Pollen className='w-7' /> Get {lesson.xp} XPollen
                 </div>
-                <div className='absolute bottom-0 right-0'>
-                    <UnitBookButton unit={unit} />
-                </div>
                 <Button onClick={handleStartLesson}>
                     Start Lesson
                 </Button>
+            </div>
+            <div className='absolute bottom-0 right-0'>
+                <HoneyComb unit={unit} size='small' /> 
             </div>
         </div>
     )

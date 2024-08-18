@@ -15,13 +15,13 @@ function getDefaultState(): StoreState {
 }
 
 
-export const unitBookModalStore = createStore(getDefaultState)
+export const unitHoneyCombModalStore = createStore(getDefaultState)
 
 export const open = (unit: Unit) => {
-    unitBookModalStore.setState({ isOpen: true, unit })
+    unitHoneyCombModalStore.setState({ isOpen: true, unit })
 }
 
 export const close = () => {
-    unitBookModalStore.setState({ isOpen: false })
+    unitHoneyCombModalStore.setState({ isOpen: false })
 }
 

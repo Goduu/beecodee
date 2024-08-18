@@ -1,11 +1,11 @@
 import { Carousel } from "@/components/Home/Carousel";
 import { redirect } from "next/navigation";
 import { userMetadata } from "@/lib/auth";
-import { LoginInButton } from "./LoginInButton";
-import { FindYourPath } from "./FindYourPath";
-import { BeeSlogan } from "./BeeSlogan";
-import { HomeFooter } from "./HomeFooter";
-import { GetStartedButton } from "./GetStartedButton";
+import { LoginInButton } from "../Home/LoginInButton";
+import { FindYourPath } from "../Home/FindYourPath";
+import { BeeSlogan } from "../Home/BeeSlogan";
+import { HomeFooter } from "../Home/HomeFooter";
+import { GetStartedButton } from "../Home/GetStartedButton";
 import { Bee } from "../Svgs/Bee";
 
 export const HomePage = async () => {
