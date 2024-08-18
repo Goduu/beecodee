@@ -36,7 +36,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           </main>
         </div>
         <DevToolsModal />
-        <DevToolsButton />
+          <DevToolsButton />
       </body>
     </html>
   )

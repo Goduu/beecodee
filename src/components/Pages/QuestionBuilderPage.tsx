@@ -7,7 +7,7 @@ import { Button } from '../Button'
 import { TbPencilQuestion } from '../Svgs/Icons'
 
 export const QuestionBuilderPage = () => {
-    const [code, setCode] = useState('xongas');
+    const [code, setCode] = useState("");
     const [questionType, setQuestionType] = useState<Activity["question"]["type"]>("CodeOutputQuestion");
 
     return (

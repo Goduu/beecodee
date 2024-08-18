@@ -1,0 +1,35 @@
+---
+type: Activity
+id: js_code_matching1-1
+language: javascript
+tags: [beginner, template_strings, code_matching]
+question:
+  type: PairMatchingQuestion
+  description: "Match the code segment with how whitespace is used:"
+  pairMatchingOptions:
+    - content: "let name = 'Alice'"
+      oType: "code"
+      position: "up"
+    - content: "if ( a > b )"
+      oType: "code"
+      position: "up"
+    - content: "function greet( name ) { }"
+      oType: "code"
+      position: "up"
+    - content: "return x + y;"
+      oType: "code"
+      position: "up"
+    - content: "Separates condition components"
+      oType: "text"
+      position: "down"
+    - content: "Separates function parameters"
+      oType: "text"
+      position: "down"
+    - content: "Ignored by JavaScript"
+      oType: "text"
+      position: "down"
+    - content: "Improves readability between operators"
+      oType: "text"
+      position: "down"
+  correctAnswer: [["let name = 'Alice'", "Ignored by JavaScript"], ["if ( a > b )", "Separates condition components"], ["function greet( name ) { }", "Separates function parameters"], ["return x + y;", "Improves readability between operators"]]
+---

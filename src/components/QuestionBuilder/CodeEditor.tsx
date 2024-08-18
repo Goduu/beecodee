@@ -94,7 +94,7 @@ options:
     oType: "text"
   - content: "my = CodeOption"
     oType: "code"
-correctA: null
+correctAnswer: ["myOption"]
 ---
 `
 
