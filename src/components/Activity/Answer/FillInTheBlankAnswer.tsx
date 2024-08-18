@@ -31,7 +31,7 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
     let gapCounter = -1;
 
     return (
-        <div className='flex flex-col gap-16 px-2'>
+        <div className='flex flex-col gap-16 px-2 items-center'>
             <QuestionDescription description={question.description} />
             <div className={`flex rounded-xl border-2 sm:min-w-96 min-h-40 justify-center items-center drop-shadow-xl ${statusClass}`}>
                 <div className='flex justify-start text-left px-2'>

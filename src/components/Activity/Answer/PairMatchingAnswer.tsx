@@ -4,7 +4,7 @@ import { QuestionDescription } from './QuestionDescription';
 import { TokenGroup } from './types';
 import { TokenGroupChip } from '../TokenGroupChip';
 import { Button } from '@/components/Button';
-import { generatePairMatchingOptions, hasWrongStatus, updateOptionsStatus } from './PairMatchingQuestion.functions';
+import { generatePairMatchingOptions, hasWrongStatus, updateOptionsStatus } from './PairMatchingAnswer.functions';
 import { useAudio } from '@/components/useAudio';
 
 type PairMatchingAnswerProps = {
@@ -51,7 +51,7 @@ export const PairMatchingAnswer: FC<PairMatchingAnswerProps> = ({ question, lang
     };
 
     return (
-        <div className="flex flex-col gap-16 items-center">
+        <div className="flex flex-col gap-10 sm:gap-16 items-center">
             <QuestionDescription description={question.description} />
             <div className="flex flex-col gap-4 justify-center">
                 {options.map((tokens, index) => (

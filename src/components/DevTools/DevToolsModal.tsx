@@ -5,6 +5,8 @@ import { useDetectOuterClickAndEsc } from '../useDetectOuterClickAndEsc'
 import { Button } from '../Button'
 import { close, devToolsModalStore } from './DevToolsModal.store'
 import { deleteUserProgress } from '@/lib/supabase/api/deleteUserProgress'
+import { redirect } from 'next/navigation'
+import { TbPencilQuestion } from '../Svgs/Icons'
 
 export const DevToolsModal = () => {
     const isOpen = useStore(devToolsModalStore, (state) => state.isOpen);
@@ -35,6 +37,9 @@ export const DevToolsModal = () => {
                                     </Button>
                                     <Button color="secondary" onClick={deleteUserProgress}>
                                         Reset My Progress
+                                    </Button>
+                                    <Button color="secondary" onClick={() => {close(); redirect("/dev/questionBuilder")}} className='flex gap-2'>
+                                        GoTo QuestionBuilder <TbPencilQuestion className='w-6' />
                                     </Button>
                                 </div>
                             </div>
