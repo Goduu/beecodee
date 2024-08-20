@@ -1,7 +1,8 @@
 import { allLessons, Unit } from "@contentlayer/generated";
 import { create as createStore } from "zustand";
-import { localStoragePersist } from "../../lib/localStoragePersist";
+import { isBrowser, localStoragePersist } from "../../lib/localStoragePersist";
 import { StorageValue } from "zustand/middleware";
+import { waitForAppToMount } from "@/lib/mount";
 
 // Zustand store types
 type StoreState = {
@@ -40,7 +41,14 @@ export const unitStore = createStore(localStoragePersist(getDefaultState,
           },
         }
       },
-      setItem: (key, newValue: StorageValue<StoreState>) => {
+      setItem: async (key, newValue: StorageValue<StoreState>) => {
+
+        if (!isBrowser()) {
+          return
+        }
+
+        await waitForAppToMount()
+
         const stringifiedObject = JSON.stringify({
           state: {
             ...newValue.state,
@@ -107,6 +115,7 @@ export const finishLesson = () => {
     completedLessons.add(onGoingLessonSlug)
 
     return {
+      ...state,
       completedLessons: completedLessons,
     }
   })
@@ -123,4 +132,15 @@ export const initiateCompletedUnitLessons = (completedLessons: Set<string>) => {
     return { completedLessons: completedLessonsSet }
   }
   )
+}
+
+export const initiateReviewUnitVariables = (activities: string[]) => {
+  unitStore.setState((state) => {
+    return {
+      onGoingLessonSlug: "review",
+      onGoingActivitySlug: activities[0],
+      onGoingLessonToDoActivities: new Set(activities),
+      onGoingLessonDoneActivities: new Set([]),
+    }
+  })
 }

@@ -1,5 +1,5 @@
 "use client"
-import React, { FC, useCallback } from 'react'
+import React, { FC } from 'react'
 import { unitStore } from '../Unit/unitStore'
 import { useStore } from 'zustand'
 import { Lesson } from '@contentlayer/generated'

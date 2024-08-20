@@ -16,7 +16,7 @@ type UnitProps = {
 }
 
 export const UnitPath: FC<UnitProps> = ({ unit, pathPosition, completedLessons }) => {
-  const onGoingLesson = useUnitNextLesson(unit)
+  const nextLesson = useUnitNextLesson(unit)
 
   useEffect(() => {
     completedLessons && initiateCompletedUnitLessons(completedLessons)
@@ -34,12 +34,12 @@ export const UnitPath: FC<UnitProps> = ({ unit, pathPosition, completedLessons }
     )
   }
 
-  if (!onGoingLesson) return <CircleSkeleton className={zigZagClass} />
+  if (!nextLesson) return <CircleSkeleton className={zigZagClass} />
 
   return (
     <div className={zigZagClass}>
       <CircularProgress percent={percentage} >
-        <ActivityPath lesson={onGoingLesson} unit={unit} />
+        <ActivityPath lesson={nextLesson} unit={unit} />
       </CircularProgress>
     </div>
   )
