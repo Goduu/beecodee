@@ -20,7 +20,6 @@ export const LessonBlock: FC<LessonBlockProps> = ({ lessonXp, activityMap }) => 
     const onGoingUnitSlug = useStore(unitStore, (state) => state.onGoingUnitSlug)
     const onGoingLessonSlug = useStore(unitStore, (state) => state.onGoingLessonSlug)
     const onGoingLessonToDoActivities = useStore(unitStore, (state) => state.onGoingLessonToDoActivities)
-    const onGoingLessonDoneActivities = useStore(unitStore, (state) => state.onGoingLessonDoneActivities)
     const onGoingActivitySlug = useStore(unitStore, (state) => state.onGoingActivitySlug)
 
     useEffect(() => {
@@ -32,7 +31,7 @@ export const LessonBlock: FC<LessonBlockProps> = ({ lessonXp, activityMap }) => 
     }, [activityMap, onGoingActivitySlug])
 
     const handleGotToNextActivity = () => {
-        if(onGoingLessonToDoActivities?.size === 1){
+        if (onGoingLessonToDoActivities?.size === 1) {
             setLessonState('finished')
         }
         goToNextActivity()
@@ -63,7 +62,7 @@ export const LessonBlock: FC<LessonBlockProps> = ({ lessonXp, activityMap }) => 
 
     return (
         <div className={`flex-col gap-8 flex`}>
-            <EndLessonXpPage />
+            <EndLessonXpPage lessonXp={lessonXp} />
         </div>
     )
 }
