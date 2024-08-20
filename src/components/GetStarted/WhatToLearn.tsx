@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaTools, GiStarsStack, MdStar, MdStarHalf, SiCss3, SiHtml5, SiJavascript, SiPython, SiReact, SiTypescript } from '../Svgs/Icons'
 import { TooltipHover } from '../TooltipHover'
 import { Button } from '../Button'
@@ -22,10 +22,14 @@ export const WhatToLearn = () => {
         }
     }
 
-    if (!currentQuestion) {
-        open()
-        return null
-    }
+    useEffect(() => {
+        if (!currentQuestion) {
+            open()
+        }
+    }, [currentQuestion])
+
+    if (!currentQuestion) return null
+
     const handleClose = () => {
         redirect(process.env.NEXT_PUBLIC_URL || '/')
     }

@@ -3,7 +3,9 @@ import { Activity } from '@contentlayer/generated'
 import { useSearchParams, } from 'next/navigation'
 import React, { FC, useEffect } from 'react'
 import { initiateReviewUnitVariables } from '../Unit/unitStore'
-import { ReviewLesson } from '../ReviewLesson'
+import { LessonBlock } from '../Activity/LessonBlock'
+
+const REVIEW_LESSON_XP = 5
 
 type ReviewPageProps = {
     activityMap: Map<string, Activity>
@@ -11,13 +13,13 @@ type ReviewPageProps = {
 
 export const ReviewPage: FC<ReviewPageProps> = ({ activityMap }) => {
     const searchParams = useSearchParams()
-    const activities = JSON.parse(searchParams.get("activities") || "")
-    
+
     useEffect(() => {
+        const activities = JSON.parse(searchParams.get("activities") || "")
         activities && initiateReviewUnitVariables(activities)
-    }, [activities]);
+    }, [searchParams]);
 
     return (
-        <ReviewLesson activityMap={activityMap} />
+        <LessonBlock activityMap={activityMap} lessonXp={REVIEW_LESSON_XP}/>
     )
 }

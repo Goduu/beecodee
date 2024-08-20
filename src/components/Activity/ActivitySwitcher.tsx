@@ -7,11 +7,13 @@ import { CodeOutputAnswer } from './Answer/CodeOutputAnswer'
 import { PairMatchingAnswer } from './Answer/PairMatchingAnswer'
 
 type ActivitySwitcherProps = {
-    activity: Activity
+    activity: Activity | null
     goToNextActivity?: () => void
 }
 
 export const ActivitySwitcher: FC<ActivitySwitcherProps> = ({ activity, goToNextActivity = () => { } }) => {
+    if (!activity) return null
+
     return (
 
         activity.question.type === 'FillInTheBlankQuestion' ? (

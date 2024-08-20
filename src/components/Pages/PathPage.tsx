@@ -2,7 +2,6 @@ import { Bee } from '../Svgs/Bee'
 import { UnitPath } from '../Unit/UnitPath'
 import { allUnits } from '@contentlayer/generated'
 import { fetchUserCompletedLessonByUnitId } from '@/lib/supabase/api/fetchUserFinishedLessons'
-import { CounterUp } from '../CounterUp'
 
 export const PathPage = async () => {
 
@@ -14,8 +13,6 @@ export const PathPage = async () => {
             {allUnits.sort((a, b) => a.id - b.id).map((unit) => {
                 return <UnitPath key={unit._id} unit={unit} pathPosition={unit.id} completedLessons={completedLessonByUnitId?.get(unit.slugAsParams)} />
             })}
-            <div className='h-screen'>as</div>
-            <CounterUp countTo={10}/>
         </div>
     )
 }

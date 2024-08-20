@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation"
 
 import { Metadata } from "next"
-import { allLessons } from "@contentlayer/generated"
+import { Activity, allActivities, allLessons } from "@contentlayer/generated"
 import { LessonBlock } from "@/components/Activity/LessonBlock"
 
 interface ActivityProps {
@@ -48,10 +48,16 @@ export default async function LessonPage({ params }: ActivityProps) {
     notFound()
   }
 
+  const activityMap = new Map<string, Activity>()
+
+  allActivities.forEach((activity) => {
+    activityMap.set(activity.slugAsParams, activity)
+  })
+
   return (
     <div className="flex text-center justify-center">
       <div className="flex flex-col items-center gap-8 min-h-[450px] w-[398px] sm:w-[600px]">
-        <LessonBlock lesson={lesson}/>
+        <LessonBlock lessonXp={lesson.xp} activityMap={activityMap} />
       </div>
     </div>
   )

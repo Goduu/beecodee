@@ -8,7 +8,7 @@ import { signOut } from '@/lib/auth';
 
 export const Sidebar = () => {
   const pathname = usePathname()
-  const isHidden = pathname === "/" || pathname.includes("/lessons")
+  const isHidden = pathname === "/" || pathname.includes("/lessons") || pathname.includes("getStarted")
 
   return (
     <div className={`inset-x-0 fixed z-40 ${isHidden && "hidden scale-0"}
@@ -26,7 +26,7 @@ export const Sidebar = () => {
         </div>
         <ul className='flex w-full sm:flex-col justify-evenly sm:justify-center'>
           {menuOptions.map((option, index) => (
-            <li key={index} className="hover:bg-gray-700 rounded-lg p-1 px-4 sm:px-6">
+            <li key={index} className="hover:bg-gray-700 rounded-lg p-1 px-1 sm:px-6">
               <Link
                 href={option.link}
                 className={`h-16 flex gap-2 justify-start items-center w-full ${pathname === option.link && "text-amber-400"}`}>

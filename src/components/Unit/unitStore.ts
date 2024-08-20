@@ -122,19 +122,21 @@ export const finishLesson = () => {
 }
 
 export const initiateCompletedUnitLessons = (completedLessons: Set<string>) => {
+
   unitStore.setState((state) => {
     const completedLessonsSet = new Set(state.completedLessons)
-
+    
     completedLessons.forEach((completedLessonSlug) => {
       completedLessonsSet.add(completedLessonSlug)
     })
-
+    
     return { completedLessons: completedLessonsSet }
   }
-  )
+)
 }
 
 export const initiateReviewUnitVariables = (activities: string[]) => {
+
   unitStore.setState((state) => {
     return {
       onGoingLessonSlug: "review",

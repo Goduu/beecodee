@@ -22,7 +22,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     <>
       <Header />
       <UnitHoneyCombModal />
-      <div className="flex flex-col px-4 py-2 place-items-center min-h-screen leading-relaxed ml-20 md:ml-40">
+      <div className="flex flex-col px-4 py-2 place-items-center min-h-screen leading-relaxed pl-0 md:ml-40">
         {children}
         <MountChecker />
         <Analytics />
