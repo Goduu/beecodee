@@ -17,7 +17,7 @@ export const TooltipClick: FC<TooltipClickProps> = ({ children, position = "top"
                 absolute left-1/2 transform -translate-x-1/2 min-w-80
                 ${position === "top" ? "bottom-full mb-1 sm:mb-2" : "top-full mt-1 sm:mt-2"}
                 `}>
-                <div className="bg-gray-800 text-white text-s font-bold rounded-lg p-10">
+                <div className="bg-gray-300 dark:bg-gray-800 text-white text-s font-bold rounded-lg p-10">
                     {!disabled && content}
                 </div>
             </div>

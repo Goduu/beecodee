@@ -21,7 +21,7 @@ export const TooltipHover: FC<TooltipHoverProps> = ({ children, position = "top"
                 ${position === "top" ? "bottom-full mb-1 sm:mb-2" : "top-full mt-1 sm:mt-2"}
                 `}>
                 {position === "bottom" && ArrowBottom}
-                <div className="bg-gray-800 text-white text-s font-bold rounded-lg p-2 w-full items-center">
+                <div className="bg-gray-300 dark:bg-gray-800 text-white text-s font-bold rounded-lg p-2 w-full items-center">
                     {!disabled && text}
                 </div>
                 {position === "top" && ArrowTop}

@@ -15,7 +15,7 @@ export const PathwayButton: FC<PathwayButtonProps> = ({ size="medium", onClick }
                 border-b-8 border-gray-900
                 rounded-full flex items-center justify-center 
                 cursor-pointer hover:scale-105 hover:border-b-2 duration-300
-                bg-gray-800 ${dimensions}`}
+                bg-gray-200 dark:bg-gray-800 ${dimensions}`}
             onClick={onClick}
         >
             <IoMdFlower className={iconDimensions} />

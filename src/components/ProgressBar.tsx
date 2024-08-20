@@ -25,7 +25,7 @@ export const ProgressBar: FC<ProgressBar> = ({ size = "medium", progress, onClos
                     role="progressbar"
                 >
                     <div
-                        className={`bg-green-400 rounded-full ${heightClass} transition duration-300 ease-in-out`}
+                        className={`bg-lime-500 rounded-full ${heightClass} transition duration-300 ease-in-out`}
                         style={{ width: `${progress}%`, transition: 'width 2s' }}
                     />
                 </div>

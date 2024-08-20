@@ -26,10 +26,10 @@ export const Sidebar = () => {
         </div>
         <ul className='flex w-full sm:flex-col justify-evenly sm:justify-center'>
           {menuOptions.map((option, index) => (
-            <li key={index} className="hover:bg-gray-700 rounded-lg p-1 px-1 sm:px-6">
+            <li key={index} className={`hover:bg-gray-500 rounded-lg p-1 px-1 sm:px-6 ${pathname === option.link && "bg-gray-500"}`}>
               <Link
                 href={option.link}
-                className={`h-16 flex gap-2 justify-start items-center w-full ${pathname === option.link && "text-amber-400"}`}>
+                className={`h-16 flex gap-2 justify-start items-center w-full `}>
                 {option.icon}
                 <span className='text-xs font-black hidden md:block'>
                   {option.label}

@@ -14,10 +14,10 @@ export const TokenWrapper: FC<TokenWrapperProps> = ({ children, tokenType, onCli
     const getClassNames = () => {
         return `
             inline-block py-1 rounded-md
-            bg-gray-800 text-xl font-extrabold
+            bg-gray-300 dark:bg-gray-800 text-xl font-extrabold
             ${!used && onClick ? 'cursor-pointer' : ''}
             ${tokenType ? tokenTypeToTailwindClass(tokenType) : ''}
-            ${used && "text-red-50 text-opacity-0 bg-gray-500"}
+            ${used && "text-red-50 text-opacity-0 bg-gray-200 dark:bg-gray-500"}
             ${className}
         `;
     };
