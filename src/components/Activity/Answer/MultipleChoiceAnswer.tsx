@@ -29,7 +29,7 @@ export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({ question, 
             <QuestionDescription description={question.description} />
             <div className='flex gap-2 min-w-96 min-h-40'>
                 <div className={`flex flex-col border-2 rounded-xl w-5/6 justify-center drop-shadow-xl ${statusClass}`}>
-                    <div>
+                    <div className='inline-block text-start px-1'>
                         {answer.map((token, index) => (
                             <TokenChip key={`tokenAnswer-${index}-${token.content}`} onClick={() => removeTokenFromAnswer(token)} token={token} className='px-2' />
                         ))}
