@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Token } from '../TokenColors/highlightCode'
-import { TokenWrapper } from './TokenChipWrapper'
+import { TokenGroupWrapper } from './TokenGroupWrapper'
 import { AnswerStatus } from './Answer/types'
 
 type SingleAnswerTokenChipProps = {
@@ -16,9 +16,9 @@ export const SingleAnswerTokenChip: FC<SingleAnswerTokenChipProps> = ({ token, o
     const classStatus = isSelected ? status === 'neutral' ? "selected" : status : "neutral"
 
     return (
-        <TokenWrapper className={getStatusClass(classStatus)} tokenType={token.type} onClick={onClick}>
+        <TokenGroupWrapper className={getStatusClass(classStatus)} tokenType={token.type} onClick={onClick}>
             {token.content}
-        </TokenWrapper>
+        </TokenGroupWrapper>
     );
 }
 
@@ -27,7 +27,7 @@ const getStatusClass = (status: AnswerStatus) => {
         case "selected":
             return "border-2 border-b-2 border-blue-500"
         case "correct":
-            return "border-2 border-b-2 border-green-500"
+            return "border-2 border-b-2 border-lime-500"
         case "wrong":
             return "border-2 border-b-2 border-red-500"
         default:

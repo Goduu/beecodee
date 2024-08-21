@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Token } from '../TokenColors/highlightCode'
-import { TokenWrapper } from './TokenChipWrapper'
+import { TokenChipWrapper } from './TokenChipWrapper'
 
 type TokenChipProps = {
     token: Token
@@ -11,7 +11,6 @@ type TokenChipProps = {
 export const TokenChip: FC<TokenChipProps> = ({ token, onClick, className = "", used = false }) => {
 
     const renderGapContent = () => (
-        // text-white does not have opacity
         <span className="text-opacity-0 text-red-50">
             {'_'.repeat(Number(token.content))}
         </span>
@@ -20,15 +19,15 @@ export const TokenChip: FC<TokenChipProps> = ({ token, onClick, className = "", 
     const renderTokenContent = () => {
         switch (token.content) {
             case '\n':
-                return <br />;
+                return '\n';
             default:
-                return token.type === 'gap' ? renderGapContent() : token.content.replace(/ /g, '\u00A0');
+                return token.type === 'gap' ? renderGapContent() : token.content.replace(/ /g, '\u00A0'); // Non-breaking spaces
         }
     };
 
     return (
-        <TokenWrapper className={className} tokenType={token.type} used={used} onClick={onClick}>
+        <TokenChipWrapper className={className} tokenType={token.type} used={used} onClick={onClick}>
             {renderTokenContent()}
-        </TokenWrapper>
+        </TokenChipWrapper>
     );
 }

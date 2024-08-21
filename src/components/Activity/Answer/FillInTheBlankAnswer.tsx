@@ -106,7 +106,7 @@ const renderGapSegment = (
 const getStatusClass = (status: AnswerStatus): string => {
     switch (status) {
         case 'correct':
-            return 'border-green-500';
+            return 'border-lime-500';
         case 'wrong':
             return 'border-red-600';
         default:

@@ -18,7 +18,7 @@ export const FinishLessonBlock: FC<FinishLessonBlockProps> = ({ finishLesson }) 
 
     return (
         <>
-            <LuCheckCircle className='w-32 text-white rounded-full bg-green-500 p-5' />
+            <LuCheckCircle className='w-32 text-white rounded-full bg-lime-500 p-5' />
             <Button onClick={handleFinishLesson}>
                 <span className='flex gap-1'>
                     {finishing ? <ImSpinner className="h-12 w-12 animate-spin" />

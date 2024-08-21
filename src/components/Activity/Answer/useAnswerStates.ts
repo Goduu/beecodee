@@ -62,6 +62,7 @@ export const useAnswerStates = (question: Activity["question"], language: string
 
     const handleCheckStatus = useCallback(() => {
         const correctAnswer = question.correctAnswer
+
         if (correctAnswer && JSON.stringify(correctAnswer) === JSON.stringify(answer.map(token => token.content))) {
             playSound(correctAnswerSound)
             setStatus('correct')

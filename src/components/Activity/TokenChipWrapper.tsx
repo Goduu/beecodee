@@ -2,14 +2,14 @@ import { FC, ReactNode } from 'react'
 import { tokenTypeToTailwindClass } from '../TokenColors/tokenToTailwindClass'
 
 
-type TokenWrapperProps = {
+type TokenChipWrapperProps = {
     children: ReactNode,
     onClick?: () => void,
     className?: string
     tokenType?: string | null
     used?: boolean
 }
-export const TokenWrapper: FC<TokenWrapperProps> = ({ children, tokenType, onClick, className, used }) => {
+export const TokenChipWrapper: FC<TokenChipWrapperProps> = ({ children, tokenType, onClick, className, used }) => {
 
     const getClassNames = () => {
         return `
@@ -26,9 +26,38 @@ export const TokenWrapper: FC<TokenWrapperProps> = ({ children, tokenType, onCli
         !used && onClick && onClick();
     }
 
+    const renderChildren = () => {
+        if (typeof children === 'string') {
+            if (children === '\n') {
+                return <>
+                    <span className={` text-opacity-10 text-slate-50 ${getClassNames()}`} onClick={() => handleClick()}>\n</span>
+                    <br />
+                </>
+            }
+            if (children === '\t') {
+                return <>
+                    <span className={`w-14 text-center text-opacity-10 text-slate-50 ${getClassNames()}`} onClick={() => handleClick()}>\t</span>
+                </>
+            }
+            return (
+                <span
+                    onClick={() => handleClick()}
+                    className={getClassNames()}
+                >
+                    {children}
+                </span>
+            );
+        }
+        return (
+            <span
+                onClick={() => handleClick()}
+                className={getClassNames()}
+            >
+                {children}
+            </span>)
+    };
+
     return (
-        <span onClick={handleClick} className={getClassNames()}>
-            {children}
-        </span>
+        renderChildren()
     );
 }

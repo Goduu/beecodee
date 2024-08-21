@@ -7,6 +7,7 @@ import { BeeSlogan } from "../Home/BeeSlogan";
 import { HomeFooter } from "../Home/HomeFooter";
 import { GetStartedButton } from "../Home/GetStartedButton";
 import { Bee } from "../Svgs/Bee";
+import { SiteNumbers } from "../Home/SiteNumbers";
 
 export const HomePage = async () => {
     const userData = await userMetadata()
@@ -31,6 +32,7 @@ export const HomePage = async () => {
 
                     <FindYourPath />
                     <BeeSlogan />
+                    <SiteNumbers />
                     <div className="flex flex-col items-center z-10">
                         <GetStartedButton />
                     </div>

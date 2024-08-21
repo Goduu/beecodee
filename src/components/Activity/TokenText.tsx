@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import { Token } from '../TokenColors/highlightCode'
-import { TokenWrapper } from './TokenChipWrapper'
 import { tokenTypeToTailwindClass } from '../TokenColors/tokenToTailwindClass'
 
 type TokenTextProps = {

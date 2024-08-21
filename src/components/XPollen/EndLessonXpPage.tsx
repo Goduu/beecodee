@@ -3,8 +3,8 @@ import { CounterUp } from '../CounterUp'
 import { Button } from '../Button'
 import { Pollen } from '../Svgs/Pollen'
 import { MdStar } from '../Svgs/Icons'
-import { Bee } from '../Svgs/Bee'
 import { redirect } from 'next/navigation'
+import { BeeKnowledge } from '../Svgs/BeeKnowledge'
 
 type EndLessonXpPageProps = {
     lessonXp: number
@@ -13,7 +13,7 @@ type EndLessonXpPageProps = {
 export const EndLessonXpPage: FC<EndLessonXpPageProps> = ({ lessonXp }) => {
     return (
         <div className='flex flex-col  font-black items-center justify-center gap-12'>
-            <Bee className='w-56' />
+            <BeeKnowledge className='w-56' />
             <div className='flex gap-4'>
                 <div className='bg-amber-500 rounded-lg flex flex-col gap-1 h-28 w-44'>
                     <div className='px-3 mt-2 text-sm'>
