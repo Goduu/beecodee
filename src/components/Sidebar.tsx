@@ -59,6 +59,6 @@ export const Sidebar = () => {
 const menuOptions = [
   { icon: <IoMdFlower className='w-10' />, label: 'PATH', link: '/path' },
   { icon: <GiHoneypot className='w-10' />, label: 'HONEYCOMB', link: '/path/honeycomb' },
-  { icon: <BeeHead className='w-10' />, label: 'PROFILE', link: '/' },
+  { icon: <BeeHead className='w-10' />, label: 'PROFILE', link: '/profile' },
 
 ]

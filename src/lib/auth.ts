@@ -36,6 +36,8 @@ export type User = {
   name: string
   email?: string
   avatarUrl: string
+  createdAt: string
+  userName: string
 }
 
 export const userMetadata = async () => {
@@ -53,6 +55,8 @@ export const userMetadata = async () => {
     name: metadata?.full_name || metadata.name,
     email: session.data.user?.email || metadata.email,
     avatarUrl: metadata.avatar_url,
+    createdAt: session.data.user?.created_at,
+    userName: session.data.user?.user_metadata?.user_name,
   }
 
   return userData

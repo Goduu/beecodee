@@ -28,7 +28,7 @@ export const Button: FC<ButtonProps> = ({ children, className, disabled, ping = 
                     font-bold hover:shadow-sm h-fit p-2
                     ${size === "small" && "p-[3px] text-xs"}
                     ${color === "primary" && "bg-amber-500 text-gray-50 border-amber-600"}
-                    ${color === "secondary" && " border-gray-300 "}
+                    ${color === "secondary" && "text-slate-900 dark:text-gray-50 text-current border-gray-300 "}
                     disabled:scale-100 disabled:bg-slate-500 disabled:border-slate-500 disabled:border-b-4 disabled:mt-0
                     ${className}
                     `}
