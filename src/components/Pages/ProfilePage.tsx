@@ -25,7 +25,7 @@ export const ProfilePage = async () => {
                     </div>
                     <div className='flex items-center gap-4'>
                         <FaBookBookmark className='w-7' />
-                        {userFinishLessons?.values().reduce((total, lesson) => total + lesson.size, 0)}  <span>Finished Lessons</span>
+                        {Array.from(userFinishLessons?.values() || []).reduce((total, lesson) => total + lesson.size, 0)}  <span>Finished Lessons</span>
                     </div>
                     <SiJavascript className='w-7 py-2' />
                 </div>
