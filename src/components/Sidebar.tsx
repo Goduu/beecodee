@@ -5,10 +5,17 @@ import { BeecodeeIcon } from './Svgs/BeecodeeIcon';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { signOut } from '@/lib/auth';
+import { LOCALES } from './Localization/localization';
+
+const HIDDEN_PATHS = ['/lessons', '/getStarted']
 
 export const Sidebar = () => {
   const pathname = usePathname()
-  const isHidden = pathname === "/" || pathname.includes("/lessons") || pathname.includes("getStarted")
+  const isHomePathname = LOCALES.some(
+    (locale) => pathname === `/${locale}`
+  )
+
+  const isHidden = isHomePathname || HIDDEN_PATHS.find(path => pathname.includes(path))
 
   return (
     <div className={`inset-x-0 fixed z-40 ${isHidden && "hidden scale-0"}

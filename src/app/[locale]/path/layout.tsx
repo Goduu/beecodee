@@ -2,8 +2,6 @@ import { ReactNode } from "react"
 import { Header } from "@/components/Header"
 import { Analytics } from "@vercel/analytics/react"
 import { MountChecker } from "@/lib/MountChecker"
-import { userMetadata } from "@/lib/auth"
-import { redirect } from "next/navigation"
 import { UnitHoneyCombModal } from "@/components/HoneyComb/UnitHoneyCombModal"
 
 
@@ -12,11 +10,6 @@ type RootLayoutProps = {
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
-  const userData = await userMetadata()
-
-  if (!userData) {
-    redirect('/')
-  }
 
   return (
     <>
