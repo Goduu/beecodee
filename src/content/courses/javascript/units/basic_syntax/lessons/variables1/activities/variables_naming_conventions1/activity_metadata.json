@@ -1,0 +1,51 @@
+{
+    "language": "javascript",
+    "tags": [
+        "beginner",
+        "variables",
+        "naming"
+    ],
+    "question": {
+        "type": "SingleChoiceQuestion",
+        "description": {
+            "en": "Which of the following options have only allowed variable names in JavaScript?",
+            "pt": "Quais das seguintes opções têm apenas nomes de variáveis permitidos em JavaScript?",
+            "fr": "Lesquelles des options suivantes n'ont que des noms de variables autorisés en JavaScript?",
+            "de": "Welche der folgenden Optionen haben nur erlaubte Variablennamen in JavaScript?",
+            "es": "¿Cuáles de las siguientes opciones tienen solo nombres de variables permitidos en JavaScript?"
+        },
+        "options": [
+            {
+                "option": {
+                    "id": "a",
+                    "content": "firstName, 1stName, $name, _name",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "b",
+                    "content": "name1, name, $name, _name",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "c",
+                    "content": "name1, 1stName, $name, _name",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "d",
+                    "content": "firstName, -firstName, name, _name",
+                    "type": "CodeOption"
+                }
+            }
+        ],
+        "correctAnswer": [
+            "b"
+        ]
+    }
+}

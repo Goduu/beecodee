@@ -1,0 +1,43 @@
+{
+    "language": "javascript",
+    "tags": [
+        "beginner",
+        "comments"
+    ],
+    "question": {
+        "type": "SingleChoiceQuestion",
+        "description": {
+            "en": "Comments in JavaScript are useful for explaining what your code does without affecting its execution. To add a single-line comment in JavaScript, we can use:",
+            "pt": "Comentários em JavaScript são úteis para explicar o que seu código faz sem afetar sua execução. Para adicionar um comentário de uma linha em JavaScript, podemos usar:",
+            "fr": "Les commentaires en JavaScript sont utiles pour expliquer ce que fait votre code sans affecter son exécution. Pour ajouter un commentaire sur une seule ligne en JavaScript, nous pouvons utiliser:",
+            "de": "Kommentare in JavaScript sind nützlich, um zu erklären, was Ihr Code tut, ohne seine Ausführung zu beeinflussen. Um einen einzeiligen Kommentar in JavaScript hinzuzufügen, können wir verwenden:",
+            "es": "Los comentarios en JavaScript son útiles para explicar qué hace su código sin afectar su ejecución. Para agregar un comentario de una sola línea en JavaScript, podemos usar:"
+        },
+        "options": [
+            {
+                "option": {
+                    "id": "a",
+                    "content": "// This is a comment",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "b",
+                    "content": "/* This is a comment */",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "c",
+                    "content": "# This is a comment",
+                    "type": "CodeOption"
+                }
+            }
+        ],
+        "correctAnswer": [
+            "a"
+        ]
+    }
+}

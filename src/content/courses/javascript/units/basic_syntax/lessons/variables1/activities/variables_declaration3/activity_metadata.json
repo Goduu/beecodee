@@ -1,0 +1,69 @@
+{
+    "language": "javascript",
+    "tags": [
+        "beginner",
+        "variables",
+        "let",
+        "assignment"
+    ],
+    "question": {
+        "type": "MultipleChoiceQuestion",
+        "description": {
+            "en": "Declare a variable named foo with the value 11",
+            "pt": "Declare uma variável chamada foo com o valor 11",
+            "fr": "Déclarez une variable nommée foo avec la valeur 11",
+            "de": "Deklariere eine Variable namens foo mit dem Wert 11",
+            "es": "Declara una variable llamada foo con el valor 11"
+        },
+        "options": [
+            {
+                "option": {
+                    "id": "a",
+                    "content": "let",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "b",
+                    "content": "variable",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "c",
+                    "content": "foo",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "d",
+                    "content": "11",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "e",
+                    "content": "==",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "f",
+                    "content": "=",
+                    "type": "CodeOption"
+                }
+            }
+        ],
+        "correctAnswer": [
+            "a",
+            "c",
+            "f",
+            "d"
+        ]
+    }
+}

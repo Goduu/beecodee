@@ -1,0 +1,117 @@
+{
+    "language": "javascript",
+    "tags": [
+        "beginner",
+        "reserved word"
+    ],
+    "question": {
+        "type": "PairMatchingQuestion",
+        "description": {
+            "en": "Match the JavaScript reserved keyword with its description:",
+            "pt": "Associe a palavra-chave reservada do JavaScript com sua descrição:",
+            "fr": "Associez le mot-clé réservé JavaScript à sa description:",
+            "de": "Ordnen Sie das reservierte Schlüsselwort von JavaScript seiner Beschreibung zu:",
+            "es": "Asocia la palabra clave reservada de JavaScript con su descripción:"
+        },
+        "options": [
+            {
+                "option": {
+                    "id": "a",
+                    "content": "let",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "b",
+                    "content": "const",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "c",
+                    "content": "typeof",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "d",
+                    "content": "delete",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "e",
+                    "content": {
+                        "en": "Used to remove a property from an object.",
+                        "pt": "Usado para remover uma propriedade de um objeto.",
+                        "fr": "Utilisé pour supprimer une propriété d'un objet.",
+                        "de": "Wird verwendet, um eine Eigenschaft aus einem Objekt zu entfernen.",
+                        "es": "Se utiliza para eliminar una propiedad de un objeto."
+                    },
+                    "type": "TextOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "f",
+                    "content": {
+                        "en": "Used to define a block-scoped variable.",
+                        "pt": "Usado para definir uma variável com escopo de bloco.",
+                        "fr": "Utilisé pour définir une variable avec une portée de bloc.",
+                        "de": "Wird verwendet, um eine blockgebundene Variable zu definieren.",
+                        "es": "Se utiliza para definir una variable con ámbito de bloque."
+                    },
+                    "type": "TextOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "g",
+                    "content": {
+                        "en": "Used to determine the type of a variable.",
+                        "pt": "Usado para determinar o tipo de uma variável.",
+                        "fr": "Utilisé pour déterminer le type d'une variable.",
+                        "de": "Wird verwendet, um den Typ einer Variablen zu bestimmen.",
+                        "es": "Se utiliza para determinar el tipo de una variable."
+                    },
+                    "type": "TextOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "h",
+                    "content": {
+                        "en": "Used to declare a constant variable.",
+                        "pt": "Usado para declarar uma variável constante.",
+                        "fr": "Utilisé pour déclarer une variable constante.",
+                        "de": "Wird verwendet, um eine konstante Variable zu deklarieren.",
+                        "es": "Se utiliza para declarar una variable constante."
+                    },
+                    "type": "TextOption"
+                }
+            }
+        ],
+        "correctAnswer": [
+            [
+                "a",
+                "f"
+            ],
+            [
+                "b",
+                "h"
+            ],
+            [
+                "c",
+                "g"
+            ],
+            [
+                "d",
+                "e"
+            ]
+        ]
+    }
+}

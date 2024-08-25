@@ -27,7 +27,6 @@ export async function middleware(request: NextRequest) {
     }
   } else {
     if (userData) {
-      console.log('redirect to path')
       return NextResponse.redirect(`${request.nextUrl.origin}/path`)
     }
   }

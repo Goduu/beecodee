@@ -1,0 +1,59 @@
+{
+    "language": "javascript",
+    "tags": [
+        "beginner",
+        "statements",
+        "semicolon"
+    ],
+    "question": {
+        "type": "CodeOutputQuestion",
+        "description": {
+            "en": "A semi-colon is used to separate statements in JavaScript. What is the value of foo at the end of the code?",
+            "pt": "Um ponto e vírgula é usado para separar instruções em JavaScript. Qual é o valor de foo no final do código?",
+            "fr": "Un point-virgule est utilisé pour séparer les instructions en JavaScript. Quelle est la valeur de foo à la fin du code?",
+            "de": "Ein Semikolon wird in JavaScript verwendet, um Anweisungen zu trennen. Was ist der Wert von foo am Ende des Codes?",
+            "es": "Un punto y coma se utiliza para separar instrucciones en JavaScript. ¿Cuál es el valor de foo al final del código?"
+        },
+        "codeSnippet": "let foo = 2; let bar = 4; foo = bar - 1;",
+        "options": [
+            {
+                "option": {
+                    "id": "a",
+                    "content": "2",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "b",
+                    "content": "3",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "c",
+                    "content": "4",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "d",
+                    "content": "1",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "e",
+                    "content": "-1",
+                    "type": "CodeOption"
+                }
+            }
+        ],
+        "correctAnswer": [
+            "b"
+        ]
+    }
+}

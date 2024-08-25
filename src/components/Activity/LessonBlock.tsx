@@ -24,7 +24,7 @@ export const LessonBlock: FC<LessonBlockProps> = ({ lessonXp, activityMap }) => 
 
     useEffect(() => {
         if (!onGoingActivitySlug || !activityMap) return
-
+        
         const activityData = activityMap.get(onGoingActivitySlug)
 
         activityData && setOnGoingActivityData(activityData)
@@ -39,7 +39,7 @@ export const LessonBlock: FC<LessonBlockProps> = ({ lessonXp, activityMap }) => 
 
     const handleFinishLesson = async () => {
         if (!onGoingLessonSlug) return
-        await saveFinishedLesson(onGoingUnitSlug, onGoingLessonSlug, lessonXp)
+        onGoingActivityData?.course && await saveFinishedLesson(onGoingActivityData?.course, onGoingUnitSlug, onGoingLessonSlug, lessonXp)
         setLessonState('result')
     }
 

@@ -1,30 +1,25 @@
 import { useCallback, useEffect, useState } from 'react'
-import { AnswerStatus, TokenGroup } from './types'
+import { AnswerStatus } from './types'
 import { useAudio } from '@/components/useAudio'
 import { FillInTheBlankQuestion } from '@contentlayer/generated'
-import { highlightCode } from '@/components/TokenColors/highlightCode'
+import { highlightCode, OptionWithTokens } from '@/components/TokenColors/highlightCode'
 import { isEqual } from 'lodash'
+import { useLocaleContext } from '@/components/Localization/LocaleContext'
 
 export const useFillInTheBlankAnswerStates = (question: FillInTheBlankQuestion, language: string) => {
-
-    const [options, setOptions] = useState<TokenGroup[]>([])
-    const [answer, setAnswer] = useState<TokenGroup[]>([])
+    const { locale } = useLocaleContext()
+    const [options, setOptions] = useState<OptionWithTokens[]>([])
+    const [answer, setAnswer] = useState<OptionWithTokens[]>([])
     const [status, setStatus] = useState<AnswerStatus>('neutral')
     const { playSound, correctAnswerSound, wrongAnswerSound } = useAudio()
 
     const initializeOptions = useCallback(() => {
-        const optionTokens: TokenGroup[] = []
-        question.options?.forEach((option) => {
-            if (option.oType === 'code') {
-                optionTokens.push({
-                    status: 'neutral',
-                    tokens: highlightCode(option.content, language || "text")
-                })
+        const optionTokens: OptionWithTokens[] = []
+        question.options?.forEach((item) => {
+            if (item.option.type === 'CodeOption') {
+                optionTokens.push(highlightCode(item.option, language || "text", locale))
             } else {
-                optionTokens.push({
-                    status: 'neutral',
-                    tokens: [{ content: option.content, type: 'text' }]
-                })
+                optionTokens.push({ ...item.option, tokens: [{ content: item.option.content[locale], type: 'text' }] })
             }
         })
         setOptions(optionTokens)
@@ -44,11 +39,11 @@ export const useFillInTheBlankAnswerStates = (question: FillInTheBlankQuestion, 
     }, [question, initializeOptions])
 
 
-    const removeTokenFromAnswer = useCallback((token: TokenGroup) => {
+    const removeTokenFromAnswer = useCallback((optionToRemove: OptionWithTokens) => {
         if (status === 'correct') return
         setOptions((prev) =>
             prev.map((option) => {
-                if (isEqual(option.tokens, token.tokens)) {
+                if (isEqual(option, optionToRemove)) {
                     option.status = 'neutral'
                 }
                 return option
@@ -56,16 +51,16 @@ export const useFillInTheBlankAnswerStates = (question: FillInTheBlankQuestion, 
             })
         )
 
-        setAnswer((prevAnswer) => prevAnswer.filter((t) => t !== token))
+        setAnswer((prevAnswer) => prevAnswer.filter((t) => t !== optionToRemove))
         setStatus('neutral')
 
     }, [status])
 
-    const addTokenToAnswer = (token: TokenGroup) => {
+    const addTokenToAnswer = (token: OptionWithTokens) => {
         if (status === 'correct') return
 
 
-        const questionGapsLength = question.segments?.filter((segment) => segment.sType === 'gap').length || 0
+        const questionGapsLength = question.segments?.filter((segment) => segment.segment.type === 'GapOption').length || 0
         if (answer.length >= questionGapsLength) return
         else {
             setAnswer((prevAnswer) => [...prevAnswer, { ...token, status: 'filled' }])
@@ -87,9 +82,7 @@ export const useFillInTheBlankAnswerStates = (question: FillInTheBlankQuestion, 
 
     const handleCheckStatus = useCallback(() => {
         const correctAnswer = question.correctAnswer
-        const answerContent = answer.map(tokenGroup => tokenGroup.tokens.map(token => token.content).join('')).join('')
-
-        if (correctAnswer && JSON.stringify(correctAnswer.join('')) === JSON.stringify(answerContent)) {
+        if (correctAnswer && answer.every((token, index) => token.id === correctAnswer[index])) {
             playSound(correctAnswerSound)
             setStatus('correct')
         } else {

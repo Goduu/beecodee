@@ -1,9 +1,9 @@
 
-import { Token } from "@/components/TokenColors/highlightCode"
+import { OptionWithTokens } from "@/components/TokenColors/highlightCode"
 
 export type AnswerStatus = "selected" | "neutral" | "correct" | "wrong" | "used" | "filled"
 
 export type TokenGroup = {
-    tokens: Token[]
+    optionWithToken: OptionWithTokens[]
     status: AnswerStatus
 }

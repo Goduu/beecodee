@@ -1,0 +1,75 @@
+{
+    "language": "javascript",
+    "tags": [
+        "beginner",
+        "console.log",
+        "variables",
+        "addition"
+    ],
+    "question": {
+        "type": "FillInTheBlankQuestion",
+        "description": {
+            "en": "If the result of the console.log is 10, what should be the value of the gap?",
+            "pt": "Se o resultado do console.log for 10, qual deve ser o valor do espaço em branco?",
+            "fr": "Si le résultat de console.log est 10, quelle devrait être la valeur de l'espace vide?",
+            "de": "Wenn das Ergebnis von console.log 10 ist, welchen Wert sollte die Lücke haben?",
+            "es": "Si el resultado de console.log es 10, ¿cuál debería ser el valor del espacio en blanco?"
+        },
+        "segments": [
+            {
+                "segment": {
+                    "id": "a",
+                    "type": "CodeOption",
+                    "content": "const a = "
+                }
+            },
+            {
+                "segment": {
+                    "id": "b",
+                    "type": "GapOption",
+                    "size": 4
+                }
+            },
+            {
+                "segment": {
+                    "id": "c",
+                    "type": "CodeOption",
+                    "content": ";\nconst b = 5;\nconsole.log(a + b);"
+                }
+            }
+        ],
+        "options": [
+            {
+                "option": {
+                    "id": "a",
+                    "content": "ab",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "b",
+                    "content": "5",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "c",
+                    "content": "10",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "d",
+                    "content": "1",
+                    "type": "CodeOption"
+                }
+            }
+        ],
+        "correctAnswer": [
+            "b"
+        ]
+    }
+}

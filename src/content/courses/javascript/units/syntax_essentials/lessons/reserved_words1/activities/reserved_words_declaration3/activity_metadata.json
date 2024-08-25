@@ -1,0 +1,87 @@
+{
+    "language": "javascript",
+    "tags": [
+        "beginner"
+    ],
+    "question": {
+        "type": "MultipleChoiceQuestion",
+        "description": {
+            "en": "Declare a function called getBar that takes no arguments and returns the string 'bar'.",
+            "pt": "Declare uma função chamada getBar que não recebe argumentos e retorna a string 'bar'.",
+            "fr": "Déclarez une fonction appelée getBar qui ne prend aucun argument et renvoie la chaîne de caractères 'bar'.",
+            "de": "Deklariere eine Funktion namens getBar, die keine Argumente annimmt und den String 'bar' zurückgibt.",
+            "es": "Declara una función llamada getBar que no toma argumentos y devuelve la cadena 'bar'."
+        },
+        "options": [
+            {
+                "option": {
+                    "id": "a",
+                    "content": "function",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "b",
+                    "content": "(",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "c",
+                    "content": "{",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "d",
+                    "content": ")",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "e",
+                    "content": "getBar",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "f",
+                    "content": "return",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "g",
+                    "content": "\"bar\"",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "h",
+                    "content": "}",
+                    "type": "CodeOption"
+                }
+            }
+        ],
+        "correctAnswer": [
+            "a",
+            "e",
+            "b",
+            "d",
+            "c",
+            "fn",
+            "ft",
+            "f",
+            "g",
+            "fn",
+            "h"
+        ]
+    }
+}

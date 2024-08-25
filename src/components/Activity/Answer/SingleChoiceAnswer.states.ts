@@ -1,33 +1,28 @@
 import { useCallback, useEffect, useState } from 'react'
-import { AnswerStatus, TokenGroup } from './types'
+import { AnswerStatus } from './types'
 import { useAudio } from '@/components/useAudio'
 import { SingleChoiceQuestion } from '@contentlayer/generated'
-import { highlightCode } from '@/components/TokenColors/highlightCode'
+import { highlightCode, OptionWithTokens } from '@/components/TokenColors/highlightCode'
 import { isEqual } from 'lodash'
+import { useLocaleContext } from '@/components/Localization/LocaleContext'
 
 export const useSingleChoiceAnswerStates = (question: SingleChoiceQuestion, language: string) => {
-
-    const [options, setOptions] = useState<TokenGroup[]>([])
-    const [answer, setAnswer] = useState<TokenGroup | undefined>()
+    const { locale } = useLocaleContext()
+    const [options, setOptions] = useState<OptionWithTokens[]>([])
+    const [answer, setAnswer] = useState<OptionWithTokens | undefined>()
     const { playSound, correctAnswerSound, wrongAnswerSound } = useAudio()
 
     const isAnswerCorrect = !!options.find(option => option.status === 'correct')
 
     const initializeOptions = useCallback(() => {
-        const optionTokens: TokenGroup[] = []
+        const optionTokens: OptionWithTokens[] = []
         question.options?.forEach((option) => {
-            if (option.oType === 'code') {
-                optionTokens.push({
-                    status: 'neutral',
-                    tokens: highlightCode(option.content, language || "text")
-                })
-            } else {
-                optionTokens.push({
-                    status: 'neutral',
-                    tokens: [{ content: option.content, type: 'text' }]
-                })
-            }
+            optionTokens.push({
+                ...highlightCode(option.option, language || "text", locale),
+                isOneLined: true
+            })
         })
+
         setOptions(optionTokens)
 
     }, [question, language])
@@ -45,21 +40,21 @@ export const useSingleChoiceAnswerStates = (question: SingleChoiceQuestion, lang
 
 
 
-    const selectAnswer = (token: TokenGroup) => {
+    const selectAnswer = (option: OptionWithTokens) => {
         if (isAnswerCorrect) return
-        if (answer && isEqual(answer, token)) {
+        if (answer && isEqual(answer, option)) {
             setAnswer(undefined)
-            changeOptionStatus(token, 'neutral')
+            changeOptionStatus(option, 'neutral')
         }
 
         else {
-            setAnswer(token)
-            changeOptionStatus(token, 'selected')
+            setAnswer(option)
+            changeOptionStatus(option, 'selected')
         }
 
     }
 
-    const changeOptionStatus = (token: TokenGroup, status: AnswerStatus) => {
+    const changeOptionStatus = (token: OptionWithTokens, status: AnswerStatus) => {
         setOptions((prev) =>
             prev.map((option) => {
                 if (option === token) {
@@ -76,8 +71,8 @@ export const useSingleChoiceAnswerStates = (question: SingleChoiceQuestion, lang
     const handleCheckStatus = useCallback(() => {
         if (!answer) return
         const correctAnswer = question.correctAnswer
-        const answerContent = answer?.tokens.map(token => token.content).join('') || ''
-        if (correctAnswer && JSON.stringify(correctAnswer.join('')) === JSON.stringify(answerContent)) {
+
+        if (correctAnswer && answer.id === correctAnswer[0]) {
             playSound(correctAnswerSound)
             changeOptionStatus(answer, 'correct')
         } else {

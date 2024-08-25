@@ -17,7 +17,7 @@ type HomePageProps = {
 export const HomePage: FC<HomePageProps> = async ({ locale }) => {
 
     return (
-        <LocaleContextWrapper locale={locale}>
+        <>
             <div className="flex flex-col items-center gap-20">
                 <Bee className="w-44 pt-20 hover:animate-pulse ease-in-out duration-300" />
                 <div role="h1" className="flex text-3xl font-extrabold max-w-96 text-center leading-relaxed">
@@ -39,7 +39,7 @@ export const HomePage: FC<HomePageProps> = async ({ locale }) => {
                 </div>
             </div>
             <HomeFooter />
-        </LocaleContextWrapper>
+        </>
     )
 }
 

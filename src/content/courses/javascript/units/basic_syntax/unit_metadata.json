@@ -1,0 +1,32 @@
+{
+    "id": 0,
+    "title": {
+        "en": "Basic Syntax",
+        "pt": "Sintaxe Básica",
+        "fr": "Syntaxe de Base",
+        "de": "Grundlegende Syntax",
+        "es": "Sintaxis Básica"
+    },
+    "description": {
+        "en": "Variables, Comments & Statements",
+        "pt": "Variáveis, Comentários e Declarações",
+        "fr": "Variables, Commentaires et Instructions",
+        "de": "Variablen, Kommentare & Anweisungen",
+        "es": "Variables, Comentarios y Declaraciones"
+    },
+    "language": "javascript",
+    "lessonRefs": [
+        {
+            "id": 1,
+            "lesson": "variables1"
+        },
+        {
+            "id": 2,
+            "lesson": "comments1"
+        },
+        {
+            "id": 3,
+            "lesson": "statements1"
+        }
+    ]
+}

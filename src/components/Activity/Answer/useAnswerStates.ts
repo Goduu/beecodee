@@ -2,19 +2,21 @@ import { useCallback, useEffect, useState } from 'react'
 import { AnswerStatus } from './types'
 import { useAudio } from '@/components/useAudio'
 import { Activity } from '@contentlayer/generated'
-import { highlightArray, Token } from '@/components/TokenColors/highlightCode'
+import { highlightArray, OptionWithTokens, Token } from '@/components/TokenColors/highlightCode'
+import { useLocaleContext } from '@/components/Localization/LocaleContext'
 
-export const useAnswerStates = (question: Activity["question"], language: string) => {
-
-    const [options, setOptions] = useState<Token[]>([])
-    const [answer, setAnswer] = useState<Token[]>([])
+export const useAnswerStates = (question: Activity["question"], language: string, isOneLined: boolean) => {
+    const { locale } = useLocaleContext()
+    const [options, setOptions] = useState<OptionWithTokens[]>([])
+    const [answer, setAnswer] = useState<OptionWithTokens[]>([])
     const [status, setStatus] = useState<AnswerStatus>('neutral')
     const { playSound, correctAnswerSound, wrongAnswerSound } = useAudio()
 
     const initializeOptions = useCallback(() => {
         if (!("options" in question)) return
-        const optionTokens = highlightArray(question.options || [], language || "text")
-        setOptions(optionTokens)
+        const questionOptions = question.options.map(o => o.option)
+        const optionTokens = highlightArray(questionOptions, language || "text", locale)
+        setOptions(optionTokens.map(o => ({ ...o, isOneLined })))
 
     }, [question, language])
 
@@ -31,19 +33,19 @@ export const useAnswerStates = (question: Activity["question"], language: string
     }, [question, initializeOptions])
 
 
-    const removeTokenFromAnswer = useCallback((token: Token) => {
+    const removeOptionFromAnswer = useCallback((option: OptionWithTokens) => {
         if (status === 'correct') return
 
-        setAnswer((prevAnswer) => prevAnswer.filter((t) => t !== token))
+        setAnswer((prevAnswer) => prevAnswer.filter((t) => t !== option))
         setStatus('neutral')
 
     }, [status])
 
-    const addTokenToAnswer = (token: Token) => {
+    const addTokenToAnswer = (token: OptionWithTokens) => {
         if (status === 'correct') return
 
         if (question.type === 'FillInTheBlankQuestion') {
-            const questionGapsLength = question.segments?.filter((segment) => segment.sType === 'gap').length || 0
+            const questionGapsLength = question.segments?.filter((segment) => segment.segment.type === 'GapOption').length || 0
             if (answer.length >= questionGapsLength) return
             else {
                 setAnswer((prevAnswer) => [...prevAnswer, token])
@@ -62,8 +64,7 @@ export const useAnswerStates = (question: Activity["question"], language: string
 
     const handleCheckStatus = useCallback(() => {
         const correctAnswer = question.correctAnswer
-
-        if (correctAnswer && JSON.stringify(correctAnswer) === JSON.stringify(answer.map(token => token.content))) {
+        if (answer.length === correctAnswer.length && answer.every((token, index) => token.id === correctAnswer[index])) {
             playSound(correctAnswerSound)
             setStatus('correct')
         } else {
@@ -79,6 +80,6 @@ export const useAnswerStates = (question: Activity["question"], language: string
         status,
         handleCheckStatus,
         addTokenToAnswer,
-        removeTokenFromAnswer,
+        removeOptionFromAnswer,
     }
 }

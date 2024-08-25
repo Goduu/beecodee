@@ -1,0 +1,51 @@
+{
+    "title": {
+        "en": "Variables 1",
+        "pt": "Variáveis 1",
+        "fr": "Variables 1",
+        "de": "Variablen 1",
+        "es": "Variables 1"
+    },
+    "xp": 10,
+    "description": {
+        "en": "Learn about variables",
+        "pt": "Aprenda sobre variáveis",
+        "fr": "Apprenez les variables",
+        "de": "Lernen Sie Variablen kennen",
+        "es": "Aprende sobre variables"
+    },
+    "activityRefs": [
+        {
+            "id": 1,
+            "activity": "variables_concept1"
+        },
+        {
+            "id": 2,
+            "activity": "variables_declaration1"
+        },
+        {
+            "id": 3,
+            "activity": "variables_declaration2"
+        },
+        {
+            "id": 4,
+            "activity": "variables_assignment1"
+        },
+        {
+            "id": 5,
+            "activity": "variables_declaration3"
+        },
+        {
+            "id": 6,
+            "activity": "variables_initialization1"
+        },
+        {
+            "id": 7,
+            "activity": "variables_naming_convention1"
+        },
+        {
+            "id": 8,
+            "activity": "variables_initialization2"
+        }
+    ]
+}

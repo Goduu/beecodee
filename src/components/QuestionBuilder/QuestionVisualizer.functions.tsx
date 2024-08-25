@@ -53,7 +53,7 @@ export const parseAsPairMatchingQuestion = (markdown: string): PairMatchingQuest
         type: 'PairMatchingQuestion',
         description: data.description,
         correctAnswer: data.correctAnswer,
-        pairMatchingOptions: data.pairMatchingOptions,
+        options: data.options,
     };
 }
 
@@ -92,15 +92,17 @@ export const parseAsQuestion = (markdown: string, questionType: Activity["questi
             throw new Error(`Unknown question type: ${questionType}`);
     }
     return {
-        id: "0",
         _id: '',
         tags: [],
         _raw: raw,
         slug: '',
         language: 'javascript',
         slugAsParams: '',
-        body: {} as MDX,
         type: 'Activity',
+        lesson: '',
+        unit: '',
+        course: '',
+        body: { raw: "", html: "" },
         question,
     }
 };

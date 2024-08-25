@@ -1,0 +1,39 @@
+{
+    "title": {
+        "en": "Line Breaks 1",
+        "pt": "Quebras de Linha 1",
+        "fr": "Sauts de ligne 1",
+        "de": "Zeilenumbrüche 1",
+        "es": "Saltos de línea 1"
+    },
+    "xp": 10,
+    "description": {
+        "en": "Line Breaks",
+        "pt": "Quebras de Linha",
+        "fr": "Sauts de ligne",
+        "de": "Zeilenumbrüche",
+        "es": "Saltos de línea"
+    },
+    "activityRefs": [
+        {
+            "id": 1,
+            "activity": "line_breaks_concept1"
+        },
+        {
+            "id": 2,
+            "activity": "line_breaks_concept2"
+        },
+        {
+            "id": 3,
+            "activity": "line_breaks_outcome1"
+        },
+        {
+            "id": 4,
+            "activity": "line_breaks_scape_sequences1"
+        },
+        {
+            "id": 5,
+            "activity": "line_breaks_concept3"
+        }
+    ]
+}

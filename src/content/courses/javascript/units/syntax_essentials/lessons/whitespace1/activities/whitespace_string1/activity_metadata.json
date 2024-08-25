@@ -1,0 +1,74 @@
+{
+    "language": "javascript",
+    "tags": [
+        "beginner",
+        "variables"
+    ],
+    "question": {
+        "type": "SingleChoiceQuestion",
+        "description": {
+            "en": "Where is whitespace not ignored in JavaScript?",
+            "pt": "Onde o espaço em branco não é ignorado em JavaScript?",
+            "fr": "Où l'espace vide n'est-il pas ignoré en JavaScript?",
+            "de": "Wo wird in JavaScript Leerzeichen nicht ignoriert?",
+            "es": "¿Dónde no se ignora el espacio en blanco en JavaScript?"
+        },
+        "options": [
+            {
+                "option": {
+                    "id": "a",
+                    "content": {
+                        "en": "Between variable names",
+                        "pt": "Entre os nomes das variáveis",
+                        "fr": "Entre les noms de variables",
+                        "de": "Zwischen Variablennamen",
+                        "es": "Entre los nombres de las variables"
+                    },
+                    "type": "TextOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "b",
+                    "content": {
+                        "en": "Inside string literals",
+                        "pt": "Dentro de literais de string",
+                        "fr": "À l'intérieur des littéraux de chaîne",
+                        "de": "Innerhalb von Zeichenfolgenliterale",
+                        "es": "Dentro de literales de cadena"
+                    },
+                    "type": "TextOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "c",
+                    "content": {
+                        "en": "At the start of a line",
+                        "pt": "No início de uma linha",
+                        "fr": "Au début d'une ligne",
+                        "de": "Am Anfang einer Zeile",
+                        "es": "Al comienzo de una línea"
+                    },
+                    "type": "TextOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "d",
+                    "content": {
+                        "en": "Between keywords",
+                        "pt": "Entre palavras-chave",
+                        "fr": "Entre les mots-clés",
+                        "de": "Zwischen Schlüsselwörtern",
+                        "es": "Entre palabras clave"
+                    },
+                    "type": "TextOption"
+                }
+            }
+        ],
+        "correctAnswer": [
+            "b"
+        ]
+    }
+}

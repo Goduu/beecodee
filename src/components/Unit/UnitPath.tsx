@@ -23,7 +23,6 @@ export const UnitPath: FC<UnitProps> = ({ unit, pathPosition, completedLessons }
   }, [completedLessons])
 
   const percentage = ((completedLessons?.size || 0) / unit.lessonRefs.length) * 100
-
   const zigZagClass = getPathZigzagPath(pathPosition)
 
   if (percentage >= 100) {

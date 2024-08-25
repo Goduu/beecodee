@@ -27,6 +27,7 @@ export const TokenChipWrapper: FC<TokenChipWrapperProps> = ({ children, tokenTyp
     }
 
     const renderChildren = () => {
+
         if (typeof children === 'string') {
             if (children === '\n') {
                 return <>

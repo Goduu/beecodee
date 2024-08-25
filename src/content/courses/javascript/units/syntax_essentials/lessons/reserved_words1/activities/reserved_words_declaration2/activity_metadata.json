@@ -1,0 +1,53 @@
+{
+    "language": "javascript",
+    "tags": [
+        "beginner",
+        "declaration",
+        "reserved words",
+        "assignment"
+    ],
+    "question": {
+        "type": "CodeOutputQuestion",
+        "description": {
+            "en":"What will be the output of the following code snippet?",
+            "pt":"Qual será a saída do seguinte trecho de código?",
+            "fr":"Quelle sera la sortie du code suivant?",
+            "de":"Was wird die Ausgabe des folgenden Code-Snippets sein?",
+            "es":"¿Cuál será la salida del siguiente fragmento de código?"
+        },
+        "codeSnippet": "const myValue = 10;\nmyValue = 20;\nconsole.log(myValue);",
+        "options": [
+            {
+                "option": {
+                    "id": "a",
+                    "content": "10",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "b",
+                    "content": "20",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "c",
+                    "content": "Error: Assignment to constant variable",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "d",
+                    "content": "undefined",
+                    "type": "CodeOption"
+                }
+            }
+        ],
+        "correctAnswer": [
+            "c"
+        ]
+    }
+}

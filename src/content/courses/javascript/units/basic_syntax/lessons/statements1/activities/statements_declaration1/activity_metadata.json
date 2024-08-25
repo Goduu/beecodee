@@ -1,0 +1,100 @@
+{
+    "language": "javascript",
+    "tags": [
+        "beginner",
+        "variables"
+    ],
+    "question": {
+        "type": "FillInTheBlankQuestion",
+        "description": {
+            "en": "A declaration statement is a command that declares a variable.",
+            "pt": "Uma declaração de variável é um comando que declara uma variável.",
+            "fr": "Une déclaration de variable est une commande qui déclare une variable.",
+            "de": "Eine Deklarationsanweisung ist ein Befehl, der eine Variable deklariert.",
+            "es": "Una declaración de variable es un comando que declara una variable."
+        },
+        "segments": [
+            {
+                "segment": {
+                    "id": "a",
+                    "type": "TextOption",
+                    "content": {
+                        "en": "Examples of declaration statements are let, function and ",
+                        "pt": "Exemplos de declarações de variáveis são let, function e ",
+                        "fr": "Des exemples de déclarations de variables sont let, function et ",
+                        "de": "Beispiele für Deklarationsanweisungen sind let, function und ",
+                        "es": "Ejemplos de declaraciones de variables son let, function y "
+                    }
+                }
+            },
+            {
+                "segment": {
+                    "id": "b",
+                    "type": "GapOption",
+                    "size": 9
+                }
+            },
+            {
+                "segment": {
+                    "id": "c",
+                    "type": "TextOption",
+                    "content": {
+                        "en": "\n Examples of flux control statements are if, else, for and ",
+                        "pt": "\n Exemplos de declarações de controle de fluxo são if, else, for e ",
+                        "fr": "\n Des exemples de déclarations de contrôle de flux sont if, else, for et ",
+                        "de": "\n Beispiele für Flusskontrollanweisungen sind if, else, for und ",
+                        "es": "\n Ejemplos de declaraciones de control de flujo son if, else, for y "
+                    }
+                }
+            },
+            {
+                "segment": {
+                    "id": "d",
+                    "type": "GapOption",
+                    "size": 9
+                }
+            }
+        ],
+        "options": [
+            {
+                "option": {
+                    "id": "a",
+                    "content": "const",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "b",
+                    "content": "variable",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "c",
+                    "content": "meanwhile",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "d",
+                    "content": "while",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "e",
+                    "content": "for",
+                    "type": "CodeOption"
+                }
+            }
+        ],
+        "correctAnswer": [
+            "a",
+            "d"
+        ]
+    }
+}

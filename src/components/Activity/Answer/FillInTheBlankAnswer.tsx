@@ -1,13 +1,13 @@
-import { FillInTheBlankQuestion, Segment } from '@contentlayer/generated'
+import { CodeOption, FillInTheBlankQuestion, GapOption, TextOption } from '@contentlayer/generated'
 import React, { FC } from 'react'
-import { AnswerStatus, TokenGroup } from './types'
-import { TokenChip } from '../TokenChip'
+import { AnswerStatus } from './types'
 import { CheckContinueButton } from './CheckContinueButton'
 import { QuestionDescription } from './QuestionDescription'
-import { TokenText } from '../TokenText'
-import { highlightCode } from '@/components/TokenColors/highlightCode'
+import { highlightCode, OptionWithTokens } from '@/components/TokenColors/highlightCode'
 import { useFillInTheBlankAnswerStates } from './FillInTheBlankAnswer.states'
 import { TokenGroupChip } from '../TokenGroupChip'
+import { useLocaleContext } from '@/components/Localization/LocaleContext'
+import { BeeLocale } from '@/components/Localization/localization'
 
 type FillInTheBlankQuestionProps = {
     question: FillInTheBlankQuestion
@@ -24,6 +24,7 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
         removeTokenFromAnswer,
         addTokenToAnswer,
     } = useFillInTheBlankAnswerStates(question, language)
+    const { locale } = useLocaleContext();
     const segments = question.segments;
     if (!segments) return null;
 
@@ -32,74 +33,71 @@ export const FillInTheBlankAnswer: FC<FillInTheBlankQuestionProps> = ({ question
 
     return (
         <div className='flex flex-col gap-16 px-2 items-center'>
-            <QuestionDescription description={question.description} />
+            <QuestionDescription description={question.description[locale]} />
             <div className={`flex rounded-xl border-2 sm:min-w-96 min-h-40 justify-center items-center drop-shadow-xl ${statusClass}`}>
                 <div className='flex justify-start text-left px-2'>
                     <div>
                         {segments.map((segment, index) => {
-                            if (segment.sType === 'code') {
-                                return renderCodeSegment(segment, language);
+                            if (segment.segment.type === 'CodeOption') {
+                                return renderCodeSegment(segment.segment, language, locale);
                             }
-                            if (segment.sType === 'text') {
-                                return renderTextSegment(segment);
+                            if (segment.segment.type === 'TextOption') {
+                                return renderTextSegment(segment.segment, locale);
                             }
                             gapCounter++;
-                            return renderGapSegment(answer, gapCounter, segment, removeTokenFromAnswer, index);
+                            return renderGapSegment(answer, gapCounter, segment.segment, removeTokenFromAnswer, index);
                         })}
                     </div>
                 </div>
             </div>
             <div className='flex gap-4 justify-center flex-wrap' >
-                {options.map((token, i) => (
+                {options.map((option, i) => (
                     <TokenGroupChip
-                        key={`token-option-${token.status}-${i}`}
-                        onClick={() => addTokenToAnswer(token)}
-                        tokenGroup={token}
+                        key={`token-option-${option.status}-${i}`}
+                        onClick={() => addTokenToAnswer(option)}
+                        optionWithToken={option}
                         className={`px-2`}
                     />
                 ))}
             </div>
-            <CheckContinueButton isAnswerCorrect={status==="correct"} handleCheck={handleCheckStatus} handleGoToNextActivity={handleGoToNextActivity} />
+            <CheckContinueButton isAnswerCorrect={status === "correct"} handleCheck={handleCheckStatus} handleGoToNextActivity={handleGoToNextActivity} />
         </div>
     );
 }
 
-const renderCodeSegment = (segment: Segment, language: string) => {
-    const tokenizedCode = highlightCode(segment.content, language);
+const renderCodeSegment = (segment: CodeOption, language: string, locale: BeeLocale) => {
+    const optionsWithToken = highlightCode(segment, language, locale);
 
     return (
-        <span key={`code-segment-${segment.content}`}>
-            {tokenizedCode.map((token, i) => (
-                <TokenText key={`code-segment-${i}-${token.content}`} token={token} />
-            ))}
-        </span>
+        <TokenGroupChip optionWithToken={optionsWithToken} className='px-2' />
     );
 }
 
-const renderTextSegment = (segment: Segment) => {
+const renderTextSegment = (segment: TextOption, locale: BeeLocale) => {
     return (
         <span key={`text-segment-${segment.content}`} className='text-xl font-extrabold flex-wrap'>
-            {segment.content}
+            {segment.content[locale]}
         </span>
     );
 }
 
 const renderGapSegment = (
-    tokens: TokenGroup[],
+    answers: OptionWithTokens[],
     gapCounter: number,
-    segment: Segment,
-    removeToken: (token: TokenGroup) => void,
+    segment: GapOption,
+    removeToken: (token: OptionWithTokens) => void,
     index: number
 ) => {
     return (
-        <span key={`gap-${segment.content}${index}`} className="relative inline-block">
-            {tokens?.[gapCounter] && (
+        <span key={`gap-${segment.size}${index}`} className="relative inline-block">
+            {answers?.[gapCounter] && (
                 <span className="absolute inset-0 flex justify-center items-center">
-                    <TokenGroupChip onClick={() => removeToken(tokens[gapCounter])} tokenGroup={tokens[gapCounter]} className='py-0' />
+                    <TokenGroupChip onClick={() => removeToken(answers[gapCounter])} optionWithToken={answers[gapCounter]} className='py-0' />
                 </span>
             )}
-            <TokenChip token={{ type: "gap", content: segment.content }} />
+            <TokenGroupChip optionWithToken={answers?.[gapCounter] || { ...segment, status: 'neutral', tokens: [{ content: "", type: "gap" }] }} className='py-0' />
         </span>
+
     );
 }
 

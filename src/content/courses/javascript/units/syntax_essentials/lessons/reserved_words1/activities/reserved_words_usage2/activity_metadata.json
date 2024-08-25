@@ -1,0 +1,51 @@
+{
+    "language": "javascript",
+    "tags": [
+        "beginner",
+        "conditionals",
+        "else_statement"
+    ],
+    "question": {
+        "type": "SingleChoiceQuestion",
+        "description": {
+            "en": "Which JavaScript reserved keyword is used to define a generator function?",
+            "pt": "Qual palavra-chave reservada do JavaScript é usada para definir uma função geradora?",
+            "fr": "Quel mot-clé réservé de JavaScript est utilisé pour définir une fonction génératrice?",
+            "de": "Welches reservierte Schlüsselwort in JavaScript wird verwendet, um eine Generatorfunktion zu definieren?",
+            "es": "¿Qué palabra clave reservada de JavaScript se utiliza para definir una función generadora?"
+        },
+        "options": [
+            {
+                "option": {
+                    "id": "a",
+                    "content": "function",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "b",
+                    "content": "async",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "c",
+                    "content": "yield",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "d",
+                    "content": "function",
+                    "type": "CodeOption"
+                }
+            }
+        ],
+        "correctAnswer": [
+            "d"
+        ]
+    }
+}

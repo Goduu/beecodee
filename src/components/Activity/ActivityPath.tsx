@@ -9,6 +9,7 @@ import { startLesson } from '../Unit/unitStore'
 import { PathwayButton } from './PathwayButton'
 import { Pollen } from '../Svgs/Pollen'
 import { HoneyComb } from '../HoneyComb/HoneyComb'
+import { useLocaleContext } from '../Localization/LocaleContext'
 
 type ActivityLinkProps = {
     lesson: Lesson
@@ -29,17 +30,18 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit }) => {
 }
 
 const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit }) => {
+    const { locale } = useLocaleContext()
 
     const handleStartLesson = () => {
         startLesson(unit)
-        redirect(lesson.slug)
+        redirect(`lessons/${lesson.slugAsParams}`)
     }
 
     return (
         <div className='relative gap-2'>
             <div className='flex flex-col items-center gap-5 text-center'>
                 <div className='text-lg'>
-                    {lesson.description}
+                    {lesson.description[locale]}
                 </div>
                 <div className='flex gap-2 items-center text-sm'>
                     <Pollen className='w-7' /> Get {lesson.xp} XPollen
@@ -49,7 +51,7 @@ const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit }) => {
                 </Button>
             </div>
             <div className='absolute bottom-0 right-0'>
-                <HoneyComb unit={unit} size='small' /> 
+                <HoneyComb unit={unit} size='small' />
             </div>
         </div>
     )

@@ -1,0 +1,51 @@
+{
+    "language": "javascript",
+    "tags": [
+        "beginner",
+        "variables"
+    ],
+    "question": {
+        "type": "MultipleChoiceQuestion",
+        "description": {
+            "en": "Declare a constant variable named `bar`.",
+            "pt": "Declare uma variável constante chamada `bar`",
+            "fr": "Déclarez une variable constante nommée `bar`.",
+            "de": "Deklariere eine konstante Variable namens `bar`.",
+            "es": "Declara una variable constante llamada `bar`."
+        },
+        "options": [
+            {
+                "option": {
+                    "id": "a",
+                    "content": "let",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "b",
+                    "content": "const",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "c",
+                    "content": "bar",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "d",
+                    "content": "variable",
+                    "type": "CodeOption"
+                }
+            }
+        ],
+        "correctAnswer": [
+            "b",
+            "c"
+        ]
+    }
+}

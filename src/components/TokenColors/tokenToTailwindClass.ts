@@ -18,6 +18,7 @@ export const tokenTypeToTailwindClass = (type: string | null): string => {
         case 'selector':
         case 'attr-name':
         case 'string':
+        case 'template-string':
         case 'char':
         case 'builtin':
         case 'inserted':

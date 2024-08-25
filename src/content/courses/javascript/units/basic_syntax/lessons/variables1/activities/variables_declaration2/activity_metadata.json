@@ -1,0 +1,58 @@
+{
+    "language": "javascript",
+    "tags": [
+        "beginner",
+        "variables"
+    ],
+    "question": {
+        "type": "MultipleChoiceQuestion",
+        "description": {
+            "en": "Declare a variable named foo that could be resigned.",
+            "pt": "Declare uma variável chamada foo que pode ser reatribuída.",
+            "fr": "Déclarez une variable nommée foo qui pourrait être réaffectée.",
+            "de": "Deklariere eine Variable namens foo, die neu zugewiesen werden könnte.",
+            "es": "Declara una variable llamada foo que podría ser reasignada."
+        },
+        "options": [
+            {
+                "option": {
+                    "id": "a",
+                    "content": "let",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "b",
+                    "content": "const",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "c",
+                    "content": "foo",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "d",
+                    "content": "=",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "e",
+                    "content": "[5]",
+                    "type": "CodeOption"
+                }
+            }
+        ],
+        "correctAnswer": [
+            "a",
+            "c"
+        ]
+    }
+}

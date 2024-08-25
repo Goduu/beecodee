@@ -5,6 +5,7 @@ import { QuestionDescription } from './QuestionDescription'
 import { TokenGroupChip } from '../TokenGroupChip'
 import { CodeBlock } from './CodeBlock'
 import { useCodeOutputAnswerStates } from './CodeOutputAnswer.states'
+import { useLocaleContext } from '@/components/Localization/LocaleContext'
 
 type CodeOutputAnswerProps = {
     question: CodeOutputQuestion
@@ -13,20 +14,22 @@ type CodeOutputAnswerProps = {
 }
 
 export const CodeOutputAnswer: FC<CodeOutputAnswerProps> = ({ question, language, handleGoToNextActivity }) => {
+    const { locale } = useLocaleContext()
     const { isAnswerCorrect, selectAnswer, options, handleCheckStatus } = useCodeOutputAnswerStates(question, language)
 
     return (
         <div className='flex flex-col gap-16 items-center'>
             <div className='flex flex-col items-center'>
-                <QuestionDescription description={question.description} />
+                <QuestionDescription description={question.description[locale]} />
                 <CodeBlock code={question.codeSnippet} language={language} />
             </div>
-            <div className='flex flex-col gap-4 justify-center flex-wrap min-w-48'>
+            <div className='flex flex-col gap-4 justify-center flex-wrap min-w-20 items-center'>
                 {options.map((token, index) => (
                     <TokenGroupChip
                         onClick={() => selectAnswer(token)}
                         key={index}
-                        tokenGroup={token}
+                        optionWithToken={token}
+                        isOneLined={true}
                     />
                 ))}
             </div>

@@ -1,0 +1,97 @@
+{
+    "language": "javascript",
+    "tags": [
+        "beginner",
+        "whitespace",
+        "space"
+    ],
+    "question": {
+        "type": "FillInTheBlankQuestion",
+        "description": {
+            "en": "One of the whitespace characters is a space.",
+            "pt": "Um dos caracteres de espaço em branco é um espaço.",
+            "fr": "Un des caractères d'espace vide est un espace.",
+            "de": "Eines der Leerzeichen ist ein Leerzeichen.",
+            "es": "Uno de los caracteres de espacio en blanco es un espacio."
+        },
+        "segments": [
+            {
+                "segment": {
+                    "id": "a",
+                    "type": "TextOption",
+                    "content": {
+                        "en": "You can insert spaces between keywords and",
+                        "pt": "Você pode inserir espaços entre palavras-chave e",
+                        "fr": "Vous pouvez insérer des espaces entre les mots-clés et",
+                        "de": "Sie können Leerzeichen zwischen Schlüsselwörtern und",
+                        "es": "Puede insertar espacios entre palabras clave y"
+                    }
+                }
+            },
+            {
+                "segment": {
+                    "id": "b",
+                    "type": "GapOption",
+                    "size": 9
+                }
+            },
+            {
+                "segment": {
+                    "id": "c",
+                    "type": "TextOption",
+                    "content": {
+                        "en": " to improve the readability of the code.",
+                        "pt": " para melhorar a legibilidade do código.",
+                        "fr": " pour améliorer la lisibilité du code.",
+                        "de": " hinzufügen um die Lesbarkeit des Codes zu verbessern.",
+                        "es": " para mejorar la legibilidad del código."
+                    }
+                }
+            }
+        ],
+        "options": [
+            {
+                "option": {
+                    "id": "a",
+                    "content": {
+                        "en": "functions",
+                        "pt": "funções",
+                        "fr": "fonctions",
+                        "de": "Funktionen",
+                        "es": "funciones"
+                    },
+                    "type": "TextOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "b",
+                    "content": {
+                        "en": "variables",
+                        "pt": "variáveis",
+                        "fr": "variables",
+                        "de": "Variablen",
+                        "es": "variables"
+                    },
+                    "type": "TextOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "c",
+                    "content": {
+                        "en": "numbers",
+                        "pt": "números",
+                        "fr": "nombres",
+                        "de": "Zahlen",
+                        "es": "números"
+                    },
+                    "type": "TextOption"
+                }
+            }
+        ],
+        "correctAnswer": [
+            "b"
+        ]
+    }
+}

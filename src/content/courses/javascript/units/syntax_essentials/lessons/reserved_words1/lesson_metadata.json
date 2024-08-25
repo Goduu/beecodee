@@ -1,0 +1,55 @@
+{
+    "title": {
+        "en": "Reserved Words 1",
+        "pt": "Palavras reservadas 1",
+        "fr": "Mots réservés 1",
+        "de": "Reservierte Wörter 1",
+        "es": "Palabras reservadas 1"
+    },
+    "xp": 10,
+    "description": {
+        "en": "Learn about reserved words",
+        "pt": "Aprenda sobre palavras reservadas",
+        "fr": "Apprenez les mots réservés",
+        "de": "Lernen Sie reservierte Wörter kennen",
+        "es": "Aprende sobre palabras reservadas"
+    },
+    "activityRefs": [
+        {
+            "id": 1,
+            "activity": "reserved_words_concept1"
+        },
+        {
+            "id": 2,
+            "activity": "reserved_words_declaration1"
+        },
+        {
+            "id": 3,
+            "activity": "reserved_words_concept2"
+        },
+        {
+            "id": 4,
+            "activity": "reserved_words_usage1"
+        },
+        {
+            "id": 5,
+            "activity": "reserved_words_declaration2"
+        },
+        {
+            "id": 6,
+            "activity": "reserved_words_concept3"
+        },
+        {
+            "id": 7,
+            "activity": "reserved_words_usage2"
+        },
+        {
+            "id": 8,
+            "activity": "reserved_words_declaration3"
+        },
+        {
+            "id": 9,
+            "activity": "reserved_words_usage3"
+        }
+    ]
+}

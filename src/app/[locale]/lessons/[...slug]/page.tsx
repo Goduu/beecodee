@@ -47,7 +47,6 @@ export default async function LessonPage({ params }: ActivityProps) {
   if (!lesson) {
     notFound()
   }
-
   const activityMap = new Map<string, Activity>()
 
   allActivities.forEach((activity) => {

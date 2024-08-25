@@ -1,0 +1,66 @@
+{
+    "language": "javascript",
+    "tags": [
+        "beginner",
+        "variables"
+    ],
+    "question": {
+        "type": "MultipleChoiceQuestion",
+        "description": {
+            "en": "An expression is a combination of values, variables, and operators that computes a value. Examples of expressions are `2 + 2` and `x = 5`. Create an arithmetic expression that multiples a variable `y` by 2.",
+            "pt": "Uma expressão é uma combinação de valores, variáveis e operadores que calcula um valor. Exemplos de expressões são `2 + 2` e `x = 5`. Crie uma expressão aritmética que multiplica uma variável `y` por 2.",
+            "fr": "Une expression est une combinaison de valeurs, de variables et d'opérateurs qui calcule une valeur. Des exemples d'expressions sont `2 + 2` et `x = 5`. Créez une expression arithmétique qui multiplie une variable `y` par 2.",
+            "de": "Ein Ausdruck ist eine Kombination aus Werten, Variablen und Operatoren, die einen Wert berechnet. Beispiele für Ausdrücke sind `2 + 2` und `x = 5`. Erstellen Sie einen arithmetischen Ausdruck, der eine Variable `y` mit 2 multipliziert.",
+            "es": "Una expresión es una combinación de valores, variables y operadores que calcula un valor. Ejemplos de expresiones son `2 + 2` y `x = 5`. Cree una expresión aritmética que multiplique una variable `y` por 2."
+        },
+        "options": [
+            {
+                "option": {
+                    "id": "a",
+                    "content": "y",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "b",
+                    "content": "let",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "c",
+                    "content": "*",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "d",
+                    "content": "+",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "e",
+                    "content": "3",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "f",
+                    "content": "2",
+                    "type": "CodeOption"
+                }
+            }
+        ],
+        "correctAnswer": [
+            "a",
+            "c",
+            "f"
+        ]
+    }
+}

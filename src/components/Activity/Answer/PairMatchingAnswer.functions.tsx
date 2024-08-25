@@ -1,82 +1,80 @@
 import { PairMatchingQuestion } from "@contentlayer/generated";
 import { AnswerStatus, TokenGroup } from "./types";
-import { highlightCode } from "@/components/TokenColors/highlightCode";
+import { highlightCode, OptionWithTokens, Token } from "@/components/TokenColors/highlightCode";
 import { isEqual } from "lodash";
+import { BeeLocale } from "@/components/Localization/localization";
 
 // Generate pair matching options based on the question and language
-export const generatePairMatchingOptions = (question: PairMatchingQuestion, language: string): TokenGroup[] => {
-    return question.pairMatchingOptions.reduce((acc, option) => {
-        const tokens = option.oType === 'code' ? highlightCode(option.content, language) : [{ content: option.content, type: 'text' }];
-        const tokenGroup: TokenGroup = { tokens, status: 'neutral' };
-        acc.push(tokenGroup);
+export const generatePairMatchingOptions = (question: PairMatchingQuestion, language: string, locale: BeeLocale): OptionWithTokens[] => {
+    return question.options.reduce((acc, option) => {
+        if (option.option.type === 'TextOption') {
+            const textOption: OptionWithTokens = { ...option.option, status: 'neutral', tokens: [{ content: option.option.content[locale], type: 'text' }] };
+            acc.push({ ...textOption, isOneLined: true })
+            return acc
+        }
+        if (option.option.type === 'CodeOption') {
+            const codeOption = highlightCode(option.option, language, locale)
+            acc.push({ ...codeOption, isOneLined: true })
+            return acc
+        }
         return acc;
-    }, [] as TokenGroup[]);
+    }, [] as OptionWithTokens[]);
 };
 
 // Update the status of options based on the selected token group
 export const updateOptionsStatus = (
-    options: TokenGroup[],
-    selectedTokenGroup: TokenGroup,
+    options: OptionWithTokens[],
+    newlySelectedOption: OptionWithTokens,
     correctAnswer: string[][]
-): TokenGroup[] => {
-    const selected = options.filter(({ status }) => status === 'selected');
-    const selectedContent = getTokenGroupContent(selected);
-
+): OptionWithTokens[] => {
     let changeOtherStatusTo: AnswerStatus = 'neutral';
+    const alreadySelectedOption = options.find((option) => option.status === 'selected');
 
-    const updatedOptions = options.map(tokenGroup => {
-        if (tokenGroup.status === 'correct') return tokenGroup;
+    const updatedOptions = options.map(option => {
+        if (option.status === 'correct') return option;
 
-        if (tokenGroup === selectedTokenGroup) {
-            const newStatus = determineStatus(selected, selectedContent, tokenGroup, correctAnswer);
+        if (option.id === newlySelectedOption.id) {
+            const newStatus = alreadySelectedOption ? determineStatus(alreadySelectedOption, option, correctAnswer) : "selected"
             changeOtherStatusTo = newStatus;
-            return { ...tokenGroup, status: newStatus };
+            return { ...option, status: newStatus };
         }
 
-        return tokenGroup;
+        return option;
     });
 
     // If there is already one selected, update its status based on the new selection
-    if (selected.length === 1) {
-        return updatedOptions.map(tokenGroup => {
-            if (tokenGroup.status === 'selected') {
-                return { ...tokenGroup, status: changeOtherStatusTo };
-            }
-            return tokenGroup;
-        });
-    }
-
-    return updatedOptions;
+    return updatedOptions.map(tokenGroup => {
+        if (tokenGroup.status === 'selected') {
+            return { ...tokenGroup, status: changeOtherStatusTo };
+        }
+        return tokenGroup;
+    });
 };
 
 // Determine the new status of a token group based on the current selection
 export const determineStatus = (
-    selected: TokenGroup[],
-    selectedContent: string,
-    tokenGroup: TokenGroup,
+    alreadySelectedOption: OptionWithTokens,
+    newlySelectedOption: OptionWithTokens,
     correctAnswer: string[][]
 ): AnswerStatus => {
-    const tokenContent = getTokenContent(tokenGroup);
-    const alreadySelected = ['selected', 'wrong'].includes(tokenGroup.status);
+    const alreadySelected = newlySelectedOption.status && ['selected', 'wrong'].includes(newlySelectedOption.status);
 
     if (alreadySelected) return 'neutral';
-    if (selected.length === 0) return 'selected';
 
     const isCorrect = correctAnswer.some(arr =>
-        isEqual(arr, [selectedContent, tokenContent].filter(Boolean)) ||
-        isEqual(arr, [tokenContent, selectedContent].filter(Boolean))
+        isEqual(arr, [alreadySelectedOption.id, newlySelectedOption.id].filter(Boolean)) ||
+        isEqual(arr, [newlySelectedOption.id, alreadySelectedOption.id].filter(Boolean))
     );
 
     return isCorrect ? 'correct' : 'wrong';
 };
 
 // Get the concatenated content of a token group
-export const getTokenContent = (tokenGroup: TokenGroup): string =>
-    tokenGroup.tokens.map(token => token.content).join('');
+export const getTokenContent = (token: Token): string => {
+    const content = token.content
+    return typeof content === "string" ? content : Array.isArray(content) ? content.join('') : content.content.toString()
+}
 
 // Get the concatenated content of multiple token groups
-export const getTokenGroupContent = (tokensGroup: TokenGroup[]): string =>
-    tokensGroup.map(getTokenContent).join('');
-
-export const hasWrongStatus = (options: TokenGroup[]): boolean =>
+export const hasWrongStatus = (options: OptionWithTokens[]): boolean =>
     options.some(tokenGroup => tokenGroup.status === 'wrong');

@@ -5,8 +5,10 @@ import { useStore } from '../useStore'
 import { useDetectOuterClickAndEsc } from '../useDetectOuterClickAndEsc'
 import { GiHoneypot } from '../Svgs/Icons'
 import { Mdx } from '../MdxComponents'
+import { useLocaleContext } from '../Localization/LocaleContext'
 
 export const UnitHoneyCombModal = () => {
+  const { locale } = useLocaleContext()
   const isOpen = useStore(unitHoneyCombModalStore, (state) => state.isOpen);
   const unit = useStore(unitHoneyCombModalStore, (state) => state.unit);
   const modalRef = useRef(null)
@@ -24,12 +26,13 @@ export const UnitHoneyCombModal = () => {
           <div className="relative px-4 py-10 bg-slate-300 dark:bg-slate-800 shadow-lg sm:rounded-3xl sm:p-20">
             <div className="max-w-2xl mx-auto">
               <div>
-                <h1 className="text-2xl font-semibold flex gap-2 items-center"><GiHoneypot className='w-10 -mt-1' />{unit?.title}</h1>
+                <h1 className="text-2xl font-semibold flex gap-2 items-center"><GiHoneypot className='w-10 -mt-1' />{unit?.title[locale]}</h1>
               </div>
               <div className="divide-y divide-gray-200">
                 <div className="py-8 text-base leading-6 space-y-4 sm:text-lg sm:leading-7 flex flex-col items-center max-h-96">
                   <div className='overflow-scroll flex-wrap w-full'>
-                    {isOpen && <Mdx code={unit.body.code} />}
+                    {/* fix this code */}
+                    {isOpen && <Mdx code={"unit.body.code"} />}
                   </div>
                 </div>
               </div>

@@ -1,0 +1,32 @@
+{
+    "id": 1,
+    "title": {
+        "en": "Syntax Essentials",
+        "pt": "Essenciais de Sintaxe",
+        "fr": "Syntaxe Essentielle",
+        "de": "Syntax Grundlagen",
+        "es": "Sintaxis Esencial"
+    },
+    "description": {
+        "en": "Whitespace, line breaks, indentation, reserved words, strict mode, and Unicode in JavaScript",
+        "pt": "Espaço em branco, quebras de linha, indentação, palavras reservadas, modo estrito e Unicode em JavaScript",
+        "fr": "Espace blanc, sauts de ligne, indentation, mots réservés, mode strict et Unicode en JavaScript",
+        "de": "Leerzeichen, Zeilenumbrüche, Einrückung, reservierte Wörter, Strikter Modus und Unicode in JavaScript",
+        "es": "Espacio en blanco, saltos de línea, sangría, palabras reservadas, modo estricto y Unicode en JavaScript"
+    },
+    "language": "javascript",
+    "lessonRefs": [
+        {
+            "id": 1,
+            "lesson": "whitespace1"
+        },
+        {
+            "id": 2,
+            "lesson": "line_breaks1"
+        },
+        {
+            "id": 3,
+            "lesson": "reserved_words1"
+        }
+    ]
+}

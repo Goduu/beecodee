@@ -1,0 +1,86 @@
+{
+    "language": "javascript",
+    "tags": [
+        "beginner",
+        "whitespace",
+        "concepts"
+    ],
+    "question": {
+        "type": "FillInTheBlankQuestion",
+        "description": {
+            "en": "Line breaks are another important special character in programming. They are used to create new lines and separate different parts of code.",
+            "pt": "Quebras de linha são outro caractere especial importante na programação. Eles são usados para criar novas linhas e separar diferentes partes do código.",
+            "fr": "Les sauts de ligne sont un autre caractère spécial important en programmation. Ils sont utilisés pour créer de nouvelles lignes et séparer différentes parties du code.",
+            "de": "Zeilenumbrüche sind ein weiteres wichtiges Sonderzeichen in der Programmierung. Sie werden verwendet, um neue Zeilen zu erstellen und verschiedene Teile des Codes zu trennen.",
+            "es": "Los saltos de línea son otro carácter especial importante en la programación. Se utilizan para crear nuevas líneas y separar diferentes partes del código."
+        },
+        "segments": [
+            {
+                "segment": {
+                    "id": "a",
+                    "type": "TextOption",
+                    "content": {
+                        "en": "In JavaScript, a line break can be added using the ",
+                        "pt": "Em JavaScript, uma quebra de linha pode ser adicionada usando o caractere:",
+                        "fr": "En JavaScript, un saut de ligne peut être ajouté en utilisant le caractère.",
+                        "de": "In JavaScript kann ein Zeilenumbruch mit dem Zeichen ",
+                        "es": "En JavaScript, se puede agregar un salto de línea usando el carácter"
+                    }
+                }
+            },
+            {
+                "segment": {
+                    "id": "b",
+                    "type": "GapOption",
+                    "size": 4
+                }
+            },
+            {
+                "segment": {
+                    "id": "c",
+                    "type": "TextOption",
+                    "content": {
+                        "en": " character.",
+                        "pt": " .",
+                        "fr": " .",
+                        "de": " hinzugefügt werden.",
+                        "es": " ."
+                    }
+                }
+            }
+        ],
+        "options": [
+            {
+                "option": {
+                    "id": "a",
+                    "content": "\\b",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "b",
+                    "content": "\\n",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "c",
+                    "content": "\\t",
+                    "type": "CodeOption"
+                }
+            },
+            {
+                "option": {
+                    "id": "d",
+                    "content": "\\r",
+                    "type": "CodeOption"
+                }
+            }
+        ],
+        "correctAnswer": [
+            "b"
+        ]
+    }
+}
