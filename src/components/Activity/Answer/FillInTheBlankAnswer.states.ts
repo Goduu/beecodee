@@ -3,15 +3,24 @@ import { AnswerStatus } from './types'
 import { useAudio } from '@/components/useAudio'
 import { FillInTheBlankQuestion } from '@contentlayer/generated'
 import { highlightCode, OptionWithTokens } from '@/components/TokenColors/highlightCode'
-import { isEqual } from 'lodash'
 import { useLocaleContext } from '@/components/Localization/LocaleContext'
+import { useQuizContext } from '../Quiz.context'
 
-export const useFillInTheBlankAnswerStates = (question: FillInTheBlankQuestion, language: string) => {
+export const useFillInTheBlankAnswerStates = (question: FillInTheBlankQuestion, language: string, setLessonState: (state: 'none' | 'correct' | 'wrong' | 'completed') => void
+) => {
     const { locale } = useLocaleContext()
     const [options, setOptions] = useState<OptionWithTokens[]>([])
     const [answer, setAnswer] = useState<OptionWithTokens[]>([])
     const [status, setStatus] = useState<AnswerStatus>('neutral')
     const { playSound, correctAnswerSound, wrongAnswerSound } = useAudio()
+    const { checkFlag, toggleCheckFlag } = useQuizContext()
+
+    useEffect(() => {
+        if (checkFlag) {
+            handleCheckStatus()
+            toggleCheckFlag()
+        }
+    }, [checkFlag])
 
     const initializeOptions = useCallback(() => {
         const optionTokens: OptionWithTokens[] = []
@@ -43,7 +52,7 @@ export const useFillInTheBlankAnswerStates = (question: FillInTheBlankQuestion, 
         if (status === 'correct') return
         setOptions((prev) =>
             prev.map((option) => {
-                if (isEqual(option, optionToRemove)) {
+                if (option.id === optionToRemove.id) {
                     option.status = 'neutral'
                 }
                 return option
@@ -58,7 +67,6 @@ export const useFillInTheBlankAnswerStates = (question: FillInTheBlankQuestion, 
 
     const addTokenToAnswer = (token: OptionWithTokens) => {
         if (status === 'correct') return
-
 
         const questionGapsLength = question.segments?.filter((segment) => segment.segment.type === 'GapOption').length || 0
         if (answer.length >= questionGapsLength) return
@@ -85,9 +93,11 @@ export const useFillInTheBlankAnswerStates = (question: FillInTheBlankQuestion, 
         if (correctAnswer && answer.every((token, index) => token.id === correctAnswer[index])) {
             playSound(correctAnswerSound)
             setStatus('correct')
+            setLessonState('correct')
         } else {
             playSound(wrongAnswerSound)
             setStatus('wrong')
+            setLessonState('wrong')
         }
     }, [question, answer])
 

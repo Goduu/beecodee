@@ -69,12 +69,6 @@ export const determineStatus = (
     return isCorrect ? 'correct' : 'wrong';
 };
 
-// Get the concatenated content of a token group
-export const getTokenContent = (token: Token): string => {
-    const content = token.content
-    return typeof content === "string" ? content : Array.isArray(content) ? content.join('') : content.content.toString()
-}
-
 // Get the concatenated content of multiple token groups
 export const hasWrongStatus = (options: OptionWithTokens[]): boolean =>
     options.some(tokenGroup => tokenGroup.status === 'wrong');

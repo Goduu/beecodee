@@ -18,7 +18,7 @@
             {
                 "option": {
                     "id": "a",
-                    "content": "function",
+                    "content": "func",
                     "type": "CodeOption"
                 }
             },

@@ -8,10 +8,10 @@ import { PairMatchingAnswer } from './Answer/PairMatchingAnswer'
 
 type ActivitySwitcherProps = {
     activity: Activity | null
-    goToNextActivity?: () => void
+    setLessonState: (state: 'none' | 'correct' | 'wrong' | 'completed') => void
 }
 
-export const ActivitySwitcher: FC<ActivitySwitcherProps> = ({ activity, goToNextActivity = () => { } }) => {
+export const ActivitySwitcher: FC<ActivitySwitcherProps> = ({ activity, setLessonState }) => {
     if (!activity) return null
 
     return (
@@ -20,27 +20,32 @@ export const ActivitySwitcher: FC<ActivitySwitcherProps> = ({ activity, goToNext
             <FillInTheBlankAnswer
                 question={activity.question}
                 language={activity.language}
-                handleGoToNextActivity={goToNextActivity} />
+                setLessonState={setLessonState}
+            />
         ) :
             activity.question.type === "MultipleChoiceQuestion" ? (
                 <MultipleChoiceAnswer
                     question={activity.question}
                     language={activity.language}
-                    handleGoToNextActivity={goToNextActivity} />
+                    setLessonState={setLessonState}
+                />
             ) : activity.question.type === "SingleChoiceQuestion" ?
                 <SingleChoiceAnswer
                     question={activity.question}
                     language={activity.language}
-                    handleGoToNextActivity={goToNextActivity} /> :
+                    setLessonState={setLessonState}
+                /> :
                 activity.question.type === "CodeOutputQuestion" ?
                     <CodeOutputAnswer
                         question={activity.question}
                         language={activity.language}
-                        handleGoToNextActivity={goToNextActivity} /> :
+                        setLessonState={setLessonState}
+                    /> :
                     <PairMatchingAnswer
                         question={activity.question}
                         language={activity.language}
-                        handleGoToNextActivity={goToNextActivity} />
+                        setLessonState={setLessonState}
+                    />
 
 
     )

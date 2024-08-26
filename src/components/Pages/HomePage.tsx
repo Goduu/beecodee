@@ -8,13 +8,12 @@ import { Bee } from "../Svgs/Bee";
 import { SiteNumbers } from "../Home/SiteNumbers";
 import { BeeLocale } from "../Localization/localization";
 import { FC } from "react";
-import { LocaleContextWrapper } from "../Localization/LocaleContext";
 
 type HomePageProps = {
     locale: BeeLocale
 }
 
-export const HomePage: FC<HomePageProps> = async ({ locale }) => {
+export const HomePage: FC<HomePageProps> = async ({ locale = "en" }) => {
 
     return (
         <>

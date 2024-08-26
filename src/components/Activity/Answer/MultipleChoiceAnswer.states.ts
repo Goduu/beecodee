@@ -1,22 +1,32 @@
 import { useCallback, useEffect, useState } from 'react'
 import { AnswerStatus } from './types'
 import { useAudio } from '@/components/useAudio'
-import { Activity } from '@contentlayer/generated'
-import { highlightArray, OptionWithTokens, Token } from '@/components/TokenColors/highlightCode'
+import { MultipleChoiceQuestion } from '@contentlayer/generated'
+import { highlightArray, OptionWithTokens } from '@/components/TokenColors/highlightCode'
 import { useLocaleContext } from '@/components/Localization/LocaleContext'
+import { useQuizContext } from '../Quiz.context'
 
-export const useAnswerStates = (question: Activity["question"], language: string, isOneLined: boolean) => {
+export const useMultipleChoiceAnswerStates = (question: MultipleChoiceQuestion, language: string, setLessonState: (state: 'none' | 'correct' | 'wrong' | 'completed') => void
+) => {
     const { locale } = useLocaleContext()
     const [options, setOptions] = useState<OptionWithTokens[]>([])
     const [answer, setAnswer] = useState<OptionWithTokens[]>([])
     const [status, setStatus] = useState<AnswerStatus>('neutral')
     const { playSound, correctAnswerSound, wrongAnswerSound } = useAudio()
+    const { checkFlag, toggleCheckFlag } = useQuizContext()
+
+    useEffect(() => {
+        if (checkFlag) {
+            handleCheckStatus()
+            toggleCheckFlag()
+        }
+    }, [checkFlag])
 
     const initializeOptions = useCallback(() => {
         if (!("options" in question)) return
         const questionOptions = question.options.map(o => o.option)
         const optionTokens = highlightArray(questionOptions, language || "text", locale)
-        setOptions(optionTokens.map(o => ({ ...o, isOneLined })))
+        setOptions(optionTokens.map(o => ({ ...o })))
 
     }, [question, language])
 
@@ -32,11 +42,16 @@ export const useAnswerStates = (question: Activity["question"], language: string
         resetStates()
     }, [question, initializeOptions])
 
-
     const removeOptionFromAnswer = useCallback((option: OptionWithTokens) => {
         if (status === 'correct') return
 
         setAnswer((prevAnswer) => prevAnswer.filter((t) => t !== option))
+        setOptions((prevOptions) => prevOptions.map((o) => {
+            if (o.id === option.id) {
+                return { ...o, status: 'neutral' }
+            }
+            return o
+        }))
         setStatus('neutral')
 
     }, [status])
@@ -44,20 +59,14 @@ export const useAnswerStates = (question: Activity["question"], language: string
     const addTokenToAnswer = (token: OptionWithTokens) => {
         if (status === 'correct') return
 
-        if (question.type === 'FillInTheBlankQuestion') {
-            const questionGapsLength = question.segments?.filter((segment) => segment.segment.type === 'GapOption').length || 0
-            if (answer.length >= questionGapsLength) return
-            else {
-                setAnswer((prevAnswer) => [...prevAnswer, token])
+        if (token.status === 'used') return
+        setAnswer((prevAnswer) => [...prevAnswer, token])
+        setOptions((prevOptions) => prevOptions.map((option) => {
+            if (option === token) {
+                return { ...option, status: 'used' }
             }
-        }
-
-        if (question.type === 'SingleChoiceQuestion') {
-            setAnswer([token])
-        }
-        if (question.type === 'MultipleChoiceQuestion') {
-            setAnswer((prevAnswer) => [...prevAnswer, token])
-        }
+            return option
+        }))
         setStatus('neutral')
     }
 
@@ -67,9 +76,11 @@ export const useAnswerStates = (question: Activity["question"], language: string
         if (answer.length === correctAnswer.length && answer.every((token, index) => token.id === correctAnswer[index])) {
             playSound(correctAnswerSound)
             setStatus('correct')
+            setLessonState('correct')
         } else {
             playSound(wrongAnswerSound)
             setStatus('wrong')
+            setLessonState('wrong')
         }
     }, [question, answer, playSound])
 

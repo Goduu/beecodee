@@ -5,15 +5,15 @@ import { useStore } from 'zustand';
 import { ProgressBar } from './ProgressBar';
 import { redirect } from 'next/navigation';
 
-type LessonProgressBarProps = {
+type LessonHeaderProps = {
     size: "small" | "medium" | "large";
 }
 
-export const LessonProgressBar: FC<LessonProgressBarProps> = ({ size = "medium" }) => {
+export const LessonHeader: FC<LessonHeaderProps> = ({ size = "medium" }) => {
     const toDoActivitiesSize = useStore(unitStore, (state) => state.onGoingLessonToDoActivities).size;
     const doneActivitiesSize = useStore(unitStore, (state) => state.onGoingLessonDoneActivities).size;
 
-    const progressWidth = ((doneActivitiesSize || 0) / ((toDoActivitiesSize  + doneActivitiesSize)|| 1)) * 100;
+    const progressWidth = ((doneActivitiesSize || 0) / ((toDoActivitiesSize + doneActivitiesSize) || 1)) * 100;
 
 
     return (

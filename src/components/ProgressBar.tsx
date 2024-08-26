@@ -13,15 +13,14 @@ export const ProgressBar: FC<ProgressBar> = ({ size = "medium", progress, onClos
     const heightClass = size === "small" ? "h-1" : size === "medium" ? "h-4" : "h-6";
 
     return (
-        <div className='flex gap-4 w-screen justify-center items-center'>
+        <header className="mx-auto flex w-full max-w-[1140px] items-center justify-between gap-x-7 px-10 pt-[20px] lg:pt-[50px]">
             <form action={onClose}>
                 <button type="submit">
-                    <IoClose className='w-6 h-6 cursor-pointer' />
+                    <IoClose className='w-6 h-6 cursor-pointer transition hover:opacity-75' />
                 </button>
             </form>
-            <div className="w-9/12 sm:w-10/12">
                 <div
-                    className={`bg-gray-200 rounded-full ${heightClass}`}
+                    className={`bg-gray-200 relative h-4 w-full overflow-hidden rounded-full bg-secondary ${heightClass}`}
                     role="progressbar"
                 >
                     <div
@@ -29,8 +28,7 @@ export const ProgressBar: FC<ProgressBar> = ({ size = "medium", progress, onClos
                         style={{ width: `${progress}%`, transition: 'width 2s' }}
                     />
                 </div>
-            </div>
-        </div>
+        </header>
     );
 };
 

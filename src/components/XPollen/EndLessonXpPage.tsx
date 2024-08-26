@@ -32,7 +32,6 @@ export const EndLessonXpPage: FC<EndLessonXpPageProps> = ({ lessonXp }) => {
                     </div>
                 </div>
             </div>
-            <Button onClick={() => redirect("/path")}>Continue</Button>
         </div>
     )
 }

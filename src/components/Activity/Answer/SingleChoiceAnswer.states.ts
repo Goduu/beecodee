@@ -5,12 +5,22 @@ import { SingleChoiceQuestion } from '@contentlayer/generated'
 import { highlightCode, OptionWithTokens } from '@/components/TokenColors/highlightCode'
 import { isEqual } from 'lodash'
 import { useLocaleContext } from '@/components/Localization/LocaleContext'
+import { useQuizContext } from '../Quiz.context'
 
-export const useSingleChoiceAnswerStates = (question: SingleChoiceQuestion, language: string) => {
+export const useSingleChoiceAnswerStates = (question: SingleChoiceQuestion, language: string, setLessonState: (state: 'none' | 'correct' | 'wrong' | 'completed') => void
+) => {
     const { locale } = useLocaleContext()
     const [options, setOptions] = useState<OptionWithTokens[]>([])
     const [answer, setAnswer] = useState<OptionWithTokens | undefined>()
     const { playSound, correctAnswerSound, wrongAnswerSound } = useAudio()
+    const { checkFlag, toggleCheckFlag } = useQuizContext()
+
+    useEffect(() => {
+        if (checkFlag) {
+            handleCheckStatus()
+            toggleCheckFlag()
+        }
+    }, [checkFlag])
 
     const isAnswerCorrect = !!options.find(option => option.status === 'correct')
 
@@ -75,9 +85,11 @@ export const useSingleChoiceAnswerStates = (question: SingleChoiceQuestion, lang
         if (correctAnswer && answer.id === correctAnswer[0]) {
             playSound(correctAnswerSound)
             changeOptionStatus(answer, 'correct')
+            setLessonState('correct')
         } else {
             playSound(wrongAnswerSound)
             changeOptionStatus(answer, 'wrong')
+            setLessonState('wrong')
         }
     }, [question, answer, correctAnswerSound])
 
@@ -86,7 +98,6 @@ export const useSingleChoiceAnswerStates = (question: SingleChoiceQuestion, lang
         answer,
         options,
         isAnswerCorrect,
-        handleCheckStatus,
         selectAnswer,
     }
 }

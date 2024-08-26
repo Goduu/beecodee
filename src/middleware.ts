@@ -30,12 +30,14 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(`${request.nextUrl.origin}/path`)
     }
   }
-
-  if (pathnameHasLocale || pathname.includes("/api")) return await updateSession(request)
-
+  
+  if (pathnameHasLocale || pathname.includes("/api")) {
+    return await updateSession(request)
+  }
+  
   const locale = getLocale(request)
   request.nextUrl.pathname = `/${locale}${pathname}`
-
+  
   return NextResponse.redirect(request.nextUrl)
 }
 
@@ -49,6 +51,6 @@ export const config = {
      * - favicon.ico (favicon file)
      * Feel free to modify this pattern to include more paths.
      */
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|mp3)$).*)',
   ],
 }

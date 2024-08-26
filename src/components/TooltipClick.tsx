@@ -9,7 +9,7 @@ export type TooltipClickProps = {
 export const TooltipClick: FC<TooltipClickProps> = ({ children, position = "top", content, disabled = false, visible }) => {
 
     return (
-        <div className={`relative flex justify-between`}>
+        <div className={`relative flex justify-between z-20`}>
             {children}
             <div className={`
                 ${visible ? "scale-100" : "scale-0"} group-hover:opacity-100 

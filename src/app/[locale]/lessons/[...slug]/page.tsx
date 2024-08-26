@@ -2,7 +2,8 @@ import { notFound } from "next/navigation"
 
 import { Metadata } from "next"
 import { Activity, allActivities, allLessons } from "@contentlayer/generated"
-import { LessonBlock } from "@/components/Activity/LessonBlock"
+import { Quiz } from "@/components/Activity/Quiz"
+import { QuizContextWrapper } from "@/components/Activity/Quiz.context"
 
 interface ActivityProps {
   params: {
@@ -54,10 +55,8 @@ export default async function LessonPage({ params }: ActivityProps) {
   })
 
   return (
-    <div className="flex text-center justify-center">
-      <div className="flex flex-col items-center gap-8 min-h-[450px] w-[398px] sm:w-[600px]">
-        <LessonBlock lessonXp={lesson.xp} activityMap={activityMap} />
-      </div>
-    </div>
+    <QuizContextWrapper>
+      <Quiz activityMap={activityMap} lessonXp={lesson.xp} />
+    </QuizContextWrapper>
   )
 }
