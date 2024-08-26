@@ -1,43 +1,43 @@
 {
-    "title": {
-        "en":"Statements 1",
-        "pt":"Declarações 1",
-        "fr":"Instructions 1",
-        "de":"Anweisungen 1",
-        "es":"Declaraciones 1"
+  "title": {
+    "en": "Statements 1",
+    "pt": "Declarações 1",
+    "fr": "Instructions 1",
+    "de": "Anweisungen 1",
+    "es": "Declaraciones 1"
+  },
+  "xp": 10,
+  "description": {
+    "en": "Learn about statements",
+    "pt": "Aprenda sobre declarações",
+    "fr": "Apprenez les instructions",
+    "de": "Erfahren Sie mehr über Anweisungen",
+    "es": "Aprende sobre declaraciones"
+  },
+  "activityRefs": [
+    {
+      "id": 1,
+      "activity": "statements_concept1"
     },
-    "xp": 10,
-    "description": {
-        "en":"Learn about statements",
-        "pt":"Aprenda sobre declarações",
-        "fr":"Apprenez les instructions",
-        "de":"Erfahren Sie mehr über Anweisungen",
-        "es":"Aprende sobre declaraciones"
+    {
+      "id": 2,
+      "activity": "statements_declaration1"
     },
-    "activityRefs": [
-        {
-            "id": 1,
-            "activity": "statements_concept1"
-        },
-        {
-            "id": 2,
-            "activity": "statements_declaration1"
-        },
-        {
-            "id": 3,
-            "activity": "statements_expression1"
-        },
-        {
-            "id": 4,
-            "activity": "statements_block1"
-        },
-        {
-            "id": 5,
-            "activity": "statements_semicolon1"
-        },
-        {
-            "id": 6,
-            "activity": "statements_block2"
-        }
-    ]
+    {
+      "id": 3,
+      "activity": "statements_expression1"
+    },
+    {
+      "id": 4,
+      "activity": "statements_block1"
+    },
+    {
+      "id": 5,
+      "activity": "statements_semicolon1"
+    },
+    {
+      "id": 6,
+      "activity": "statements_block2"
+    }
+  ]
 }

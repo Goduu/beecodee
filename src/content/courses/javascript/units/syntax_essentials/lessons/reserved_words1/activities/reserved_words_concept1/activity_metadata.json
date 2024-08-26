@@ -1,51 +1,45 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "conditionals",
-        "else_statement"
+  "language": "javascript",
+  "tags": ["beginner", "conditionals", "else_statement"],
+  "question": {
+    "type": "SingleChoiceQuestion",
+    "description": {
+      "en": "Which of the following is a reserved keyword in JavaScript?",
+      "pt": "Qual das seguintes palavras-chave é reservada em JavaScript?",
+      "fr": "Laquelle des mots-clés suivants est réservée en JavaScript?",
+      "de": "Welches der folgenden Schlüsselwörter ist in JavaScript reserviert?",
+      "es": "¿Cuál de las siguientes palabras clave es reservada en JavaScript?"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "constant",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "define",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "enum",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "variable",
+          "type": "CodeOption"
+        }
+      }
     ],
-    "question": {
-        "type": "SingleChoiceQuestion",
-        "description": {
-            "en": "Which of the following is a reserved keyword in JavaScript?",
-            "pt": "Qual das seguintes palavras-chave é reservada em JavaScript?",
-            "fr": "Laquelle des mots-clés suivants est réservée en JavaScript?",
-            "de": "Welches der folgenden Schlüsselwörter ist in JavaScript reserviert?",
-            "es": "¿Cuál de las siguientes palabras clave es reservada en JavaScript?"
-        },
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "constant",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "define",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "enum",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": "variable",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "c"
-        ]
-    }
+    "correctAnswer": ["c"]
+  }
 }

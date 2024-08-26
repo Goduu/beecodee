@@ -1,53 +1,46 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "declaration",
-        "reserved words",
-        "assignment"
+  "language": "javascript",
+  "tags": ["beginner", "declaration", "reserved words", "assignment"],
+  "question": {
+    "type": "CodeOutputQuestion",
+    "description": {
+      "en": "What will be the output of the following code snippet?",
+      "pt": "Qual será a saída do trecho de código a seguir?",
+      "fr": "Quel sera le résultat du code suivant?",
+      "de": "Was wird die Ausgabe des folgenden Codeausschnitts sein?",
+      "es": "¿Cuál será el resultado del siguiente fragmento de código?"
+    },
+    "codeSnippet": "let x = 5;\nif (x == 5) {\n    let x = 10;\n}\nconsole.log(x);",
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "5",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "10",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "ReferenceError",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "undefined",
+          "type": "CodeOption"
+        }
+      }
     ],
-    "question": {
-        "type": "CodeOutputQuestion",
-        "description": {
-            "en": "What will be the output of the following code snippet?",
-            "pt": "Qual será a saída do trecho de código a seguir?",
-            "fr": "Quel sera le résultat du code suivant?",
-            "de": "Was wird die Ausgabe des folgenden Codeausschnitts sein?",
-            "es": "¿Cuál será el resultado del siguiente fragmento de código?"
-        },
-        "codeSnippet": "let x = 5;\nif (x == 5) {\n    let x = 10;\n}\nconsole.log(x);",
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "5",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "10",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "ReferenceError",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": "undefined",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "a"
-        ]
-    }
+    "correctAnswer": ["a"]
+  }
 }

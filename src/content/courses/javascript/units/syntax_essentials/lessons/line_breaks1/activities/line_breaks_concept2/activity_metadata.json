@@ -1,44 +1,38 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "conditionals",
-        "else_statement"
+  "language": "javascript",
+  "tags": ["beginner", "conditionals", "else_statement"],
+  "question": {
+    "type": "SingleChoiceQuestion",
+    "description": {
+      "en": "Which of the following options adds a line break in JavaScript?",
+      "pt": "Qual das seguintes opções adiciona uma quebra de linha em JavaScript?",
+      "fr": "Parmi les options suivantes, laquelle ajoute un saut de ligne en JavaScript?",
+      "de": "Welche der folgenden Optionen fügt einen Zeilenumbruch in JavaScript ein?",
+      "es": "¿Cuál de las siguientes opciones agrega un salto de línea en JavaScript?"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "'\\t'",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "'\\r\\n'",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "'\\b'",
+          "type": "CodeOption"
+        }
+      }
     ],
-    "question": {
-        "type": "SingleChoiceQuestion",
-        "description": {
-            "en": "Which of the following options adds a line break in JavaScript?",
-            "pt": "Qual das seguintes opções adiciona uma quebra de linha em JavaScript?",
-            "fr": "Parmi les options suivantes, laquelle ajoute un saut de ligne en JavaScript?",
-            "de": "Welche der folgenden Optionen fügt einen Zeilenumbruch in JavaScript ein?",
-            "es": "¿Cuál de las siguientes opciones agrega un salto de línea en JavaScript?"
-        },
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "'\\t'",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "'\\r\\n'",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "'\\b'",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "b"
-        ]
-    }
+    "correctAnswer": ["b"]
+  }
 }

@@ -1,63 +1,57 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "whitespace",
-        "concepts"
+  "language": "javascript",
+  "tags": ["beginner", "whitespace", "concepts"],
+  "question": {
+    "type": "CodeOutputQuestion",
+    "description": {
+      "en": "How will be the output of the following JavaScript code?",
+      "pt": "Qual será a saída do seguinte código JavaScript?",
+      "fr": "Quel sera le résultat du code JavaScript suivant?",
+      "de": "Wie wird die Ausgabe des folgenden JavaScript-Codes sein?",
+      "es": "¿Cuál será el resultado del siguiente código JavaScript?"
+    },
+    "codeSnippet": "let text = \"Hello\\nWorld\";\nconsole.log(text);",
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": {
+            "en": "The two words will be printed on separate lines.",
+            "pt": "As duas palavras serão impressas em linhas separadas.",
+            "fr": "Les deux mots seront imprimés sur des lignes séparées.",
+            "de": "Die beiden Wörter werden auf separaten Zeilen gedruckt.",
+            "es": "Las dos palabras se imprimirán en líneas separadas."
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": {
+            "en": "The two words will be printed on the same line.",
+            "pt": "As duas palavras serão impressas na mesma linha.",
+            "fr": "Les deux mots seront imprimés sur la même ligne.",
+            "de": "Die beiden Wörter werden in derselben Zeile gedruckt.",
+            "es": "Las dos palabras se imprimirán en la misma línea."
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": {
+            "en": "The two words will be printed with a space between them.",
+            "pt": "As duas palavras serão impressas com um espaço entre elas.",
+            "fr": "Les deux mots seront imprimés avec un espace entre eux.",
+            "de": "Die beiden Wörter werden mit einem Leerzeichen zwischen ihnen gedruckt.",
+            "es": "Las dos palabras se imprimirán con un espacio entre ellas."
+          },
+          "type": "TextOption"
+        }
+      }
     ],
-    "question": {
-        "type": "CodeOutputQuestion",
-        "description": {
-            "en": "How will be the output of the following JavaScript code?",
-            "pt": "Qual será a saída do seguinte código JavaScript?",
-            "fr": "Quel sera le résultat du code JavaScript suivant?",
-            "de": "Wie wird die Ausgabe des folgenden JavaScript-Codes sein?",
-            "es": "¿Cuál será el resultado del siguiente código JavaScript?"
-        },
-        "codeSnippet": "let text = \"Hello\\nWorld\";\nconsole.log(text);",
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": {
-                        "en": "The two words will be printed on separate lines.",
-                        "pt": "As duas palavras serão impressas em linhas separadas.",
-                        "fr": "Les deux mots seront imprimés sur des lignes séparées.",
-                        "de": "Die beiden Wörter werden auf separaten Zeilen gedruckt.",
-                        "es": "Las dos palabras se imprimirán en líneas separadas."
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": {
-                        "en": "The two words will be printed on the same line.",
-                        "pt": "As duas palavras serão impressas na mesma linha.",
-                        "fr": "Les deux mots seront imprimés sur la même ligne.",
-                        "de": "Die beiden Wörter werden in derselben Zeile gedruckt.",
-                        "es": "Las dos palabras se imprimirán en la misma línea."
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": {
-                        "en": "The two words will be printed with a space between them.",
-                        "pt": "As duas palavras serão impressas com um espaço entre elas.",
-                        "fr": "Les deux mots seront imprimés avec un espace entre eux.",
-                        "de": "Die beiden Wörter werden mit einem Leerzeichen zwischen ihnen gedruckt.",
-                        "es": "Las dos palabras se imprimirán con un espacio entre ellas."
-                    },
-                    "type": "TextOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "a"
-        ]
-    }
+    "correctAnswer": ["a"]
+  }
 }

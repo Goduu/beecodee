@@ -1,57 +1,48 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "comments"
+  "language": "javascript",
+  "tags": ["beginner", "comments"],
+  "question": {
+    "type": "PairMatchingQuestion",
+    "description": {
+      "en": "Match the code snippet with its corresponding description:",
+      "pt": "Combine o trecho de código com sua descrição correspondente:",
+      "fr": "Associez l'extrait de code à sa description correspondante:",
+      "de": "Ordnen Sie den Code-Schnipsel seiner entsprechenden Beschreibung zu:",
+      "es": "Combina el fragmento de código con su descripción correspondiente:"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "/* var a = 5; */ var b = 10;",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "// var a = 10; var b = 5;",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "The variables a and b will not be declared",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "The variable a will not be declared",
+          "type": "CodeOption"
+        }
+      }
     ],
-    "question": {
-        "type": "PairMatchingQuestion",
-        "description": {
-            "en": "Match the code snippet with its corresponding description:",
-            "pt": "Combine o trecho de código com sua descrição correspondente:",
-            "fr": "Associez l'extrait de code à sa description correspondante:",
-            "de": "Ordnen Sie den Code-Schnipsel seiner entsprechenden Beschreibung zu:",
-            "es": "Combina el fragmento de código con su descripción correspondiente:"
-        },
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "/* var a = 5; */ var b = 10;",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "// var a = 10; var b = 5;",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "The variables a and b will not be declared",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": "The variable a will not be declared",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            [
-                "a",
-                "d"
-            ],
-            [
-                "b",
-                "c"
-            ]
-        ]
-    }
+    "correctAnswer": [
+      ["a", "d"],
+      ["b", "c"]
+    ]
+  }
 }

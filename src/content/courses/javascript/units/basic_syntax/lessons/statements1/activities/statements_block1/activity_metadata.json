@@ -1,44 +1,38 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "blocks",
-        "statements"
+  "language": "javascript",
+  "tags": ["beginner", "blocks", "statements"],
+  "question": {
+    "type": "SingleChoiceQuestion",
+    "description": {
+      "en": "A block statement is a group of statements that are enclosed in a pair of braces { }. Which of those have a variable declared in a block?",
+      "pt": "Uma declaração de bloco é um grupo de declarações que são fechadas em um par de chaves { }. Qual dessas tem uma variável declarada em um bloco?",
+      "fr": "Une instruction de bloc est un groupe d'instructions qui sont enfermées dans une paire d'accolades { }. Lesquelles déclarent une variable dans un bloc?",
+      "de": "Eine Blockanweisung ist eine Gruppe von Anweisungen, die in einem Paar von Klammern { } eingeschlossen sind. Welche davon haben eine Variable in einem Block deklariert?",
+      "es": "Una declaración de bloque es un grupo de declaraciones que están encerradas en un par de llaves { }. ¿Cuál de ellas tiene una variable declarada en un bloque?"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "{const foo = 1}",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "const foo = 1",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "const foo = (1)",
+          "type": "CodeOption"
+        }
+      }
     ],
-    "question": {
-        "type": "SingleChoiceQuestion",
-        "description": {
-            "en": "A block statement is a group of statements that are enclosed in a pair of braces { }. Which of those have a variable declared in a block?",
-            "pt": "Uma declaração de bloco é um grupo de declarações que são fechadas em um par de chaves { }. Qual dessas tem uma variável declarada em um bloco?",
-            "fr": "Une instruction de bloc est un groupe d'instructions qui sont enfermées dans une paire d'accolades { }. Lesquelles déclarent une variable dans un bloc?",
-            "de": "Eine Blockanweisung ist eine Gruppe von Anweisungen, die in einem Paar von Klammern { } eingeschlossen sind. Welche davon haben eine Variable in einem Block deklariert?",
-            "es": "Una declaración de bloque es un grupo de declaraciones que están encerradas en un par de llaves { }. ¿Cuál de ellas tiene una variable declarada en un bloque?"
-        },
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "{const foo = 1}",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "const foo = 1",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "const foo = (1)",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "a"
-        ]
-    }
+    "correctAnswer": ["a"]
+  }
 }

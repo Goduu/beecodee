@@ -1,50 +1,45 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "variables"
+  "language": "javascript",
+  "tags": ["beginner", "variables"],
+  "question": {
+    "type": "SingleChoiceQuestion",
+    "description": {
+      "en": "A statement is a command that performs an action. Declaring values or flux control are examples of statements. Select the alternative which is not a declaration statement.",
+      "pt": "Uma instrução é um comando que executa uma ação. Declarar valores ou controle de fluxo são exemplos de instruções. Selecione a alternativa que não é uma instrução de declaração.",
+      "fr": "Une déclaration est une commande qui effectue une action. Déclarer des valeurs ou contrôler le flux sont des exemples de déclarations. Sélectionnez l'alternative qui n'est pas une déclaration.",
+      "de": "Eine Anweisung ist ein Befehl, der eine Aktion ausführt. Das Deklarieren von Werten oder das Steuern des Flusses sind Beispiele für Anweisungen. Wählen Sie die Alternative aus, die keine Deklarationsanweisung ist.",
+      "es": "Una declaración es un comando que realiza una acción. Declarar valores o control de flujo son ejemplos de declaraciones. Seleccione la alternativa que no es una declaración."
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "let bar = 20;",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "const foo = 20;",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "var x;",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "return true",
+          "type": "CodeOption"
+        }
+      }
     ],
-    "question": {
-        "type": "SingleChoiceQuestion",
-        "description": {
-            "en": "A statement is a command that performs an action. Declaring values or flux control are examples of statements. Select the alternative which is not a declaration statement.",
-            "pt": "Uma instrução é um comando que executa uma ação. Declarar valores ou controle de fluxo são exemplos de instruções. Selecione a alternativa que não é uma instrução de declaração.",
-            "fr": "Une déclaration est une commande qui effectue une action. Déclarer des valeurs ou contrôler le flux sont des exemples de déclarations. Sélectionnez l'alternative qui n'est pas une déclaration.",
-            "de": "Eine Anweisung ist ein Befehl, der eine Aktion ausführt. Das Deklarieren von Werten oder das Steuern des Flusses sind Beispiele für Anweisungen. Wählen Sie die Alternative aus, die keine Deklarationsanweisung ist.",
-            "es": "Una declaración es un comando que realiza una acción. Declarar valores o control de flujo son ejemplos de declaraciones. Seleccione la alternativa que no es una declaración."
-        },
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "let bar = 20;",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "const foo = 20;",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "var x;",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": "return true",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "d"
-        ]
-    }
+    "correctAnswer": ["d"]
+  }
 }

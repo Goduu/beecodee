@@ -1,7 +1,6 @@
 import { createJSONStorage, persist, StateStorage } from "zustand/middleware"
 import { waitForAppToMount } from "./mount"
 
-
 export function isBrowser() {
   return typeof window === "object"
 }

@@ -1,120 +1,113 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "variables",
-        "reserved words"
+  "language": "javascript",
+  "tags": ["beginner", "variables", "reserved words"],
+  "question": {
+    "type": "FillInTheBlankQuestion",
+    "description": {
+      "en": "Fill in the blank with the correct reserved keyword.",
+      "pt": "Preencha a lacuna com a palavra-chave reservada correta.",
+      "fr": "Remplissez l'espace vide avec le mot-clé réservé correct.",
+      "de": "Füllen Sie die Lücke mit dem richtigen reservierten Schlüsselwort aus.",
+      "es": "Complete el espacio en blanco con la palabra clave reservada correcta."
+    },
+    "segments": [
+      {
+        "segment": {
+          "id": "a",
+          "type": "TextOption",
+          "content": {
+            "en": "JavaScript's ",
+            "pt": "A Palavra chave do JavaScript ",
+            "fr": "Le mot clé du JavaScript ",
+            "de": "Das Schlüsselwort des JavaScripts ",
+            "es": "La palabra clave de JavaScript "
+          }
+        }
+      },
+      {
+        "segment": {
+          "id": "b",
+          "type": "GapOption",
+          "size": 5
+        }
+      },
+      {
+        "segment": {
+          "id": "c",
+          "type": "TextOption",
+          "content": {
+            "en": " keyword is used to create a variable with block scope.",
+            "pt": " é usada para criar uma variável com escopo de bloco.",
+            "fr": " est utilisé pour créer une variable avec une portée de bloc.",
+            "de": " wird verwendet, um eine Variable mit Blockumfang zu erstellen.",
+            "es": " se utiliza para crear una variable con alcance de bloque."
+          }
+        }
+      },
+      {
+        "segment": {
+          "id": "d",
+          "type": "TextOption",
+          "content": {
+            "en": " and the keyword ",
+            "pt": " e a palavra-chave ",
+            "fr": " et le mot clé ",
+            "de": " und das Schlüsselwort ",
+            "es": " y la palabra clave "
+          }
+        }
+      },
+      {
+        "segment": {
+          "id": "e",
+          "type": "GapOption",
+          "size": 5
+        }
+      },
+      {
+        "segment": {
+          "id": "f",
+          "type": "TextOption",
+          "content": {
+            "en": " is used to create a variable with function scope.",
+            "pt": " é usada para criar uma variável com escopo de função.",
+            "fr": " est utilisé pour créer une variable avec une portée de fonction.",
+            "de": " wird verwendet, um eine Variable mit Funktionsumfang zu erstellen.",
+            "es": " se utiliza para crear una variable con alcance de función."
+          }
+        }
+      }
     ],
-    "question": {
-        "type": "FillInTheBlankQuestion",
-        "description": {
-            "en": "Fill in the blank with the correct reserved keyword.",
-            "pt": "Preencha a lacuna com a palavra-chave reservada correta.",
-            "fr": "Remplissez l'espace vide avec le mot-clé réservé correct.",
-            "de": "Füllen Sie die Lücke mit dem richtigen reservierten Schlüsselwort aus.",
-            "es": "Complete el espacio en blanco con la palabra clave reservada correcta."
-        },
-        "segments": [
-            {
-                "segment": {
-                    "id": "a",
-                    "type": "TextOption",
-                    "content": {
-                        "en": "JavaScript's ",
-                        "pt": "A Palavra chave do JavaScript ",
-                        "fr": "Le mot clé du JavaScript ",
-                        "de": "Das Schlüsselwort des JavaScripts ",
-                        "es": "La palabra clave de JavaScript "
-                    }
-                }
-            },
-            {
-                "segment": {
-                    "id": "b",
-                    "type": "GapOption",
-                    "size": 5
-                }
-            },
-            {
-                "segment": {
-                    "id": "c",
-                    "type": "TextOption",
-                    "content": {
-                        "en": " keyword is used to create a variable with block scope.",
-                        "pt": " é usada para criar uma variável com escopo de bloco.",
-                        "fr": " est utilisé pour créer une variable avec une portée de bloc.",
-                        "de": " wird verwendet, um eine Variable mit Blockumfang zu erstellen.",
-                        "es": " se utiliza para crear una variable con alcance de bloque."
-                    }
-                }
-            },
-            {
-                "segment": {
-                    "id": "d",
-                    "type": "TextOption",
-                    "content": {
-                        "en": " and the keyword ",
-                        "pt": " e a palavra-chave ",
-                        "fr": " et le mot clé ",
-                        "de": " und das Schlüsselwort ",
-                        "es": " y la palabra clave "
-                    }
-                }
-            },
-            {
-                "segment": {
-                    "id": "e",
-                    "type": "GapOption",
-                    "size": 5
-                }
-            },
-            {
-                "segment": {
-                    "id": "f",
-                    "type": "TextOption",
-                    "content": {
-                        "en": " is used to create a variable with function scope.",
-                        "pt": " é usada para criar uma variável com escopo de função.",
-                        "fr": " est utilisé pour créer une variable avec une portée de fonction.",
-                        "de": " wird verwendet, um eine Variable mit Funktionsumfang zu erstellen.",
-                        "es": " se utiliza para crear una variable con alcance de función."
-                    }
-                }
-            }
-        ],
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "define",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "var",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "set",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": "let",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "d",
-            "b"
-        ]
-    }
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "define",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "var",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "set",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "let",
+          "type": "CodeOption"
+        }
+      }
+    ],
+    "correctAnswer": ["d", "b"]
+  }
 }

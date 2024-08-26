@@ -1,7 +1,7 @@
-import { Option } from "@contentlayer/generated";
-import Prism from "prismjs";
-import { BeeLocale } from "../Localization/localization";
-import { AnswerStatus } from "../Activity/Answer/types";
+import { Option } from "@contentlayer/generated"
+import Prism from "prismjs"
+import { BeeLocale } from "../Localization/localization"
+import { AnswerStatus } from "../Activity/Answer/types"
 
 export type OptionWithTokens = {
   id: Option["option"]["id"]
@@ -28,64 +28,61 @@ export function highlightCode(option: Option["option"], language: string, locale
   // Check if code is an array and join it into a single string
   let codeStr
   if (option.type === "CodeOption") {
-    codeStr = Array.isArray(option.content) ? option.content.join(' ') : option.content;
+    codeStr = Array.isArray(option.content) ? option.content.join(" ") : option.content
   } else {
-    codeStr = Array.isArray(option.content[locale]) ? option.content[locale].join(' ') : option.content[locale];
+    codeStr = Array.isArray(option.content[locale]) ? option.content[locale].join(" ") : option.content[locale]
   }
-  const codeWithTabs = codeStr.replace(/  /g, '\t')
+  const codeWithTabs = codeStr.replace(/  /g, "\t")
   // Use Prism to highlight the code
   // const highlightedCode = Prism.highlight(codeWithTabs, Prism.languages[language] || Prism.languages.javascript, language);
-  const codeTokenized = Prism.tokenize(codeWithTabs, Prism.languages[language]);
+  const codeTokenized = Prism.tokenize(codeWithTabs, Prism.languages[language])
 
-  const tokens: Token[] = [];
+  const tokens: Token[] = []
 
   const processToken = (token: Prism.Token | string) => {
-    if (typeof token === 'string') {
+    if (typeof token === "string") {
       if (token.includes("\n")) {
-        tokens.push({ content: "\n", type: "format" });
+        tokens.push({ content: "\n", type: "format" })
       }
       if (token.includes("\t")) {
-        tokens.push({ content: "\t", type: "format" });
+        tokens.push({ content: "\t", type: "format" })
       }
-      if (token.replace(/\n/g, '') !== '') {
-        tokens.push({ content: token, type: null });
+      if (token.replace(/\n/g, "") !== "") {
+        tokens.push({ content: token, type: null })
       }
     } else {
       // the content can be a string or an array of strings | Tokens
       if (Array.isArray(token.content)) {
         tokens.push({
-          content: token.content.map(c => typeof c === "string" ? c : c.content).join(''),
+          content: token.content.map((c) => (typeof c === "string" ? c : c.content)).join(""),
           type: token.type,
         })
       } else {
         tokens.push({
           content: token.content,
           type: token.type,
-        });
+        })
       }
     }
   }
 
-  codeTokenized.forEach(processToken);
+  codeTokenized.forEach(processToken)
   return {
     ...option,
     id: option.id,
-    status: 'neutral',
-    tokens: tokens
-  };
+    status: "neutral",
+    tokens: tokens,
+  }
 }
 
 export function highlightArray(options: Option["option"][], language: string, locale: BeeLocale): OptionWithTokens[] {
-  const tokens: OptionWithTokens[] = [];
+  const tokens: OptionWithTokens[] = []
 
-  return options.map((option) => (
-    highlightCode(option, language, locale)
-  ))
-
+  return options.map((option) => highlightCode(option, language, locale))
 }
 
 export const tokenizeCode = (code: string, language: string) => {
-  const codeTokenized = Prism.highlight(code, Prism.languages[language] || Prism.languages.javascript, language);
+  const codeTokenized = Prism.highlight(code, Prism.languages[language] || Prism.languages.javascript, language)
 
-  return codeTokenized;
+  return codeTokenized
 }

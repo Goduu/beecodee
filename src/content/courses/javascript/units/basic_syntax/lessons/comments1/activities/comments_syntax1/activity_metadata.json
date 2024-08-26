@@ -1,50 +1,45 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "comments"
+  "language": "javascript",
+  "tags": ["beginner", "comments"],
+  "question": {
+    "type": "SingleChoiceQuestion",
+    "description": {
+      "en": "Which of the following will cause a syntax error in JavaScript?",
+      "pt": "Qual dos seguintes causará um erro de sintaxe em JavaScript?",
+      "fr": "Lequel des éléments suivants provoquera une erreur de syntaxe en JavaScript?",
+      "de": "Welches der folgenden wird in JavaScript einen Syntaxfehler verursachen?",
+      "es": "¿Cuál de los siguientes causará un error de sintaxis en JavaScript?"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "// This is a comment",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "/* This is also a comment */",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "/* This is a comment //",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "/* This is a comment // */",
+          "type": "CodeOption"
+        }
+      }
     ],
-    "question": {
-        "type": "SingleChoiceQuestion",
-        "description": {
-            "en": "Which of the following will cause a syntax error in JavaScript?",
-            "pt": "Qual dos seguintes causará um erro de sintaxe em JavaScript?",
-            "fr": "Lequel des éléments suivants provoquera une erreur de syntaxe en JavaScript?",
-            "de": "Welches der folgenden wird in JavaScript einen Syntaxfehler verursachen?",
-            "es": "¿Cuál de los siguientes causará un error de sintaxis en JavaScript?"
-        },
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "// This is a comment",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "/* This is also a comment */",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "/* This is a comment //",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": "/* This is a comment // */",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "c"
-        ]
-    }
+    "correctAnswer": ["c"]
+  }
 }

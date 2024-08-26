@@ -1,51 +1,46 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "blocks"
+  "language": "javascript",
+  "tags": ["beginner", "blocks"],
+  "question": {
+    "type": "CodeOutputQuestion",
+    "description": {
+      "en": "A variable declared with var has no block scope, it means that it could be changed in another block scope. What is the value of foo at the end of the code?",
+      "pt": "Uma variável declarada com var não tem escopo de bloco, o que significa que ela pode ser alterada em outro escopo de bloco. Qual é o valor de foo no final do código?",
+      "fr": "Une variable déclarée avec var n'a pas de portée de bloc, ce qui signifie qu'elle pourrait être modifiée dans un autre bloc. Quelle est la valeur de foo à la fin du code?",
+      "de": "Eine mit var deklarierte Variable hat keinen Blockbereich, das bedeutet, dass sie in einem anderen Blockbereich geändert werden könnte. Was ist der Wert von foo am Ende des Codes?",
+      "es": "Una variable declarada con var no tiene alcance de bloque, lo que significa que podría cambiarse en otro alcance de bloque. ¿Cuál es el valor de foo al final del código?"
+    },
+    "codeSnippet": "var foo = 1;\n{\n    var foo = 2;\n}",
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "1",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "2",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "3",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "undefined",
+          "type": "CodeOption"
+        }
+      }
     ],
-    "question": {
-        "type": "CodeOutputQuestion",
-        "description": {
-            "en": "A variable declared with var has no block scope, it means that it could be changed in another block scope. What is the value of foo at the end of the code?",
-            "pt": "Uma variável declarada com var não tem escopo de bloco, o que significa que ela pode ser alterada em outro escopo de bloco. Qual é o valor de foo no final do código?",
-            "fr": "Une variable déclarée avec var n'a pas de portée de bloc, ce qui signifie qu'elle pourrait être modifiée dans un autre bloc. Quelle est la valeur de foo à la fin du code?",
-            "de": "Eine mit var deklarierte Variable hat keinen Blockbereich, das bedeutet, dass sie in einem anderen Blockbereich geändert werden könnte. Was ist der Wert von foo am Ende des Codes?",
-            "es": "Una variable declarada con var no tiene alcance de bloque, lo que significa que podría cambiarse en otro alcance de bloque. ¿Cuál es el valor de foo al final del código?"
-        },
-        "codeSnippet": "var foo = 1;\n{\n    var foo = 2;\n}",
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "1",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "2",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "3",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": "undefined",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "a"
-        ]
-    }
+    "correctAnswer": ["a"]
+  }
 }

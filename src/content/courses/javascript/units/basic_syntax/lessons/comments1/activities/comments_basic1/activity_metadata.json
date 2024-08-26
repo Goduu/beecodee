@@ -1,95 +1,89 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "comments"
+  "language": "javascript",
+  "tags": ["beginner", "comments"],
+  "question": {
+    "type": "FillInTheBlankQuestion",
+    "description": {
+      "en": "There are mainly two types of comments in JavaScript.",
+      "pt": "Existem principalmente dois tipos de comentários em JavaScript.",
+      "fr": "Il existe principalement deux types de commentaires en JavaScript.",
+      "de": "Es gibt hauptsächlich zwei Arten von Kommentaren in JavaScript.",
+      "es": "Principalmente hay dos tipos de comentarios en JavaScript."
+    },
+    "segments": [
+      {
+        "segment": {
+          "id": "a",
+          "type": "TextOption",
+          "content": {
+            "en": "A single-line comments start with ",
+            "pt": "Comentários de uma linha começam com ",
+            "fr": "Les commentaires sur une seule ligne commencent par ",
+            "de": "Einzeilige Kommentare beginnen mit ",
+            "es": "Los comentarios de una sola línea comienzan con "
+          }
+        }
+      },
+      {
+        "segment": {
+          "id": "b",
+          "type": "GapOption",
+          "content": "",
+          "size": 5
+        }
+      },
+      {
+        "segment": {
+          "id": "c",
+          "type": "TextOption",
+          "content": {
+            "en": " , while multi-line comments are enclosed within ",
+            "pt": " , enquanto comentários de várias linhas são envolvidos por ",
+            "fr": "  , tandis que les commentaires sur plusieurs lignes sont enfermés dans ",
+            "de": " , während mehrzeilige Kommentare in ",
+            "es": " , mientras que los comentarios de varias líneas están encerrados en "
+          }
+        }
+      },
+      {
+        "segment": {
+          "id": "d",
+          "type": "GapOption",
+          "content": "",
+          "size": 5
+        }
+      }
     ],
-    "question": {
-        "type": "FillInTheBlankQuestion",
-        "description": {
-            "en": "There are mainly two types of comments in JavaScript.",
-            "pt": "Existem principalmente dois tipos de comentários em JavaScript.",
-            "fr": "Il existe principalement deux types de commentaires en JavaScript.",
-            "de": "Es gibt hauptsächlich zwei Arten von Kommentaren in JavaScript.",
-            "es": "Principalmente hay dos tipos de comentarios en JavaScript."
-        },
-        "segments": [
-            {
-                "segment": {
-                    "id": "a",
-                    "type": "TextOption",
-                    "content": {
-                        "en": "A single-line comments start with ",
-                        "pt": "Comentários de uma linha começam com ",
-                        "fr": "Les commentaires sur une seule ligne commencent par ",
-                        "de": "Einzeilige Kommentare beginnen mit ",
-                        "es": "Los comentarios de una sola línea comienzan con "
-                    }
-                }
-            },
-            {
-                "segment": {
-                    "id": "b",
-                    "type": "GapOption",
-                    "content": "",
-                    "size": 5
-                }
-            },
-            {
-                "segment": {
-                    "id": "c",
-                    "type": "TextOption",
-                    "content": {
-                        "en": " , while multi-line comments are enclosed within ",
-                        "pt": " , enquanto comentários de várias linhas são envolvidos por ",
-                        "fr": "  , tandis que les commentaires sur plusieurs lignes sont enfermés dans ",
-                        "de": " , während mehrzeilige Kommentare in ",
-                        "es": " , mientras que los comentarios de varias líneas están encerrados en "
-                    }
-                }
-            },
-            {
-                "segment": {
-                    "id": "d",
-                    "type": "GapOption",
-                    "content": "",
-                    "size": 5
-                }
-            }
-        ],
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "/",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "//",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "/* */",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": "##",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "b",
-            "c"
-        ]
-    }
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "/",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "//",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "/* */",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "##",
+          "type": "CodeOption"
+        }
+      }
+    ],
+    "correctAnswer": ["b", "c"]
+  }
 }

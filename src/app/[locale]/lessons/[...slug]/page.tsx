@@ -23,9 +23,7 @@ async function getLessonFromParams(params: ActivityProps["params"]) {
   return lesson
 }
 
-export async function generateMetadata({
-  params,
-}: ActivityProps): Promise<Metadata> {
+export async function generateMetadata({ params }: ActivityProps): Promise<Metadata> {
   const lesson = await getLessonFromParams(params)
 
   if (!lesson) {
@@ -33,7 +31,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `Beecodee: ${lesson.description}`
+    title: `Beecodee: ${lesson.description}`,
   }
 }
 

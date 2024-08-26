@@ -1,88 +1,83 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "reserved word"
+  "language": "javascript",
+  "tags": ["beginner", "reserved word"],
+  "question": {
+    "type": "FillInTheBlankQuestion",
+    "description": {
+      "en": "Two commonly used statements are switch and loops.",
+      "translations": {
+        "en": "Fill in the blank with the appropriate keyword.",
+        "pt": "Preencha a lacuna com a palavra-chave apropriada.",
+        "fr": "Remplissez l'espace vide avec le mot-clé approprié.",
+        "de": "Füllen Sie die Lücke mit dem entsprechenden Schlüsselwort aus.",
+        "es": "Complete el espacio en blanco con la palabra clave adecuada."
+      }
+    },
+    "segments": [
+      {
+        "segment": {
+          "id": "a",
+          "type": "TextOption",
+          "content": {
+            "en": "In JavaScript, the keyword ",
+            "pt": "Em JavaScript, a palavra-chave ",
+            "fr": "En JavaScript, le mot-clé ",
+            "de": "In JavaScript ist das Schlüsselwort ",
+            "es": "En JavaScript, la palabra clave "
+          }
+        }
+      },
+      {
+        "segment": {
+          "id": "b",
+          "type": "GapOption",
+          "size": 8
+        }
+      },
+      {
+        "segment": {
+          "id": "c",
+          "type": "TextOption",
+          "content": {
+            "en": " is used to terminate the current loop or switch statement.",
+            "pt": " é usado para encerrar o loop ou a declaração switch atual.",
+            "fr": " est utilisé pour terminer la boucle ou l'instruction switch en cours.",
+            "de": " wird verwendet, um die aktuelle Schleife oder Switch-Anweisung zu beenden.",
+            "es": " se utiliza para terminar el bucle o la declaración switch actual."
+          }
+        }
+      }
     ],
-    "question": {
-        "type": "FillInTheBlankQuestion",
-        "description": {
-            "en": "Two commonly used statements are switch and loops.",
-            "translations": {
-                "en": "Fill in the blank with the appropriate keyword.",
-                "pt": "Preencha a lacuna com a palavra-chave apropriada.",
-                "fr": "Remplissez l'espace vide avec le mot-clé approprié.",
-                "de": "Füllen Sie die Lücke mit dem entsprechenden Schlüsselwort aus.",
-                "es": "Complete el espacio en blanco con la palabra clave adecuada."
-            }
-        },
-        "segments": [
-            {
-                "segment": {
-                    "id": "a",
-                    "type": "TextOption",
-                    "content": {
-                        "en": "In JavaScript, the keyword ",
-                        "pt": "Em JavaScript, a palavra-chave ",
-                        "fr": "En JavaScript, le mot-clé ",
-                        "de": "In JavaScript ist das Schlüsselwort ",
-                        "es": "En JavaScript, la palabra clave "
-                    }
-                }
-            },
-            {
-                "segment": {
-                    "id": "b",
-                    "type": "GapOption",
-                    "size": 8
-                }
-            },
-            {
-                "segment": {
-                    "id": "c",
-                    "type": "TextOption",
-                    "content": {
-                        "en": " is used to terminate the current loop or switch statement.",
-                        "pt": " é usado para encerrar o loop ou a declaração switch atual.",
-                        "fr": " est utilisé pour terminer la boucle ou l'instruction switch en cours.",
-                        "de": " wird verwendet, um die aktuelle Schleife oder Switch-Anweisung zu beenden.",
-                        "es": " se utiliza para terminar el bucle o la declaración switch actual."
-                    }
-                }
-            }
-        ],
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "continue",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "stop",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "break",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": "halt",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "c"
-        ]
-    }
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "continue",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "stop",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "break",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "halt",
+          "type": "CodeOption"
+        }
+      }
+    ],
+    "correctAnswer": ["c"]
+  }
 }

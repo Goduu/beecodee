@@ -1,118 +1,102 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "template_strings",
-        "code_matching"
+  "language": "javascript",
+  "tags": ["beginner", "template_strings", "code_matching"],
+  "question": {
+    "type": "PairMatchingQuestion",
+    "description": {
+      "en": "Match the following code with its correct explanation of whitespace usage",
+      "pt": "Combine o código a seguir com sua explicação correta sobre o uso de espaços em branco",
+      "fr": "Associez le code suivant à son explication correcte de l'utilisation des espaces",
+      "de": "Ordnen Sie den folgenden Code seiner korrekten Erklärung zur Leerzeichenverwendung zu",
+      "es": "Combina el siguiente código con su explicación correcta del uso de espacios en blanco"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "let a = 5;",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "function myFunc() { }",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "if (x > y) {}",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "console.log('Hello there');",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "e",
+          "content": {
+            "en": "Whitespace separates the variable name and the operator",
+            "pt": "Espaço em branco separa o nome da variável e o operador",
+            "fr": "L'espace sépare le nom de la variable et l'opérateur",
+            "de": "Leerzeichen trennen den Variablennamen und den Operator",
+            "es": "El espacio en blanco separa el nombre de la variable y el operador"
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "f",
+          "content": {
+            "en": "Whitespace does not affect string content",
+            "pt": "Espaço em branco não afeta o conteúdo da string",
+            "fr": "L'espace n'affecte pas le contenu de la chaîne",
+            "de": "Leerzeichen beeinflussen den Zeichenfolgeninhalt nicht",
+            "es": "El espacio en blanco no afecta el contenido de la cadena"
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "g",
+          "content": {
+            "en": "Whitespace separates the condition from the keyword",
+            "pt": "Espaço em branco separa a condição da palavra-chave",
+            "fr": "L'espace sépare la condition du mot-clé",
+            "de": "Leerzeichen trennen die Bedingung vom Schlüsselwort",
+            "es": "El espacio en blanco separa la condición de la palabra clave"
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "h",
+          "content": {
+            "en": "Whitespace separates the function name and parameters",
+            "pt": "Espaço em branco separa o nome da função e os parâmetros",
+            "fr": "L'espace sépare le nom de la fonction et les paramètres",
+            "de": "Leerzeichen trennen den Funktionsnamen und die Parameter",
+            "es": "El espacio en blanco separa el nombre de la función y los parámetros"
+          },
+          "type": "TextOption"
+        }
+      }
     ],
-    "question": {
-        "type": "PairMatchingQuestion",
-        "description": {
-            "en": "Match the following code with its correct explanation of whitespace usage",
-            "pt": "Combine o código a seguir com sua explicação correta sobre o uso de espaços em branco",
-            "fr": "Associez le code suivant à son explication correcte de l'utilisation des espaces",
-            "de": "Ordnen Sie den folgenden Code seiner korrekten Erklärung zur Leerzeichenverwendung zu",
-            "es": "Combina el siguiente código con su explicación correcta del uso de espacios en blanco"
-        },
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "let a = 5;",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "function myFunc() { }",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "if (x > y) {}",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": "console.log('Hello there');",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "e",
-                    "content": {
-                        "en": "Whitespace separates the variable name and the operator",
-                        "pt": "Espaço em branco separa o nome da variável e o operador",
-                        "fr": "L'espace sépare le nom de la variable et l'opérateur",
-                        "de": "Leerzeichen trennen den Variablennamen und den Operator",
-                        "es": "El espacio en blanco separa el nombre de la variable y el operador"
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "f",
-                    "content": {
-                        "en": "Whitespace does not affect string content",
-                        "pt": "Espaço em branco não afeta o conteúdo da string",
-                        "fr": "L'espace n'affecte pas le contenu de la chaîne",
-                        "de": "Leerzeichen beeinflussen den Zeichenfolgeninhalt nicht",
-                        "es": "El espacio en blanco no afecta el contenido de la cadena"
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "g",
-                    "content": {
-                        "en": "Whitespace separates the condition from the keyword",
-                        "pt": "Espaço em branco separa a condição da palavra-chave",
-                        "fr": "L'espace sépare la condition du mot-clé",
-                        "de": "Leerzeichen trennen die Bedingung vom Schlüsselwort",
-                        "es": "El espacio en blanco separa la condición de la palabra clave"
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "h",
-                    "content": {
-                        "en": "Whitespace separates the function name and parameters",
-                        "pt": "Espaço em branco separa o nome da função e os parâmetros",
-                        "fr": "L'espace sépare le nom de la fonction et les paramètres",
-                        "de": "Leerzeichen trennen den Funktionsnamen und die Parameter",
-                        "es": "El espacio en blanco separa el nombre de la función y los parámetros"
-                    },
-                    "type": "TextOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            [
-                "a",
-                "e"
-            ],
-            [
-                "b",
-                "h"
-            ],
-            [
-                "c",
-                "g"
-            ],
-            [
-                "d",
-                "f"
-            ]
-        ]
-    }
+    "correctAnswer": [
+      ["a", "e"],
+      ["b", "h"],
+      ["c", "g"],
+      ["d", "f"]
+    ]
+  }
 }

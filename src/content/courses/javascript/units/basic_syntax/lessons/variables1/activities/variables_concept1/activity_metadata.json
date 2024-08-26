@@ -1,93 +1,81 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "variables"
+  "language": "javascript",
+  "tags": ["beginner", "variables"],
+  "question": {
+    "type": "PairMatchingQuestion",
+    "description": {
+      "en": "Variables are used to store data. Match the following declarations with their description.",
+      "pt": "Variáveis são usadas para armazenar dados. Combine as seguintes declarações com suas descrições.",
+      "fr": "Les variables sont utilisées pour stocker des données. Associez les déclarations suivantes à leur description.",
+      "de": "Variablen werden verwendet, um Daten zu speichern. Ordnen Sie die folgenden Deklarationen ihrer Beschreibung zu.",
+      "es": "Las variables se utilizan para almacenar datos. Relaciona las siguientes declaraciones con su descripción."
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "var foo = 5",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "let foo = 10",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "const foo = 10",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": {
+            "en": "Declares a variable and assigns the value `5` to it.",
+            "pt": "Declara uma variável e atribui o valor `5` a ela.",
+            "fr": "Déclare une variable et lui attribue la valeur `5`.",
+            "de": "Deklariert eine Variable und weist ihr den Wert `5` zu.",
+            "es": "Declara una variable y le asigna el valor `5`."
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "e",
+          "content": {
+            "en": "Declares a variable and assigns the value `10` to it which can be reassigned.",
+            "pt": "Declara uma variável e atribui o valor `10` a ela que pode ser reatribuído.",
+            "fr": "Déclare une variable et lui attribue la valeur `10` qui peut être réaffectée.",
+            "de": "Deklariert eine Variable und weist ihr den Wert `10` zu, der neu zugewiesen werden kann.",
+            "es": "Declara una variable y le asigna el valor `10` que puede ser reasignado."
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "f",
+          "content": {
+            "en": "Declares a variable and assigns the constant value `10` to it.",
+            "pt": "Declara uma variável e atribui o valor constante `10` a ela.",
+            "fr": "Déclare une variable et lui attribue la valeur constante `10`.",
+            "de": "Deklariert eine Variable und weist ihr den konstanten Wert `10` zu.",
+            "es": "Declara una variable y le asigna el valor constante `10`."
+          },
+          "type": "TextOption"
+        }
+      }
     ],
-    "question": {
-        "type": "PairMatchingQuestion",
-        "description": {
-            "en": "Variables are used to store data. Match the following declarations with their description.",
-            "pt": "Variáveis são usadas para armazenar dados. Combine as seguintes declarações com suas descrições.",
-            "fr": "Les variables sont utilisées pour stocker des données. Associez les déclarations suivantes à leur description.",
-            "de": "Variablen werden verwendet, um Daten zu speichern. Ordnen Sie die folgenden Deklarationen ihrer Beschreibung zu.",
-            "es": "Las variables se utilizan para almacenar datos. Relaciona las siguientes declaraciones con su descripción."
-        },
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "var foo = 5",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "let foo = 10",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "const foo = 10",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": {
-                        "en": "Declares a variable and assigns the value `5` to it.",
-                        "pt": "Declara uma variável e atribui o valor `5` a ela.",
-                        "fr": "Déclare une variable et lui attribue la valeur `5`.",
-                        "de": "Deklariert eine Variable und weist ihr den Wert `5` zu.",
-                        "es": "Declara una variable y le asigna el valor `5`."
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "e",
-                    "content": {
-                        "en": "Declares a variable and assigns the value `10` to it which can be reassigned.",
-                        "pt": "Declara uma variável e atribui o valor `10` a ela que pode ser reatribuído.",
-                        "fr": "Déclare une variable et lui attribue la valeur `10` qui peut être réaffectée.",
-                        "de": "Deklariert eine Variable und weist ihr den Wert `10` zu, der neu zugewiesen werden kann.",
-                        "es": "Declara una variable y le asigna el valor `10` que puede ser reasignado."
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "f",
-                    "content": {
-                        "en": "Declares a variable and assigns the constant value `10` to it.",
-                        "pt": "Declara uma variável e atribui o valor constante `10` a ela.",
-                        "fr": "Déclare une variable et lui attribue la valeur constante `10`.",
-                        "de": "Deklariert eine Variable und weist ihr den konstanten Wert `10` zu.",
-                        "es": "Declara una variable y le asigna el valor constante `10`."
-                    },
-                    "type": "TextOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            [
-                "a",
-                "d"
-            ],
-            [
-                "b",
-                "e"
-            ],
-            [
-                "c",
-                "f"
-            ]
-        ]
-    }
+    "correctAnswer": [
+      ["a", "d"],
+      ["b", "e"],
+      ["c", "f"]
+    ]
+  }
 }

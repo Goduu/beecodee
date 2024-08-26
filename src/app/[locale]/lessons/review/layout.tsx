@@ -7,9 +7,8 @@ export const metadata: Metadata = {
 }
 
 export default async function Layout({ children }: { children: ReactNode }) {
-
   return (
-    <div className="flex flex-col gap-20 py-10 ml-10 md:ml-20">
+    <div className="ml-10 flex flex-col gap-20 py-10 md:ml-20">
       <LessonHeader size="medium" />
       {children}
     </div>

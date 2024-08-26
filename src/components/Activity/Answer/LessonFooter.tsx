@@ -1,25 +1,21 @@
-import { useKey, useMedia } from "react-use";
+import { useKey, useMedia } from "react-use"
 
-import { cn } from "@/lib/utils";
-import { LuCheckCircle, LuXCircle } from "@/components/Svgs/Icons";
-import { Button } from "@/components/ButtonX";
-import { useLocaleContext } from "@/components/Localization/LocaleContext";
+import { cn } from "@/lib/utils"
+import { LuCheckCircle, LuXCircle } from "@/components/Svgs/Icons"
+import { Button } from "@/components/ButtonX"
+import { useLocaleContext } from "@/components/Localization/LocaleContext"
 
 type LessonFooterProps = {
-  onCheck: () => void;
-  status: "correct" | "wrong" | "none" | "completed";
-  disabled?: boolean;
-  lessonId?: number;
-};
+  onCheck: () => void
+  status: "correct" | "wrong" | "none" | "completed"
+  disabled?: boolean
+  lessonId?: number
+}
 
-export const LessonFooter = ({
-  onCheck,
-  status,
-  disabled,
-}: LessonFooterProps) => {
-  useKey("Enter", onCheck, {}, [onCheck]);
+export const LessonFooter = ({ onCheck, status, disabled }: LessonFooterProps) => {
+  useKey("Enter", onCheck, {}, [onCheck])
   const { locale } = useLocaleContext()
-  const isMobile = useMedia("(max-width: 1024px)", false);
+  const isMobile = useMedia("(max-width: 1024px)", false)
 
   return (
     <footer
@@ -27,7 +23,7 @@ export const LessonFooter = ({
         "h-[100px] border-t-2 lg:h-[140px]",
         status === "none" && "bg-slate-100 dark:bg-slate-800",
         status === "correct" && "border-transparent bg-lime-100 dark:bg-slate-700",
-        status === "wrong" && "border-transparent bg-rose-100 dark:bg-slate-700"
+        status === "wrong" && "border-transparent bg-rose-100 dark:bg-slate-700",
       )}
     >
       <div className="mx-auto flex h-full max-w-[1140px] items-center justify-between px-6 lg:px-10">
@@ -70,8 +66,8 @@ export const LessonFooter = ({
         </Button>
       </div>
     </footer>
-  );
-};
+  )
+}
 
 const en = {
   nicelyDone: "Nicely Done",

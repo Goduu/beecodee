@@ -1,31 +1,29 @@
-import { RefObject, useEffect } from 'react'
+import { RefObject, useEffect } from "react"
 
 type DetectOuterClickProps = {
-    ref?: RefObject<HTMLDivElement | null>
-    onOuterClick: () => void
+  ref?: RefObject<HTMLDivElement | null>
+  onOuterClick: () => void
 }
 export const useDetectOuterClickAndEsc = ({ onOuterClick, ref }: DetectOuterClickProps) => {
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement
+      if (target && ref?.current && !ref.current.contains(target)) {
+        onOuterClick()
+      }
+    }
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onOuterClick()
+      }
+    }
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            const target = event.target as HTMLElement
-            if (target && ref?.current && !ref.current.contains(target)) {
-                onOuterClick()
-            }
-        }
-        const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') {
-                onOuterClick()
-            }
-        }
+    document.addEventListener("mousedown", handleClickOutside)
+    document.addEventListener("keydown", handleKeyDown)
 
-        document.addEventListener('mousedown', handleClickOutside)
-        document.addEventListener('keydown', handleKeyDown)
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside)
-            document.removeEventListener('keydown', handleKeyDown)
-        }
-    }, [onOuterClick, ref])
-
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+      document.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [onOuterClick, ref])
 }

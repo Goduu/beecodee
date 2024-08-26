@@ -1,61 +1,56 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "variables"
+  "language": "javascript",
+  "tags": ["beginner", "variables"],
+  "question": {
+    "type": "SingleChoiceQuestion",
+    "description": {
+      "en": "The use of spaces, tabs, and newlines to format code is collectively known as:",
+      "pt": "O uso de espaços, tabulações e quebras de linha para formatar o código é coletivamente conhecido como:",
+      "fr": "L'utilisation d'espaces, de tabulations et de sauts de ligne pour formater le code est collectivement connue sous le nom de:",
+      "de": "Die Verwendung von Leerzeichen, Tabs und Zeilenumbrüchen zur Formatierung von Code wird kollektiv als bezeichnet:",
+      "es": "El uso de espacios, tabulaciones y saltos de línea para formatear el código se conoce colectivamente como:"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": {
+            "en": "testing",
+            "pt": "teste",
+            "fr": "test",
+            "de": "Testen",
+            "es": "prueba"
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": {
+            "en": "whitespace",
+            "pt": "whitespace",
+            "fr": "whitespace",
+            "de": "whitespace",
+            "es": "whitespace"
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": {
+            "en": "coding",
+            "pt": "coding",
+            "fr": "coding",
+            "de": "coding",
+            "es": "coding"
+          },
+          "type": "TextOption"
+        }
+      }
     ],
-    "question": {
-        "type": "SingleChoiceQuestion",
-        "description": {
-            "en": "The use of spaces, tabs, and newlines to format code is collectively known as:",
-            "pt": "O uso de espaços, tabulações e quebras de linha para formatar o código é coletivamente conhecido como:",
-            "fr": "L'utilisation d'espaces, de tabulations et de sauts de ligne pour formater le code est collectivement connue sous le nom de:",
-            "de": "Die Verwendung von Leerzeichen, Tabs und Zeilenumbrüchen zur Formatierung von Code wird kollektiv als bezeichnet:",
-            "es": "El uso de espacios, tabulaciones y saltos de línea para formatear el código se conoce colectivamente como:"
-        },
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": {
-                        "en": "testing",
-                        "pt": "teste",
-                        "fr": "test",
-                        "de": "Testen",
-                        "es": "prueba"
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": {
-                        "en": "whitespace",
-                        "pt": "whitespace",
-                        "fr": "whitespace",
-                        "de": "whitespace",
-                        "es": "whitespace"
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": {
-                        "en": "coding",
-                        "pt": "coding",
-                        "fr": "coding",
-                        "de": "coding",
-                        "es": "coding"
-                    },
-                    "type": "TextOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "b"
-        ]
-    }
+    "correctAnswer": ["b"]
+  }
 }

@@ -1,117 +1,102 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "reserved word"
+  "language": "javascript",
+  "tags": ["beginner", "reserved word"],
+  "question": {
+    "type": "PairMatchingQuestion",
+    "description": {
+      "en": "Match the JavaScript reserved keyword with its description:",
+      "pt": "Associe a palavra-chave reservada do JavaScript com sua descrição:",
+      "fr": "Associez le mot clé réservé JavaScript à sa description:",
+      "de": "Ordnen Sie das reservierte Schlüsselwort von JavaScript seiner Beschreibung zu:",
+      "es": "Asocia la palabra clave reservada de JavaScript con su descripción:"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "return",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "yield",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "async",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "static",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "e",
+          "content": {
+            "en": "Used in generator functions to pause execution.",
+            "pt": "Usado em funções geradoras para pausar a execução.",
+            "fr": "Utilisé dans les fonctions génératrices pour mettre en pause l'exécution.",
+            "de": "Wird in Generatorfunktionen verwendet, um die Ausführung anzuhalten.",
+            "es": "Utilizado en funciones generadoras para pausar la ejecución."
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "f",
+          "content": {
+            "en": "Used to define an asynchronous function.",
+            "pt": "Usado para definir uma função assíncrona.",
+            "fr": "Utilisé pour définir une fonction asynchrone.",
+            "de": "Wird verwendet, um eine asynchrone Funktion zu definieren.",
+            "es": "Utilizado para definir una función asíncrona."
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "g",
+          "content": {
+            "en": "Used to return a value from a function.",
+            "pt": "Usado para retornar um valor de uma função.",
+            "fr": "Utilisé pour renvoyer une valeur à partir d'une fonction.",
+            "de": "Wird verwendet, um einen Wert aus einer Funktion zurückzugeben.",
+            "es": "Utilizado para devolver un valor de una función."
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "h",
+          "content": {
+            "en": "Used to declare a method as a class method, not an instance method.",
+            "pt": "Usado para declarar um método como um método de classe, não um método de instância.",
+            "fr": "Utilisé pour déclarer une méthode en tant que méthode de classe, pas une méthode d'instance.",
+            "de": "Wird verwendet, um eine Methode als Klassenmethode und nicht als Instanzmethode zu deklarieren.",
+            "es": "Utilizado para declarar un método como un método de clase, no como un método de instancia."
+          },
+          "type": "TextOption"
+        }
+      }
     ],
-    "question": {
-        "type": "PairMatchingQuestion",
-        "description": {
-            "en": "Match the JavaScript reserved keyword with its description:",
-            "pt": "Associe a palavra-chave reservada do JavaScript com sua descrição:",
-            "fr": "Associez le mot clé réservé JavaScript à sa description:",
-            "de": "Ordnen Sie das reservierte Schlüsselwort von JavaScript seiner Beschreibung zu:",
-            "es": "Asocia la palabra clave reservada de JavaScript con su descripción:"
-        },
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "return",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "yield",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "async",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": "static",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "e",
-                    "content": {
-                        "en": "Used in generator functions to pause execution.",
-                        "pt": "Usado em funções geradoras para pausar a execução.",
-                        "fr": "Utilisé dans les fonctions génératrices pour mettre en pause l'exécution.",
-                        "de": "Wird in Generatorfunktionen verwendet, um die Ausführung anzuhalten.",
-                        "es": "Utilizado en funciones generadoras para pausar la ejecución."
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "f",
-                    "content": {
-                        "en": "Used to define an asynchronous function.",
-                        "pt": "Usado para definir uma função assíncrona.",
-                        "fr": "Utilisé pour définir une fonction asynchrone.",
-                        "de": "Wird verwendet, um eine asynchrone Funktion zu definieren.",
-                        "es": "Utilizado para definir una función asíncrona."
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "g",
-                    "content": {
-                        "en": "Used to return a value from a function.",
-                        "pt": "Usado para retornar um valor de uma função.",
-                        "fr": "Utilisé pour renvoyer une valeur à partir d'une fonction.",
-                        "de": "Wird verwendet, um einen Wert aus einer Funktion zurückzugeben.",
-                        "es": "Utilizado para devolver un valor de una función."
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "h",
-                    "content": {
-                        "en": "Used to declare a method as a class method, not an instance method.",
-                        "pt": "Usado para declarar um método como um método de classe, não um método de instância.",
-                        "fr": "Utilisé pour déclarer une méthode en tant que méthode de classe, pas une méthode d'instance.",
-                        "de": "Wird verwendet, um eine Methode als Klassenmethode und nicht als Instanzmethode zu deklarieren.",
-                        "es": "Utilizado para declarar un método como un método de clase, no como un método de instancia."
-                    },
-                    "type": "TextOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            [
-                "a",
-                "g"
-            ],
-            [
-                "b",
-                "e"
-            ],
-            [
-                "c",
-                "f"
-            ],
-            [
-                "d",
-                "h"
-            ]
-        ]
-    }
+    "correctAnswer": [
+      ["a", "g"],
+      ["b", "e"],
+      ["c", "f"],
+      ["d", "h"]
+    ]
+  }
 }

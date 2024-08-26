@@ -1,62 +1,56 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "whitespace",
-        "concepts"
+  "language": "javascript",
+  "tags": ["beginner", "whitespace", "concepts"],
+  "question": {
+    "type": "SingleChoiceQuestion",
+    "description": {
+      "en": "Whitespace is generally ... by the browser ",
+      "pt": "Whitespace é geralmente ... pelo navegador",
+      "fr": "Whitespace est généralement ... par le navigateur",
+      "de": "Whitespace ist normalerweise ... vom Browser",
+      "es": "Whitespace es generalmente ... por el navegador"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": {
+            "en": "ignored",
+            "pt": "ignorado",
+            "fr": "ignoré",
+            "de": "ignoriert",
+            "es": "ignorado"
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": {
+            "en": "compiled",
+            "pt": "compilado",
+            "fr": "compilé",
+            "de": "kompiliert",
+            "es": "compilado"
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": {
+            "en": "organized",
+            "pt": "organizado",
+            "fr": "organisé",
+            "de": "organisiert",
+            "es": "organizado"
+          },
+          "type": "TextOption"
+        }
+      }
     ],
-    "question": {
-        "type": "SingleChoiceQuestion",
-        "description": {
-            "en": "Whitespace is generally ... by the browser ",
-            "pt": "Whitespace é geralmente ... pelo navegador",
-            "fr": "Whitespace est généralement ... par le navigateur",
-            "de": "Whitespace ist normalerweise ... vom Browser",
-            "es": "Whitespace es generalmente ... por el navegador"
-        },
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": {
-                        "en": "ignored",
-                        "pt": "ignorado",
-                        "fr": "ignoré",
-                        "de": "ignoriert",
-                        "es": "ignorado"
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": {
-                        "en": "compiled",
-                        "pt": "compilado",
-                        "fr": "compilé",
-                        "de": "kompiliert",
-                        "es": "compilado"
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": {
-                        "en": "organized",
-                        "pt": "organizado",
-                        "fr": "organisé",
-                        "de": "organisiert",
-                        "es": "organizado"
-                    },
-                    "type": "TextOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "a"
-        ]
-    }
+    "correctAnswer": ["a"]
+  }
 }

@@ -1,25 +1,23 @@
-import { create as createStore } from "zustand";
+import { create as createStore } from "zustand"
 
 type StoreState = {
-    isOpen: boolean;
+  isOpen: boolean
 }
 
 const defaultState: StoreState = {
-    isOpen: false,
+  isOpen: false,
 }
 
 function getDefaultState(): StoreState {
-    return defaultState
+  return defaultState
 }
-
 
 export const devToolsModalStore = createStore(getDefaultState)
 
 export const open = () => {
-    devToolsModalStore.setState({ isOpen: true })
+  devToolsModalStore.setState({ isOpen: true })
 }
 
 export const close = () => {
-    devToolsModalStore.setState({ isOpen: false })
+  devToolsModalStore.setState({ isOpen: false })
 }
-

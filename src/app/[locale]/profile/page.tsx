@@ -1,10 +1,9 @@
-import { ProfilePage } from "@/components/Pages/ProfilePage";
+import { ProfilePage } from "@/components/Pages/ProfilePage"
 
 export default async function Home() {
-
   return (
-    <main >
+    <main>
       <ProfilePage />
     </main>
-  );
+  )
 }

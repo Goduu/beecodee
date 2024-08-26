@@ -4,18 +4,16 @@ import { Analytics } from "@vercel/analytics/react"
 import { MountChecker } from "@/lib/MountChecker"
 import { UnitHoneyCombModal } from "@/components/HoneyComb/UnitHoneyCombModal"
 
-
 type RootLayoutProps = {
   children: ReactNode
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
-
   return (
     <>
       <Header />
       <UnitHoneyCombModal />
-      <div className="flex flex-col px-4 py-2 place-items-center min-h-screen leading-relaxed pl-0 md:ml-40">
+      <div className="flex min-h-screen flex-col place-items-center px-4 py-2 pl-0 leading-relaxed md:ml-40">
         {children}
         <MountChecker />
         <Analytics />

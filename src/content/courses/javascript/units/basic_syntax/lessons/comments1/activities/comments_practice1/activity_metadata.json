@@ -1,86 +1,73 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "comments"
+  "language": "javascript",
+  "tags": ["beginner", "comments"],
+  "question": {
+    "type": "MultipleChoiceQuestion",
+    "description": {
+      "en": "Write a code snippet that declares a variable named foo with value 30 and has a comment explaining what it does",
+      "pt": "Escreva um trecho de código que declara uma variável chamada foo com valor 30 e tem um comentário explicando o que ele faz",
+      "fr": "Écrivez un extrait de code qui déclare une variable nommée foo avec une valeur de 30 et a un commentaire expliquant ce qu'il fait",
+      "de": "Schreiben Sie einen Code-Schnipsel, der eine Variable namens foo mit dem Wert 30 deklariert und einen Kommentar enthält, der erklärt, was es tut",
+      "es": "Escribe un fragmento de código que declare una variable llamada foo con valor 30 y tenga un comentario explicando qué hace"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "var",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "variable",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "a",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "declare",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "e",
+          "content": "foo",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "f",
+          "content": "30",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "g",
+          "content": "//",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "h",
+          "content": "=",
+          "type": "CodeOption"
+        }
+      }
     ],
-    "question": {
-        "type": "MultipleChoiceQuestion",
-        "description": {
-            "en": "Write a code snippet that declares a variable named foo with value 30 and has a comment explaining what it does",
-            "pt": "Escreva um trecho de código que declara uma variável chamada foo com valor 30 e tem um comentário explicando o que ele faz",
-            "fr": "Écrivez un extrait de code qui déclare une variable nommée foo avec une valeur de 30 et a un commentaire expliquant ce qu'il fait",
-            "de": "Schreiben Sie einen Code-Schnipsel, der eine Variable namens foo mit dem Wert 30 deklariert und einen Kommentar enthält, der erklärt, was es tut",
-            "es": "Escribe un fragmento de código que declare una variable llamada foo con valor 30 y tenga un comentario explicando qué hace"
-        },
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "var",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "variable",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "a",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": "declare",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "e",
-                    "content": "foo",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "f",
-                    "content": "30",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "g",
-                    "content": "//",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "h",
-                    "content": "=",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "g",
-            "d",
-            "c",
-            "b",
-            "fn",
-            "a",
-            "e",
-            "h",
-            "f"
-        ]
-    }
+    "correctAnswer": ["g", "d", "c", "b", "fn", "a", "e", "h", "f"]
+  }
 }

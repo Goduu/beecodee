@@ -1,59 +1,54 @@
 "use client"
-import { Activity } from '@contentlayer/generated';
-import { ChangeEvent, FC, useEffect } from 'react'
+import { Activity } from "@contentlayer/generated"
+import { ChangeEvent, FC, useEffect } from "react"
 
 type CodeEditorProps = {
-    code: string;
-    questionType: Activity["question"]["type"];
-    setCode: (code: string) => void;
+  code: string
+  questionType: Activity["question"]["type"]
+  setCode: (code: string) => void
 }
 export const CodeEditor: FC<CodeEditorProps> = ({ code, setCode, questionType }) => {
+  useEffect(() => {
+    setCode(getNewTemplate(questionType))
+  }, [questionType])
 
-    useEffect(() => {
-        setCode(getNewTemplate(questionType));
-    }, [questionType]);
+  const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setCode(e.target.value)
+  }
 
-
-    const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        setCode(e.target.value);
-    };
-
-    return (
-        <div className='w-full sm:w-1/2 flex flex-col gap-2'>
-            <span className='text-2xl font-extrabold'>Template</span>
-            <div className="border-amber-500 border-2 rounded-lg p-1  ">
-                <textarea
-                    className="w-full min-h-[400px] sm:min-h-[600px] bg-inherit p-5 outline-none flex-wrap"
-                    value={code}
-                    onChange={handleInputChange}
-                    spellCheck="false"
-                />
-            </div>
-        </div>
-    )
+  return (
+    <div className="flex w-full flex-col gap-2 sm:w-1/2">
+      <span className="text-2xl font-extrabold">Template</span>
+      <div className="rounded-lg border-2 border-amber-500 p-1  ">
+        <textarea
+          className="min-h-[400px] w-full flex-wrap bg-inherit p-5 outline-none sm:min-h-[600px]"
+          value={code}
+          onChange={handleInputChange}
+          spellCheck="false"
+        />
+      </div>
+    </div>
+  )
 }
-
 
 const getNewTemplate = (questionType: Activity["question"]["type"]) => {
-    switch (questionType) {
-        case 'MultipleChoiceQuestion':
-            return multipleChoiceQuestionTemplate
-        case 'FillInTheBlankQuestion':
-            return fillInTheBlankQuestionTemplate
-        case 'CodeOutputQuestion':
-            return codeOutputQuestionTemplate
-        case 'PairMatchingQuestion':
-            return pairMatchingQuestionTemplate
-        case 'SingleChoiceQuestion':
-            return singleChoiceQuestionTemplate
-        default:
-            throw new Error(`Unknown question type: ${questionType}`);
-    }
+  switch (questionType) {
+    case "MultipleChoiceQuestion":
+      return multipleChoiceQuestionTemplate
+    case "FillInTheBlankQuestion":
+      return fillInTheBlankQuestionTemplate
+    case "CodeOutputQuestion":
+      return codeOutputQuestionTemplate
+    case "PairMatchingQuestion":
+      return pairMatchingQuestionTemplate
+    case "SingleChoiceQuestion":
+      return singleChoiceQuestionTemplate
+    default:
+      throw new Error(`Unknown question type: ${questionType}`)
+  }
 }
 
-
-const codeOutputQuestionTemplate =
-    `---
+const codeOutputQuestionTemplate = `---
 type: CodeOutputQuestion
 description: "My description" 
 codeSnippet: |
@@ -67,8 +62,7 @@ correctAnswer: ["1"]
 ---
 `
 
-const singleChoiceQuestionTemplate =
-    `---
+const singleChoiceQuestionTemplate = `---
 type: SingleChoiceQuestion
 description: "My description"
 options: 
@@ -80,8 +74,7 @@ correctAnswer: ["your answer"]
 ---
 `
 
-const fillInTheBlankQuestionTemplate =
-    `---
+const fillInTheBlankQuestionTemplate = `---
 type: FillInTheBlankQuestion
 description: "My description"
 segments:
@@ -98,8 +91,7 @@ correctAnswer: ["myOption"]
 ---
 `
 
-const multipleChoiceQuestionTemplate =
-    `---
+const multipleChoiceQuestionTemplate = `---
 type: MultipleChoiceQuestion
 description: "My description"
 options: 
@@ -111,8 +103,7 @@ correctAnswer: ["my", "answer"]
 ---
 `
 
-const pairMatchingQuestionTemplate =
-    `---
+const pairMatchingQuestionTemplate = `---
 type: PairMatchingQuestion
 description: "My description"
 pairMatchingOptions:

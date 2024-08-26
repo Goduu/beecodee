@@ -1,74 +1,69 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "variables"
+  "language": "javascript",
+  "tags": ["beginner", "variables"],
+  "question": {
+    "type": "SingleChoiceQuestion",
+    "description": {
+      "en": "What is the purpose of using whitespace in JavaScript?",
+      "pt": "Qual é o propósito de usar whitespace em JavaScript?",
+      "fr": "Quel est l'objectif d'utiliser des whitespaces en JavaScript?",
+      "de": "Was ist der Zweck der Verwendung von Whitespaces in JavaScript?",
+      "es": "¿Cuál es el propósito de usar whitespaces en JavaScript?"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": {
+            "en": "To change the functionality of the code",
+            "pt": "Para mudar a funcionalidade do código",
+            "fr": "Pour changer la fonctionnalité du code",
+            "de": "Um die Funktionalität des Codes zu ändern",
+            "es": "Para cambiar la funcionalidad del código"
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": {
+            "en": "To separate the lines of code",
+            "pt": "Para separar as linhas de código",
+            "fr": "Pour séparer les lignes de code",
+            "de": "Um die Codezeilen zu trennen",
+            "es": "Para separar las líneas de código"
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": {
+            "en": "To improve code readability",
+            "pt": "Para melhorar a legibilidade do código",
+            "fr": "Pour améliorer la lisibilité du code",
+            "de": "Um die Codelesbarkeit zu verbessern",
+            "es": "Para mejorar la legibilidad del código"
+          },
+          "type": "TextOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": {
+            "en": "To decrease file size",
+            "pt": "Para diminuir o tamanho do arquivo",
+            "fr": "Pour diminuer la taille du fichier",
+            "de": "Um die Dateigröße zu verringern",
+            "es": "Para disminuir el tamaño del archivo"
+          },
+          "type": "TextOption"
+        }
+      }
     ],
-    "question": {
-        "type": "SingleChoiceQuestion",
-        "description": {
-            "en": "What is the purpose of using whitespace in JavaScript?",
-            "pt": "Qual é o propósito de usar whitespace em JavaScript?",
-            "fr": "Quel est l'objectif d'utiliser des whitespaces en JavaScript?",
-            "de": "Was ist der Zweck der Verwendung von Whitespaces in JavaScript?",
-            "es": "¿Cuál es el propósito de usar whitespaces en JavaScript?"
-        },
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": {
-                        "en": "To change the functionality of the code",
-                        "pt": "Para mudar a funcionalidade do código",
-                        "fr": "Pour changer la fonctionnalité du code",
-                        "de": "Um die Funktionalität des Codes zu ändern",
-                        "es": "Para cambiar la funcionalidad del código"
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": {
-                        "en": "To separate the lines of code",
-                        "pt": "Para separar as linhas de código",
-                        "fr": "Pour séparer les lignes de code",
-                        "de": "Um die Codezeilen zu trennen",
-                        "es": "Para separar las líneas de código"
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": {
-                        "en": "To improve code readability",
-                        "pt": "Para melhorar a legibilidade do código",
-                        "fr": "Pour améliorer la lisibilité du code",
-                        "de": "Um die Codelesbarkeit zu verbessern",
-                        "es": "Para mejorar la legibilidad del código"
-                    },
-                    "type": "TextOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": {
-                        "en": "To decrease file size",
-                        "pt": "Para diminuir o tamanho do arquivo",
-                        "fr": "Pour diminuer la taille du fichier",
-                        "de": "Um die Dateigröße zu verringern",
-                        "es": "Para disminuir el tamaño del archivo"
-                    },
-                    "type": "TextOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "c"
-        ]
-    }
+    "correctAnswer": ["c"]
+  }
 }

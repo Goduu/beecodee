@@ -1,51 +1,46 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "comments"
+  "language": "javascript",
+  "tags": ["beginner", "comments"],
+  "question": {
+    "type": "CodeOutputQuestion",
+    "description": {
+      "en": "How will be the output of the following JavaScript code?",
+      "pt": "Qual será a saída do seguinte código JavaScript?",
+      "fr": "Quel sera le résultat du code JavaScript suivant?",
+      "de": "Wie wird die Ausgabe des folgenden JavaScript-Codes sein?",
+      "es": "¿Cuál será la salida del siguiente código JavaScript?"
+    },
+    "codeSnippet": "/*\n  // var a = 5;\n  var b = 10;\n*/\nconsole.log(b);",
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "5",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "10",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "undefined",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "ReferenceError",
+          "type": "CodeOption"
+        }
+      }
     ],
-    "question": {
-        "type": "CodeOutputQuestion",
-        "description": {
-            "en": "How will be the output of the following JavaScript code?",
-            "pt": "Qual será a saída do seguinte código JavaScript?",
-            "fr": "Quel sera le résultat du code JavaScript suivant?",
-            "de": "Wie wird die Ausgabe des folgenden JavaScript-Codes sein?",
-            "es": "¿Cuál será la salida del siguiente código JavaScript?"
-        },
-        "codeSnippet": "/*\n  // var a = 5;\n  var b = 10;\n*/\nconsole.log(b);",
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "5",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "10",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "undefined",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": "ReferenceError",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "d"
-        ]
-    }
+    "correctAnswer": ["d"]
+  }
 }

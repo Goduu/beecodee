@@ -1,94 +1,78 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "template_strings",
-        "code_matching"
+  "language": "javascript",
+  "tags": ["beginner", "template_strings", "code_matching"],
+  "question": {
+    "type": "PairMatchingQuestion",
+    "description": {
+      "en": "Match the following code with its correct explanation of whitespace usage",
+      "pt": "Associe o seguinte código com sua explicação correta do uso de espaços em branco",
+      "fr": "Associez le code suivant à son explication correcte de l'utilisation des espaces blancs",
+      "de": "Ordnen Sie den folgenden Code seiner korrekten Erklärung zur Verwendung von Leerzeichen zu",
+      "es": "Asocia el siguiente código con su explicación correcta sobre el uso de espacios en blanco"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "\\n",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "\\r",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "\\t",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "\\b",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "e",
+          "content": "Carriage Return",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "f",
+          "content": "Line Feed",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "g",
+          "content": "Backspace",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "h",
+          "content": "Tab",
+          "type": "CodeOption"
+        }
+      }
     ],
-    "question": {
-        "type": "PairMatchingQuestion",
-        "description": {
-            "en": "Match the following code with its correct explanation of whitespace usage",
-            "pt": "Associe o seguinte código com sua explicação correta do uso de espaços em branco",
-            "fr": "Associez le code suivant à son explication correcte de l'utilisation des espaces blancs",
-            "de": "Ordnen Sie den folgenden Code seiner korrekten Erklärung zur Verwendung von Leerzeichen zu",
-            "es": "Asocia el siguiente código con su explicación correcta sobre el uso de espacios en blanco"
-        },
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "\\n",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "\\r",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "\\t",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": "\\b",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "e",
-                    "content": "Carriage Return",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "f",
-                    "content": "Line Feed",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "g",
-                    "content": "Backspace",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "h",
-                    "content": "Tab",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            [
-                "a",
-                "f"
-            ],
-            [
-                "b",
-                "e"
-            ],
-            [
-                "c",
-                "h"
-            ],
-            [
-                "d",
-                "g"
-            ]
-        ]
-    }
+    "correctAnswer": [
+      ["a", "f"],
+      ["b", "e"],
+      ["c", "h"],
+      ["d", "g"]
+    ]
+  }
 }

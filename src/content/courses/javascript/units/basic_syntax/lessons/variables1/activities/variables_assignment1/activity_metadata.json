@@ -1,110 +1,103 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "variables"
+  "language": "javascript",
+  "tags": ["beginner", "variables"],
+  "question": {
+    "type": "FillInTheBlankQuestion",
+    "description": {
+      "en": "Variables can be assigned a value using the `=` operator. Fill in the blanks to assign values to the variables.",
+      "pt": "Variáveis podem ser atribuídas um valor usando o operador `=`. Preencha as lacunas para atribuir valores às variáveis.",
+      "fr": "Les variables peuvent être affectées une valeur en utilisant l'opérateur `=`. Remplissez les blancs pour affecter des valeurs aux variables.",
+      "de": "Variablen können mit dem `=`-Operator einen Wert zugewiesen werden. Füllen Sie die Lücken aus, um Werte den Variablen zuzuweisen.",
+      "es": "Las variables pueden asignarse un valor usando el operador `=`. Complete los espacios en blanco para asignar valores a las variables."
+    },
+    "segments": [
+      {
+        "segment": {
+          "id": "a",
+          "type": "CodeOption",
+          "content": "let userName"
+        }
+      },
+      {
+        "segment": {
+          "id": "b",
+          "type": "GapOption",
+          "size": 3
+        }
+      },
+      {
+        "segment": {
+          "id": "c",
+          "type": "CodeOption",
+          "content": "'FooBar'\n"
+        }
+      },
+      {
+        "segment": {
+          "id": "d",
+          "type": "CodeOption",
+          "content": "const age = "
+        }
+      },
+      {
+        "segment": {
+          "id": "e",
+          "type": "GapOption",
+          "size": 3
+        }
+      },
+      {
+        "segment": {
+          "id": "f",
+          "type": "CodeOption",
+          "content": "\n"
+        }
+      },
+      {
+        "segment": {
+          "id": "g",
+          "type": "GapOption",
+          "size": 6
+        }
+      },
+      {
+        "segment": {
+          "id": "h",
+          "type": "CodeOption",
+          "content": "userIsMember = true"
+        }
+      }
     ],
-    "question": {
-        "type": "FillInTheBlankQuestion",
-        "description": {
-            "en": "Variables can be assigned a value using the `=` operator. Fill in the blanks to assign values to the variables.",
-            "pt": "Variáveis podem ser atribuídas um valor usando o operador `=`. Preencha as lacunas para atribuir valores às variáveis.",
-            "fr": "Les variables peuvent être affectées une valeur en utilisant l'opérateur `=`. Remplissez les blancs pour affecter des valeurs aux variables.",
-            "de": "Variablen können mit dem `=`-Operator einen Wert zugewiesen werden. Füllen Sie die Lücken aus, um Werte den Variablen zuzuweisen.",
-            "es": "Las variables pueden asignarse un valor usando el operador `=`. Complete los espacios en blanco para asignar valores a las variables."
-        },
-        "segments": [
-            {
-                "segment": {
-                    "id": "a",
-                    "type": "CodeOption",
-                    "content": "let userName"
-                }
-            },
-            {
-                "segment": {
-                    "id": "b",
-                    "type": "GapOption",
-                    "size": 3
-                }
-            },
-            {
-                "segment": {
-                    "id": "c",
-                    "type": "CodeOption",
-                    "content": "'FooBar'\n"
-                }
-            },
-            {
-                "segment": {
-                    "id": "d",
-                    "type": "CodeOption",
-                    "content": "const age = "
-                }
-            },
-            {
-                "segment": {
-                    "id": "e",
-                    "type": "GapOption",
-                    "size": 3
-                }
-            },
-            {
-                "segment": {
-                    "id": "f",
-                    "type": "CodeOption",
-                    "content": "\n"
-                }
-            },
-            {
-                "segment": {
-                    "id": "g",
-                    "type": "GapOption",
-                    "size": 6
-                }
-            },
-            {
-                "segment": {
-                    "id": "h",
-                    "type": "CodeOption",
-                    "content": "userIsMember = true"
-                }
-            }
-        ],
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "=",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "const",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "variable",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": "20",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "a",
-            "d",
-            "b"
-        ]
-    }
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "=",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "const",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "variable",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "20",
+          "type": "CodeOption"
+        }
+      }
+    ],
+    "correctAnswer": ["a", "d", "b"]
+  }
 }

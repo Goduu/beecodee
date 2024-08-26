@@ -1,43 +1,38 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "comments"
+  "language": "javascript",
+  "tags": ["beginner", "comments"],
+  "question": {
+    "type": "SingleChoiceQuestion",
+    "description": {
+      "en": "To add a multi-line comment in JavaScript, we can use:",
+      "pt": "Para adicionar um comentário de várias linhas em JavaScript, podemos usar:",
+      "fr": "Pour ajouter un commentaire sur plusieurs lignes en JavaScript, nous pouvons utiliser:",
+      "de": "Um einen mehrzeiligen Kommentar in JavaScript hinzuzufügen, können wir verwenden:",
+      "es": "Para agregar un comentario de varias líneas en JavaScript, podemos usar:"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "// This is a comment",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "/* This is a comment */",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "# This is a comment",
+          "type": "CodeOption"
+        }
+      }
     ],
-    "question": {
-        "type": "SingleChoiceQuestion",
-        "description": {
-            "en": "To add a multi-line comment in JavaScript, we can use:",
-            "pt": "Para adicionar um comentário de várias linhas em JavaScript, podemos usar:",
-            "fr": "Pour ajouter un commentaire sur plusieurs lignes en JavaScript, nous pouvons utiliser:",
-            "de": "Um einen mehrzeiligen Kommentar in JavaScript hinzuzufügen, können wir verwenden:",
-            "es": "Para agregar un comentario de varias líneas en JavaScript, podemos usar:"
-        },
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "// This is a comment",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "/* This is a comment */",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "# This is a comment",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "b"
-        ]
-    }
+    "correctAnswer": ["b"]
+  }
 }

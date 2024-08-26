@@ -1,50 +1,45 @@
 {
-    "language": "javascript",
-    "tags": [
-        "beginner",
-        "variables"
+  "language": "javascript",
+  "tags": ["beginner", "variables"],
+  "question": {
+    "type": "SingleChoiceQuestion",
+    "description": {
+      "en": "To initialize a variable is to assign a value to it.  Which of the following declarations do not initialize a variable?",
+      "pt": "Inicializar uma variável é atribuir um valor a ela. Qual das seguintes declarações não inicializa uma variável?",
+      "fr": "Initialiser une variable, c'est lui attribuer une valeur. Lesquelles des déclarations suivantes n'initialisent pas une variable?",
+      "de": "Eine Variable zu initialisieren bedeutet, ihr einen Wert zuzuweisen. Welche der folgenden Deklarationen initialisiert keine Variable?",
+      "es": "Inicializar una variable es asignarle un valor. ¿Cuál de las siguientes declaraciones no inicializa una variable?"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "let foo = 5",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "let bar",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "const baz = '10'",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "const foo = true",
+          "type": "CodeOption"
+        }
+      }
     ],
-    "question": {
-        "type": "SingleChoiceQuestion",
-        "description": {
-            "en": "To initialize a variable is to assign a value to it.  Which of the following declarations do not initialize a variable?",
-            "pt": "Inicializar uma variável é atribuir um valor a ela. Qual das seguintes declarações não inicializa uma variável?",
-            "fr": "Initialiser une variable, c'est lui attribuer une valeur. Lesquelles des déclarations suivantes n'initialisent pas une variable?",
-            "de": "Eine Variable zu initialisieren bedeutet, ihr einen Wert zuzuweisen. Welche der folgenden Deklarationen initialisiert keine Variable?",
-            "es": "Inicializar una variable es asignarle un valor. ¿Cuál de las siguientes declaraciones no inicializa una variable?"
-        },
-        "options": [
-            {
-                "option": {
-                    "id": "a",
-                    "content": "let foo = 5",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "b",
-                    "content": "let bar",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "c",
-                    "content": "const baz = '10'",
-                    "type": "CodeOption"
-                }
-            },
-            {
-                "option": {
-                    "id": "d",
-                    "content": "const foo = true",
-                    "type": "CodeOption"
-                }
-            }
-        ],
-        "correctAnswer": [
-            "b"
-        ]
-    }
+    "correctAnswer": ["b"]
+  }
 }
