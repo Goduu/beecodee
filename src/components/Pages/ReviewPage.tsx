@@ -3,7 +3,7 @@ import { Activity } from "@contentlayer/generated"
 import { useSearchParams } from "next/navigation"
 import React, { FC, useEffect } from "react"
 import { initiateReviewUnitVariables } from "../Unit/unitStore"
-import { LessonBlock } from "../Activity/LessonBlock"
+import { Quiz } from "../Activity/Quiz"
 
 const REVIEW_LESSON_XP = 5
 
@@ -19,5 +19,5 @@ export const ReviewPage: FC<ReviewPageProps> = ({ activityMap }) => {
     activities && initiateReviewUnitVariables(activities)
   }, [searchParams])
 
-  return <LessonBlock activityMap={activityMap} lessonXp={REVIEW_LESSON_XP} />
+  return <Quiz activityMap={activityMap} lessonXp={REVIEW_LESSON_XP} />
 }

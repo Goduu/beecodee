@@ -8,6 +8,7 @@ import { Bee } from "../Svgs/Bee"
 import { SiteNumbers } from "../Home/SiteNumbers"
 import { BeeLocale } from "../Localization/localization"
 import { FC } from "react"
+import { Flags } from "../Home/Flags"
 
 type HomePageProps = {
   locale: BeeLocale
@@ -16,24 +17,26 @@ type HomePageProps = {
 export const HomePage: FC<HomePageProps> = async ({ locale = "en" }) => {
   return (
     <>
-      <div className="flex flex-col items-center gap-20">
-        <Bee className="w-44 pt-20 duration-300 ease-in-out hover:animate-pulse" />
+      <div className="px-0 flex flex-col items-center gap-20">
+        <Bee className="h-72 pt-20 duration-300 ease-in-out hover:animate-pulse" />
         <div role="h1" className="flex max-w-96 text-center text-3xl font-extrabold leading-relaxed">
           {T[locale].title}
         </div>
+
         <div className="flex flex-col items-center gap-4">
           <GetStartedButton />
           <LoginInButton />
         </div>
         <Carousel />
         <div className="flex flex-col gap-44">
-          <FindYourPath />
-          <BeeSlogan />
-          <SiteNumbers />
-          <div className="z-10 flex flex-col items-center">
-            <GetStartedButton />
-          </div>
+          <FindYourPath locale={locale}/>
+          <BeeSlogan locale={locale}/>
+          <SiteNumbers locale={locale}/>
         </div>
+      </div>
+      <Flags />
+      <div className="z-50 py-20 flex flex-col items-center">
+        <GetStartedButton />
       </div>
       <HomeFooter />
     </>
