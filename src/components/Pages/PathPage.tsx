@@ -1,7 +1,11 @@
 import { Bee } from "../Svgs/Bee"
 import { UnitPath } from "../Unit/UnitPath"
-import { allUnits } from "@contentlayer/generated"
+import { allUnitContents, allUnits, Unit } from "@contentlayer/generated"
 import { fetchUserCompletedLessonByUnitId } from "@/lib/supabase/api/fetchUserFinishedLessons"
+
+const getUnitContent = (unit: Unit) => {
+  return allUnitContents.find((unitContent) => unitContent.unit === unit.slugAsParams)
+}
 
 export const PathPage = async () => {
   const completedLessonByUnitId = await fetchUserCompletedLessonByUnitId()
@@ -16,6 +20,7 @@ export const PathPage = async () => {
             <UnitPath
               key={unit._id}
               unit={unit}
+              unitContent={getUnitContent(unit)}
               pathPosition={unit.id}
               completedLessons={completedLessonByUnitId?.get(unit.slugAsParams)}
             />

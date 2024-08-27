@@ -9,7 +9,7 @@ import { SiteNumbers } from "../Home/SiteNumbers"
 import { BeeLocale } from "../Localization/localization"
 import { FC } from "react"
 import { AnimatedCircle } from "./AnimatedCircle"
-import {  IoMdFlower } from "../Svgs/Icons"
+import { IoMdFlower } from "../Svgs/Icons"
 
 type HomePageProps = {
   locale: BeeLocale
@@ -84,10 +84,10 @@ const es: typeof en = {
   title: "¡La forma interactiva y gratuita de aprender a programar y divertirse!",
 }
 const fr: typeof en = {
-  title: "La façon interactive et gratuite d'apprendre à coder et de s'amuser!",
+  title: "Apprendre à coder gratuitement tout en s'amusant !",
 }
 const de: typeof en = {
-  title: "Die kostenlose interaktive Möglichkeit, programmieren zu lernen und Spaß zu haben!",
+  title: "Der kostenlose interaktive Weg, programmieren zu lernen und dabei Spaß zu haben!",
 }
 
 const T = { en, pt, es, fr, de }

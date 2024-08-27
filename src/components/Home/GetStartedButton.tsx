@@ -27,7 +27,7 @@ const fr: typeof en = {
   getStarted: "C'est parti",
 }
 const de: typeof en = {
-  getStarted: "Los get's",
+  getStarted: "Los geht's",
 }
 export const T = {
   en,

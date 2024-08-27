@@ -18,7 +18,7 @@ export const BeeSlogan: FC<BeeSloganProps> = ({ locale }) => {
             <span className="text-amber-500">bee </span> {T[locale].innovative}
           </p>
           <p className="flex text-5xl font-bold">
-            <span className="text-amber-500">bee </span> {T[locale].adaptive}
+            <span className="text-amber-500">bee </span> {T[locale].flexible}
           </p>
           <p className="flex text-5xl font-bold">
             <span className="text-amber-500">beecodee </span>
@@ -39,27 +39,27 @@ export const BeeSlogan: FC<BeeSloganProps> = ({ locale }) => {
 const en = {
   creative: "creative",
   innovative: "innovative",
-  adaptive: "adaptive",
+  flexible: "flexible",
 }
 const pt: typeof en = {
   creative: "criativo",
   innovative: "inovador",
-  adaptive: "adaptável",
+  flexible: "flexível",
 }
 const es: typeof en = {
   creative: "creativo",
   innovative: "innovador",
-  adaptive: "adaptativo",
+  flexible: "flexible",
 }
 const fr: typeof en = {
   creative: "créatif",
   innovative: "innovant",
-  adaptive: "adaptatif",
+  flexible: "flexible",
 }
 const de: typeof en = {
   creative: "kreativ",
   innovative: "innovativ",
-  adaptive: "adaptiv",
+  flexible: "flexibel",
 }
 export const T = {
   en,

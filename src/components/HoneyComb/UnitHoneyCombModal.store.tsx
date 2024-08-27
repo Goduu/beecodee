@@ -1,8 +1,9 @@
-import { Unit } from "@contentlayer/generated"
+import { Unit, UnitContent } from "@contentlayer/generated"
 import { create as createStore } from "zustand"
 
 type StoreState = {
   unit?: Unit
+  unitContent?: UnitContent
   isOpen: boolean
 }
 
@@ -16,8 +17,8 @@ function getDefaultState(): StoreState {
 
 export const unitHoneyCombModalStore = createStore(getDefaultState)
 
-export const open = (unit: Unit) => {
-  unitHoneyCombModalStore.setState({ isOpen: true, unit })
+export const open = (unitContent: UnitContent | undefined, unit: Unit) => {
+  unitHoneyCombModalStore.setState({ isOpen: true, unitContent, unit })
 }
 
 export const close = () => {

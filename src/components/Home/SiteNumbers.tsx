@@ -24,7 +24,7 @@ export const SiteNumbers: FC<SiteNumbersProps> = ({ locale }) => {
 
   return (
     <section className="pb-8 pt-16 md:py-20">
-      <h2 className="flex w-full items-center justify-center gap-4 text-6xl">
+      <h2 className="flex w-full flex-col items-center justify-center gap-4 text-6xl sm:flex-row">
         {T[locale].our}
         <span>
           <span className="text-amber-500">bee</span>

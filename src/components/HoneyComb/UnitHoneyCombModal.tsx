@@ -11,10 +11,11 @@ export const UnitHoneyCombModal = () => {
   const { locale } = useLocaleContext()
   const isOpen = useStore(unitHoneyCombModalStore, (state) => state.isOpen)
   const unit = useStore(unitHoneyCombModalStore, (state) => state.unit)
+  const unitContent = useStore(unitHoneyCombModalStore, (state) => state.unitContent)
   const modalRef = useRef(null)
   useDetectOuterClickAndEsc({ ref: modalRef, onOuterClick: close })
 
-  if (!unit) return null
+  if (!unitContent) return null
 
   return (
     <div
@@ -34,8 +35,7 @@ export const UnitHoneyCombModal = () => {
               <div className="divide-y divide-gray-200">
                 <div className="flex max-h-96 flex-col items-center space-y-4 py-8 text-base leading-6 sm:text-lg sm:leading-7">
                   <div className="w-full flex-wrap overflow-scroll">
-                    {/* fix this code */}
-                    {isOpen && <Mdx code={"unit.body.code"} />}
+                    {isOpen && <Mdx code={unitContent.body.code} />}
                   </div>
                 </div>
               </div>

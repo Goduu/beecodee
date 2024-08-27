@@ -1,7 +1,7 @@
 "use client"
 import React, { FC } from "react"
 import { FiHexagon, GiHoneypot } from "../Svgs/Icons"
-import { Unit } from "@contentlayer/generated"
+import { Unit, UnitContent } from "@contentlayer/generated"
 import { open } from "./UnitHoneyCombModal.store"
 import { TooltipHover } from "../TooltipHover"
 import { useStore } from "zustand"
@@ -10,10 +10,11 @@ import { useLocaleContext } from "../Localization/LocaleContext"
 
 type HoneyCombProps = {
   unit: Unit
+  unitContent: UnitContent | undefined
   size?: "small" | "medium" | "large"
 }
 
-export const HoneyComb: FC<HoneyCombProps> = ({ unit, size = "medium" }) => {
+export const HoneyComb: FC<HoneyCombProps> = ({ unit, unitContent, size = "medium" }) => {
   const { locale } = useLocaleContext()
   const completedLessons = useStore(unitStore, (state) => state.completedLessons)
   const completed = unit.lessonRefs.every((lessonRef) => completedLessons.has(lessonRef.lesson))
@@ -22,7 +23,7 @@ export const HoneyComb: FC<HoneyCombProps> = ({ unit, size = "medium" }) => {
 
   return (
     <TooltipHover text={unit.description[locale]} position="bottom">
-      <div className="relative cursor-pointer hover:scale-105" onClick={() => open(unit)}>
+      <div className="relative cursor-pointer hover:scale-105" onClick={() => open(unitContent, unit)}>
         <FiHexagon
           className={`${hexagonSize} p-0 ${completed ? "fill-amber-500 text-amber-600" : "fill-slate-500 text-slate-600"}`}
         />

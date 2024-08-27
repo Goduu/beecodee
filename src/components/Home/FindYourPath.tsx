@@ -57,12 +57,12 @@ const es: typeof en = {
 }
 const fr: typeof en = {
   welcomeText:
-    "Bienvenue dans une aventure où l'apprentissage rencontre le plaisir! Avec notre application, vous pouvez découvrir votre propre voyage unique, mêlant excitation et éducation de manière transparente.",
+    "Bienvenue dans une aventure où l'apprentissage rencontre le plaisir! Avec notre application, créez votre propre chemin, entre amusement et apprentissage.",
   findYourPath: "Trouvez votre chemin",
 }
 const de: typeof en = {
   welcomeText:
-    "Willkommen in einem Abenteuer, bei dem Lernen auf Spaß trifft! Mit unserer App können Sie Ihre eigene einzigartige Reise entdecken, die Aufregung und Bildung nahtlos verbindet.",
+    "Willkommen in einem Abenteuer, bei dem Lernen auf Spaß trifft! Mit unserer App entdecken Sie Ihre eigene einzigartige Reise, die Aufregung und Bildung verbindet.",
   findYourPath: "Finde deinen Weg",
 }
 export const T = { en, pt, es, fr, de }

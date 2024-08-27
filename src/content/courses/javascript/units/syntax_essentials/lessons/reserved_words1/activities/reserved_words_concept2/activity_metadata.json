@@ -4,14 +4,11 @@
   "question": {
     "type": "FillInTheBlankQuestion",
     "description": {
-      "en": "Two commonly used statements are switch and loops.",
-      "translations": {
-        "en": "Fill in the blank with the appropriate keyword.",
-        "pt": "Preencha a lacuna com a palavra-chave apropriada.",
-        "fr": "Remplissez l'espace vide avec le mot-clé approprié.",
-        "de": "Füllen Sie die Lücke mit dem entsprechenden Schlüsselwort aus.",
-        "es": "Complete el espacio en blanco con la palabra clave adecuada."
-      }
+      "en": "Two commonly used statements are switch and loops.Fill in the blank with the appropriate keyword.",
+      "pt": "Dois comandos comumente usados são switch e loops. Preencha o espaço em branco com a palavra-chave apropriada.",
+      "fr": "Deux instructions couramment utilisées sont switch et boucles. Remplissez le vide avec le mot-clé approprié.",
+      "de": "Zwei häufig verwendete Anweisungen sind switch und Schleifen. Füllen Sie die Lücke mit dem entsprechenden Schlüsselwort aus.",
+      "es": "Dos declaraciones comúnmente utilizadas son switch y loops. Complete el espacio en blanco con la palabra clave adecuada."
     },
     "segments": [
       {

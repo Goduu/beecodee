@@ -2,7 +2,7 @@
 import React, { FC, useRef, useState } from "react"
 import { TooltipClick } from "../TooltipClick"
 import { Button } from "../Button"
-import { Lesson, Unit } from "@contentlayer/generated"
+import { Lesson, Unit, UnitContent } from "@contentlayer/generated"
 import { redirect } from "next/navigation"
 import { useDetectOuterClickAndEsc } from "../useDetectOuterClickAndEsc"
 import { startLesson } from "../Unit/unitStore"
@@ -15,8 +15,9 @@ import { StartBallon } from "./StartBallon"
 type ActivityLinkProps = {
   lesson: Lesson
   unit: Unit
+  unitContent: UnitContent | undefined
 }
-export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit }) => {
+export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit, unitContent }) => {
   const [tooltipVisible, setTooltipVisible] = useState(false)
   const clickOutSideRef = useRef<HTMLDivElement>(null)
   useDetectOuterClickAndEsc({
@@ -28,7 +29,10 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit }) => {
     <>
       <StartBallon />
       <div ref={clickOutSideRef}>
-        <TooltipClick content={<ActivityTooltipContent lesson={lesson} unit={unit} />} visible={tooltipVisible}>
+        <TooltipClick
+          content={<ActivityTooltipContent lesson={lesson} unit={unit} unitContent={unitContent} />}
+          visible={tooltipVisible}
+        >
           <PathwayButton size="large" onClick={() => setTooltipVisible(!tooltipVisible)} />
         </TooltipClick>
       </div>
@@ -36,7 +40,7 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit }) => {
   )
 }
 
-const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit }) => {
+const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit, unitContent }) => {
   const { locale } = useLocaleContext()
 
   const handleStartLesson = () => {
@@ -54,7 +58,7 @@ const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit }) => {
         <Button onClick={handleStartLesson}>Start Lesson</Button>
       </div>
       <div className="absolute bottom-0 right-0">
-        <HoneyComb unit={unit} size="small" />
+        <HoneyComb unit={unit} unitContent={unitContent} size="small" />
       </div>
     </div>
   )

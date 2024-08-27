@@ -288,6 +288,19 @@ const Unit = defineDocumentType(() => ({
   },
 }))
 
+const UnitContent = defineDocumentType(() => ({
+  name: "UnitContent",
+  filePathPattern: "courses/**/units/**/unit_content.mdx",
+  contentType: "mdx",
+  fields: {},
+  computedFields: {
+    unit: {
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.split("/units/")[1].split("/")[0],
+    },
+  },
+}))
+
 // Define the Lesson document type
 const Lesson = defineDocumentType(() => ({
   name: "Lesson",
@@ -371,5 +384,5 @@ const Activity = defineDocumentType(() => ({
 // Make the source with all document types
 export default makeSource({
   contentDirPath: "./src/content",
-  documentTypes: [Course, Unit, Lesson, Activity],
+  documentTypes: [Course, Unit, UnitContent, Lesson, Activity],
 })
