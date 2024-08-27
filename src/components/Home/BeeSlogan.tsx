@@ -1,6 +1,6 @@
 import React, { FC } from "react"
-import { Bee } from "../Svgs/Bee"
 import { BeeLocale } from "../Localization/localization"
+import { BeeKnowledge } from "../Svgs/BeeKnowledge"
 
 type BeeSloganProps = {
   locale: BeeLocale
@@ -29,7 +29,7 @@ export const BeeSlogan: FC<BeeSloganProps> = ({ locale }) => {
       </div>
       <div className="w-full sm:w-1/2">
         <div className="flex flex-col items-center gap-2">
-          <Bee className="w-56" />
+          <BeeKnowledge className="w-72" />
         </div>
       </div>
     </div>

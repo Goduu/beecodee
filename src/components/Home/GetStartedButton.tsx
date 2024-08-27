@@ -8,7 +8,7 @@ export const GetStartedButton = () => {
   const { locale } = useLocaleContext()
 
   return (
-    <Button color="primary" className="w-64 uppercase" onClick={() => redirect("/getStarted")}>
+    <Button color="primary" className="w-64 uppercase" size="large" onClick={() => redirect("/getStarted")}>
       {T[locale].getStarted}
     </Button>
   )

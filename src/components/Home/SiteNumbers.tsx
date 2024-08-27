@@ -1,10 +1,11 @@
 "use client"
 import React, { FC, useRef } from "react"
-import { CounterUp } from "../CounterUp"
 import { allActivities, allLessons, allUnits } from "@contentlayer/generated"
-import { BeeKnowledge } from "../Svgs/BeeKnowledge"
 import { BeeLocale } from "../Localization/localization"
 import { useScroll, motion, useSpring, useTransform } from "framer-motion"
+import { MetricsItem } from "./MetricsItem"
+import { Antenna, FaceFour, FaceOne, FaceThree, FaceTwo } from "../Svgs/Icons"
+import { Flags } from "./Flags"
 
 type SiteNumbersProps = {
   locale: BeeLocale
@@ -14,77 +15,124 @@ export const SiteNumbers: FC<SiteNumbersProps> = ({ locale }) => {
   const lessonSize = allLessons.length
   const activitySize = allActivities.length
   const unitSize = allUnits.length
-  const ref = useRef<HTMLDivElement>(null!)
+  const ref = useRef<HTMLUListElement>(null!)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start start', `end 0.7`],
+    offset: ["start start", `end 0.7`],
   })
   const opacity = useSpring(useTransform(scrollYProgress, [0.14, 0.525, 0.98, 1], [0, 0.5, 1, 1]))
 
-  const siteNumbers = [
-    {
-      label: {
-        en: "Course",
-        pt: "Curso",
-        es: "Curso",
-        fr: "Cours",
-        de: "Kurs",
-      }, countTo: 1
-    },
-    {
-      label: {
-        en: "Units",
-        pt: "Unidades",
-        es: "Unidades",
-        fr: "Unités",
-        de: "Einheiten",
-      }, countTo: unitSize
-    },
-    {
-      label: {
-        en: "Lessons",
-        pt: "Lições",
-        es: "Lecciones",
-        fr: "Leçons",
-        de: "Lektionen",
-      }, countTo: lessonSize
-    },
-    {
-      label: {
-        en: "Activities",
-        pt: "Atividades",
-        es: "Actividades",
-        fr: "Activités",
-        de: "Aktivitäten",
-      }, countTo: activitySize
-    },
-  ]
-
   return (
-    <div className="flex flex-col items-center justify-center gap-1 text-center -z-10 ">
-      <div className="flex w-4/5 flex-col items-center gap-10 sm:flex-row sm:gap-4">
-        {siteNumbers.map((siteNumber) => (
-          <div
-            key={siteNumber.label.en}
-            className="flex w-4/5 select-none flex-col flex-wrap items-center gap-1 text-start text-5xl font-black leading-loose"
+    <section className="pb-8 pt-16 md:py-20">
+      <h2 className="flex w-full items-center justify-center gap-4 text-6xl">
+        {T[locale].our}
+        <span>
+          <span className="text-amber-500">bee</span>
+          <span className=" decoration-wavy">{T[locale].content}</span>
+        </span>
+      </h2>
+      <ul ref={ref} className="relative mt-24 grid grid-cols-12 pb-40 sm:grid-cols-9 lg:px-[15%]">
+        <li className="sticky top-[20%] col-start-2 col-end-12 pb-8 sm:col-start-3 sm:col-end-8 sm:pb-16 lg:top-[10%] lg:pb-40">
+          <MetricsItem
+            className="bg-red-500"
+            countTo={1}
+            description={T[locale].course}
+            offset={20}
+            progress={scrollYProgress}
           >
-            <CounterUp countTo={siteNumber.countTo} scrollSpyDelay={300} />
-            <p className="text-center text-4xl sm:text-start">
-              <span className="text-amber-500">bee</span>
-              {siteNumber.label[locale]}
-            </p>
-          </div>
-        ))}
-      </div>
-      <div ref={ref} className="relative mt-24 grid grid-cols-12 pb-40 sm:grid-cols-9 lg:px-[15%]">
-
-        <div className="sticky top-[20%] col-start-1 col-end-13 pb-8 sm:col-start-2 sm:col-end-9 sm:pb-16 lg:top-[5%] lg:pb-40">
-          <BeeKnowledge className="w-96" />
-        </div>
-      </div>
-      <motion.div style={{ opacity }}>
-        <div className="bg-amber-500 opacity-80 fixed inset-0 -z-10 w-full h-full" />
-      </motion.div>
-    </div>
+            <FaceOne />
+          </MetricsItem>
+        </li>
+        <li className="sticky top-[22.5%] col-start-2 col-end-12 pb-8 sm:col-start-1 sm:col-end-5 sm:pb-16 lg:pb-40">
+          <MetricsItem
+            className="bg-lime-500"
+            countTo={unitSize}
+            description={T[locale].units}
+            offset={22.5}
+            progress={scrollYProgress}
+          >
+            <FaceTwo />
+          </MetricsItem>
+        </li>
+        <li className="sticky top-[25%] col-start-2 col-end-12 pb-8 sm:col-start-6 sm:col-end-10 sm:pb-16 lg:pb-40">
+          <MetricsItem
+            className="bg-indigo-500"
+            countTo={lessonSize}
+            description={T[locale].lessons}
+            offset={25}
+            progress={scrollYProgress}
+          >
+            <FaceThree />
+          </MetricsItem>
+        </li>
+        <li className="sticky top-[20%] col-start-1 col-end-13 pb-8 sm:col-start-2 sm:col-end-9 sm:pb-16 lg:top-[5%] lg:pb-40">
+          <MetricsItem
+            className="gap-0 bg-gradient-to-b from-amber-500 to-amber-600 to-90%"
+            countTo={activitySize}
+            description={T[locale].activities}
+            offset={20}
+            progress={scrollYProgress}
+            last
+          >
+            <Antenna className="absolute -top-36 z-10 flex aspect-square h-96 w-full flex-col items-center justify-center text-center md:-top-28" />
+            <FaceFour />
+          </MetricsItem>
+        </li>
+        <li className="col-start-1 col-end-13 sm:col-end-10">
+          <Flags />
+        </li>
+        <motion.div style={{ opacity, zIndex: -20 }}>
+          <div className="fixed inset-0 h-full w-full bg-amber-500 opacity-80" />
+        </motion.div>
+      </ul>
+    </section>
   )
+}
+
+const en = {
+  our: "Our",
+  content: "content",
+  course: "Course",
+  units: "Units",
+  lessons: "Lessons",
+  activities: "Activities",
+}
+const pt: typeof en = {
+  our: "Nosso",
+  content: "conteúdo",
+  course: "Curso",
+  units: "Unidades",
+  lessons: "Lições",
+  activities: "Atividades",
+}
+const es: typeof en = {
+  our: "Nuestro",
+  content: "contenido",
+  course: "Curso",
+  units: "Unidades",
+  lessons: "Lecciones",
+  activities: "Actividades",
+}
+const fr: typeof en = {
+  our: "Notre",
+  content: "contenu",
+  course: "Cours",
+  units: "Unités",
+  lessons: "Leçons",
+  activities: "Activités",
+}
+const de: typeof en = {
+  our: "Unser",
+  content: "Inhalt",
+  course: "Kurs",
+  units: "Einheiten",
+  lessons: "Lektionen",
+  activities: "Aktivitäten",
+}
+export const T = {
+  en,
+  pt,
+  es,
+  fr,
+  de,
 }

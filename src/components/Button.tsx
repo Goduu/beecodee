@@ -26,7 +26,7 @@ export const Button: FC<ButtonProps> = ({
   }
 
   return (
-    <form action={handleClicks} className="h-12">
+    <form action={handleClicks} className={`h-12 ${size === "large" && "h-16"}`}>
       <button
         type="submit"
         className={`
@@ -35,6 +35,7 @@ export const Button: FC<ButtonProps> = ({
                     border-2 border-b-4 p-2 font-bold
                     duration-150 hover:mt-1 hover:border-b-2 hover:shadow-sm
                     ${size === "small" && "p-[3px] text-xs"}
+                    ${size === "large" && "p-4 text-xl"}
                     ${color === "primary" && "border-amber-600 bg-amber-500 text-gray-50"}
                     ${color === "secondary" && "border-gray-300 text-current text-slate-900 dark:text-gray-50 "}
                     disabled:mt-0 disabled:scale-100 disabled:border-b-4 disabled:border-slate-500 disabled:bg-slate-500
