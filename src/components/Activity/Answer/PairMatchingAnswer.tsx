@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from "react"
 import { PairMatchingQuestion } from "@contentlayer/generated"
-import { TokenGroupChip } from "../TokenGroupChip"
+import { TokenGroupChip } from "../TokenChip/TokenGroupChip"
 import { generatePairMatchingOptions, hasWrongStatus, updateOptionsStatus } from "./PairMatchingAnswer.functions"
 import { useAudio } from "@/components/useAudio"
 import { useLocaleContext } from "@/components/Localization/LocaleContext"
@@ -25,7 +25,6 @@ export const PairMatchingAnswer: FC<PairMatchingAnswerProps> = ({ question, lang
 
   useEffect(() => {
     if (options.length && options.every((option) => option.status === "correct")) {
-      console.log("playSoung")
       playSound(correctAnswerSound)
       setLessonState("correct")
     }
@@ -59,7 +58,6 @@ export const PairMatchingAnswer: FC<PairMatchingAnswerProps> = ({ question, lang
       <div className="flex flex-col gap-4">
         {options.map((option, index) => (
           <TokenGroupChip
-            id="option"
             key={option.id}
             optionWithToken={option}
             onClick={() => handleSelectOption(option)}

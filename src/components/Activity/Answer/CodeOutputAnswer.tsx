@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { CodeOutputQuestion } from "@contentlayer/generated"
-import { TokenGroupChip } from "../TokenGroupChip"
+import { TokenGroupChip } from "../TokenChip/TokenGroupChip"
 import { CodeBlock } from "./CodeBlock"
 import { useCodeOutputAnswerStates } from "./CodeOutputAnswer.states"
 
@@ -21,7 +21,6 @@ export const CodeOutputAnswer: FC<CodeOutputAnswerProps> = ({ question, language
       <div className="flex min-w-20 flex-col flex-wrap items-center justify-center gap-4">
         {options.map((token, index) => (
           <TokenGroupChip
-            id="option"
             onClick={() => selectAnswer(token)}
             key={index}
             optionWithToken={token}

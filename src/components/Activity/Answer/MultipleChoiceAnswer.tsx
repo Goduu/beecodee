@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import { MultipleChoiceQuestion } from "@contentlayer/generated"
 import { useMultipleChoiceAnswerStates } from "./MultipleChoiceAnswer.states"
-import { TokenGroupChip } from "../TokenGroupChip"
+import { TokenGroupChip } from "../TokenChip/TokenGroupChip"
 import { OptionWithTokens } from "@/components/TokenColors/highlightCode"
 import { closestCenter, DndContext, DragOverlay } from "@dnd-kit/core"
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable"
@@ -53,10 +53,8 @@ export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({ question, 
                   <DragOverlay>
                     {activeId ? (
                       <TokenGroupChip
-                        id="answer"
-                        onClick={() => {}}
+                        onClick={() => { }}
                         optionWithToken={answer.find((a) => a.id === activeId)!}
-                        className="bg-blue-500 px-2"
                       />
                     ) : null}
                   </DragOverlay>
@@ -89,7 +87,6 @@ export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({ question, 
       <div className="flex flex-wrap justify-center gap-4">
         {options.map((option) => (
           <TokenGroupChip
-            id="option"
             key={option.id}
             optionWithToken={option}
             onClick={() => addTokenToAnswer(option)}

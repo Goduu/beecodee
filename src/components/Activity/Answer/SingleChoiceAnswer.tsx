@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import { SingleChoiceQuestion } from "@contentlayer/generated"
 import { useSingleChoiceAnswerStates } from "./SingleChoiceAnswer.states"
-import { TokenGroupChip } from "../TokenGroupChip"
+import { TokenGroupChip } from "../TokenChip/TokenGroupChip"
 
 type SingleChoiceAnswerProps = {
   question: SingleChoiceQuestion
@@ -18,7 +18,6 @@ export const SingleChoiceAnswer: FC<SingleChoiceAnswerProps> = ({ question, lang
         {options.map((option, index) => (
           <div className="flex" key={option.id}>
             <TokenGroupChip
-              id="option"
               onClick={() => selectAnswer(option)}
               key={index}
               optionWithToken={option}
