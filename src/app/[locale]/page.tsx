@@ -1,7 +1,5 @@
 import { BeeLocale } from "@/components/Localization/localization"
 import { HomePage } from "@/components/Pages/HomePage"
-// import { DndKit } from "@/components/Swapy/DnDKit"
-// import { SwapyTest } from "@/components/Swapy/SwapyTest"
 
 type HomeProps = {
   params: {
@@ -16,6 +14,3 @@ export default async function Home({ params }: HomeProps) {
     </main>
   )
 }
-
-//   <SwapyTest />
-//   <div className="py-32 pl-10">{/* <DndKit /> */}</div>

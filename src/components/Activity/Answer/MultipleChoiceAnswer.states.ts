@@ -5,6 +5,16 @@ import { MultipleChoiceQuestion } from "@contentlayer/generated"
 import { highlightArray, OptionWithTokens } from "@/components/TokenColors/highlightCode"
 import { useLocaleContext } from "@/components/Localization/LocaleContext"
 import { useQuizContext } from "../Quiz.context"
+import {
+  DragEndEvent,
+  DragStartEvent,
+  KeyboardSensor,
+  PointerSensor,
+  UniqueIdentifier,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core"
+import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable"
 
 export const useMultipleChoiceAnswerStates = (
   question: MultipleChoiceQuestion,
@@ -91,12 +101,62 @@ export const useMultipleChoiceAnswerStates = (
     }
   }, [question, answer, playSound])
 
+  // ------------------------------
+  //Draggable zone functions
+  // ------------------------------
+  const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null)
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        delay: 150,
+        tolerance: 5,
+      },
+    }),
+
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    }),
+  )
+
+  function handleDragStart(event: DragStartEvent) {
+    const { active } = event
+
+    // Prevent default handler from mobile on drag
+
+    setActiveId(active.id)
+  }
+
+  function handleDragEnd(event: DragEndEvent) {
+    const { active, over } = event
+
+    if (over && active.id !== over?.id) {
+      setAnswer((prev) => {
+        if (!prev) return []
+        const activeElement = prev.find((item) => item.id === active.id)
+        const overElement = prev.find((item) => item.id === over.id)
+        if (!activeElement || !overElement) return []
+        const oldIndex = prev?.indexOf(activeElement)
+        const newIndex = prev?.indexOf(overElement)
+
+        return arrayMove(prev, oldIndex, newIndex)
+      })
+    }
+
+    setActiveId(null)
+  }
+
   return {
     answer,
     options,
     status,
+    setAnswer,
     handleCheckStatus,
     addTokenToAnswer,
     removeOptionFromAnswer,
+    handleDragStart,
+    handleDragEnd,
+    sensors,
+    activeId,
   }
 }
