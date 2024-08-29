@@ -1,7 +1,9 @@
 import { create as createStore } from "zustand"
+import { GetStartedAnswer } from "./GetStarted/types"
 
 type StoreState = {
   isOpen: boolean
+  getStartedAnswers?: GetStartedAnswer[]
 }
 
 const defaultState: StoreState = {
@@ -14,8 +16,8 @@ function getDefaultState(): StoreState {
 
 export const loginModalStore = createStore(getDefaultState)
 
-export const open = () => {
-  loginModalStore.setState({ isOpen: true })
+export const open = ({ getStartedAnswers }: { getStartedAnswers?: GetStartedAnswer[] }): void => {
+  loginModalStore.setState({ isOpen: true, getStartedAnswers })
 }
 
 export const close = () => {

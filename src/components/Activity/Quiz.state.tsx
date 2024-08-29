@@ -5,6 +5,7 @@ import { useLocaleContext } from "../Localization/LocaleContext"
 import { Activity, CodeOutputQuestion } from "@contentlayer/generated"
 import { saveFinishedLesson } from "./ActivityBlock.functions"
 import { useRouter } from "next/navigation"
+import { LessonState } from "./types"
 
 type QuizStateProps = {
   lessonXp: number
@@ -14,7 +15,7 @@ type QuizStateProps = {
 export const useQuizState = ({ lessonXp, activityMap }: QuizStateProps) => {
   const { locale } = useLocaleContext()
   const [onGoingActivityData, setOnGoingActivityData] = useState<Activity | null>(null)
-  const [lessonState, setLessonState] = useState<"none" | "correct" | "wrong" | "completed">("none")
+  const [lessonState, setLessonState] = useState<LessonState>("none")
   const onGoingUnitSlug = useStore(unitStore, (state) => state.onGoingUnitSlug)
   const onGoingLessonSlug = useStore(unitStore, (state) => state.onGoingLessonSlug)
   const onGoingLessonToDoActivities = useStore(unitStore, (state) => state.onGoingLessonToDoActivities)
@@ -47,6 +48,7 @@ export const useQuizState = ({ lessonXp, activityMap }: QuizStateProps) => {
     locale,
     onGoingActivityData,
     lessonState,
+    isActionDisabled: lessonState === "correct" || lessonState === "wrong" || lessonState === "completed",
     setLessonState,
     handleGotToNextActivity,
     handleFinishLesson,

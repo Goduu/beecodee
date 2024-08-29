@@ -1,19 +1,19 @@
 {
   "type": "Lesson",
   "title": {
-    "en": "Variables 1",
-    "pt": "Variáveis 1",
-    "fr": "Variables 1",
-    "de": "Variablen 1",
-    "es": "Variables 1"
+    "en": "Whitespace 1",
+    "pt": "Whitespace 1",
+    "fr": "Whitespace 1",
+    "de": "Whitespace 1",
+    "es": "Whitespace 1"
   },
   "xp": 10,
   "description": {
-    "en": "Learn about variables",
-    "pt": "Aprenda sobre variáveis",
-    "fr": "Apprenez les variables",
-    "de": "Erfahren Sie mehr über Variablen",
-    "es": "Aprende sobre variables"
+    "en": "Learn about whitespace",
+    "pt": "Aprenda sobre whitespace",
+    "fr": "Apprenez les whitespace",
+    "de": "Erfahren Sie mehr über whitespace",
+    "es": "Aprende sobre whitespace"
   },
   "activityRefs": [
     {

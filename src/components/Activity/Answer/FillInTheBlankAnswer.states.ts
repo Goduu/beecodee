@@ -17,8 +17,8 @@ export const useFillInTheBlankAnswerStates = (
   const [segments, setSegments] = useState<OptionWithTokens[]>([])
   const { playSound, correctAnswerSound, wrongAnswerSound } = useAudio()
   const { checkFlag, toggleCheckFlag } = useQuizContext()
-  const answer = segments.filter(segment => segment.type === "GapOption").map(segment => segment.content)
-  
+  const answer = segments.filter((segment) => segment.type === "GapOption").map((segment) => segment.content)
+
   useEffect(() => {
     if (checkFlag) {
       handleCheckStatus()
@@ -59,7 +59,6 @@ export const useFillInTheBlankAnswerStates = (
     })
 
     setSegments(segmentTokens)
-
   }, [question, language])
 
   const resetStates = () => {
@@ -75,73 +74,75 @@ export const useFillInTheBlankAnswerStates = (
   }, [question, initializeOptionsAndSegments])
 
   const removeTokenFromAnswer = (optionToRemove: OptionWithTokens): void => {
-    if (status === "correct") return;
-    setOptions(prev => {
-      return prev.map((option) => {
-        if (option.id === optionToRemove.id) {
-          return { ...option, status: "neutral" }
-        }
-        return option
-      })
-    });
+    if (status === "correct") return
 
-    setStatus("neutral");
+    setOptions((prev) => {
+      return prev.map((prevOption) => {
+        if (prevOption.id === optionToRemove.content) {
+          return { ...prevOption, status: "neutral" }
+        }
+        return prevOption
+      })
+    })
+
+    setStatus("neutral")
     setSegments((prevSegments) =>
       prevSegments.map((segment) => {
-        if (segment.id !== optionToRemove.id) return segment;
+        if (segment.id !== optionToRemove.id) return segment
 
         return {
           ...segment,
           status: "neutral",
           content: "",
           tokens: [{ ...gapToken, size: optionToRemove.tokens[0]?.size || 0 }],
-        };
-      })
-    );
-  };
+        }
+      }),
+    )
+  }
 
-  const addTokenToAnswer = (token: OptionWithTokens): void => {
-    if (status === "correct") return;
+  const addTokenToAnswer = (option: OptionWithTokens): void => {
+    if (status === "correct") return
 
-    const questionGapsLength = question.segments?.filter(segment => segment.segment.type === "GapOption").length || 0;
-    const filledGaps = segments.filter(segment => segment.type === "GapOption" && segment.status === "filled");
-    if (filledGaps.length >= questionGapsLength) return;
+    const questionGapsLength = question.segments?.filter((segment) => segment.segment.type === "GapOption").length || 0
+    const filledGaps = segments.filter((segment) => segment.type === "GapOption" && segment.status === "filled")
+    if (filledGaps.length >= questionGapsLength) return
 
-    setSegments(prevSegments => {
-      const segmentIndex = prevSegments.findIndex(segment => segment.type === "GapOption" && segment.status === "neutral");
+    setSegments((prevSegments) => {
+      const segmentIndex = prevSegments.findIndex(
+        (segment) => segment.type === "GapOption" && segment.status === "neutral",
+      )
 
-      if (segmentIndex === -1) return prevSegments;
+      if (segmentIndex === -1) return prevSegments
 
       return prevSegments.map((segment, index) =>
         index === segmentIndex
-          ? {
-            ...segment,
-            status: "filled",
-            type: "GapOption",
-            content: token.id,
-            tokens: token.tokens.map(t => ({
-              ...t,
-              size: segment.tokens[0]?.size || 0,
-            })),
-          }
-          : segment
-      );
-    });
-
-    setOptions(prevOptions =>
-      prevOptions.map(option =>
-        option.id === token.id
-          ? {
-            ...option,
-            status: "used",
-          }
-          : option
+          ? ({
+              ...segment,
+              status: "filled",
+              type: "GapOption",
+              content: option.id,
+              tokens: option.tokens.map((t) => ({
+                ...t,
+                size: segment.tokens[0]?.size || 0,
+              })),
+            } satisfies OptionWithTokens)
+          : segment,
       )
-    );
+    })
 
-    setStatus("neutral");
-  };
+    setOptions((prevOptions) =>
+      prevOptions.map((prevOption) =>
+        prevOption.id === option.id
+          ? {
+              ...prevOption,
+              status: "used",
+            }
+          : prevOption,
+      ),
+    )
 
+    setStatus("neutral")
+  }
 
   const handleCheckStatus = useCallback(() => {
     const correctAnswer = question.correctAnswer

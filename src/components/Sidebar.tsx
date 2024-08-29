@@ -6,6 +6,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { signOut } from "@/lib/auth"
 import { LOCALES } from "./Localization/localization"
+import { LanguageButton } from "./Localization/LanguageButton"
 
 const HIDDEN_PATHS = ["/lessons", "/getStarted"]
 
@@ -41,7 +42,7 @@ export const Sidebar = () => {
             </li>
           ))}
         </ul>
-
+        <LanguageButton />
         <div className="items-center pr-2 sm:mb-6 sm:mt-auto sm:h-16 sm:w-full sm:pr-0">
           <button
             onClick={() => signOut()}

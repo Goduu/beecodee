@@ -19,6 +19,7 @@ import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable"
 export const useMultipleChoiceAnswerStates = (
   question: MultipleChoiceQuestion,
   language: string,
+  isActionDisabled: boolean,
   setLessonState: (state: "none" | "correct" | "wrong" | "completed") => void,
 ) => {
   const { locale } = useLocaleContext()
@@ -56,7 +57,7 @@ export const useMultipleChoiceAnswerStates = (
 
   const removeOptionFromAnswer = useCallback(
     (option: OptionWithTokens) => {
-      if (status === "correct") return
+      if (isActionDisabled) return
 
       setAnswer((prevAnswer) => prevAnswer.filter((t) => t !== option))
       setOptions((prevOptions) =>
@@ -69,11 +70,11 @@ export const useMultipleChoiceAnswerStates = (
       )
       setStatus("neutral")
     },
-    [status],
+    [status, isActionDisabled],
   )
 
   const addTokenToAnswer = (token: OptionWithTokens) => {
-    if (status === "correct") return
+    if (isActionDisabled) return
 
     if (token.status === "used") return
     setAnswer((prevAnswer) => [...prevAnswer, token])
@@ -120,6 +121,7 @@ export const useMultipleChoiceAnswerStates = (
   )
 
   function handleDragStart(event: DragStartEvent) {
+    if (isActionDisabled) return
     const { active } = event
 
     // Prevent default handler from mobile on drag
@@ -128,6 +130,7 @@ export const useMultipleChoiceAnswerStates = (
   }
 
   function handleDragEnd(event: DragEndEvent) {
+    if (isActionDisabled) return
     const { active, over } = event
 
     if (over && active.id !== over?.id) {

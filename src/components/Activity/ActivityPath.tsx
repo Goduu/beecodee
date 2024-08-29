@@ -10,7 +10,6 @@ import { PathwayButton } from "./PathwayButton"
 import { Pollen } from "../Svgs/Pollen"
 import { HoneyComb } from "../HoneyComb/HoneyComb"
 import { useLocaleContext } from "../Localization/LocaleContext"
-import { StartBallon } from "./StartBallon"
 
 type ActivityLinkProps = {
   lesson: Lesson
@@ -26,17 +25,14 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit, unitContent 
   })
 
   return (
-    <>
-      <StartBallon />
-      <div ref={clickOutSideRef}>
-        <TooltipClick
-          content={<ActivityTooltipContent lesson={lesson} unit={unit} unitContent={unitContent} />}
-          visible={tooltipVisible}
-        >
-          <PathwayButton size="large" onClick={() => setTooltipVisible(!tooltipVisible)} />
-        </TooltipClick>
-      </div>
-    </>
+    <div ref={clickOutSideRef}>
+      <TooltipClick
+        content={<ActivityTooltipContent lesson={lesson} unit={unit} unitContent={unitContent} />}
+        visible={tooltipVisible}
+      >
+        <PathwayButton size="large" onClick={() => setTooltipVisible(!tooltipVisible)} />
+      </TooltipClick>
+    </div>
   )
 }
 

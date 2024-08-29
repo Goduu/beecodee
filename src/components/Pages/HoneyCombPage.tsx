@@ -1,3 +1,4 @@
+"use client"
 import { allUnitContents, allUnits, UnitContent } from "@contentlayer/generated"
 import React from "react"
 import { HoneyComb } from "../HoneyComb/HoneyComb"

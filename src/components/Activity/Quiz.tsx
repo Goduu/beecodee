@@ -15,8 +15,15 @@ type ActivityProps = {
 }
 
 export const Quiz: FC<ActivityProps> = ({ lessonXp, activityMap }) => {
-  const { locale, onGoingActivityData, lessonState, setLessonState, handleGotToNextActivity, handleFinishLesson } =
-    useQuizState({ lessonXp, activityMap })
+  const {
+    locale,
+    onGoingActivityData,
+    lessonState,
+    isActionDisabled,
+    setLessonState,
+    handleGotToNextActivity,
+    handleFinishLesson,
+  } = useQuizState({ lessonXp, activityMap })
   const { toggleCheckFlag } = useQuizContext()
 
   const isButtonDisabled =
@@ -37,7 +44,11 @@ export const Quiz: FC<ActivityProps> = ({ lessonXp, activityMap }) => {
                 {lessonState === "completed" ? (
                   <EndLessonXpPage lessonXp={lessonXp} />
                 ) : (
-                  <ActivitySwitcher activity={onGoingActivityData} setLessonState={setLessonState} />
+                  <ActivitySwitcher
+                    activity={onGoingActivityData}
+                    isActionDisabled={isActionDisabled}
+                    setLessonState={setLessonState}
+                  />
                 )}
               </div>
             </div>

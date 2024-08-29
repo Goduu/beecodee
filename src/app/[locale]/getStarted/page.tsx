@@ -1,5 +1,5 @@
-import { GetStarted } from "@/components/GetStarted/GetStarted"
+import { GetStartedPage } from "@/components/GetStarted/GetStartedPage"
 
-export default async function GetStartedPage() {
-  return <GetStarted />
+export default async function Page() {
+  return <GetStartedPage />
 }

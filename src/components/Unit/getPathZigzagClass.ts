@@ -1,4 +1,4 @@
-export const getPathZigzagPath = (pathIndex: number) => {
+export const getPathZigzagClass = (pathIndex: number) => {
   switch (pathIndex % 8) {
     case 0:
       return ""

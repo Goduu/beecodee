@@ -6,17 +6,25 @@ import { ActivityPath } from "../Activity/ActivityPath"
 import { initiateCompletedUnitLessons, unitStore } from "./unitStore"
 import { ReviewUnit } from "./ReviewUnit"
 import { useStore } from "../useStore"
-import { getPathZigzagPath } from "./getPathZigzagPath"
+import { getPathZigzagClass } from "./getPathZigzagClass"
 import { CircleSkeleton } from "../Skeletons/CircleSkeleton"
+import { StartBallon } from "../Activity/StartBallon"
 
 type UnitProps = {
   unit: Unit
   unitContent: UnitContent | undefined
   pathPosition: number
   completedLessons: Set<string> | undefined
+  isFirstUncompletedUnit: boolean
 }
 
-export const UnitPath: FC<UnitProps> = ({ unit, pathPosition, completedLessons, unitContent }) => {
+export const UnitPath: FC<UnitProps> = ({
+  unit,
+  pathPosition,
+  completedLessons,
+  unitContent,
+  isFirstUncompletedUnit,
+}) => {
   const nextLesson = useUnitNextLesson(unit)
 
   useEffect(() => {
@@ -24,7 +32,7 @@ export const UnitPath: FC<UnitProps> = ({ unit, pathPosition, completedLessons, 
   }, [completedLessons])
 
   const percentage = ((completedLessons?.size || 0) / unit.lessonRefs.length) * 100
-  const zigZagClass = getPathZigzagPath(pathPosition)
+  const zigZagClass = getPathZigzagClass(pathPosition)
 
   if (percentage >= 100) {
     return (
@@ -39,6 +47,7 @@ export const UnitPath: FC<UnitProps> = ({ unit, pathPosition, completedLessons, 
   return (
     <div className={zigZagClass}>
       <CircularProgress percent={percentage}>
+        {isFirstUncompletedUnit && <StartBallon />}
         <ActivityPath lesson={nextLesson} unit={unit} unitContent={unitContent} />
       </CircularProgress>
     </div>

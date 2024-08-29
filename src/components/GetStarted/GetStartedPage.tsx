@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react"
+import React, { ReactNode, useEffect, useState } from "react"
 import {
   FaTools,
   GiStarsStack,
@@ -13,15 +13,17 @@ import {
   SiTypescript,
 } from "../Svgs/Icons"
 import { TooltipHover } from "../TooltipHover"
-import { Button } from "../Button"
 import { ProgressBar } from "../ProgressBar"
 import { open } from "../LoginModal.store"
 import { redirect } from "next/navigation"
+import { LessonFooter } from "../Activity/Answer/LessonFooter"
+import { GetStartedAnswer } from "./types"
 
-export const WhatToLearn = () => {
+export const GetStartedPage = () => {
   const [selected, setSelected] = useState<string | null>(null)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-  const [answers, setAnswers] = useState<Answer[]>([])
+  const [answers, setAnswers] = useState<GetStartedAnswer[]>([])
+  const [questionState, setQuestionState] = useState<"none" | "correct" | "wrong" | "completed">("none")
   const currentQuestion = questions[currentQuestionIndex]
 
   const handlesContinue = () => {
@@ -32,10 +34,13 @@ export const WhatToLearn = () => {
       setSelected(null)
     }
   }
+  const handleCheck = () => {
+    setQuestionState("correct")
+  }
 
   useEffect(() => {
     if (!currentQuestion) {
-      open()
+      open({ getStartedAnswers: answers })
     }
   }, [currentQuestion])
 
@@ -46,51 +51,73 @@ export const WhatToLearn = () => {
   }
 
   return (
-    <div className="flex flex-col items-center gap-20">
+    <>
       <ProgressBar onClose={handleClose} size="medium" progress={(currentQuestionIndex / questions.length) * 100} />
-      <div className="text-2xl font-bold">{currentQuestion.description}</div>
-      <div className="flex flex-wrap items-center justify-center gap-16">
-        {currentQuestion.options.map((option, index) => (
-          <div
-            key={index}
-            onClick={() => option.released && setSelected(option.id)}
-            className={`
+      <div className="flex-1">
+        <div className="flex h-full items-center justify-center">
+          <div className="flex w-full flex-col gap-y-12 px-6 lg:min-h-[350px] lg:w-[600px] lg:px-0">
+            <h1 className="text-center text-lg font-bold text-neutral-700 lg:text-start lg:text-3xl dark:text-neutral-200">
+              {currentQuestion.description}
+            </h1>
+            <div>
+              <div className="flex flex-wrap justify-start gap-16">
+                {currentQuestion.options.map((option, index) => (
+                  <div
+                    key={index}
+                    onClick={() => option.released && setSelected(option.id)}
+                    className={`
                             relative flex w-32 flex-col items-center gap-2 rounded-md border p-4
                             ${option.released ? "cursor-pointer" : "cursor-not-allowed"}
                             ${selected === option.id ? "border-blue-500 text-blue-500" : "border-gray-300"}`}
-          >
-            {option.icon}
-            <div className="text-lg font-bold">{option.label}</div>
-            {!option.released && (
-              <div className="absolute right-2 top-2 overflow-visible">
-                <TooltipHover text="Coming soon">
-                  <FaTools className="w-4" />
-                </TooltipHover>
+                  >
+                    {option.icon}
+                    <div className="text-lg font-bold">{option.label}</div>
+                    {!option.released && (
+                      <div className="absolute right-2 top-2 overflow-visible">
+                        <TooltipHover text="Coming soon">
+                          <FaTools className="w-4" />
+                        </TooltipHover>
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
-            )}
+            </div>
           </div>
-        ))}
+
+          {/* <div className="flex gap-4 pb-10">
+            <Button color="secondary" onClick={() => setCurrentQuestionIndex((prev) => Math.max(prev - 1, 0))}>
+              Back
+            </Button>
+            <Button onClick={handlesContinue} disabled={!selected}>
+              Continue
+            </Button>
+          </div> */}
+        </div>
       </div>
-      <div className="flex gap-4 pb-10">
-        <Button color="secondary" onClick={() => setCurrentQuestionIndex((prev) => Math.max(prev - 1, 0))}>
-          Back
-        </Button>
-        <Button onClick={handlesContinue} disabled={!selected}>
-          Continue
-        </Button>
-      </div>
-    </div>
+      <LessonFooter
+        disabled={!selected}
+        onCheck={questionState === "correct" ? handlesContinue : handleCheck}
+        status={questionState}
+      />
+    </>
   )
 }
 
-type Answer = {
-  questionId: number
-  answer: string
+type GetStartedQuestion = {
+  id: "course" | "level"
+  description: string
+  options: {
+    id: string
+    label: string
+    icon: ReactNode
+    released: boolean
+  }[]
 }
 
 const questions = [
   {
-    id: 0,
+    id: "course",
     description: "What would you love to learn?",
     options: [
       {
@@ -132,7 +159,7 @@ const questions = [
     ],
   },
   {
-    id: 1,
+    id: "level",
     description: "What is your current level?",
     options: [
       {
@@ -155,4 +182,4 @@ const questions = [
       },
     ],
   },
-]
+] satisfies GetStartedQuestion[]

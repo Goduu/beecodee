@@ -14,12 +14,12 @@ export const TooltipClick: FC<TooltipClickProps> = ({
   visible,
 }) => {
   return (
-    <div className={`relative z-20 flex justify-between`}>
+    <div className={`relative flex justify-between`}>
       {children}
       <div
         className={`
-                ${visible ? "scale-100" : "scale-0"} absolute 
-                left-1/2 min-w-80 -translate-x-1/2 transform
+                ${visible ? "scale-100" : "scale-0"} absolute left-1/2
+                z-20 min-w-80 -translate-x-1/2 transform
                 transition delay-150 duration-200 ease-in-out group-hover:opacity-100
                 ${position === "top" ? "bottom-full mb-1 sm:mb-2" : "top-full mt-1 sm:mt-2"}
                 `}

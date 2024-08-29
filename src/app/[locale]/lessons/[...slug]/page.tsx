@@ -41,7 +41,7 @@ export async function generateStaticParams(): Promise<ActivityProps["params"][]>
   }))
 }
 
-export default async function LessonPage({ params }: ActivityProps) {
+export default async function Page({ params }: ActivityProps) {
   const lesson = await getLessonFromParams(params)
   if (!lesson) {
     notFound()

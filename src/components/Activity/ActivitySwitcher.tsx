@@ -5,24 +5,51 @@ import { MultipleChoiceAnswer } from "./Answer/MultipleChoiceAnswer"
 import { SingleChoiceAnswer } from "./Answer/SingleChoiceAnswer"
 import { CodeOutputAnswer } from "./Answer/CodeOutputAnswer"
 import { PairMatchingAnswer } from "./Answer/PairMatchingAnswer"
+import { LessonState } from "./types"
 
 type ActivitySwitcherProps = {
   activity: Activity | null
-  setLessonState: (state: "none" | "correct" | "wrong" | "completed") => void
+  isActionDisabled: boolean
+  setLessonState: (state: LessonState) => void
 }
 
-export const ActivitySwitcher: FC<ActivitySwitcherProps> = ({ activity, setLessonState }) => {
+export const ActivitySwitcher: FC<ActivitySwitcherProps> = ({ activity, isActionDisabled, setLessonState }) => {
   if (!activity) return null
 
   return activity.question.type === "FillInTheBlankQuestion" ? (
-    <FillInTheBlankAnswer question={activity.question} language={activity.language} setLessonState={setLessonState} />
+    <FillInTheBlankAnswer
+      question={activity.question}
+      language={activity.language}
+      isActionDisabled={isActionDisabled}
+      setLessonState={setLessonState}
+    />
   ) : activity.question.type === "MultipleChoiceQuestion" ? (
-    <MultipleChoiceAnswer question={activity.question} language={activity.language} setLessonState={setLessonState} />
+    <MultipleChoiceAnswer
+      question={activity.question}
+      language={activity.language}
+      isActionDisabled={isActionDisabled}
+      setLessonState={setLessonState}
+    />
   ) : activity.question.type === "SingleChoiceQuestion" ? (
-    <SingleChoiceAnswer question={activity.question} language={activity.language} setLessonState={setLessonState} />
+    <SingleChoiceAnswer
+      question={activity.question}
+      language={activity.language}
+      isActionDisabled={isActionDisabled}
+      setLessonState={setLessonState}
+    />
   ) : activity.question.type === "CodeOutputQuestion" ? (
-    <CodeOutputAnswer question={activity.question} language={activity.language} setLessonState={setLessonState} />
+    <CodeOutputAnswer
+      question={activity.question}
+      language={activity.language}
+      isActionDisabled={isActionDisabled}
+      setLessonState={setLessonState}
+    />
   ) : (
-    <PairMatchingAnswer question={activity.question} language={activity.language} setLessonState={setLessonState} />
+    <PairMatchingAnswer
+      question={activity.question}
+      language={activity.language}
+      isActionDisabled={isActionDisabled}
+      setLessonState={setLessonState}
+    />
   )
 }

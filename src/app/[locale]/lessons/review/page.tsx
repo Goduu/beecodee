@@ -1,9 +1,8 @@
 import { Activity, allActivities } from "@contentlayer/generated"
 import { ReviewPage } from "@/components/Pages/ReviewPage"
-import { Suspense } from "react"
-import { Loading } from "@/components/Loading"
+import { QuizContextWrapper } from "@/components/Activity/Quiz.context"
 
-export default async function LessonPage() {
+export default async function Page() {
   const activityMap = new Map<string, Activity>()
 
   allActivities.forEach((activity) => {
@@ -11,12 +10,8 @@ export default async function LessonPage() {
   })
 
   return (
-    <div className="flex justify-center text-center">
-      <div className="flex min-h-[450px] w-[398px] flex-col items-center gap-8 sm:w-[600px]">
-        <Suspense fallback={<Loading visible />}>
-          <ReviewPage activityMap={activityMap} />
-        </Suspense>
-      </div>
-    </div>
+    <QuizContextWrapper>
+      <ReviewPage activityMap={activityMap} />
+    </QuizContextWrapper>
   )
 }

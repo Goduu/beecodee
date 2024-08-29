@@ -9,10 +9,16 @@ import { DraggableTokenChip } from "./DraggableTokenChip"
 type MultipleChoiceAnswerProps = {
   question: MultipleChoiceQuestion
   language: string
+  isActionDisabled: boolean
   setLessonState: (state: "none" | "correct" | "wrong" | "completed") => void
 }
 
-export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({ question, language, setLessonState }) => {
+export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({
+  question,
+  language,
+  isActionDisabled,
+  setLessonState,
+}) => {
   const {
     status,
     options,
@@ -23,13 +29,13 @@ export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({ question, 
     handleDragEnd,
     sensors,
     activeId,
-  } = useMultipleChoiceAnswerStates(question, language, setLessonState)
+  } = useMultipleChoiceAnswerStates(question, language, isActionDisabled, setLessonState)
 
   const statusClass =
     status === "correct" ? "border-lime-500" : status === "wrong" ? "border-red-600" : "border-gray-500"
 
   return (
-    <div className="flex touch-none select-none flex-col items-center gap-10 sm:gap-16">
+    <div className={`flex touch-none select-none flex-col items-center gap-10 sm:gap-16`}>
       <div className="flex min-h-40 w-full gap-2 ">
         <div className={`flex w-full flex-col justify-center rounded-xl border-2 ${statusClass}`}>
           <div className="inline-block px-1 text-start">
@@ -47,15 +53,13 @@ export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({ question, 
                         key={optionWithToken.id}
                         optionWithToken={optionWithToken}
                         removeOptionFromAnswer={removeOptionFromAnswer}
+                        className={isActionDisabled ? "cursor-default px-2" : "px-2"}
                       />
                     ))}
                   </SortableContext>
                   <DragOverlay>
                     {activeId ? (
-                      <TokenGroupChip
-                        onClick={() => { }}
-                        optionWithToken={answer.find((a) => a.id === activeId)!}
-                      />
+                      <TokenGroupChip onClick={() => {}} optionWithToken={answer.find((a) => a.id === activeId)!} />
                     ) : null}
                   </DragOverlay>
                 </>
@@ -65,19 +69,19 @@ export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({ question, 
         </div>
         <div className="flex w-1/6 flex-col gap-1">
           <span
-            className="cursor-pointer items-center rounded-3xl border text-center"
+            className={`items-center rounded-3xl border text-center ${isActionDisabled ? "cursor-default" : "cursor-pointer"}`}
             onClick={() => addTokenToAnswer(createFormattingToken("\t"))}
           >
             Tab
           </span>
           <span
-            className="cursor-pointer items-center rounded-3xl border text-center"
+            className={`items-center rounded-3xl border text-center ${isActionDisabled ? "cursor-default" : "cursor-pointer"}`}
             onClick={() => addTokenToAnswer(createFormattingToken("\n"))}
           >
             Enter
           </span>
           <span
-            className="cursor-pointer items-center rounded-3xl border text-center"
+            className={`items-center rounded-3xl border text-center ${isActionDisabled ? "cursor-default" : "cursor-pointer"}`}
             onClick={() => addTokenToAnswer(createFormattingToken(" "))}
           >
             Space
@@ -90,7 +94,7 @@ export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({ question, 
             key={option.id}
             optionWithToken={option}
             onClick={() => addTokenToAnswer(option)}
-            className="px-2"
+            className={isActionDisabled ? "cursor-default px-2" : "px-2"}
           />
         ))}
       </div>

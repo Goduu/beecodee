@@ -9,10 +9,16 @@ import { OptionWithTokens } from "@/components/TokenColors/highlightCode"
 type PairMatchingAnswerProps = {
   question: PairMatchingQuestion
   language: string
+  isActionDisabled: boolean
   setLessonState: (state: "none" | "correct" | "wrong" | "completed") => void
 }
 
-export const PairMatchingAnswer: FC<PairMatchingAnswerProps> = ({ question, language, setLessonState }) => {
+export const PairMatchingAnswer: FC<PairMatchingAnswerProps> = ({
+  question,
+  language,
+  isActionDisabled,
+  setLessonState,
+}) => {
   const [options, setOptions] = useState<OptionWithTokens[]>([])
   const wrongStatusTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const { locale } = useLocaleContext()
@@ -34,6 +40,7 @@ export const PairMatchingAnswer: FC<PairMatchingAnswerProps> = ({ question, lang
   }, [options])
 
   const handleSelectOption = (selectedOption: OptionWithTokens): void => {
+    if (isActionDisabled) return
     clearTimeout(wrongStatusTimeoutRef.current!)
 
     setOptions((prevOptions) => {
@@ -54,7 +61,7 @@ export const PairMatchingAnswer: FC<PairMatchingAnswerProps> = ({ question, lang
   }
 
   return (
-    <div className="flex flex-col items-center gap-10 sm:gap-16">
+    <div className={`flex flex-col items-center gap-10 sm:gap-16`}>
       <div className="flex flex-col gap-4">
         {options.map((option, index) => (
           <TokenGroupChip
@@ -62,6 +69,7 @@ export const PairMatchingAnswer: FC<PairMatchingAnswerProps> = ({ question, lang
             optionWithToken={option}
             onClick={() => handleSelectOption(option)}
             isOneLined={option.isOneLined}
+            className={isActionDisabled ? "cursor-default" : ""}
           />
         ))}
       </div>

@@ -14,7 +14,7 @@ export const CodeBlock = ({ code, language }: CodeBlockProps) => {
 
   return (
     <pre>
-      <code className={`language-${language}`}>{code}</code>
+      <code className={`language-${language} select-none`}>{code}</code>
     </pre>
   )
 }
