@@ -25,7 +25,7 @@ export const QuestionVisualizer: FC<QuestionVisualizerProps> = ({ code, question
           RefreshQuestion
         </Button>
       </div>
-      {activity && <ActivitySwitcher activity={activity} setLessonState={() => {}} />}
+      {activity && <ActivitySwitcher isActionDisabled={false} activity={activity} setLessonState={() => { }} />}
     </div>
   )
 }

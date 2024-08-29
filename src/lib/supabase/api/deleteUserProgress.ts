@@ -1,5 +1,5 @@
 "use server"
-import { userMetadata } from "@/lib/auth"
+import { fetchUserData } from "@/lib/supabase/api/fetchUserData"
 import { createClient } from "src/lib/supabase/server"
 import { revalidateUserXpollen } from "./fetchUserXpollen"
 
@@ -7,7 +7,7 @@ export type CompletedLessonByUnitId = {
   [unitId: string]: string[]
 }
 export const deleteUserProgress = async () => {
-  const userData = await userMetadata()
+  const userData = await fetchUserData()
   const supabase = createClient()
 
   if (!userData) return

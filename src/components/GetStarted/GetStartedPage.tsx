@@ -14,10 +14,11 @@ import {
 } from "../Svgs/Icons"
 import { TooltipHover } from "../TooltipHover"
 import { ProgressBar } from "../ProgressBar"
-import { open } from "../LoginModal.store"
+import { openFirstLogin } from "../LoginModal.store"
 import { redirect } from "next/navigation"
 import { LessonFooter } from "../Activity/Answer/LessonFooter"
 import { GetStartedAnswer } from "./types"
+import { useLocaleContext } from "../Localization/LocaleContext"
 
 export const GetStartedPage = () => {
   const [selected, setSelected] = useState<string | null>(null)
@@ -25,6 +26,7 @@ export const GetStartedPage = () => {
   const [answers, setAnswers] = useState<GetStartedAnswer[]>([])
   const [questionState, setQuestionState] = useState<"none" | "correct" | "wrong" | "completed">("none")
   const currentQuestion = questions[currentQuestionIndex]
+  const { locale } = useLocaleContext()
 
   const handlesContinue = () => {
     if (currentQuestionIndex <= questions.length - 1) {
@@ -40,7 +42,12 @@ export const GetStartedPage = () => {
 
   useEffect(() => {
     if (!currentQuestion) {
-      open({ getStartedAnswers: answers })
+      const course = answers.find((answer) => answer.questionId === "course")?.answer
+      course &&
+        openFirstLogin({
+          course: course,
+          language: locale,
+        })
     }
   }, [currentQuestion])
 
@@ -57,7 +64,7 @@ export const GetStartedPage = () => {
         <div className="flex h-full items-center justify-center">
           <div className="flex w-full flex-col gap-y-12 px-6 lg:min-h-[350px] lg:w-[600px] lg:px-0">
             <h1 className="text-center text-lg font-bold text-neutral-700 lg:text-start lg:text-3xl dark:text-neutral-200">
-              {currentQuestion.description}
+              {currentQuestion.description[locale]}
             </h1>
             <div>
               <div className="flex flex-wrap justify-start gap-16">
@@ -71,7 +78,7 @@ export const GetStartedPage = () => {
                             ${selected === option.id ? "border-blue-500 text-blue-500" : "border-gray-300"}`}
                   >
                     {option.icon}
-                    <div className="text-lg font-bold">{option.label}</div>
+                    <div className="text-lg font-bold">{option.label[locale]}</div>
                     {!option.released && (
                       <div className="absolute right-2 top-2 overflow-visible">
                         <TooltipHover text="Coming soon">
@@ -84,15 +91,6 @@ export const GetStartedPage = () => {
               </div>
             </div>
           </div>
-
-          {/* <div className="flex gap-4 pb-10">
-            <Button color="secondary" onClick={() => setCurrentQuestionIndex((prev) => Math.max(prev - 1, 0))}>
-              Back
-            </Button>
-            <Button onClick={handlesContinue} disabled={!selected}>
-              Continue
-            </Button>
-          </div> */}
         </div>
       </div>
       <LessonFooter
@@ -106,10 +104,22 @@ export const GetStartedPage = () => {
 
 type GetStartedQuestion = {
   id: "course" | "level"
-  description: string
+  description: {
+    en: string,
+    pt: string,
+    fr: string,
+    de: string,
+    es: string
+  }
   options: {
     id: string
-    label: string
+    label: {
+      en: string,
+      pt: string,
+      fr: string,
+      de: string,
+      es: string
+    },
     icon: ReactNode
     released: boolean
   }[]
@@ -118,41 +128,83 @@ type GetStartedQuestion = {
 const questions = [
   {
     id: "course",
-    description: "What would you love to learn?",
+    description: {
+      en: "What would you love to learn?",
+      pt: "O que você gostaria de aprender?",
+      fr: "Qu'aimeriez-vous apprendre?",
+      de: "Was möchtest du lernen?",
+      es: "¿Qué te gustaría aprender?",
+    },
     options: [
       {
         id: "javascript",
-        label: "Javascript",
+        label: {
+          en: "Javascript",
+          pt: "Javascript",
+          fr: "Javascript",
+          de: "Javascript",
+          es: "Javascript",
+        },
         icon: <SiJavascript className="w-16" />,
         released: true,
       },
       {
         id: "typescript",
-        label: "Typescript",
+        label: {
+          en: "Typescript",
+          pt: "Typescript",
+          fr: "Typescript",
+          de: "Typescript",
+          es: "Typescript",
+        },
         icon: <SiTypescript className="w-16" />,
         released: false,
       },
       {
         id: "html5",
-        label: "HTML5",
+        label: {
+          en: "HTML5",
+          pt: "HTML5",
+          fr: "HTML5",
+          de: "HTML5",
+          es: "HTML5",
+        },
         icon: <SiHtml5 className="w-16" />,
         released: false,
       },
       {
         id: "css",
-        label: "CSS",
+        label: {
+          en: "CSS",
+          pt: "CSS",
+          fr: "CSS",
+          de: "CSS",
+          es: "CSS",
+        },
         icon: <SiCss3 className="w-16" />,
         released: false,
       },
       {
         id: "react",
-        label: "React",
+        label: {
+          en: "React",
+          pt: "React",
+          fr: "React",
+          de: "React",
+          es: "React",
+        },
         icon: <SiReact className="w-16" />,
         released: false,
       },
       {
         id: "python",
-        label: "Python",
+        label: {
+          en: "Python",
+          pt: "Python",
+          fr: "Python",
+          de: "Python",
+          es: "Python",
+        },
         icon: <SiPython className="w-16" />,
         released: false,
       },
@@ -160,23 +212,47 @@ const questions = [
   },
   {
     id: "level",
-    description: "What is your current level?",
+    description: {
+      en: "What is your current level?",
+      pt: "Qual é o seu nível atual?",
+      fr: "Quel est votre niveau actuel?",
+      de: "Was ist dein aktuelles Level?",
+      es: "¿Cuál es tu nivel actual?",
+    },
     options: [
       {
         id: "beginner",
-        label: "Beginner",
+        label: {
+          en: "Beginner",
+          pt: "Iniciante",
+          fr: "Débutant",
+          de: "Anfänger",
+          es: "Principiante",
+        },
         icon: <MdStarHalf className="w-16" />,
         released: true,
       },
       {
         id: "intermediary",
-        label: "Intermediary",
+        label: {
+          en: "Intermediary",
+          pt: "Intermediário",
+          fr: "Intermédiaire",
+          de: "Mittelstufe",
+          es: "Intermedio",
+        },
         icon: <MdStar className="w-16" />,
         released: true,
       },
       {
         id: "advanced",
-        label: "Advanced",
+        label: {
+          en: "Advanced",
+          pt: "Avançado",
+          fr: "Avancé",
+          de: "Fortgeschritten",
+          es: "Avanzado",
+        },
         icon: <GiStarsStack className="w-16" />,
         released: true,
       },

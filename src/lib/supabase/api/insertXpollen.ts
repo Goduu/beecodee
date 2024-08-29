@@ -1,7 +1,7 @@
 "use server"
 import { cache } from "react"
 import { createClient } from "../server"
-import { userMetadata } from "@/lib/auth"
+import { fetchUserData } from "@/lib/supabase/api/fetchUserData"
 import { revalidateUserXpollen } from "./fetchUserXpollen"
 
 type upsertActivityParams = {
@@ -12,7 +12,7 @@ type upsertActivityParams = {
 }
 
 export const insertXpollen = cache(async ({ courseId, unitId, lessonId, xpollen }: upsertActivityParams) => {
-  const userData = await userMetadata()
+  const userData = await fetchUserData()
   const supabase = createClient()
 
   if (!userData) return false

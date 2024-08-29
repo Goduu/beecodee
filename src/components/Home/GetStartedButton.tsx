@@ -1,14 +1,20 @@
 "use client"
 import React from "react"
 import { Button } from "../Button"
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { useLocaleContext } from "../Localization/LocaleContext"
 
 export const GetStartedButton = () => {
   const { locale } = useLocaleContext()
+  const router = useRouter()
 
   return (
-    <Button color="primary" className="w-64 uppercase" size="large" onClick={() => redirect("/getStarted")}>
+    <Button
+      color="primary"
+      className="w-64 uppercase"
+      size="large"
+      onClick={() => router.push(`/${locale}/getStarted`)}
+    >
       {T[locale].getStarted}
     </Button>
   )

@@ -4,26 +4,31 @@ import { BeeHead, GiHoneypot, IoMdFlower, IoMdLogOut } from "./Svgs/Icons"
 import { BeecodeeIcon } from "./Svgs/BeecodeeIcon"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { signOut } from "@/lib/auth"
-import { LOCALES } from "./Localization/localization"
+import { signOut } from "@/lib/auth/auth"
+import { BeeLocale, LOCALES } from "./Localization/localization"
 import { LanguageButton } from "./Localization/LanguageButton"
+import { User } from "@/lib/auth/types"
 
 const HIDDEN_PATHS = ["/lessons", "/getStarted"]
 
-export const Sidebar = () => {
+export const Sidebar = ({ userData }: { userData?: User | null }) => {
   const pathname = usePathname()
   const isHomePathname = LOCALES.some((locale) => pathname === `/${locale}`)
 
   const isHidden = isHomePathname || HIDDEN_PATHS.find((path) => pathname.includes(path))
+  if (!userData?.currentLanguage || !userData.currentCourse) return null
+
+  const menuOptions = getMenuOptions(userData.currentLanguage, userData.currentCourse)
 
   return (
     <div
       className={`fixed inset-x-0 z-40 ${isHidden && "hidden scale-0"}
-      sm:t-0 bottom-0
-      w-full sm:left-0 sm:h-screen sm:w-fit`}
+      sm:t-0 bottom-0 w-full bg-slate-100
+      sm:left-0 sm:h-screen sm:w-fit dark:bg-slate-800`}
     >
-      <aside className="flex items-center bg-slate-100 py-1 shadow sm:h-full sm:flex-col sm:pb-0 sm:pt-10 dark:bg-slate-800">
-        <div className="flex items-center justify-center pl-2 sm:h-16 sm:w-full sm:py-10 sm:pl-0">
+      <LanguageButton />
+      <aside className="flex items-center py-1 shadow sm:h-full sm:flex-col sm:pb-0 sm:pt-10 ">
+        <div className="flex items-center justify-center pl-2 sm:h-16 sm:w-full sm:py-5 sm:pb-10 sm:pl-0">
           <Link href="/">
             <BeecodeeIcon className="w-14 md:hidden" />
             <span className="hidden text-3xl font-black text-amber-500 md:block">beecodee</span>
@@ -37,13 +42,12 @@ export const Sidebar = () => {
             >
               <Link href={option.link} className={`flex h-16 w-full items-center justify-start gap-2 `}>
                 {option.icon}
-                <span className="hidden text-xs font-black md:block">{option.label}</span>
+                <span className="hidden text-xs font-black md:block uppercase">{option.label}</span>
               </Link>
             </li>
           ))}
         </ul>
-        <LanguageButton />
-        <div className="items-center pr-2 sm:mb-6 sm:mt-auto sm:h-16 sm:w-full sm:pr-0">
+        <div className="hidden items-center pr-2 sm:mb-10 sm:mt-auto sm:block sm:h-16 sm:w-full sm:pr-0">
           <button
             onClick={() => signOut()}
             className="flex h-16 items-center justify-center gap-2 rounded-lg hover:bg-red-900 
@@ -58,12 +62,39 @@ export const Sidebar = () => {
   )
 }
 
-const menuOptions = [
-  { icon: <IoMdFlower className="w-10" />, label: "PATH", link: "/path" },
+const getMenuOptions = (locale: BeeLocale, course: string) => [
+  { icon: <IoMdFlower className="w-10" />, label: T[locale].path, link: `/${locale}/${course}/path` },
   {
     icon: <GiHoneypot className="w-10" />,
-    label: "HONEYCOMB",
-    link: "/path/honeycomb",
+    label: T[locale].honeycomb,
+    link: `/${locale}/${course}/path/honeycomb`,
   },
-  { icon: <BeeHead className="w-10" />, label: "PROFILE", link: "/profile" },
+  { icon: <BeeHead className="w-10" />, label: T[locale].profile, link: `/${locale}/profile` },
 ]
+
+const en = {
+  path: "Path",
+  honeycomb: "Honeycomb",
+  profile: "Profile"
+}
+const pt: typeof en = {
+  path: "Caminho",
+  honeycomb: "Colmeia",
+  profile: "Perfil"
+}
+const fr: typeof en = {
+  path: "Chemin",
+  honeycomb: "Ruche",
+  profile: "Profil"
+}
+const de: typeof en = {
+  path: "Pfad",
+  honeycomb: "Bienenstock",
+  profile: "Profil"
+}
+const es: typeof en = {
+  path: "Camino",
+  honeycomb: "Colmena",
+  profile: "Perfil"
+}
+const T = { en, pt, fr, de, es }

@@ -1,4 +1,4 @@
-import { userMetadata } from "@/lib/auth"
+import { fetchUserData } from "@/lib/supabase/api/fetchUserData"
 import { fetchUserXpollen } from "@/lib/supabase/api/fetchUserXpollen"
 import React from "react"
 import { Pollen } from "../Svgs/Pollen"
@@ -6,7 +6,7 @@ import { FaBookBookmark, SiJavascript } from "../Svgs/Icons"
 import { fetchUserCompletedLessonByUnitId } from "@/lib/supabase/api/fetchUserFinishedLessons"
 
 export const ProfilePage = async () => {
-  const userData = await userMetadata()
+  const userData = await fetchUserData()
   const userXpollen = await fetchUserXpollen()
   const userFinishLessons = await fetchUserCompletedLessonByUnitId()
   const joinedDateMMYYY =

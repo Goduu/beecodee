@@ -224,15 +224,6 @@ export const DebuggingQuestion = defineNestedType(() => ({
   },
 }))
 
-const Course = defineDocumentType(() => ({
-  name: "Course",
-  filePathPattern: "courses/**/course_metadata.json",
-  fields: {
-    title: { type: "string", required: true },
-    // prerequisites: { type: 'string', required: false },
-  },
-}))
-
 const TranslatedText = defineNestedType(() => ({
   name: "TranslatedText",
   fields: {
@@ -257,6 +248,17 @@ export const LessonReference = defineNestedType(() => ({
   fields: {
     id: { type: "number", required: true },
     lesson: { type: "string", required: true },
+  },
+}))
+
+const Course = defineDocumentType(() => ({
+  name: "Course",
+  filePathPattern: "courses/**/course_metadata.json",
+  computedFields: {
+    slugAsParams: {
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.split("courses/")[1].split("/")[0],
+    },
   },
 }))
 

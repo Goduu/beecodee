@@ -1,9 +1,8 @@
 "use server"
 import { cache } from "react"
 import { createClient } from "../server"
-import { userMetadata } from "@/lib/auth"
+import { fetchUserData, revalidateUserData } from "@/lib/supabase/api/fetchUserData"
 import { BeeLocale } from "@/components/Localization/localization"
-import { revalidateUserCurrentData } from "./fetchUserCurrentData"
 
 type upsertActivityParams = {
   courseId?: string
@@ -11,16 +10,17 @@ type upsertActivityParams = {
 }
 
 export const upsertUserCurrentData = cache(async ({ courseId, language }: upsertActivityParams) => {
-  const userData = await userMetadata()
+  const userData = await fetchUserData()
   const supabase = createClient()
+  const currentData = await fetchUserData()
 
   if (!userData) return false
 
   const { error } = await supabase.from("user_current_data").upsert([
     {
       user_id: userData?.id,
-      course: courseId,
-      language,
+      course: courseId || currentData?.currentCourse,
+      language: language || currentData?.currentLanguage,
     },
   ])
 
@@ -29,7 +29,7 @@ export const upsertUserCurrentData = cache(async ({ courseId, language }: upsert
     return false
   }
 
-  revalidateUserCurrentData()
+  revalidateUserData()
 
   return true
 })

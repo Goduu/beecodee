@@ -1,15 +1,18 @@
 "use client"
 import React, { FC } from "react"
 import { Button } from "../Button"
-import { signInWithGithub } from "@/lib/auth"
+import { firstLogInWithGithub } from "@/lib/auth/auth"
 import { FaGithub } from "../Svgs/Icons"
 import { useLocaleContext } from "../Localization/LocaleContext"
+import { loginModalStore } from "../LoginModal.store"
+import { useStore } from "../useStore"
 
 export const GithubButton: FC = () => {
   const { locale } = useLocaleContext()
+  const firstLoginData = useStore(loginModalStore, (state) => state.firstLoginData)
 
   return (
-    <Button onClick={signInWithGithub} className="flex items-center gap-2">
+    <Button onClick={() => firstLoginData && firstLogInWithGithub(firstLoginData)} className="flex items-center gap-2">
       <FaGithub className="w-5" />
       {T[locale].continueWithGithub}
     </Button>
