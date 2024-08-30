@@ -91,7 +91,10 @@ export const useMultipleChoiceAnswerStates = (
 
   const handleCheckStatus = useCallback(() => {
     const correctAnswer = question.correctAnswer
-    if (answer.length === correctAnswer.length && answer.every((token, index) => token.id.split("-")[0] === correctAnswer[index])) {
+    if (
+      answer.length === correctAnswer.length &&
+      answer.every((token, index) => token.id.split("-")[0] === correctAnswer[index])
+    ) {
       playSound(correctAnswerSound)
       setStatus("correct")
       setLessonState("correct")

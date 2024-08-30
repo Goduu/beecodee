@@ -47,8 +47,8 @@ const getLocaleFromPathName = (pathname: string, acceptLanguage: string | null) 
 
 export async function middleware(request: NextRequest) {
   // const userData = await fetchUserData()
-  const headersList = headers();
-  const acceptLanguage = headersList.get('accept-language');
+  const headersList = headers()
+  const acceptLanguage = headersList.get("accept-language")
   const { pathname } = request.nextUrl
   const routeName = getRouteName(pathname)
   const routes = await getRoutes()

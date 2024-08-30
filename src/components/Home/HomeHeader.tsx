@@ -1,19 +1,44 @@
 "use client"
-import React from "react"
+import React, { useRef, useState } from "react"
 import { usePathname } from "next/navigation"
 import { Beecodee } from "../Svgs/Beecodee"
 import { LOCALES } from "../Localization/localization"
+import { motion, useScroll, useMotionValueEvent, Variants } from "framer-motion"
 
 export const HomeHeader = () => {
   const pathname = usePathname()
   const isPathHome = LOCALES.some((locale) => pathname === `/${locale}`)
+  const [hidden, setHidden] = useState(false)
+  const { scrollY } = useScroll()
+  const lastYRef = useRef(0)
+
+  useMotionValueEvent(scrollY, "change", (y) => {
+    const difference = y - lastYRef.current
+    if (Math.abs(difference) > 180) {
+      setHidden(difference > 0)
+      lastYRef.current = y
+    }
+  })
 
   return (
-    <div className={`fixed top-0 z-50 w-screen backdrop-blur-md ${!isPathHome && "hidden"}`}>
-      <div className="flex w-screen items-center justify-center">
-        <Beecodee className="w-64" />
-      </div>
-      <hr />
+    <div className={`fixed top-0 z-50 w-screen ${!isPathHome && "hidden"}`}>
+      <motion.div
+        animate={hidden ? "hidden" : "visible"}
+        initial="visible"
+        whileHover={hidden ? "peeking" : "visible"}
+        variants={
+          {
+            visible: { y: "0%" },
+            hidden: { y: "-90%" },
+          } as Variants
+        }
+        transition={{ duration: 0.2 }}
+      >
+        <div className="flex w-screen items-center justify-center backdrop-blur-md">
+          <Beecodee className="w-64" />
+        </div>
+        <hr />
+      </motion.div>
     </div>
   )
 }

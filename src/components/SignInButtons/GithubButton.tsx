@@ -12,8 +12,11 @@ export const GithubButton: FC = () => {
   const firstLoginData = useStore(loginModalStore, (state) => state.firstLoginData)
 
   return (
-    <Button onClick={() => firstLoginData ? firstLogInWithGithub(firstLoginData) : signInWithGithub()} className="flex items-center gap-2">
-      <ImSpinner className="w-5" />  <FaGithub className="w-5" />
+    <Button
+      onClick={() => (firstLoginData ? firstLogInWithGithub(firstLoginData) : signInWithGithub())}
+      className="flex items-center gap-2"
+    >
+      <ImSpinner className="w-5" /> <FaGithub className="w-5" />
       {T[locale].continueWithGithub}
     </Button>
   )

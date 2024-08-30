@@ -1,7 +1,7 @@
 import { UnitPath } from "../Unit/UnitPath"
 import { allUnitContents, allUnits, Unit } from "@contentlayer/generated"
 import { fetchUserCompletedLessonByUnitId } from "@/lib/supabase/api/fetchUserFinishedLessons"
-import { FlyingBee } from "./FlyingBee"
+import { FlyingBee } from "../Svgs/Animations/FlyingBee"
 
 const getUnitContent = (unit: Unit) => {
   return allUnitContents.find((unitContent) => unitContent.unit === unit.slugAsParams)
@@ -16,7 +16,7 @@ export const PathPage = async () => {
 
   return (
     <div className="flex w-screen flex-col items-center gap-2 py-4">
-      <FlyingBee className="w-44"/>
+      <FlyingBee className="w-44" />
       {sortedUnits.map((unit) => {
         return (
           <UnitPath

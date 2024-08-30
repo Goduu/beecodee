@@ -9,7 +9,8 @@ import { BeeLocale } from "../Localization/localization"
 import { FC } from "react"
 import { AnimatedCircle } from "./AnimatedCircle"
 import { IoMdFlower } from "../Svgs/Icons"
-import { FlyingBee } from "./FlyingBee"
+import { FlyingBee } from "../Svgs/Animations/FlyingBee"
+import { TypingText } from "../Svgs/Animations/TypingText"
 
 type HomePageProps = {
   locale: BeeLocale
@@ -18,10 +19,10 @@ type HomePageProps = {
 export const HomePage: FC<HomePageProps> = async ({ locale = "en" }) => {
   return (
     <>
-      <div className="flex flex-col items-center gap-20">
-        <FlyingBee className="w-72 pt-20" />
+      <div className="gap-18 mt-20 flex flex-col items-center sm:gap-20">
+        <FlyingBee className="w-72" />
         <div role="h1" className="flex max-w-96 text-center text-3xl font-extrabold leading-relaxed">
-          {T[locale].title}
+          <TypingText text={T[locale].title} />
         </div>
 
         <div className="flex flex-col items-center gap-4">
@@ -60,7 +61,7 @@ export const HomePage: FC<HomePageProps> = async ({ locale = "en" }) => {
         </div>
 
         <Carousel />
-        <div className="-z-10 flex flex-col gap-44 ">
+        <div className="flex flex-col gap-44 ">
           <FindYourPath locale={locale} />
           <BeeSlogan locale={locale} />
           <SiteNumbers locale={locale} />

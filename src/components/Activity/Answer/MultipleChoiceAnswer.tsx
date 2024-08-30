@@ -60,7 +60,7 @@ export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({
                   </SortableContext>
                   <DragOverlay>
                     {activeId ? (
-                      <TokenGroupChip onClick={() => { }} optionWithToken={answer.find((a) => a.id === activeId)!} />
+                      <TokenGroupChip onClick={() => {}} optionWithToken={answer.find((a) => a.id === activeId)!} />
                     ) : null}
                   </DragOverlay>
                 </>

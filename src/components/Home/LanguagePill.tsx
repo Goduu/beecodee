@@ -45,11 +45,9 @@ export function LanguagePill({
 
   return (
     <motion.div ref={ref} style={{ opacity, scale, rotate, skewX, x, left, position: "relative" }}>
-      <Pill variant={variant} className="gap-2 sm:gap-4 px-2 sm:px-4 text-lg shadow-2xl sm:pl-8 sm:text-xl lg:text-4xl">
+      <Pill variant={variant} className="gap-2 px-2 text-lg shadow-2xl sm:gap-4 sm:px-4 sm:pl-8 sm:text-xl lg:text-4xl">
         <span className="">{word[locale]}</span>
-        <span className="flex items-center justify-center rounded-full border p-2 sm:p-3 shadow-md">
-          {flag}
-        </span>
+        <span className="flex items-center justify-center rounded-full border p-2 shadow-md sm:p-3">{flag}</span>
       </Pill>
     </motion.div>
   )
