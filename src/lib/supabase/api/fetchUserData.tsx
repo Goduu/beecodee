@@ -10,7 +10,7 @@ export const fetchUserData = async () => {
   const metadata = session.data.user?.user_metadata
 
   if (!metadata) {
-    console.error("Error fetching user data: No metadata")
+    console.info("No logged user")
     return null
   }
 

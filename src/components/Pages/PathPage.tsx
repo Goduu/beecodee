@@ -1,7 +1,7 @@
-import { Bee } from "../Svgs/Bee"
 import { UnitPath } from "../Unit/UnitPath"
 import { allUnitContents, allUnits, Unit } from "@contentlayer/generated"
 import { fetchUserCompletedLessonByUnitId } from "@/lib/supabase/api/fetchUserFinishedLessons"
+import { FlyingBee } from "./FlyingBee"
 
 const getUnitContent = (unit: Unit) => {
   return allUnitContents.find((unitContent) => unitContent.unit === unit.slugAsParams)
@@ -16,7 +16,7 @@ export const PathPage = async () => {
 
   return (
     <div className="flex w-screen flex-col items-center gap-2 py-4">
-      <Bee className="w-44 pt-20 duration-300 ease-in-out hover:animate-pulse" />
+      <FlyingBee className="w-44"/>
       {sortedUnits.map((unit) => {
         return (
           <UnitPath

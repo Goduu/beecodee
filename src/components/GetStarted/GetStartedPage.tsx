@@ -37,6 +37,7 @@ export const GetStartedPage = () => {
       setAnswers((prevAnswers) => [...prevAnswers, { questionId: currentQuestion.id, answer: selected }])
       setSelected(null)
     }
+    setQuestionState("none")
   }
   const handleCheck = () => {
     setQuestionState("correct")

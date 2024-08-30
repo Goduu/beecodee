@@ -4,7 +4,7 @@ import { BeeLocale } from "../Localization/localization"
 import { AnswerStatus } from "../Activity/Answer/types"
 
 export type OptionWithTokens = {
-  id: Option["option"]["id"]
+  id: Option["option"]["id"] | `${Option["option"]["id"]}-${number}`
   type: Option["option"]["type"] | "GapOption"
   content: Option["option"]["content"]
   status?: AnswerStatus

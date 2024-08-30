@@ -39,10 +39,13 @@ export const useQuizState = ({ lessonXp, activityMap }: QuizStateProps) => {
   }
 
   const handleFinishLesson = async () => {
-    if (!onGoingLessonSlug) return
-    onGoingActivityData?.course &&
-      (await saveFinishedLesson(onGoingActivityData?.course, onGoingUnitSlug, onGoingLessonSlug, lessonXp))
-    router.push(routes.path(locale))
+    if (!onGoingLessonSlug || !onGoingActivityData) return
+
+    const saveLessonPromise = saveFinishedLesson(onGoingActivityData?.course, onGoingUnitSlug, onGoingLessonSlug, lessonXp);
+    const redirectPromise = router.push(routes.path(locale));
+
+    // Run both operations at the same time
+    await Promise.allSettled([saveLessonPromise, redirectPromise]);
   }
 
   return {

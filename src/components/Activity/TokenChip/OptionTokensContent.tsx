@@ -9,11 +9,12 @@ type OptionTokensContentProps = {
   className?: string
 }
 export const OptionTokensContent: FC<OptionTokensContentProps> = ({ optionWithToken, onClick, className }) => {
-  return optionWithToken.tokens.map((token) => {
+  return optionWithToken.tokens.map((token, index) => {
     const tokenTypeClass = tokenTypeToTailwindClass(token.type)
 
     return (
       <TokenContent
+        key={`${token.content.toString()}-${index}`}
         token={token}
         optionType={optionWithToken.type}
         onClick={onClick}

@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server"
 import { updateSession } from "./lib/supabase/middleware"
 import { fetchUserData } from "./lib/supabase/api/fetchUserData"
 import { BeeLocale } from "./components/Localization/localization"
+import { headers } from "next/headers"
 
 const PROTECTED_PATHS = ["path", "profile", "honeycomb", "lessons", "review", "question-builder"]
 const NOT_PROTECTED_PATHS = ["home", "get-started", "api"]
@@ -14,7 +15,7 @@ const getRouteName = (pathname: string) => {
   )
 }
 
-const getLocaleFromPathName = (pathname: string) => {
+const getLocaleFromPathName = (pathname: string, acceptLanguage: string | null) => {
   switch (true) {
     case pathname.includes("/en"):
       return "en"
@@ -27,16 +28,31 @@ const getLocaleFromPathName = (pathname: string) => {
     case pathname.includes("/pt"):
       return "pt"
     default:
-      return undefined
+      switch (true) {
+        case acceptLanguage?.includes("es"):
+          return "es"
+        case acceptLanguage?.includes("fr"):
+          return "fr"
+        case acceptLanguage?.includes("de"):
+          return "de"
+        case acceptLanguage?.includes("pt"):
+          return "pt"
+        case acceptLanguage?.includes("en"):
+          return "en"
+        default:
+          return undefined
+      }
   }
 }
 
 export async function middleware(request: NextRequest) {
   // const userData = await fetchUserData()
+  const headersList = headers();
+  const acceptLanguage = headersList.get('accept-language');
   const { pathname } = request.nextUrl
   const routeName = getRouteName(pathname)
   const routes = await getRoutes()
-  const locale = getLocaleFromPathName(pathname)
+  const locale = getLocaleFromPathName(pathname, acceptLanguage)
   const searchParams = request.nextUrl.searchParams
 
   switch (routeName) {

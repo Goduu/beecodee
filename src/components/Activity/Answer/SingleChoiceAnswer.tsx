@@ -27,7 +27,7 @@ export const SingleChoiceAnswer: FC<SingleChoiceAnswerProps> = ({
               onClick={() => !isActionDisabled && selectAnswer(option)}
               key={index}
               optionWithToken={option}
-              isOneLined={true}
+              isOneLined
               className={isActionDisabled ? "cursor-default" : ""}
             />
           </div>

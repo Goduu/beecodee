@@ -25,6 +25,7 @@ export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({
     answer,
     addTokenToAnswer,
     removeOptionFromAnswer,
+    createFormattingToken,
     handleDragStart,
     handleDragEnd,
     sensors,
@@ -59,7 +60,7 @@ export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({
                   </SortableContext>
                   <DragOverlay>
                     {activeId ? (
-                      <TokenGroupChip onClick={() => {}} optionWithToken={answer.find((a) => a.id === activeId)!} />
+                      <TokenGroupChip onClick={() => { }} optionWithToken={answer.find((a) => a.id === activeId)!} />
                     ) : null}
                   </DragOverlay>
                 </>
@@ -100,13 +101,4 @@ export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({
       </div>
     </div>
   )
-}
-
-const createFormattingToken = (content: string): OptionWithTokens => {
-  return {
-    id: content === "\t" ? "ft" : content === "\n" ? "fn" : "fs",
-    content: content,
-    type: "TextOption",
-    tokens: [{ content, type: "format" }],
-  }
 }
