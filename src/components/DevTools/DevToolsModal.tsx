@@ -5,12 +5,16 @@ import { useDetectOuterClickAndEsc } from "../useDetectOuterClickAndEsc"
 import { Button } from "../Button"
 import { close, devToolsModalStore } from "./DevToolsModal.store"
 import { deleteUserProgress } from "@/lib/supabase/api/deleteUserProgress"
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { TbPencilQuestion } from "../Svgs/Icons"
+import { routes } from "@/lib/routes"
+import { useLocaleContext } from "../Localization/LocaleContext"
 
 export const DevToolsModal = () => {
   const isOpen = useStore(devToolsModalStore, (state) => state.isOpen)
   const modalRef = useRef(null)
+  const router = useRouter()
+  const { locale } = useLocaleContext()
   useDetectOuterClickAndEsc({ ref: modalRef, onOuterClick: close })
 
   const handleResetCache = () => {
@@ -38,16 +42,16 @@ export const DevToolsModal = () => {
                   <Button color="secondary" onClick={deleteUserProgress}>
                     Reset My Progress
                   </Button>
-                  <Button
+                  {/* <Button
                     color="secondary"
                     onClick={() => {
                       close()
-                      redirect("/dev/questionBuilder")
+                      router.push(routes.questionBuilder(locale))
                     }}
                     className="flex gap-2"
                   >
                     GoTo QuestionBuilder <TbPencilQuestion className="w-6" />
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </div>

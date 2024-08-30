@@ -9,7 +9,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <Header />
-      <div className="flex min-h-screen flex-col place-items-center px-4 py-4 pl-0 leading-relaxed md:ml-40">
+      <div className="flex min-h-screen flex-col place-items-center px-4 py-10 pl-0 leading-relaxed md:ml-40">
         {children}
       </div>
     </>

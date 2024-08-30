@@ -3,13 +3,14 @@ import React, { FC, useRef, useState } from "react"
 import { TooltipClick } from "../TooltipClick"
 import { Button } from "../Button"
 import { Lesson, Unit, UnitContent } from "@contentlayer/generated"
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { useDetectOuterClickAndEsc } from "../useDetectOuterClickAndEsc"
 import { startLesson } from "../Unit/unitStore"
 import { PathwayButton } from "./PathwayButton"
 import { Pollen } from "../Svgs/Pollen"
 import { HoneyComb } from "../HoneyComb/HoneyComb"
 import { useLocaleContext } from "../Localization/LocaleContext"
+import { routes } from "@/lib/routes"
 
 type ActivityLinkProps = {
   lesson: Lesson
@@ -38,10 +39,10 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit, unitContent 
 
 const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit, unitContent }) => {
   const { locale } = useLocaleContext()
-
+  const router = useRouter()
   const handleStartLesson = () => {
     startLesson(unit)
-    redirect(`lessons/${lesson.slugAsParams}`)
+    router.push(routes.lessons(lesson.slugAsParams))
   }
 
   return (

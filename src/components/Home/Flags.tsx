@@ -33,7 +33,7 @@ export const Flags = () => {
 export const languages = [
   {
     title: "Javascript",
-    flag: <SiJavascript className="w-10 text-yellow-300" />,
+    flag: <SiJavascript className="w-6 sm:w-10 text-yellow-300" />,
     word: {
       en: 'const start = "now"',
       pt: 'const iniciar = "agora"',
@@ -44,7 +44,7 @@ export const languages = [
   },
   {
     title: "HTML",
-    flag: <SiHtml5 className="w-10 text-orange-500" />,
+    flag: <SiHtml5 className="w-6 sm:w-10 text-orange-500" />,
     word: {
       en: "<p>Start now</p>",
       pt: "<p>Comece agora</p>",
@@ -55,7 +55,7 @@ export const languages = [
   },
   {
     title: "Typescript",
-    flag: <SiTypescript className="w-10 text-blue-600" />,
+    flag: <SiTypescript className="w-6 sm:w-10 text-blue-600" />,
     word: {
       en: 'type Start = "now" | "never"',
       pt: 'type Iniciar = "agora" | "nunca"',
@@ -66,7 +66,7 @@ export const languages = [
   },
   {
     title: "Css3",
-    flag: <SiCss3 className="w-10 text-blue-600" />,
+    flag: <SiCss3 className="w-6 sm:w-10 text-blue-600" />,
     word: {
       en: ".start: now",
       pt: ".iniciar: agora",
@@ -77,7 +77,7 @@ export const languages = [
   },
   {
     title: "React",
-    flag: <SiReact className="w-10 text-teal-400" />,
+    flag: <SiReact className="w-6 sm:w-10 text-teal-400" />,
     word: {
       en: "useStart(now)",
       pt: "useIniciar(agora)",
@@ -88,7 +88,7 @@ export const languages = [
   },
   {
     title: "Python",
-    flag: <SiPython className="w-10" />,
+    flag: <SiPython className="w-6 sm:w-10" />,
     word: {
       en: "def lets_start():",
       pt: "def vamos_iniciar():",
@@ -99,7 +99,7 @@ export const languages = [
   },
   {
     title: "Github",
-    flag: <FaGithub className="w-10 text-slate-900 dark:text-white" />,
+    flag: <FaGithub className="w-6 sm:w-10 text-slate-900 dark:text-white" />,
     word: {
       en: "git start --now",
       pt: "git iniciar --agora",

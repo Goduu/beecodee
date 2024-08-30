@@ -3,6 +3,7 @@ import React from "react"
 import { Button } from "../Button"
 import { useRouter } from "next/navigation"
 import { useLocaleContext } from "../Localization/LocaleContext"
+import { routes } from "@/lib/routes"
 
 export const GetStartedButton = () => {
   const { locale } = useLocaleContext()
@@ -13,7 +14,7 @@ export const GetStartedButton = () => {
       color="primary"
       className="w-64 uppercase"
       size="large"
-      onClick={() => router.push(`/${locale}/getStarted`)}
+      onClick={() => router.push(routes.getStarted(locale))}
     >
       {T[locale].getStarted}
     </Button>

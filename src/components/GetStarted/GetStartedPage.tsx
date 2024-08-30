@@ -15,10 +15,11 @@ import {
 import { TooltipHover } from "../TooltipHover"
 import { ProgressBar } from "../ProgressBar"
 import { openFirstLogin } from "../LoginModal.store"
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { LessonFooter } from "../Activity/Answer/LessonFooter"
 import { GetStartedAnswer } from "./types"
 import { useLocaleContext } from "../Localization/LocaleContext"
+import { routes } from "@/lib/routes"
 
 export const GetStartedPage = () => {
   const [selected, setSelected] = useState<string | null>(null)
@@ -27,6 +28,7 @@ export const GetStartedPage = () => {
   const [questionState, setQuestionState] = useState<"none" | "correct" | "wrong" | "completed">("none")
   const currentQuestion = questions[currentQuestionIndex]
   const { locale } = useLocaleContext()
+  const router = useRouter()
 
   const handlesContinue = () => {
     if (currentQuestionIndex <= questions.length - 1) {
@@ -54,7 +56,7 @@ export const GetStartedPage = () => {
   if (!currentQuestion) return null
 
   const handleClose = () => {
-    redirect(process.env.NEXT_PUBLIC_URL || "/")
+    router.push(routes.home(locale))
   }
 
   return (
@@ -105,21 +107,21 @@ export const GetStartedPage = () => {
 type GetStartedQuestion = {
   id: "course" | "level"
   description: {
-    en: string,
-    pt: string,
-    fr: string,
-    de: string,
+    en: string
+    pt: string
+    fr: string
+    de: string
     es: string
   }
   options: {
     id: string
     label: {
-      en: string,
-      pt: string,
-      fr: string,
-      de: string,
+      en: string
+      pt: string
+      fr: string
+      de: string
       es: string
-    },
+    }
     icon: ReactNode
     released: boolean
   }[]

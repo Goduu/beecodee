@@ -18,13 +18,11 @@ type LanguagePillProps = {
 }
 
 export function LanguagePill({
-  title,
   word,
   flag,
   tilt = 0,
   variant = "primary",
   className,
-  children,
 }: PropsWithChildren<LanguagePillProps>) {
   const ref = useRef<HTMLElement>(null!)
   const { locale } = useLocaleContext()
@@ -47,10 +45,10 @@ export function LanguagePill({
 
   return (
     <motion.div ref={ref} style={{ opacity, scale, rotate, skewX, x, left, position: "relative" }}>
-      <Pill variant={variant} className="gap-4 px-4 text-[7vw] shadow-2xl sm:pl-8 sm:text-xl lg:text-4xl">
+      <Pill variant={variant} className="gap-2 sm:gap-4 px-2 sm:px-4 text-lg shadow-2xl sm:pl-8 sm:text-xl lg:text-4xl">
         <span className="">{word[locale]}</span>
-        <span className="flex items-center justify-center rounded-full border p-3 shadow-md">
-          <span className="rounded-inherit relative block size-10 justify-center text-center">{flag}</span>
+        <span className="flex items-center justify-center rounded-full border p-2 sm:p-3 shadow-md">
+          {flag}
         </span>
       </Pill>
     </motion.div>

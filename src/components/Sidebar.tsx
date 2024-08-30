@@ -8,8 +8,9 @@ import { signOut } from "@/lib/auth/auth"
 import { BeeLocale, LOCALES } from "./Localization/localization"
 import { LanguageButton } from "./Localization/LanguageButton"
 import { User } from "@/lib/auth/types"
+import { routes } from "@/lib/routes"
 
-const HIDDEN_PATHS = ["/lessons", "/getStarted"]
+const HIDDEN_PATHS = ["/lessons", "/get-started", "/review"]
 
 export const Sidebar = ({ userData }: { userData?: User | null }) => {
   const pathname = usePathname()
@@ -42,7 +43,7 @@ export const Sidebar = ({ userData }: { userData?: User | null }) => {
             >
               <Link href={option.link} className={`flex h-16 w-full items-center justify-start gap-2 `}>
                 {option.icon}
-                <span className="hidden text-xs font-black md:block uppercase">{option.label}</span>
+                <span className="hidden text-xs font-black uppercase md:block">{option.label}</span>
               </Link>
             </li>
           ))}
@@ -63,38 +64,38 @@ export const Sidebar = ({ userData }: { userData?: User | null }) => {
 }
 
 const getMenuOptions = (locale: BeeLocale, course: string) => [
-  { icon: <IoMdFlower className="w-10" />, label: T[locale].path, link: `/${locale}/${course}/path` },
+  { icon: <IoMdFlower className="w-10" />, label: T[locale].path, link: routes.path(locale) },
   {
     icon: <GiHoneypot className="w-10" />,
     label: T[locale].honeycomb,
-    link: `/${locale}/${course}/path/honeycomb`,
+    link: routes.honeycomb(locale),
   },
-  { icon: <BeeHead className="w-10" />, label: T[locale].profile, link: `/${locale}/profile` },
+  { icon: <BeeHead className="w-10" />, label: T[locale].profile, link: routes.profile(locale) },
 ]
 
 const en = {
   path: "Path",
   honeycomb: "Honeycomb",
-  profile: "Profile"
+  profile: "Profile",
 }
 const pt: typeof en = {
   path: "Caminho",
   honeycomb: "Colmeia",
-  profile: "Perfil"
+  profile: "Perfil",
 }
 const fr: typeof en = {
   path: "Chemin",
   honeycomb: "Ruche",
-  profile: "Profil"
+  profile: "Profil",
 }
 const de: typeof en = {
   path: "Pfad",
   honeycomb: "Bienenstock",
-  profile: "Profil"
+  profile: "Profil",
 }
 const es: typeof en = {
   path: "Camino",
   honeycomb: "Colmena",
-  profile: "Perfil"
+  profile: "Perfil",
 }
 const T = { en, pt, fr, de, es }

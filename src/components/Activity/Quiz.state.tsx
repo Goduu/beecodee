@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useStore } from "../useStore"
 import { goToNextActivity, unitStore } from "../Unit/unitStore"
 import { useLocaleContext } from "../Localization/LocaleContext"
-import { Activity, CodeOutputQuestion } from "@contentlayer/generated"
+import { Activity } from "@contentlayer/generated"
 import { saveFinishedLesson } from "./ActivityBlock.functions"
 import { useRouter } from "next/navigation"
 import { LessonState } from "./types"
+import { routes } from "@/lib/routes"
 
 type QuizStateProps = {
   lessonXp: number
@@ -41,7 +42,7 @@ export const useQuizState = ({ lessonXp, activityMap }: QuizStateProps) => {
     if (!onGoingLessonSlug) return
     onGoingActivityData?.course &&
       (await saveFinishedLesson(onGoingActivityData?.course, onGoingUnitSlug, onGoingLessonSlug, lessonXp))
-    router.push(`/path`)
+    router.push(routes.path(locale))
   }
 
   return {

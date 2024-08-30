@@ -16,7 +16,8 @@ export async function GET(request: Request) {
     const supabase = createClient()
     const { data, error } = await supabase.auth.exchangeCodeForSession(code)
     const userData = await fetchUserData()
-    const nextPath = `${next}${language || userData?.currentLanguage}/${course || userData?.currentCourse}`
+    const nextPath = `${next}${language || userData?.currentLanguage}/${course || userData?.currentCourse}/path`
+
     if (!error) {
       const forwardedHost = request.headers.get("x-forwarded-host") // original origin before load balancer
       const isLocalEnv = process.env.NODE_ENV === "development"

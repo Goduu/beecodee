@@ -1,37 +1,116 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { updateSession } from "./lib/supabase/middleware"
-import { LOCALES } from "./components/Localization/localization"
 import { fetchUserData } from "./lib/supabase/api/fetchUserData"
+import { BeeLocale } from "./components/Localization/localization"
 
-const PROTECTED_PATHS = ["/path", "/profile", "/honeycomb", "lessons"]
+const PROTECTED_PATHS = ["path", "profile", "honeycomb", "lessons", "review", "question-builder"]
+const NOT_PROTECTED_PATHS = ["home", "get-started", "api"]
 
-function isProtectedPath(pathname: string): boolean {
-  return !!PROTECTED_PATHS.find((path) => pathname.includes(path))
+const getRouteName = (pathname: string) => {
+  return (
+    PROTECTED_PATHS.find((path) => pathname.includes(path)) ||
+    NOT_PROTECTED_PATHS.find((path) => pathname.includes(path)) ||
+    "home"
+  )
+}
+
+const getLocaleFromPathName = (pathname: string) => {
+  switch (true) {
+    case pathname.includes("/en"):
+      return "en"
+    case pathname.includes("/es"):
+      return "es"
+    case pathname.includes("/fr"):
+      return "fr"
+    case pathname.includes("/de"):
+      return "de"
+    case pathname.includes("/pt"):
+      return "pt"
+    default:
+      return undefined
+  }
 }
 
 export async function middleware(request: NextRequest) {
-  const userData = await fetchUserData()
+  // const userData = await fetchUserData()
   const { pathname } = request.nextUrl
-  if (isProtectedPath(pathname)) {
-    if (!userData) {
-      return NextResponse.redirect(request.nextUrl.origin)
-    }
-  } else {
-    if (userData) {
-      return NextResponse.redirect(request.nextUrl.pathname === "/" ?
-        `${request.nextUrl.origin}/path` :
-        `${request.nextUrl.origin}${request.nextUrl.pathname}/path`)
+  const routeName = getRouteName(pathname)
+  const routes = await getRoutes()
+  const locale = getLocaleFromPathName(pathname)
+  const searchParams = request.nextUrl.searchParams
+
+  switch (routeName) {
+    case "api":
+      return await updateSession(request)
+    case "home":
+      if (request.nextUrl.pathname === routes.home(locale)) {
+        return await updateSession(request)
+      }
+      request.nextUrl.pathname = routes.home(locale)
+      return NextResponse.redirect(request.nextUrl)
+    case "path":
+      if (request.nextUrl.pathname === routes.path(locale)) {
+        return await updateSession(request)
+      }
+      request.nextUrl.pathname = routes.path(locale)
+      return NextResponse.redirect(request.nextUrl)
+    case "get-started":
+      if (request.nextUrl.pathname === routes.getStarted(locale)) {
+        return await updateSession(request)
+      }
+      request.nextUrl.pathname = routes.getStarted(locale)
+      return NextResponse.redirect(request.nextUrl)
+    case "lessons":
+      const slug = pathname.split("/lessons/")[1]
+      if (request.nextUrl.pathname === routes.lessons(locale, slug)) {
+        return await updateSession(request)
+      }
+      request.nextUrl.pathname = routes.lessons(locale, slug)
+      return NextResponse.redirect(request.nextUrl)
+    case "review":
+      if (request.nextUrl.pathname === routes.review(locale, searchParams.toString())) {
+        return await updateSession(request)
+      }
+      request.nextUrl.pathname = routes.review(locale, searchParams.toString())
+      return NextResponse.redirect(request.nextUrl)
+    case "question-builder":
+      if (request.nextUrl.pathname === routes.questionBuilder(locale)) {
+        return await updateSession(request)
+      }
+      request.nextUrl.pathname = routes.questionBuilder(locale)
+      return NextResponse.redirect(request.nextUrl)
+    default:
+      return await updateSession(request)
+  }
+}
+
+const getRoutes = async () => {
+  const userData = await fetchUserData()
+
+  if (!userData) {
+    return {
+      home: (locale?: BeeLocale) => `/${locale || "en"}`,
+      path: (locale?: BeeLocale) => `/${locale || "en"}`,
+      profile: (locale?: BeeLocale) => `/${locale || "en"}`,
+      honeycomb: (locale?: BeeLocale) => `/${locale || "en"}`,
+      lessons: (locale?: BeeLocale) => `/${locale || "en"}`,
+      review: (locale?: BeeLocale) => `/${locale || "en"}`,
+      questionBuilder: (locale?: BeeLocale) => `/${locale || "en"}`,
+      getStarted: (locale?: BeeLocale) => `/${locale || "en"}/get-started`,
     }
   }
 
-  const pathnameHasLocale = LOCALES.some((locale) => pathname.includes(`/${locale}/`) || pathname === `/${locale}`)
-
-  if (pathnameHasLocale || pathname.includes("/api")) {
-    return await updateSession(request)
+  return {
+    home: (locale?: BeeLocale) => `/${locale || userData.currentLanguage}`,
+    path: (locale?: BeeLocale) => `/${locale || userData.currentLanguage}/${userData.currentCourse}/path`,
+    profile: (locale?: BeeLocale) => `/${locale || userData.currentLanguage}/profile`,
+    honeycomb: (locale?: BeeLocale) => `/${locale || userData.currentLanguage}/honeycomb`,
+    lessons: (locale?: BeeLocale, slug?: string) => `/${locale || userData.currentLanguage}/lessons/${slug}`,
+    getStarted: (locale?: BeeLocale) => `/${locale || userData.currentLanguage}/get-started`,
+    review: (locale?: BeeLocale, searchParams?: string) =>
+      `/${locale || userData.currentLanguage}/lessons/review${searchParams}`,
+    questionBuilder: (locale?: BeeLocale) => `/${locale || userData.currentLanguage}/question-builder`,
   }
-
-  request.nextUrl.pathname = `/${userData?.currentLanguage || "en"}/${pathname}`
-  return NextResponse.redirect(request.nextUrl)
 }
 
 export const config = {

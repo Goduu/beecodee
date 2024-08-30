@@ -2,6 +2,7 @@
 import { createClient } from "../supabase/server"
 import { redirect } from "next/navigation"
 import { FirsLoginData } from "@/components/LoginModal.store"
+import { routes } from "../routes"
 
 export async function signInWithGithub() {
   const supabase = createClient()
@@ -47,5 +48,5 @@ export async function signOut() {
   if (error) {
     console.error("Error logging out:", error)
   }
-  redirect("/en")
+  redirect(routes.home("en"))
 }

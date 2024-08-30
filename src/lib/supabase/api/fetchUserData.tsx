@@ -9,6 +9,11 @@ export const fetchUserData = async () => {
   const session = await supabase.auth.getUser()
   const metadata = session.data.user?.user_metadata
 
+  if (!metadata) {
+    console.error("Error fetching user data: No metadata")
+    return null
+  }
+
   const { data, error } = await supabase
     .from("user_current_data")
     .select("course, language, theme")
@@ -18,11 +23,6 @@ export const fetchUserData = async () => {
   if (error) {
     console.error("Error user data", error)
     return
-  }
-
-  if (!metadata) {
-    console.error("Error fetching user data: No metadata")
-    return null
   }
 
   if (!session.data.user?.id) return null

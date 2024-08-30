@@ -1,9 +1,7 @@
 import React, { FC } from "react"
 import { CounterUp } from "../CounterUp"
-import { Button } from "../Button"
 import { Pollen } from "../Svgs/Pollen"
 import { MdStar } from "../Svgs/Icons"
-import { redirect } from "next/navigation"
 import { BeeKnowledge } from "../Svgs/BeeKnowledge"
 
 type EndLessonXpPageProps = {

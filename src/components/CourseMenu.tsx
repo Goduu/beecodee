@@ -6,14 +6,17 @@ import { useDetectOuterClickAndEsc } from "./useDetectOuterClickAndEsc"
 import { SiHtml5, SiJavascript } from "./Svgs/Icons"
 import { allCourses } from "@contentlayer/generated"
 import { User } from "@/lib/auth/types"
+import { routes } from "@/lib/routes"
+import { useLocaleContext } from "./Localization/LocaleContext"
 
 export const CourseMenu = ({ userData }: { userData?: User | null }) => {
+  const { locale } = useLocaleContext()
+  const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
-  useDetectOuterClickAndEsc({ onOuterClick: () => setIsOpen(false), ref: menuRef })
-  const pathName = usePathname()
-  const router = useRouter()
   const course = userData?.currentCourse
+
+  useDetectOuterClickAndEsc({ onOuterClick: () => setIsOpen(false), ref: menuRef })
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen)
@@ -21,9 +24,8 @@ export const CourseMenu = ({ userData }: { userData?: User | null }) => {
 
   const handleClickLanguage = (newCourse: string) => {
     if (course && newCourse !== course) {
-      const newPathName = pathName.replace(course, newCourse)
       upsertUserCurrentData({ courseId: newCourse })
-      router.push(newPathName)
+      router.push(routes.path(locale, newCourse))
     }
     toggleDropdown()
   }
