@@ -1,0 +1,120 @@
+# Basic Syntax
+
+JavaScript is a programming language that is used to make web pages interactive.
+It is a high-level, interpreted language that conforms to the ECMAScript specification.
+JavaScript is a versatile language that can be used to enhance web pages in a variety of ways.
+
+## Variables
+
+Variables are used to store data values.
+We can declare a variable using the `var` keyword, but from ECMAScript6 (ES6 / JavaScript 2015) we are encouraged to use `let` and `const` instead.
+
+```js
+var x = 3
+let y = 5 // y can be reassigned
+const z = 7 // z cannot be reassigned
+```
+
+## Statements and declaration
+
+A statement is a command that performs an action.
+JavaScript statements are composed of keywords, expressions, operators, and comments.
+We can group the statements in categories.
+
+Some control flow statements:
+
+```text
+return
+if...else
+switch
+try...catch
+```
+
+Iterations statements:
+
+```text
+for
+while
+do...while
+```
+
+Jump statements:
+
+```text
+break
+continue
+```
+
+A declaration, like the names says, is a statement that declares a variable.
+
+Example of declaration statements:
+
+```text
+const
+let
+function
+async function
+import
+export
+class
+```
+
+## Comments
+
+Comments are used to explain code and make it more readable.
+JavaScript supports single-line '//' and multi-line comments '/\* \*/'.
+
+```js
+// This is a single-line comment
+
+/*
+This is a multi-line comment
+*/
+```
+
+## Naming conventions
+
+Following a standard naming convention is important to make the code more readable and maintainable.
+The most common naming conventions are camelCase and snake_case.
+JavaScript variables are case-sensitive.
+
+```js
+let myVariable = 5 // camelCase
+let my_variable = 5 // snake_case
+```
+
+You will most often find camelCase in a JavaScript code.
+
+Here are some must-follow rules when naming variables:
+
+- The first character must be a letter, an underscore (\_), or a dollar sign ($).
+- Subsequent characters can be letters, digits, underscores, or dollar signs.
+
+Some good practices to follow:
+
+- Use meaningful names.
+
+```js
+// bad
+let value = 25
+// good
+let age = 25
+```
+
+- Use camelCase for variable names.
+
+```js
+// bad
+let usertype = "admin"
+// bad
+let USERtype = "admin"
+// good
+let userType = "admin"
+```
+
+- Boolean values starting with 'is' or 'has' helps to distinguish from other values.
+
+```js
+let isUserLoggedIn = true
+let hasPermission = false
+```

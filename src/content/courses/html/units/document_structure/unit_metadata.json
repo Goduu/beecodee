@@ -1,0 +1,24 @@
+{
+  "id": 0,
+  "title": {
+    "en": "Document Structure",
+    "pt": "Estrutura do Documento",
+    "fr": "Structure du Document",
+    "de": "Dokumentenstruktur",
+    "es": "Estructura del Documento"
+  },
+  "description": {
+    "en": "",
+    "pt": "",
+    "fr": "",
+    "de": "",
+    "es": ""
+  },
+  "language": "html",
+  "lessonRefs": [
+    {
+      "id": 1,
+      "lesson": "variables1"
+    }
+  ]
+}

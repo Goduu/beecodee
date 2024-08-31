@@ -1,0 +1,81 @@
+{
+  "language": "html",
+  "tags": ["beginner", "div", "a", "p"],
+  "question": {
+    "type": "PairMatchingQuestion",
+    "description": {
+      "en": "Match the tags with its corresponding description:",
+      "pt": "Combine as tags com sua descrição correspondente:",
+      "fr": "Associez les tags à sa description correspondante:",
+      "de": "Ordnen Sie den Tags seiner entsprechenden Beschreibung zu:",
+      "es": "Combina las tags con su descripción correspondiente:"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "<div>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "<a>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "<p>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "type": "TextOption",
+          "content": {
+            "en": "Defines a paragraph",
+            "pt": "Define um parágrafo",
+            "fr": "Définit un paragraphe",
+            "de": "Definiert einen Absatz",
+            "es": "Define un párrafo"
+          }
+        }
+      },
+      {
+        "option": {
+          "id": "e",
+          "type": "TextOption",
+          "content": {
+            "en": "Defines a container for content",
+            "pt": "Define um recipiente para conteúdo",
+            "fr": "Définit un conteneur pour le contenu",
+            "de": "Definiert einen Container für Inhalte",
+            "es": "Define un contenedor para contenido"
+          }
+        }
+      },
+      {
+        "option": {
+          "id": "f",
+          "type": "TextOption",
+          "content": {
+            "en": "Creates a hyperlink",
+            "pt": "Cria um hiperlink",
+            "fr": "Crée un lien hypertexte",
+            "de": "Erstellt einen Hyperlink",
+            "es": "Crea un hyperlink"
+          }
+        }
+      }
+    ],
+    "correctAnswer": [
+      ["a", "f"],
+      ["b", "g"],
+      ["c", "e"]
+    ]
+  }
+}

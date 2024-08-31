@@ -1,0 +1,47 @@
+{
+  "title": {
+    "en": "JS Comments 1",
+    "pt": "Comentários JS 1",
+    "fr": "Commentaires JS 1",
+    "de": "JS Kommentare 1",
+    "es": "Comentarios JS 1"
+  },
+  "xp": 10,
+  "description": {
+    "en": "Learn about comments in JavaScript",
+    "pt": "Aprenda sobre comentários em JavaScript",
+    "fr": "Apprenez les commentaires en JavaScript",
+    "de": "Erfahren Sie mehr über Kommentare in JavaScript",
+    "es": "Aprende sobre comentarios en JavaScript"
+  },
+  "activityRefs": [
+    {
+      "id": 1,
+      "activity": "comments_single_line1"
+    },
+    {
+      "id": 2,
+      "activity": "comments_multi_line1"
+    },
+    {
+      "id": 3,
+      "activity": "comments_basic1"
+    },
+    {
+      "id": 4,
+      "activity": "comments_nested1"
+    },
+    {
+      "id": 5,
+      "activity": "comments_syntax1"
+    },
+    {
+      "id": 6,
+      "activity": "comments_usage1"
+    },
+    {
+      "id": 7,
+      "activity": "comments_practice1"
+    }
+  ]
+}

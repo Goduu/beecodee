@@ -1,0 +1,52 @@
+{
+  "language": "html",
+  "tags": ["beginner", "div", "a"],
+  "question": {
+    "type": "MultipleChoiceQuestion",
+    "description": {
+      "en": "Arrange the following parts to create a valid HTML snippet that displays a paragraph inside a div.",
+      "pt": "Organize as seguintes partes para criar um trecho HTML válido que exibe um parágrafo dentro de uma div.",
+      "fr": "Organisez les éléments suivants pour créer un extrait HTML valide qui affiche un paragraphe à l'intérieur d'une div.",
+      "de": "Ordnen Sie die folgenden Teile an, um einen gültigen HTML-Schnipsel zu erstellen, der einen Absatz in einem div anzeigt.",
+      "es": "Organiza las siguientes partes para crear un fragmento HTML válido que muestre un párrafo dentro de un div."
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "`Hello World!`",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "</p>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "<div>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "</div>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "e",
+          "content": "<p>",
+          "type": "CodeOption"
+        }
+      }
+    ],
+    "correctAnswer": ["c", "e", "a", "b", "d"]
+  }
+}

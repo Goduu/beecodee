@@ -1,0 +1,91 @@
+{
+  "language": "html",
+  "tags": ["beginner", "div"],
+  "question": {
+    "type": "FillInTheBlankQuestion",
+    "description": {
+      "en": "The attribute href is used to pass a url to a hyperlink.",
+      "pt": "A atributo href é usada para passar uma url para um hiperlink.",
+      "fr": "L'attribut href est utilisé pour passer une URL à un hyperlien.",
+      "de": "Das Attribut href wird verwendet, um eine URL an einen Hyperlink zu übergeben.",
+      "es": "El atributo href se utiliza para pasar una URL a un hipervínculo."
+    },
+    "segments": [
+      {
+        "segment": {
+          "id": "a",
+          "type": "CodeOption",
+          "content": "<div>\n"
+        }
+      },
+      {
+        "segment": {
+          "id": "b",
+          "type": "GapOption",
+          "content": "",
+          "size": 4
+        }
+      },
+      {
+        "segment": {
+          "id": "c",
+          "type": "CodeOption",
+          "content": "href=\"https://www.example.com\">Visit Example"
+        }
+      },
+      {
+        "segment": {
+          "id": "d",
+          "type": "GapOption",
+          "content": "",
+          "size": 5
+        }
+      },
+      {
+        "segment": {
+          "id": "e",
+          "type": "CodeOption",
+          "content": "\n<div>"
+        }
+      }
+    ],
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "<p",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "<a",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "<li",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "</a>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "e",
+          "content": "</li>",
+          "type": "CodeOption"
+        }
+      }
+    ],
+    "correctAnswer": ["b", "d"]
+  }
+}

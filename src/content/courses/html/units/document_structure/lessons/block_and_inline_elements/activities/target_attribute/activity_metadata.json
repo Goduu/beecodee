@@ -1,0 +1,62 @@
+{
+  "language": "html",
+  "tags": ["beginner", "a", "target"],
+  "question": {
+    "type": "FillInTheBlankQuestion",
+    "description": {
+      "en": "Complete the HTML code to open the link in a new tab.",
+      "pt": "Complete o código HTML para abrir o link em uma nova aba.",
+      "fr": "Complétez le code HTML pour ouvrir le lien dans un nouvel onglet.",
+      "de": "Vervollständigen Sie den HTML-Code, um den Link in einem neuen Tab zu öffnen.",
+      "es": "Completa el código HTML para abrir el enlace en una nueva pestaña."
+    },
+    "segments": [
+      {
+        "segment": {
+          "id": "a",
+          "type": "CodeOption",
+          "content": "<a href=\"https://www.example.com\""
+        }
+      },
+      {
+        "segment": {
+          "id": "b",
+          "type": "GapOption",
+          "content": "",
+          "size": 14
+        }
+      },
+      {
+        "segment": {
+          "id": "c",
+          "type": "CodeOption",
+          "content": ">Click Here</a>"
+        }
+      }
+    ],
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "target=\"_self\"",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "target=\"_new\"",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "target=\"_blank\"",
+          "type": "CodeOption"
+        }
+      }
+    ],
+    "correctAnswer": ["c"]
+  }
+}

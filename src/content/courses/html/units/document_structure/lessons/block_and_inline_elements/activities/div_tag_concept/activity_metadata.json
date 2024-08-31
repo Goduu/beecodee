@@ -1,0 +1,56 @@
+{
+  "language": "html",
+  "tags": ["beginner", "div"],
+  "question": {
+    "type": "SingleChoiceQuestion",
+    "description": {
+      "en": "What does the <div> tag represent in HTML?",
+      "pt": "O que o tag <div> representa em HTML?",
+      "fr": "Que représente la balise <div> en HTML?",
+      "de": "Was repräsentiert das <div>-Tag in HTML?",
+      "es": "¿Qué representa la etiqueta <div> en HTML?"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "type": "TextOption",
+          "content": {
+            "en": "It represents a hyperlink",
+            "pt": "Representa um hiperlink",
+            "fr": "Il représente un hyperlien",
+            "de": "Es repräsentiert einen Hyperlink",
+            "es": "Representa un hipervínculo"
+          }
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "type": "TextOption",
+          "content": {
+            "en": "It represents a block-level container for content.",
+            "pt": "Representa um recipiente de nível de bloco para conteúdo.",
+            "fr": "Il représente un conteneur de niveau bloc pour le contenu.",
+            "de": "Es repräsentiert einen Block-Level-Container für Inhalte.",
+            "es": "Representa un contenedor de nivel de bloque para contenido."
+          }
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "type": "TextOption",
+          "content": {
+            "en": "It represents a paragraph.",
+            "pt": "Representa um parágrafo.",
+            "fr": "Il représente un paragraphe.",
+            "de": "Es repräsentiert einen Absatz.",
+            "es": "Representa un párrafo."
+          }
+        }
+      }
+    ],
+    "correctAnswer": ["b"]
+  }
+}

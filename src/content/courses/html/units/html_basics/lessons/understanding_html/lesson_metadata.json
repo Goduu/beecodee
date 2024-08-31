@@ -1,0 +1,23 @@
+{
+  "title": {
+    "en": "Understanding HTML",
+    "pt": "Entendendo HTML",
+    "fr": "Comprendre le HTML",
+    "de": "HTML verstehen",
+    "es": "Comprendiendo HTML"
+  },
+  "xp": 10,
+  "description": {
+    "en": "",
+    "pt": "",
+    "fr": "",
+    "de": "",
+    "es": ""
+  },
+  "activityRefs": [
+    {
+      "id": 1,
+      "activity": "div_tag_concept"
+    }
+  ]
+}

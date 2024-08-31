@@ -1,0 +1,102 @@
+{
+  "language": "html",
+  "tags": ["beginner", "div"],
+  "question": {
+    "type": "FillInTheBlankQuestion",
+    "description": {
+      "en": "The first line of a HTML document, informs the browser what document type to expect",
+      "pt": "A primeira linha de um documento HTML, informa ao navegador qual tipo de documento esperar",
+      "fr": "La première ligne d'un document HTML informe le navigateur du type de document à attendre",
+      "de": "Die erste Zeile eines HTML-Dokuments informiert den Browser, welchen Dokumenttyp er erwarten soll",
+      "es": "La primera línea de un documento HTML informa al navegador qué tipo de documento esperar"
+    },
+    "segments": [
+      {
+        "segment": {
+          "id": "a",
+          "type": "TextOption",
+          "content": {
+            "en": "All HTML documents start with a ",
+            "pt": "Todos os documentos HTML começam com um ",
+            "fr": "Tous les documents HTML commencent par un ",
+            "de": "Alle HTML-Dokumente beginnen mit einem ",
+            "es": "Todos los documentos HTML comienzan con un "
+          }
+        }
+      },
+      {
+        "segment": {
+          "id": "b",
+          "type": "GapOption",
+          "content": "",
+          "size": 15
+        }
+      },
+      {
+        "segment": {
+          "id": "c",
+          "type": "TextOption",
+          "content": {
+            "en": "element and it must be the first line in your HTML document.",
+            "pt": "elemento e deve ser a primeira linha no seu documento HTML.",
+            "fr": "élément et il doit être la première ligne de votre document HTML.",
+            "de": "Element und es muss die erste Zeile in Ihrem HTML-Dokument sein.",
+            "es": "elemento y debe ser la primera línea en su documento HTML."
+          }
+        }
+      },
+      {
+        "segment": {
+          "id": "d",
+          "type": "GapOption",
+          "content": "",
+          "size": 6
+        }
+      },
+      {
+        "segment": {
+          "id": "e",
+          "type": "TextOption",
+          "content": {
+            "en": " element is used to contain the main content of the document.",
+            "pt": " elemento é usado para conter o conteúdo principal do documento.",
+            "fr": " élément est utilisé pour contenir le contenu principal du document.",
+            "de": " Element wird verwendet, um den Hauptinhalt des Dokuments zu enthalten.",
+            "es": " elemento se utiliza para contener el contenido principal del documento."
+          }
+        }
+      }
+    ],
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "<h1>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "<main>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "<footer>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "<head>",
+          "type": "CodeOption"
+        }
+      }
+    ],
+    "correctAnswer": ["d", "b"]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "title": {
+    "en": "Block and Inline elements",
+    "pt": "Elementos de Bloco e em Linha",
+    "fr": "Éléments de Bloc et en Ligne",
+    "de": "Block- und Inline-Elemente",
+    "es": "Elementos de Bloque e Inline"
+  },
+  "xp": 10,
+  "description": {
+    "en": "<div>, <a> and <p> tags",
+    "pt": "<div>, <a> e <p> tags",
+    "fr": "<div>, <a> et <p> tags",
+    "de": "<div>, <a> und <p> tags",
+    "es": "<div>, <a> y <p> tags"
+  },
+  "activityRefs": [
+    {
+      "id": 1,
+      "activity": "div_tag_concept"
+    },
+    {
+      "id": 2,
+      "activity": "a_tag1"
+    },
+    {
+      "id": 3,
+      "activity": "a_tag2"
+    },
+    {
+      "id": 4,
+      "activity": "div_a_p_definitions"
+    },
+    {
+      "id": 5,
+      "activity": "p_div_a_output"
+    },
+    {
+      "id": 6,
+      "activity": "div_a_p_usage"
+    },
+    {
+      "id": 7,
+      "activity": "p_div_create_code"
+    },
+    {
+      "id": 8,
+      "activity": "target_attribute"
+    }
+  ]
+}

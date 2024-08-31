@@ -1,0 +1,102 @@
+{
+  "language": "html",
+  "tags": ["beginner", "div"],
+  "question": {
+    "type": "FillInTheBlankQuestion",
+    "description": {
+      "en": "Texts generally have two main parts: the title and the body.",
+      "pt": "Os textos geralmente têm duas partes principais: o título e o corpo",
+      "fr": "Les textes ont généralement deux parties principales : le titre et le corps",
+      "de": "Texte haben im Allgemeinen zwei Hauptteile: den Titel und den Text",
+      "es": "Los textos generalmente tienen dos partes principales: el título y el cuerpo"
+    },
+    "segments": [
+      {
+        "segment": {
+          "id": "a",
+          "type": "TextOption",
+          "content": {
+            "en": "In HTML, the <title> element is placed inside the",
+            "pt": "Em HTML, o elemento <title> é colocado dentro do",
+            "fr": "En HTML, l'élément <title> est placé à l'intérieur du",
+            "de": "In HTML wird das <title>-Element innerhalb des",
+            "es": "En HTML, el elemento <title> se coloca dentro del"
+          }
+        }
+      },
+      {
+        "segment": {
+          "id": "b",
+          "type": "GapOption",
+          "content": "",
+          "size": 6
+        }
+      },
+      {
+        "segment": {
+          "id": "c",
+          "type": "TextOption",
+          "content": {
+            "en": "element, and the",
+            "pt": "elemento, e o",
+            "fr": "élément, et le",
+            "de": "Element, und das",
+            "es": "elemento, y el"
+          }
+        }
+      },
+      {
+        "segment": {
+          "id": "d",
+          "type": "GapOption",
+          "content": "",
+          "size": 6
+        }
+      },
+      {
+        "segment": {
+          "id": "e",
+          "type": "TextOption",
+          "content": {
+            "en": " element is used to contain the main content of the document.",
+            "pt": " elemento é usado para conter o conteúdo principal do documento.",
+            "fr": " élément est utilisé pour contenir le contenu principal du document.",
+            "de": " Element wird verwendet, um den Hauptinhalt des Dokuments zu enthalten.",
+            "es": " elemento se utiliza para contener el contenido principal del documento."
+          }
+        }
+      }
+    ],
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "<h1>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "<main>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "<footer>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "<head>",
+          "type": "CodeOption"
+        }
+      }
+    ],
+    "correctAnswer": ["d", "b"]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "language": "html",
+  "tags": ["beginner", "comments"],
+  "question": {
+    "type": "CodeOutputQuestion",
+    "description": {
+      "en": "How will be the output of the following code?",
+      "pt": "Qual será a saída do seguinte código?",
+      "fr": "Quel sera le résultat du code suivant?",
+      "de": "Wie wird die Ausgabe des folgenden Codes sein?",
+      "es": "¿Cuál será la salida del siguiente código?"
+    },
+    "codeSnippet": "<div>\n<p>This is a paragraph.</p>\n<a href=\"https://www.example.com\">Link</a>\n</div>",
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "type": "TextOption",
+          "content": {
+            "en": "A hyperlink labeled \"Link\" and a paragraph below it.",
+            "pt": "Um hiperlink rotulado \"Link\" e um parágrafo abaixo dele.",
+            "fr": "Un hyperlien étiqueté \"Lien\" et un paragraphe en dessous.",
+            "de": "Ein Hyperlink mit der Beschriftung \"Link\" und ein darunterliegender Absatz.",
+            "es": "Un hipervínculo etiquetado \"Enlace\" y un párrafo debajo de él."
+          }
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "type": "TextOption",
+          "content": {
+            "en": "A paragraph labeled \"Link\" and a hyperlink below it.",
+            "pt": "Um parágrafo rotulado \"Link\" e um hiperlink abaixo dele.",
+            "fr": "Un paragraphe étiqueté \"Lien\" et un hyperlien en dessous.",
+            "de": "Ein Absatz mit der Beschriftung \"Link\" und ein darunterliegender Hyperlink.",
+            "es": "Un párrafo etiquetado \"Enlace\" y un hipervínculo debajo de él."
+          }
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "type": "TextOption",
+          "content": {
+            "en": "A paragraph with the text \"This is a paragraph.\" and a hyperlink below it.",
+            "pt": "Um parágrafo com o texto \"This is a paragraph.\" e um hiperlink abaixo dele.",
+            "fr": "Un paragraphe avec le texte \"This is a paragraph.\" et un hyperlien en dessous.",
+            "de": "Ein Absatz mit dem Text \"This is a paragraph.\" und ein darunterliegender Hyperlink.",
+            "es": "Un párrafo con el texto \"This is a paragraph.\" y un hipervínculo debajo de él."
+          }
+        }
+      }
+    ],
+    "correctAnswer": ["c"]
+  }
+}

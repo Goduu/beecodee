@@ -1,0 +1,45 @@
+{
+  "language": "html",
+  "tags": ["beginner", "a"],
+  "question": {
+    "type": "SingleChoiceQuestion",
+    "description": {
+      "en": "Which of the following tags is primarily used for creating a hyperlink in HTML?",
+      "pt": "Qual das seguintes tags é principalmente usada para criar um hiperlink em HTML?",
+      "fr": "Laquelle des balises suivantes est principalement utilisée pour créer un lien hypertexte en HTML?",
+      "de": "Welches der folgenden Tags wird hauptsächlich zum Erstellen eines Hyperlinks in HTML verwendet?",
+      "es": "¿Cuál de las siguientes etiquetas se utiliza principalmente para crear un hipervínculo en HTML?"
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "<div>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "<a>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "<p>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "content": "<span>",
+          "type": "CodeOption"
+        }
+      }
+    ],
+    "correctAnswer": ["a"]
+  }
+}

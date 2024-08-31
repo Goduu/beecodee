@@ -1,0 +1,81 @@
+{
+  "language": "html",
+  "tags": ["beginner", "div", "a", "p"],
+  "question": {
+    "type": "PairMatchingQuestion",
+    "description": {
+      "en": "Match the tag with its typical usage.",
+      "pt": "Combine a tag com seu uso típico.",
+      "fr": "Associez la balise à son utilisation typique.",
+      "de": "Ordnen Sie das Tag seiner typischen Verwendung zu.",
+      "es": "Combina la etiqueta con su uso típico."
+    },
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "<div>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "<a>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "<p>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "d",
+          "type": "TextOption",
+          "content": {
+            "en": "Wrapping other tags for layout",
+            "pt": "Envolver outras tags para layout",
+            "fr": "Envelopper d'autres balises pour la mise en page",
+            "de": "Einwickeln anderer Tags für das Layout",
+            "es": "Envolver otras etiquetas para diseño"
+          }
+        }
+      },
+      {
+        "option": {
+          "id": "e",
+          "type": "TextOption",
+          "content": {
+            "en": "Creating links to other resources",
+            "pt": "Criar links para outros recursos",
+            "fr": "Créer des liens vers d'autres ressources",
+            "de": "Erstellen von Links zu anderen Ressourcen",
+            "es": "Crear enlaces a otros recursos"
+          }
+        }
+      },
+      {
+        "option": {
+          "id": "f",
+          "type": "TextOption",
+          "content": {
+            "en": "Displaying text content in paragraphs",
+            "pt": "Exibir conteúdo de texto em parágrafos",
+            "fr": "Afficher le contenu texte dans des paragraphes",
+            "de": "Anzeigen von Textinhalt in Absätzen",
+            "es": "Mostrar contenido de texto en párrafos"
+          }
+        }
+      }
+    ],
+    "correctAnswer": [
+      ["a", "d"],
+      ["b", "e"],
+      ["c", "f"]
+    ]
+  }
+}
