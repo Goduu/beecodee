@@ -1,3 +1,4 @@
+"use client"
 import React, { FC } from "react"
 import { CounterUp } from "../CounterUp"
 import { Pollen } from "../Svgs/Pollen"

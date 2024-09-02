@@ -45,7 +45,6 @@ const getLocaleFromPathName = (pathname: string, acceptLanguage: string | null) 
   }
 }
 
-
 const getCourseFromPathname = (pathname: string) => {
   switch (true) {
     case pathname.includes("/javascript"):
@@ -58,7 +57,6 @@ const getCourseFromPathname = (pathname: string) => {
 }
 
 export async function middleware(request: NextRequest) {
-  // const userData = await fetchUserData()
   const headersList = headers()
   const acceptLanguage = headersList.get("accept-language")
   const { pathname } = request.nextUrl
@@ -131,7 +129,8 @@ const getRoutes = async () => {
 
   return {
     home: (locale?: BeeLocale) => `/${locale || userData.currentLanguage}`,
-    path: (locale?: BeeLocale, course?: string) => `/${locale || userData.currentLanguage}/${course || userData.currentCourse}/path`,
+    path: (locale?: BeeLocale, course?: string) =>
+      `/${locale || userData.currentLanguage}/${course || userData.currentCourse}/path`,
     profile: (locale?: BeeLocale) => `/${locale || userData.currentLanguage}/profile`,
     honeycomb: (locale?: BeeLocale) => `/${locale || userData.currentLanguage}/honeycomb`,
     lessons: (locale?: BeeLocale, slug?: string) => `/${locale || userData.currentLanguage}/lessons/${slug}`,

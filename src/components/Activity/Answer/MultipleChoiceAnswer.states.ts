@@ -1,3 +1,4 @@
+"use client"
 import { useCallback, useEffect, useState } from "react"
 import { AnswerStatus } from "./types"
 import { useAudio } from "@/components/useAudio"

@@ -4,7 +4,7 @@ import { highlightAll } from "prismjs"
 import { FC, useEffect } from "react"
 import "prismjs/themes/prism-okaidia.css" // Import the default Prism theme
 import "prismjs/components/prism-jsx.min" // Import additional language support as needed
-import 'prismjs/components/prism-markup';
+import "prismjs/components/prism-markup"
 
 interface MdxProps {
   code: string

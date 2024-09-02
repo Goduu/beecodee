@@ -54,9 +54,8 @@ export function highlightCode(option: Option["option"], language: string, locale
       // the content can be a string or an array of strings | Tokens
       if (Array.isArray(token.content)) {
         tokens.push({
-          content: token.content instanceof Array
-            ? token.content.map(processContent).join("")
-            : processContent(token.content),
+          content:
+            token.content instanceof Array ? token.content.map(processContent).join("") : processContent(token.content),
           type: token.type,
         })
       } else {
@@ -77,15 +76,14 @@ export function highlightCode(option: Option["option"], language: string, locale
   }
 }
 
-
 function processContent(content: TokenStream): string {
   if (typeof content === "string") {
-    return content;
+    return content
   }
   if (Array.isArray(content)) {
-    return content.map(processContent).join("");
+    return content.map(processContent).join("")
   }
-  return processContent(content.content);
+  return processContent(content.content)
 }
 
 export function highlightArray(options: Option["option"][], language: string, locale: BeeLocale): OptionWithTokens[] {

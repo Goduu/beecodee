@@ -1,3 +1,4 @@
+"use client"
 import { useKey, useMedia } from "react-use"
 
 import { cn } from "@/lib/utils"

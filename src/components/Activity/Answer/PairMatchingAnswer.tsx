@@ -1,3 +1,4 @@
+"use client"
 import React, { FC, useEffect, useRef, useState } from "react"
 import { PairMatchingQuestion } from "@contentlayer/generated"
 import { TokenGroupChip } from "../TokenChip/TokenGroupChip"

@@ -1,5 +1,5 @@
 "use client"
-import React, { FC } from "react"
+import React, { FC, useTransition } from "react"
 import { Button } from "../Button"
 import { firstLogInWithGithub, signInWithGithub } from "@/lib/auth/auth"
 import { FaGithub, ImSpinner } from "../Svgs/Icons"
@@ -10,13 +10,23 @@ import { useStore } from "../useStore"
 export const GithubButton: FC = () => {
   const { locale } = useLocaleContext()
   const firstLoginData = useStore(loginModalStore, (state) => state.firstLoginData)
+  const [isPending, startTransition] = useTransition();
+
+  const handleSignIn = () => {
+    if (firstLoginData) {
+      startTransition(async () => firstLogInWithGithub(firstLoginData))
+    }
+    else {
+      startTransition(async () => signInWithGithub())
+    }
+  }
 
   return (
     <Button
-      onClick={() => (firstLoginData ? firstLogInWithGithub(firstLoginData) : signInWithGithub())}
+      onClick={handleSignIn}
       className="flex items-center gap-2"
-    >
-      <FaGithub className="w-5" />
+      disabled={isPending}
+    >{isPending ? <ImSpinner className="w-5 animate-spin" /> : <FaGithub className="w-5" />}
       {T[locale].continueWithGithub}
     </Button>
   )

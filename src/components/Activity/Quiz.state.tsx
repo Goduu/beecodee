@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from "react"
 import { useStore } from "../useStore"
 import { goToNextActivity, unitStore } from "../Unit/unitStore"

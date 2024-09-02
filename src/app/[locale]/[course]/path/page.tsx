@@ -1,5 +1,4 @@
 import { PathPage } from "@/components/Pages/PathPage"
-import { FC } from "react"
 
 type PageProps = {
   params: {
@@ -7,8 +6,6 @@ type PageProps = {
   }
 }
 
-export const Home: FC<PageProps> = async ({ params }) => {
+export default async function Path({ params }: PageProps) {
   return <PathPage course={params.course} />
 }
-
-export default Home
