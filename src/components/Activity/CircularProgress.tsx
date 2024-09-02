@@ -26,7 +26,7 @@ export const CircularProgress: FC<CircularProgressProps> = ({ percent = 50, size
           stroke="currentColor"
           strokeWidth={stroke}
           fill="transparent"
-          className="text-gray-700"
+          className="text-gray-200 dark:text-gray-700"
         />
         <circle
           cx={initialPosition}

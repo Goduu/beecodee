@@ -13,7 +13,7 @@ export const LoadingBee: FC<LoadingBeeProps> = ({ visible }) => {
   if (!visible) return null
 
   return (
-    <div className={`fixed left-0 top-0  z-50 h-screen w-screen items-center justify-center bg-slate-800 py-10 `}>
+    <div className={`fixed left-0 top-0  z-50 h-screen w-screen items-center justify-center bg-white dark:bg-slate-800 py-10 `}>
       <div className="flex h-full flex-col items-center justify-center gap-0">
         <CollectingBee className="h-96" />
         <TypingText

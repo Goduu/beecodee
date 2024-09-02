@@ -19,7 +19,7 @@ export const PathWayCompleteButton: FC<PathWayCompleteButtonProps> = ({ size = "
                 hover:border-b-2 ${dimensions}`}
       onClick={onClick}
     >
-      <IoMdFlower className={iconDimensions} />
+      <IoMdFlower className={`${iconDimensions} text-white`} />
     </div>
   )
 }

@@ -17,7 +17,7 @@ export const LoginModal = () => {
       <div className="flex min-h-screen flex-col justify-center py-6 sm:py-12">
         <div ref={modalRef} className={`relative py-3 ease-in-out sm:mx-auto sm:max-w-xl`}>
           <div className="absolute inset-0 skew-y-6 transform rounded-3xl bg-gradient-to-r from-amber-300 to-amber-600 shadow-lg sm:-rotate-6 sm:skew-y-0"></div>
-          <div className="relative bg-slate-300 px-4 py-10 shadow-lg sm:rounded-3xl sm:p-20 dark:bg-slate-800">
+          <div className="relative bg-slate-50 px-4 py-10 shadow-lg sm:rounded-3xl sm:p-20 dark:bg-slate-800">
             <div className="mx-auto max-w-md">
               <div>
                 <h1 className="text-2xl font-semibold">Sign in / Sign up</h1>

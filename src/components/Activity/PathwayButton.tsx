@@ -14,7 +14,7 @@ export const PathwayButton: FC<PathwayButtonProps> = ({ size = "medium", onClick
       className={`
                 flex cursor-pointer
                 items-center justify-center rounded-full border-b-8 
-                border-gray-900 bg-gray-200 duration-300 hover:scale-105
+                border-gray-400 dark:border-gray-900 bg-gray-200 duration-300 hover:scale-105
                 hover:border-b-2 dark:bg-gray-800 ${dimensions}`}
       onClick={onClick}
     >
