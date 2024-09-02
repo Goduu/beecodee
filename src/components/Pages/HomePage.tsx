@@ -7,10 +7,9 @@ import { GetStartedButton } from "../GetStarted/GetStartedButton"
 import { SiteNumbers } from "../Home/SiteNumbers"
 import { BeeLocale } from "../Localization/localization"
 import { FC } from "react"
-import { AnimatedCircle } from "./AnimatedCircle"
-import { IoMdFlower } from "../Svgs/Icons"
 import { FlyingBee } from "../Svgs/Animations/FlyingBee"
 import { TypingText } from "../Svgs/Animations/TypingText"
+import { AnimatedCircles } from "./AnimatedCircles"
 
 type HomePageProps = {
   locale: BeeLocale
@@ -19,49 +18,18 @@ type HomePageProps = {
 export const HomePage: FC<HomePageProps> = async ({ locale = "en" }) => {
   return (
     <>
-      <div className="gap-18 mt-20 flex flex-col items-center sm:gap-20">
+      <div className="mt-20 flex flex-col items-center gap-14 sm:gap-20">
         <FlyingBee className="w-72" />
         <div role="h1" className="flex max-w-96 text-center text-3xl font-extrabold leading-relaxed">
           <TypingText text={T[locale].title} />
         </div>
-
         <div className="flex flex-col items-center gap-4">
           <GetStartedButton />
           <LoginInButton />
         </div>
-        <div>
-          <div className="absolute -left-[2%] top-[13%] -z-10 sm:left-[10%]">
-            <AnimatedCircle className="origin-bottom-right" delay={0.8}>
-              <div className="size-20 -rotate-12 rounded-full bg-gradient-to-br from-primary-500/70  to-transparent p-2 text-white sm:size-24  lg:size-32 dark:text-slate-900">
-                <IoMdFlower className="w-32" />
-              </div>
-            </AnimatedCircle>
-          </div>
-          <div className="absolute right-[10%] top-[13%] -z-10 max-md:hidden">
-            <AnimatedCircle className="origin-bottom-left" move={60} delay={1}>
-              <div className="size-24 rotate-12 rounded-full bg-gradient-to-bl from-quaternary-500/70  to-transparent p-2 text-white lg:size-32  dark:text-slate-900">
-                <IoMdFlower className="w-32" />
-              </div>
-            </AnimatedCircle>
-          </div>
-          <div className="absolute bottom-[10%] left-[10%] -z-10 max-md:hidden">
-            <AnimatedCircle className="origin-top-right" move={60} delay={1.2}>
-              <div className="size-24 -rotate-6 rounded-full bg-gradient-to-r from-tertiary-500/30  to-transparent p-2 text-white lg:size-32 dark:text-slate-900">
-                <IoMdFlower className="w-32" />
-              </div>
-            </AnimatedCircle>
-          </div>
-          <div className="absolute -right-[2%] top-1/3 -z-10 sm:right-[10%] md:top-2/3">
-            <AnimatedCircle className="origin-top-left" delay={1.4}>
-              <div className="size-20 rotate-12 rounded-full bg-gradient-to-l from-secondary-500/30  to-transparent p-2 text-white sm:size-24  lg:size-32 dark:text-slate-900">
-                <IoMdFlower className="w-24 sm:w-32" />
-              </div>
-            </AnimatedCircle>
-          </div>
-        </div>
-
+        <AnimatedCircles />
         <Carousel />
-        <div className="flex flex-col gap-44 ">
+        <div className="flex flex-col gap-20 sm:gap-44">
           <FindYourPath locale={locale} />
           <BeeSlogan locale={locale} />
           <SiteNumbers locale={locale} />

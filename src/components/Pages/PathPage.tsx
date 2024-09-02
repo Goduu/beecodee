@@ -20,7 +20,7 @@ export const PathPage: FC<PageProps> = async ({ course }) => {
   )
 
   return (
-    <div className="flex w-screen flex-col items-center gap-2 py-4">
+    <div className="flex w-screen flex-col items-center gap-2">
       <FlyingBee className="w-44" />
       {sortedUnits.map((unit) => {
         return (

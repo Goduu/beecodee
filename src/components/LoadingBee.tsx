@@ -16,7 +16,11 @@ export const LoadingBee: FC<LoadingBeeProps> = ({ visible }) => {
     <div className={`fixed left-0 top-0  z-50 h-screen w-screen items-center justify-center bg-slate-800 py-10 `}>
       <div className="flex h-full flex-col items-center justify-center gap-0">
         <CollectingBee className="h-96" />
-        <TypingText text={`${T[locale].loading}...`} animationType="slow" className="text-8xl font-bold sm:text-4xl" />
+        <TypingText
+          text={`${T[locale].loading}...`}
+          animationType="slow"
+          className="text-4xl font-bold sm:text-5xl md:text-8xl"
+        />
       </div>
     </div>
   )

@@ -11,7 +11,7 @@ type FindYourPathProps = {
 export const FindYourPath: FC<FindYourPathProps> = ({ locale }) => {
   return (
     <div className="flex w-screen flex-col items-center justify-center gap-10 sm:flex-row sm:gap-4">
-      <div className="flex w-4/5 flex-col items-center justify-center sm:flex-row">
+      <div className="flex w-4/5 flex-col items-center justify-center gap-6 sm:flex-row sm:gap-1">
         <div className="flex w-full flex-col items-center sm:w-1/2">
           <div className="flex flex-col items-center gap-2">
             <div className="">

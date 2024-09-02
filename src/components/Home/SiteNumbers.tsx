@@ -24,7 +24,7 @@ export const SiteNumbers: FC<SiteNumbersProps> = ({ locale }) => {
   const opacity = useSpring(useTransform(scrollYProgress, [0.14, 0.525, 0.98, 1], [0, 0.5, 1, 1]))
 
   return (
-    <section className="max-w-screen-sm pb-8 pt-16 md:py-20">
+    <section className="max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl pb-8 pt-16 md:py-20">
       <h2 className="flex w-full flex-col items-center justify-center gap-4 text-6xl sm:flex-row">
         {T[locale].our}
         <span>
