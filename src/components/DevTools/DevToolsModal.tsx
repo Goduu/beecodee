@@ -42,7 +42,7 @@ export const DevToolsModal = () => {
                   <Button color="secondary" onClick={deleteUserProgress}>
                     Reset My Progress
                   </Button>
-                  {/* <Button
+                  <Button
                     color="secondary"
                     onClick={() => {
                       close()
@@ -51,7 +51,7 @@ export const DevToolsModal = () => {
                     className="flex gap-2"
                   >
                     GoTo QuestionBuilder <TbPencilQuestion className="w-6" />
-                  </Button> */}
+                  </Button>
                 </div>
               </div>
             </div>

@@ -1,4 +1,5 @@
-import { fetchUserData } from "@/lib/supabase/api/fetchUserData"
+import { isBeeLocale } from "@/components/Localization/localization"
+import { insertNewUserCurrentData } from "@/lib/supabase/api/insertNewUserCurrentData"
 import { redirect } from "next/navigation"
 import { NextResponse } from "next/server"
 import { createClient } from "src/lib/supabase/server"
@@ -15,10 +16,25 @@ export async function GET(request: Request) {
   if (code) {
     const supabase = createClient()
     const { data, error } = await supabase.auth.exchangeCodeForSession(code)
-    const userData = await fetchUserData()
-    const nextPath = `${next}${language || userData?.currentLanguage}/${course || userData?.currentCourse}/path`
+    const { data: userCurrentData, error: userCurrentError } = await supabase
+      .from("user_current_data")
+      .select("course, language, theme")
+      .eq("user_id", data.session?.user.id)
+      .single()
+
+    if (userCurrentError) console.error("Error user current data", userCurrentError)
+
+    if (!userCurrentData) {
+      if (course && isBeeLocale(language) && data.session?.user.id) {
+        await insertNewUserCurrentData({ userId: data.session?.user.id, courseId: course, language })
+      }
+
+      const nextPath = `${next}${language}/${course}/path`
+      redirect(nextPath)
+    }
 
     if (!error) {
+      const nextPath = `${next}${language || userCurrentData?.language}/${course || userCurrentData?.course}/path`
       const forwardedHost = request.headers.get("x-forwarded-host") // original origin before load balancer
       const isLocalEnv = process.env.NODE_ENV === "development"
       if (isLocalEnv) {
@@ -32,9 +48,15 @@ export async function GET(request: Request) {
         redirect(nextPath)
         // return NextResponse.redirect(`${origin}${next}`)
       }
+    } else {
+      console.error("Error Exchanging code with database", error)
+      // return the user to an error page with instructions
+      return NextResponse.redirect(`${origin}/auth/auth-code-error`)
     }
   }
 
+  // // return the user to an error page with instructions
+  // return NextResponse.redirect(`${origin}/auth/auth-code-error`)
   // return the user to an error page with instructions
-  return NextResponse.redirect(`${origin}/auth/auth-code-error`)
+  return NextResponse.redirect(`${next}${language}/${course}/path`)
 }

@@ -1,23 +1,28 @@
 "use client"
-import React from "react"
+import React, { useTransition } from "react"
 import { Button } from "../Button"
 import { useRouter } from "next/navigation"
 import { useLocaleContext } from "../Localization/LocaleContext"
 import { routes } from "@/lib/routes"
+import { LoadingBee } from "../LoadingBee"
 
 export const GetStartedButton = () => {
   const { locale } = useLocaleContext()
+  const [isPending, startTransition] = useTransition()
   const router = useRouter()
+  const handleClick = () => {
+    startTransition(() => {
+      router.push(routes.getStarted(locale))
+    })
+  }
 
   return (
-    <Button
-      color="primary"
-      className="w-64 uppercase"
-      size="large"
-      onClick={() => router.push(routes.getStarted(locale))}
-    >
-      {T[locale].getStarted}
-    </Button>
+    <>
+      <LoadingBee visible={isPending} />
+      <Button color="primary" className="w-64 uppercase" size="large" onClick={handleClick}>
+        {T[locale].getStarted}
+      </Button>
+    </>
   )
 }
 

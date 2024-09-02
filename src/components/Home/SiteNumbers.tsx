@@ -1,6 +1,6 @@
 "use client"
 import React, { FC, useRef } from "react"
-import { allActivities, allLessons, allUnits } from "@contentlayer/generated"
+import { allActivities, allCourses, allLessons, allUnits } from "@contentlayer/generated"
 import { BeeLocale } from "../Localization/localization"
 import { useScroll, motion, useSpring, useTransform } from "framer-motion"
 import { MetricsItem } from "./MetricsItem"
@@ -12,6 +12,7 @@ type SiteNumbersProps = {
 }
 
 export const SiteNumbers: FC<SiteNumbersProps> = ({ locale }) => {
+  const courseSize = allCourses.length
   const lessonSize = allLessons.length
   const activitySize = allActivities.length
   const unitSize = allUnits.length
@@ -23,7 +24,7 @@ export const SiteNumbers: FC<SiteNumbersProps> = ({ locale }) => {
   const opacity = useSpring(useTransform(scrollYProgress, [0.14, 0.525, 0.98, 1], [0, 0.5, 1, 1]))
 
   return (
-    <section className="pb-8 pt-16 md:py-20">
+    <section className="max-w-screen-sm pb-8 pt-16 md:py-20">
       <h2 className="flex w-full flex-col items-center justify-center gap-4 text-6xl sm:flex-row">
         {T[locale].our}
         <span>
@@ -35,7 +36,7 @@ export const SiteNumbers: FC<SiteNumbersProps> = ({ locale }) => {
         <li className="sticky top-[20%] col-start-2 col-end-12 pb-8 sm:col-start-3 sm:col-end-8 sm:pb-16 lg:top-[10%] lg:pb-40">
           <MetricsItem
             className="bg-red-500"
-            countTo={1}
+            countTo={courseSize}
             description={T[locale].course}
             offset={20}
             progress={scrollYProgress}

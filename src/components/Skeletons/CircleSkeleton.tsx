@@ -2,7 +2,7 @@ import React, { FC } from "react"
 
 type CircleSkeletonProps = {
   size?: "small" | "medium" | "large"
-  className: string
+  className?: string
 }
 
 export const CircleSkeleton: FC<CircleSkeletonProps> = ({ size = "medium", className }) => {

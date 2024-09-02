@@ -1,5 +1,5 @@
 "use client"
-import React, { ReactNode, useRef, useState } from "react"
+import React, { ReactNode, useRef, useState, useTransition } from "react"
 import { upsertUserCurrentData } from "@/lib/supabase/api/upsertUserCurrentData"
 import { useRouter, useParams } from "next/navigation"
 import { useDetectOuterClickAndEsc } from "./useDetectOuterClickAndEsc"
@@ -8,6 +8,7 @@ import { allCourses } from "@contentlayer/generated"
 import { User } from "@/lib/auth/types"
 import { routes } from "@/lib/routes"
 import { useLocaleContext } from "./Localization/LocaleContext"
+import { LoadingBee } from "./LoadingBee"
 
 export const CourseMenu = ({ userData }: { userData?: User | null }) => {
   const { locale } = useLocaleContext()
@@ -15,6 +16,7 @@ export const CourseMenu = ({ userData }: { userData?: User | null }) => {
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const { course } = useParams()
+  const [isPending, startTransition] = useTransition()
 
   useDetectOuterClickAndEsc({ onOuterClick: () => setIsOpen(false), ref: menuRef })
 
@@ -24,14 +26,17 @@ export const CourseMenu = ({ userData }: { userData?: User | null }) => {
 
   const handleClickLanguage = (newCourse: string) => {
     if (course && newCourse !== course) {
-      upsertUserCurrentData({ courseId: newCourse })
-      router.push(routes.path(locale, newCourse))
+      startTransition(async () => {
+        await upsertUserCurrentData({ courseId: newCourse })
+        router.push(routes.path(locale, newCourse))
+      })
     }
     toggleDropdown()
   }
 
   return (
     <div className="relative inline-block text-left" ref={menuRef}>
+      <LoadingBee visible={isPending} />
       <button
         id="dropdownTopButton"
         onClick={toggleDropdown}

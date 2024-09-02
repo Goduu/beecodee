@@ -1,5 +1,5 @@
 "use client"
-import { motion, useInView, useAnimation, Variant } from "framer-motion"
+import { motion, useInView, useAnimation, Variant, Variants } from "framer-motion"
 import { useEffect, useRef } from "react"
 
 type TypingTextProps = {
@@ -7,27 +7,43 @@ type TypingTextProps = {
   className?: string
   once?: boolean
   repeatDelay?: number
-  animation?: {
-    hidden: Variant
-    visible: Variant
-  }
+  animationType?: keyof typeof animationTypes
 }
 
-const defaultAnimations = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.1,
+const animationTypes = {
+  default: {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.1,
+      },
     },
   },
-}
+  slow: {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 4,
+        repeat: Infinity, // Loop the animation infinitely
+        repeatType: "loop", // Continue looping from the beginning
+      },
+    },
+  },
+} satisfies { [k: string]: Variants }
 
-export const TypingText = ({ text, className, once, repeatDelay, animation = defaultAnimations }: TypingTextProps) => {
+export const TypingText = ({ text, className, once, repeatDelay, animationType = "default" }: TypingTextProps) => {
+  const animation = animationTypes[animationType] || animationTypes.default
+
   const controls = useAnimation()
   const textArray = Array.isArray(text) ? text : [text]
   const ref = useRef(null!)

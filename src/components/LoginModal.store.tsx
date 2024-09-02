@@ -1,8 +1,9 @@
 import { create as createStore } from "zustand"
+import { BeeLocale } from "./Localization/localization"
 
 export type FirsLoginData = {
   course?: string
-  language: string
+  language: BeeLocale
 }
 
 type StoreState = {

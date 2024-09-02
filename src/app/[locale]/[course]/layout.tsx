@@ -3,6 +3,9 @@ import { BeeLocale } from "@/components/Localization/localization"
 import { upsertUserCurrentData } from "@/lib/supabase/api/upsertUserCurrentData"
 import { allCourses } from "@contentlayer/generated"
 import { fetchUserData } from "@/lib/supabase/api/fetchUserData"
+import { Header } from "@/components/Header"
+import { UnitHoneyCombModal } from "@/components/HoneyComb/UnitHoneyCombModal"
+import { MountChecker } from "@/lib/MountChecker"
 
 type RootLayoutProps = {
   children: ReactNode
@@ -27,5 +30,14 @@ export default async function Layout({ children, params }: RootLayoutProps) {
     }
   }
 
-  return children
+  return (
+    <>
+      <Header />
+      <UnitHoneyCombModal />
+      <div className="flex min-h-screen flex-col place-items-center px-4 py-2 pl-0 leading-relaxed md:ml-40">
+        {children}
+        <MountChecker />
+      </div>
+    </>
+  )
 }

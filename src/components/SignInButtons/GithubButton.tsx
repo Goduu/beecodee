@@ -6,29 +6,29 @@ import { FaGithub, ImSpinner } from "../Svgs/Icons"
 import { useLocaleContext } from "../Localization/LocaleContext"
 import { loginModalStore } from "../LoginModal.store"
 import { useStore } from "../useStore"
+import { LoadingBee } from "../LoadingBee"
 
 export const GithubButton: FC = () => {
   const { locale } = useLocaleContext()
   const firstLoginData = useStore(loginModalStore, (state) => state.firstLoginData)
-  const [isPending, startTransition] = useTransition();
+  const [isPending, startTransition] = useTransition()
 
   const handleSignIn = () => {
     if (firstLoginData) {
       startTransition(async () => firstLogInWithGithub(firstLoginData))
-    }
-    else {
+    } else {
       startTransition(async () => signInWithGithub())
     }
   }
 
   return (
-    <Button
-      onClick={handleSignIn}
-      className="flex items-center gap-2"
-      disabled={isPending}
-    >{isPending ? <ImSpinner className="w-5 animate-spin" /> : <FaGithub className="w-5" />}
-      {T[locale].continueWithGithub}
-    </Button>
+    <>
+      <LoadingBee visible={isPending} />
+      <Button onClick={handleSignIn} className="flex items-center gap-2" disabled={isPending}>
+        {isPending ? <ImSpinner className="w-5 animate-spin" /> : <FaGithub className="w-5" />}
+        {T[locale].continueWithGithub}
+      </Button>
+    </>
   )
 }
 

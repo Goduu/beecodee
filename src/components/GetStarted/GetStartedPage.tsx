@@ -20,6 +20,7 @@ import { LessonFooter } from "../Activity/Answer/LessonFooter"
 import { GetStartedAnswer } from "./types"
 import { useLocaleContext } from "../Localization/LocaleContext"
 import { routes } from "@/lib/routes"
+import { useAudio } from "../useAudio"
 
 export const GetStartedPage = () => {
   const [selected, setSelected] = useState<string | null>(null)
@@ -29,6 +30,7 @@ export const GetStartedPage = () => {
   const currentQuestion = questions[currentQuestionIndex]
   const { locale } = useLocaleContext()
   const router = useRouter()
+  const { correctAnswerSound, playSound } = useAudio()
 
   const handlesContinue = () => {
     if (currentQuestionIndex <= questions.length - 1) {
@@ -40,6 +42,7 @@ export const GetStartedPage = () => {
     setQuestionState("none")
   }
   const handleCheck = () => {
+    playSound(correctAnswerSound)
     setQuestionState("correct")
   }
 
@@ -152,18 +155,6 @@ const questions = [
         released: true,
       },
       {
-        id: "typescript",
-        label: {
-          en: "Typescript",
-          pt: "Typescript",
-          fr: "Typescript",
-          de: "Typescript",
-          es: "Typescript",
-        },
-        icon: <SiTypescript className="w-16" />,
-        released: false,
-      },
-      {
         id: "html5",
         label: {
           en: "HTML5",
@@ -173,6 +164,18 @@ const questions = [
           es: "HTML5",
         },
         icon: <SiHtml5 className="w-16" />,
+        released: true,
+      },
+      {
+        id: "typescript",
+        label: {
+          en: "Typescript",
+          pt: "Typescript",
+          fr: "Typescript",
+          de: "Typescript",
+          es: "Typescript",
+        },
+        icon: <SiTypescript className="w-16" />,
         released: false,
       },
       {

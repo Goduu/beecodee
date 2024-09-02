@@ -15,11 +15,11 @@ export const UnitHoneyCombModal = () => {
   const modalRef = useRef(null)
   useDetectOuterClickAndEsc({ ref: modalRef, onOuterClick: close })
 
-  if (!unitContent) return null
+  if (!unitContent || !isOpen) return null
 
   return (
     <div
-      className={`${isOpen ? "fixed" : "hidden"} left-0 top-0  z-50 h-screen w-screen items-center justify-center bg-slate-200 bg-opacity-10 py-10 backdrop-blur-md dark:bg-slate-500 dark:bg-opacity-10`}
+      className={`fixed left-0 top-0  z-50 h-screen w-screen items-center justify-center bg-slate-200 bg-opacity-10 py-10 backdrop-blur-md dark:bg-slate-500 dark:bg-opacity-10`}
     >
       <div className="flex min-h-screen flex-col justify-center py-6 sm:py-12">
         <div ref={modalRef} className={`relative py-3 ease-in-out sm:mx-auto sm:max-w-2xl`}>
