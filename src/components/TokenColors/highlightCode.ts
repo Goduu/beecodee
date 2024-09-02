@@ -1,5 +1,5 @@
 import { Option } from "@contentlayer/generated"
-import Prism from "prismjs"
+import Prism, { TokenStream } from "prismjs"
 import { BeeLocale } from "../Localization/localization"
 import { AnswerStatus } from "../Activity/Answer/types"
 
@@ -54,7 +54,9 @@ export function highlightCode(option: Option["option"], language: string, locale
       // the content can be a string or an array of strings | Tokens
       if (Array.isArray(token.content)) {
         tokens.push({
-          content: token.content.map((c) => (typeof c === "string" ? c : c.content)).join(""),
+          content: token.content instanceof Array
+            ? token.content.map(processContent).join("")
+            : processContent(token.content),
           type: token.type,
         })
       } else {
@@ -75,6 +77,17 @@ export function highlightCode(option: Option["option"], language: string, locale
   }
 }
 
+
+function processContent(content: TokenStream): string {
+  if (typeof content === "string") {
+    return content;
+  }
+  if (Array.isArray(content)) {
+    return content.map(processContent).join("");
+  }
+  return processContent(content.content);
+}
+
 export function highlightArray(options: Option["option"][], language: string, locale: BeeLocale): OptionWithTokens[] {
   const tokens: OptionWithTokens[] = []
 
@@ -82,7 +95,7 @@ export function highlightArray(options: Option["option"][], language: string, lo
 }
 
 export const tokenizeCode = (code: string, language: string) => {
-  const codeTokenized = Prism.highlight(code, Prism.languages[language] || Prism.languages.javascript, language)
+  const codeTokenized = Prism.highlight(code, Prism.languages[language] || Prism.languages.text, language)
 
   return codeTokenized
 }

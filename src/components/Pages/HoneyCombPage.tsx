@@ -22,7 +22,7 @@ export const HoneyCombPage = () => {
       <div className="flex gap-2">
         {allUnits.map((unit) => {
           const unitContent = unitContentByUnitId[unit.slugAsParams]
-          return <HoneyComb key={unit.id} unit={unit} unitContent={unitContent} />
+          return <HoneyComb key={`${unit.course}-${unit.id}`} unit={unit} unitContent={unitContent} />
         })}
       </div>
     </div>

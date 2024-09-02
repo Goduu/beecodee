@@ -1,5 +1,5 @@
 {
-  "id": 0,
+  "id": 1,
   "title": {
     "en": "Document Structure",
     "pt": "Estrutura do Documento",
@@ -18,7 +18,7 @@
   "lessonRefs": [
     {
       "id": 1,
-      "lesson": "variables1"
+      "lesson": "block_and_inline_elements"
     }
   ]
 }

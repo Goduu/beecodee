@@ -2,14 +2,21 @@ import { UnitPath } from "../Unit/UnitPath"
 import { allUnitContents, allUnits, Unit } from "@contentlayer/generated"
 import { fetchUserCompletedLessonByUnitId } from "@/lib/supabase/api/fetchUserFinishedLessons"
 import { FlyingBee } from "../Svgs/Animations/FlyingBee"
+import { FC } from "react"
 
 const getUnitContent = (unit: Unit) => {
   return allUnitContents.find((unitContent) => unitContent.unit === unit.slugAsParams)
 }
 
-export const PathPage = async () => {
+
+type PageProps = {
+  course: string
+}
+
+export const PathPage: FC<PageProps> = async ({ course }) => {
+
   const completedLessonByUnitId = await fetchUserCompletedLessonByUnitId()
-  const sortedUnits = allUnits.sort((a, b) => a.id - b.id)
+  const sortedUnits = allUnits.filter(unit => unit.language === course).sort((a, b) => a.id - b.id)
   const firstUncompletedUnit = sortedUnits.find(
     (unit) => (completedLessonByUnitId?.get(unit.slugAsParams)?.size || 0) < unit.lessonRefs.length,
   )

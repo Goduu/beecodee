@@ -20,15 +20,16 @@ type RootLayoutProps = {
   children: ReactNode
   params: {
     locale: BeeLocale
+    course: string
   }
 }
 
 export default async function RootLayout({ children, params }: RootLayoutProps) {
-  const { locale } = params
+  const { locale, course } = params
   const userData = await fetchUserData()
 
-  if (locale !== userData?.currentLanguage) {
-    await upsertUserCurrentData({ language: locale })
+  if (locale !== userData?.currentLanguage || course !== userData?.currentCourse) {
+    await upsertUserCurrentData({ language: locale, courseId: course })
   }
 
   return (

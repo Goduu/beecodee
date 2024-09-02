@@ -1,8 +1,14 @@
 import { PathPage } from "@/components/Pages/PathPage"
-import { fetchUserCompletedLessonByUnitId } from "@/lib/supabase/api/fetchUserFinishedLessons"
+import { FC } from "react"
 
-export default async function Home() {
-  const completedLessonByUnitId = await fetchUserCompletedLessonByUnitId()
-
-  return <PathPage />
+type PageProps = {
+  params: {
+    course: string
+  }
 }
+
+export const Home: FC<PageProps> = async ({ params }) => {
+  return <PathPage course={params.course} />
+}
+
+export default Home

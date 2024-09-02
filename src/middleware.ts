@@ -45,6 +45,18 @@ const getLocaleFromPathName = (pathname: string, acceptLanguage: string | null) 
   }
 }
 
+
+const getCourseFromPathname = (pathname: string) => {
+  switch (true) {
+    case pathname.includes("/javascript"):
+      return "javascript"
+    case pathname.includes("/html"):
+      return "html"
+    default:
+      return undefined
+  }
+}
+
 export async function middleware(request: NextRequest) {
   // const userData = await fetchUserData()
   const headersList = headers()
@@ -53,6 +65,7 @@ export async function middleware(request: NextRequest) {
   const routeName = getRouteName(pathname)
   const routes = await getRoutes()
   const locale = getLocaleFromPathName(pathname, acceptLanguage)
+  const course = getCourseFromPathname(pathname)
   const searchParams = request.nextUrl.searchParams
 
   switch (routeName) {
@@ -65,7 +78,7 @@ export async function middleware(request: NextRequest) {
       request.nextUrl.pathname = routes.home(locale)
       return NextResponse.redirect(request.nextUrl)
     case "path":
-      if (request.nextUrl.pathname === routes.path(locale)) {
+      if (request.nextUrl.pathname === routes.path(locale, course)) {
         return await updateSession(request)
       }
       request.nextUrl.pathname = routes.path(locale)
@@ -118,7 +131,7 @@ const getRoutes = async () => {
 
   return {
     home: (locale?: BeeLocale) => `/${locale || userData.currentLanguage}`,
-    path: (locale?: BeeLocale) => `/${locale || userData.currentLanguage}/${userData.currentCourse}/path`,
+    path: (locale?: BeeLocale, course?: string) => `/${locale || userData.currentLanguage}/${course || userData.currentCourse}/path`,
     profile: (locale?: BeeLocale) => `/${locale || userData.currentLanguage}/profile`,
     honeycomb: (locale?: BeeLocale) => `/${locale || userData.currentLanguage}/honeycomb`,
     lessons: (locale?: BeeLocale, slug?: string) => `/${locale || userData.currentLanguage}/lessons/${slug}`,

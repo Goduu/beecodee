@@ -1,7 +1,7 @@
 "use client"
 import React, { ReactNode, useRef, useState } from "react"
 import { upsertUserCurrentData } from "@/lib/supabase/api/upsertUserCurrentData"
-import { usePathname, useRouter } from "next/navigation"
+import { useRouter, useParams } from "next/navigation"
 import { useDetectOuterClickAndEsc } from "./useDetectOuterClickAndEsc"
 import { SiHtml5, SiJavascript } from "./Svgs/Icons"
 import { allCourses } from "@contentlayer/generated"
@@ -14,7 +14,7 @@ export const CourseMenu = ({ userData }: { userData?: User | null }) => {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
-  const course = userData?.currentCourse
+  const { course } = useParams()
 
   useDetectOuterClickAndEsc({ onOuterClick: () => setIsOpen(false), ref: menuRef })
 

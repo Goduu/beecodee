@@ -92,7 +92,7 @@
       {
         "option": {
           "id": "d",
-          "content": "<head>",
+          "content": "<!DOCTYPE html>",
           "type": "CodeOption"
         }
       }

@@ -14,19 +14,11 @@
     "de": "Variablen, Kommentare & Anweisungen",
     "es": "Variables, Comentarios y Declaraciones"
   },
-  "language": "javascript",
+  "language": "html",
   "lessonRefs": [
     {
       "id": 1,
-      "lesson": "variables1"
-    },
-    {
-      "id": 2,
-      "lesson": "comments1"
-    },
-    {
-      "id": 3,
-      "lesson": "statements1"
+      "lesson": "understanding_html"
     }
   ]
 }

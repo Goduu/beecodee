@@ -17,7 +17,11 @@
   "activityRefs": [
     {
       "id": 1,
-      "activity": "div_tag_concept"
+      "activity": "doctype_positioning"
+    },
+    {
+      "id": 2,
+      "activity": "title_head_body_tags"
     }
   ]
 }
