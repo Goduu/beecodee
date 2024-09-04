@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useState } from "react"
 import { AnswerStatus } from "./types"
 import { useAudio } from "@/components/useAudio"
-import { BugFightQuestion } from "@contentlayer/generated"
+import { MultipleChoiceQuestion } from "@contentlayer/generated"
 import { highlightArray, OptionWithTokens } from "@/components/TokenColors/highlightCode"
 import { useLocaleContext } from "@/components/Localization/LocaleContext"
 import { useQuizContext } from "../Quiz.context"
@@ -18,7 +18,7 @@ import {
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable"
 
 export const useMultipleChoiceAnswerStates = (
-  question: BugFightQuestion,
+  question: MultipleChoiceQuestion,
   language: string,
   isActionDisabled: boolean,
   setLessonState: (state: "none" | "correct" | "wrong" | "completed") => void,

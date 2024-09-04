@@ -99,7 +99,7 @@ export const languages = [
   },
   {
     title: "Github",
-    flag: <FaGithub className="w-6 text-slate-900 sm:w-10 dark:text-white" />,
+    flag: <FaGithub className="w-6 text-slate-900 dark:text-white sm:w-10" />,
     word: {
       en: "git start --now",
       pt: "git iniciar --agora",

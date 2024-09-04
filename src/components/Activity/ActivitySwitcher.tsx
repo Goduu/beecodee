@@ -52,11 +52,12 @@ export const ActivitySwitcher: FC<ActivitySwitcherProps> = ({ activity, isAction
       isActionDisabled={isActionDisabled}
       setLessonState={setLessonState}
     />
-  ) : (<PairMatchingAnswer
-    question={activity.question}
-    language={activity.language}
-    isActionDisabled={isActionDisabled}
-    setLessonState={setLessonState}
-  />
+  ) : (
+    <PairMatchingAnswer
+      question={activity.question}
+      language={activity.language}
+      isActionDisabled={isActionDisabled}
+      setLessonState={setLessonState}
+    />
   )
 }

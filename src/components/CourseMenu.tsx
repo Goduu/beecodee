@@ -7,8 +7,8 @@ import { SiHtml5, SiJavascript } from "./Svgs/Icons"
 import { allCourses } from "@contentlayer/generated"
 import { routes } from "@/lib/routes"
 import { useLocaleContext } from "./Localization/LocaleContext"
-import { LoadingBee } from "./LoadingBee"
 import { IconButton } from "./IconButton"
+import { useTransitionContext } from "./Loading.store"
 
 export const CourseMenu = () => {
   const { locale } = useLocaleContext()
@@ -16,7 +16,7 @@ export const CourseMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const { course } = useParams()
-  const [isPending, startTransition] = useTransition()
+  const { startTransition } = useTransitionContext()
 
   useDetectOuterClickAndEsc({ onOuterClick: () => setIsOpen(false), ref: menuRef })
 
@@ -36,20 +36,18 @@ export const CourseMenu = () => {
 
   return (
     <div className="relative inline-block text-left" ref={menuRef}>
-      <LoadingBee visible={isPending} />
       <IconButton
         id="dropdownTopButton"
         onClick={toggleDropdown}
-        className="mb-3 inline-flex items-center rounded-lg px-5 py-2.5 text-center text-sm font-medium focus:outline-none focus:ring-4 focus:ring-blue-300 md:mb-0 dark:focus:ring-indigo-800"
+        className="mb-3 inline-flex items-center rounded-lg px-5 py-2.5 text-center text-sm font-medium focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-indigo-800 md:mb-0"
       >
-
         {courseOptions.find((option) => option.course === course)?.icon}
       </IconButton>
 
       {isOpen && (
         <div
           id="dropdownTop"
-          className="absolute z-10 sm:mt-1 w-44 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700"
+          className="absolute z-10 w-44 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700 sm:mt-1"
         >
           <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownTopButton">
             {courseOptions.map((option, index) => (

@@ -1,12 +1,12 @@
 "use server"
-import { fetchUserData } from "@/lib/supabase/api/fetchUserData"
+import { fetchCachedUserData } from "@/lib/supabase/api/fetchUserData"
 import { revalidateTag } from "next/cache"
 import { createClient } from "src/lib/supabase/server"
 
 export type CompletedLessonIdsByUnitId = Map<string, Set<string>>
 
 export const fetchUserCompletedLessonByUnitId = async () => {
-  const userData = await fetchUserData()
+  const userData = await fetchCachedUserData()
   if (!userData) return
 
   const supabase = createClient()

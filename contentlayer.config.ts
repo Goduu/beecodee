@@ -378,7 +378,7 @@ const Activity = defineDocumentType(() => ({
         FillInTheBlankQuestion,
         PairMatchingQuestion,
         CodeOutputQuestion,
-        BugFightQuestion
+        BugFightQuestion,
       ],
       required: true,
     },

@@ -1,8 +1,9 @@
 "use server"
 import { cache } from "react"
 import { createClient } from "../server"
-import { fetchUserData } from "@/lib/supabase/api/fetchUserData"
+import { fetchCachedUserData } from "@/lib/supabase/api/fetchUserData"
 import { revalidateUserXpollen } from "./fetchUserXpollen"
+import { revalidateTag } from "next/cache"
 
 type upsertActivityParams = {
   courseId: string
@@ -12,7 +13,7 @@ type upsertActivityParams = {
 }
 
 export const insertXpollen = cache(async ({ courseId, unitId, lessonId, xpollen }: upsertActivityParams) => {
-  const userData = await fetchUserData()
+  const userData = await fetchCachedUserData()
   const supabase = createClient()
 
   if (!userData) return false
@@ -33,6 +34,7 @@ export const insertXpollen = cache(async ({ courseId, unitId, lessonId, xpollen 
   }
 
   revalidateUserXpollen()
+  revalidateTag("user-data")
 
   return true
 })

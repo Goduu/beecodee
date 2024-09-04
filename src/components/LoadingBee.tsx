@@ -3,17 +3,17 @@ import React, { FC } from "react"
 import { CollectingBee } from "./Svgs/Animations/CollectingBee"
 import { TypingText } from "./Svgs/Animations/TypingText"
 import { useLocaleContext } from "./Localization/LocaleContext"
+import { useTransitionContext } from "./Loading.store"
 
-type LoadingBeeProps = {
-  visible: boolean
-}
-
-export const LoadingBee: FC<LoadingBeeProps> = ({ visible }) => {
+export const LoadingBee: FC = () => {
   const { locale } = useLocaleContext()
-  if (!visible) return null
+  const { isPending } = useTransitionContext()
+  if (!isPending) return null
 
   return (
-    <div className={`fixed left-0 top-0  z-50 h-screen w-screen items-center justify-center bg-white dark:bg-slate-800 py-10 `}>
+    <div
+      className={`fixed left-0 top-0 z-50 h-screen w-screen items-center justify-center bg-white py-10 dark:bg-slate-800 `}
+    >
       <div className="flex h-full flex-col items-center justify-center gap-0">
         <CollectingBee className="h-96" />
         <TypingText

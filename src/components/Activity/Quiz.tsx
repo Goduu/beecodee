@@ -36,7 +36,7 @@ export const Quiz: FC<ActivityProps> = ({ lessonXp, activityMap }) => {
       <div className="flex-1">
         <div className="flex h-full items-center justify-center">
           <div className="flex w-full flex-col gap-y-12 px-6 lg:min-h-[350px] lg:w-[600px] lg:px-0">
-            <h1 className="text-center text-lg font-bold text-neutral-700 lg:text-start lg:text-3xl dark:text-neutral-200">
+            <h1 className="text-center text-lg font-bold text-neutral-700 dark:text-neutral-200 lg:text-start lg:text-3xl">
               {!(lessonState === "completed") && onGoingActivityData?.question.description[locale]}
             </h1>
             <div>

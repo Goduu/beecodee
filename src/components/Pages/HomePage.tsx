@@ -10,14 +10,14 @@ import { FC } from "react"
 import { FlyingBee } from "../Svgs/Animations/FlyingBee"
 import { TypingText } from "../Svgs/Animations/TypingText"
 import { AnimatedCircles } from "./AnimatedCircles"
-import { fetchUserData } from "@/lib/supabase/api/fetchUserData"
+import { fetchCachedUserData } from "@/lib/supabase/api/fetchUserData"
 
 type HomePageProps = {
   locale: BeeLocale
 }
 
 export const HomePage: FC<HomePageProps> = async ({ locale = "en" }) => {
-  const userData = await fetchUserData()
+  const userData = await fetchCachedUserData()
 
   return (
     <>

@@ -36,11 +36,10 @@ export const HomeHeader = () => {
         }
         transition={{ duration: 0.2 }}
       >
-
-        <div className="flex w-screen items-center mx-4  gap-1 backdrop-blur-md">
+        <div className="mx-4 flex w-screen items-center  gap-1 backdrop-blur-md">
           <LanguageButton />
-          <ModeToggle className="z-20"/>
-          <div className="flex w-screen items-center -ml-10 sm:-ml-28 justify-center">
+          <ModeToggle className="z-20" />
+          <div className="-ml-10 flex w-screen items-center justify-center sm:-ml-28">
             <Beecodee className="w-64 sm:w-72" />
           </div>
         </div>

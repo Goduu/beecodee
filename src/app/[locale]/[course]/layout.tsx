@@ -2,7 +2,7 @@ import { ReactNode } from "react"
 import { BeeLocale } from "@/components/Localization/localization"
 import { upsertUserCurrentData } from "@/lib/supabase/api/upsertUserCurrentData"
 import { allCourses } from "@contentlayer/generated"
-import { fetchUserData } from "@/lib/supabase/api/fetchUserData"
+import { fetchCachedUserData } from "@/lib/supabase/api/fetchUserData"
 import { Header } from "@/components/Header"
 import { UnitHoneyCombModal } from "@/components/HoneyComb/UnitHoneyCombModal"
 import { MountChecker } from "@/lib/MountChecker"
@@ -17,7 +17,7 @@ type RootLayoutProps = {
 
 export default async function Layout({ children, params }: RootLayoutProps) {
   const { locale, course } = params
-  const userData = await fetchUserData()
+  const userData = await fetchCachedUserData()
   const courses = allCourses.map((course) => course.slugAsParams)
 
   if (courses.includes(params.course)) {

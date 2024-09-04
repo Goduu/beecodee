@@ -1,11 +1,11 @@
 "use client"
-import React, { FC, useTransition } from "react"
+import React, { FC } from "react"
 import { Button } from "../Button"
 import { useRouter } from "next/navigation"
 import { useLocaleContext } from "../Localization/LocaleContext"
 import { routes } from "@/lib/routes"
-import { LoadingBee } from "../LoadingBee"
 import { User } from "@/lib/auth/types"
+import { useTransitionContext } from "../Loading.store"
 
 type GetStartedButtonProps = {
   userData: User | null | undefined
@@ -13,7 +13,7 @@ type GetStartedButtonProps = {
 
 export const GetStartedButton: FC<GetStartedButtonProps> = ({ userData }) => {
   const { locale } = useLocaleContext()
-  const [isPending, startTransition] = useTransition()
+  const { startTransition } = useTransitionContext()
   const router = useRouter()
   const handleClick = () => {
     const nextRoute = userData ? routes.path(locale) : routes.getStarted(locale)
@@ -23,12 +23,9 @@ export const GetStartedButton: FC<GetStartedButtonProps> = ({ userData }) => {
   }
 
   return (
-    <>
-      <LoadingBee visible={isPending} />
-      <Button color="primary" className="w-64 uppercase" size="large" onClick={handleClick}>
-        {userData ? T[locale].continueLearning : T[locale].getStarted}
-      </Button>
-    </>
+    <Button color="primary" className="w-64 uppercase" size="large" onClick={handleClick}>
+      {userData ? T[locale].continueLearning : T[locale].getStarted}
+    </Button>
   )
 }
 

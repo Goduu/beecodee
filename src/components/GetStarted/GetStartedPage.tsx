@@ -21,6 +21,7 @@ import { GetStartedAnswer } from "./types"
 import { useLocaleContext } from "../Localization/LocaleContext"
 import { routes } from "@/lib/routes"
 import { useAudio } from "../useAudio"
+import { useTransitionContext } from "../Loading.store"
 
 export const GetStartedPage = () => {
   const [selected, setSelected] = useState<string | null>(null)
@@ -30,6 +31,7 @@ export const GetStartedPage = () => {
   const currentQuestion = questions[currentQuestionIndex]
   const { locale } = useLocaleContext()
   const router = useRouter()
+  const { startTransition } = useTransitionContext()
   const { correctAnswerSound, playSound } = useAudio()
 
   const handlesContinue = () => {
@@ -60,7 +62,9 @@ export const GetStartedPage = () => {
   if (!currentQuestion) return null
 
   const handleClose = () => {
-    router.push(routes.home(locale))
+    startTransition(async () => {
+      await router.push(routes.home(locale))
+    })
   }
 
   return (
@@ -69,7 +73,7 @@ export const GetStartedPage = () => {
       <div className="flex-1">
         <div className="flex h-full items-center justify-center">
           <div className="flex w-full flex-col gap-y-12 px-6 lg:min-h-[350px] lg:w-[600px] lg:px-0">
-            <h1 className="text-center text-lg font-bold text-neutral-700 lg:text-start lg:text-3xl dark:text-neutral-200">
+            <h1 className="text-center text-lg font-bold text-neutral-700 dark:text-neutral-200 lg:text-start lg:text-3xl">
               {currentQuestion.description[locale]}
             </h1>
             <div>

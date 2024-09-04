@@ -14,12 +14,7 @@ type BugFightAnswersProps = {
   setLessonState: (state: "none" | "correct" | "wrong" | "completed") => void
 }
 
-export const BugFightAnswers: FC<BugFightAnswersProps> = ({
-  question,
-  language,
-  isActionDisabled,
-  setLessonState,
-}) => {
+export const BugFightAnswers: FC<BugFightAnswersProps> = ({ question, language, isActionDisabled, setLessonState }) => {
   const {
     status,
     options,
@@ -45,16 +40,18 @@ export const BugFightAnswers: FC<BugFightAnswersProps> = ({
 
   return (
     <>
-      {opening &&
-        <div className={`fixed left-0 top-0  z-50 h-screen w-screen items-center justify-center bg-white dark:bg-slate-800 py-10 `}>
+      {opening && (
+        <div
+          className={`fixed left-0 top-0  z-50 h-screen w-screen items-center justify-center bg-white py-10 dark:bg-slate-800 `}
+        >
           <div className="flex h-full flex-col items-center justify-center gap-0">
             <BeeVsBug className="h-96" />
           </div>
         </div>
-      }
+      )}
       <div className={`flex touch-none select-none flex-col items-center gap-10 sm:gap-16`}>
-        <div className="flex flex-col sm:flex-row  w-full gap-2 ">
-          <div className={`flex w-full flex-col min-h-96 justify-start p-2 rounded-xl border-2 ${statusClass}`}>
+        <div className="flex w-full flex-col  gap-2 sm:flex-row ">
+          <div className={`flex min-h-96 w-full flex-col justify-start rounded-xl border-2 p-2 ${statusClass}`}>
             <div className="inline-block px-1 text-start">
               <DndContext
                 sensors={sensors}
@@ -76,7 +73,7 @@ export const BugFightAnswers: FC<BugFightAnswersProps> = ({
                     </SortableContext>
                     <DragOverlay>
                       {activeId ? (
-                        <TokenGroupChip onClick={() => { }} optionWithToken={answer.find((a) => a.id === activeId)!} />
+                        <TokenGroupChip onClick={() => {}} optionWithToken={answer.find((a) => a.id === activeId)!} />
                       ) : null}
                     </DragOverlay>
                   </>
@@ -84,21 +81,21 @@ export const BugFightAnswers: FC<BugFightAnswersProps> = ({
               </DndContext>
             </div>
           </div>
-          <div className="flex flex-row sm:flex-col text-xs sm:text-sm w-1/6 gap-1">
+          <div className="flex w-1/6 flex-row gap-1 text-xs sm:flex-col sm:text-sm">
             <span
-              className={`items-center p-1 rounded-3xl border text-center ${isActionDisabled ? "cursor-default" : "cursor-pointer"}`}
+              className={`items-center rounded-3xl border p-1 text-center ${isActionDisabled ? "cursor-default" : "cursor-pointer"}`}
               onClick={() => addTokenToAnswer(createFormattingToken("\t"))}
             >
               Tab
             </span>
             <span
-              className={`items-center p-1 rounded-3xl border text-center ${isActionDisabled ? "cursor-default" : "cursor-pointer"}`}
+              className={`items-center rounded-3xl border p-1 text-center ${isActionDisabled ? "cursor-default" : "cursor-pointer"}`}
               onClick={() => addTokenToAnswer(createFormattingToken("\n"))}
             >
               Enter
             </span>
             <span
-              className={`items-center p-1 rounded-3xl border text-center ${isActionDisabled ? "cursor-default" : "cursor-pointer"}`}
+              className={`items-center rounded-3xl border p-1 text-center ${isActionDisabled ? "cursor-default" : "cursor-pointer"}`}
               onClick={() => addTokenToAnswer(createFormattingToken(" "))}
             >
               Space

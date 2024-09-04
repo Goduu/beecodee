@@ -1,10 +1,10 @@
 import { ProfilePage } from "@/components/Pages/ProfilePage"
-import { fetchUserData } from "@/lib/supabase/api/fetchUserData"
+import { fetchCachedUserData } from "@/lib/supabase/api/fetchUserData"
 import { fetchUserCompletedLessonByUnitId } from "@/lib/supabase/api/fetchUserFinishedLessons"
 import { fetchUserXpollen } from "@/lib/supabase/api/fetchUserXpollen"
 
-export default async function Home() {
-  const userData = await fetchUserData()
+export default async function Profile() {
+  const userData = await fetchCachedUserData()
   const userXpollen = await fetchUserXpollen()
   const userFinishLessons = await fetchUserCompletedLessonByUnitId()
 

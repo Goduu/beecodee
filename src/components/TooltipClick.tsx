@@ -24,9 +24,7 @@ export const TooltipClick: FC<TooltipClickProps> = ({
                 ${position === "top" ? "bottom-full mb-1 sm:mb-2" : "top-full mt-1 sm:mt-2"}
                 `}
       >
-        <div className="text-s rounded-lg bg-gray-50 p-10 font-bold dark:bg-gray-800">
-          {!disabled && content}
-        </div>
+        <div className="text-s rounded-lg bg-gray-50 p-10 font-bold dark:bg-gray-800">{!disabled && content}</div>
       </div>
     </div>
   )

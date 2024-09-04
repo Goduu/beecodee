@@ -32,8 +32,8 @@ export const IconButton: FC<IconButtonProps> = ({
         type="submit"
         className={`
                     relative h-fit
-                    rounded-md hover:bg-slate-100 hover:dark:bg-slate-700
-                    p-1 font-bold duration-150 hover:shadow-sm
+                    rounded-md p-1 font-bold
+                    duration-150 hover:bg-slate-100 hover:shadow-sm hover:dark:bg-slate-700
                     ${size === "small" && "p-[3px] text-xs"}
                     ${color === "primary" && "text-amber-500 drop-shadow-xl"}
                     ${color === "secondary" && "text-gray-50  "}

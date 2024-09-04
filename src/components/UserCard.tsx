@@ -1,11 +1,11 @@
-import { fetchUserData } from "@/lib/supabase/api/fetchUserData"
+import { fetchCachedUserData } from "@/lib/supabase/api/fetchUserData"
 import { fetchUserXpollen } from "@/lib/supabase/api/fetchUserXpollen"
 import React from "react"
 import { FaGithub, SiJavascript } from "./Svgs/Icons"
 import { Pollen } from "./Svgs/Pollen"
 
 export const UserCard = async () => {
-  const userData = await fetchUserData()
+  const userData = await fetchCachedUserData()
   const userXpollen = await fetchUserXpollen()
 
   return (

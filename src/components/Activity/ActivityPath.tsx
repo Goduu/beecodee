@@ -11,6 +11,7 @@ import { Pollen } from "../Svgs/Pollen"
 import { HoneyComb } from "../HoneyComb/HoneyComb"
 import { useLocaleContext } from "../Localization/LocaleContext"
 import { routes } from "@/lib/routes"
+import { useTransitionContext } from "../Loading.store"
 
 type ActivityLinkProps = {
   lesson: Lesson
@@ -40,9 +41,13 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit, unitContent 
 const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit, unitContent }) => {
   const { locale } = useLocaleContext()
   const router = useRouter()
+  const { startTransition } = useTransitionContext()
+
   const handleStartLesson = () => {
-    startLesson(unit)
-    router.push(routes.lessons(lesson.slugAsParams))
+    startTransition(async () => {
+      startLesson(unit)
+      await router.push(routes.lessons(lesson.slugAsParams))
+    })
   }
 
   return (

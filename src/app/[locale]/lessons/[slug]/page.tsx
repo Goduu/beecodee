@@ -7,12 +7,12 @@ import { QuizContextWrapper } from "@/components/Activity/Quiz.context"
 
 interface ActivityProps {
   params: {
-    slug: string[]
+    slug: string
   }
 }
 
 async function getLessonFromParams(params: ActivityProps["params"]) {
-  const slug = params?.slug?.join("/")
+  const slug = params?.slug
 
   const lesson = allLessons.find((lesson) => lesson.slugAsParams === slug)
 
@@ -33,12 +33,6 @@ export async function generateMetadata({ params }: ActivityProps): Promise<Metad
   return {
     title: `Beecodee: ${lesson.description}`,
   }
-}
-
-export async function generateStaticParams(): Promise<ActivityProps["params"][]> {
-  return allLessons.map((lesson) => ({
-    slug: lesson.slugAsParams.split("/"),
-  }))
 }
 
 export default async function Page({ params }: ActivityProps) {

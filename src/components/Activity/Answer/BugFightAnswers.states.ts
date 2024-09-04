@@ -44,7 +44,6 @@ export const useBugFightAnswersStates = (
     setOptions(optionTokens)
     const questionSegments = question.segments.map((s) => s.option)
     const segmentTokens = highlightArray(questionSegments, language || "text", locale)
-    console.log("segmentTokens", segmentTokens)
     setAnswer(segmentTokens)
   }, [question, language])
 
@@ -94,12 +93,12 @@ export const useBugFightAnswersStates = (
   }
 
   const handleCheckStatus = useCallback(() => {
-    const regex = /^f/;
+    const regex = /^f/
 
     const correctAnswers = question.correctAnswers as string[][]
     if (
-      correctAnswers.find((correctAnswer) => (
-        answer.every((token, index) => token.id.split("-")[0] === correctAnswer[index]))
+      correctAnswers.find((correctAnswer) =>
+        answer.every((token, index) => token.id.split("-")[0] === correctAnswer[index]),
       )
     ) {
       playSound(correctAnswerSound)

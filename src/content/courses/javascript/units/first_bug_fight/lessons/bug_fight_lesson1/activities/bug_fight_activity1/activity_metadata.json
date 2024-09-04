@@ -1,10 +1,6 @@
 {
   "language": "javascript",
-  "tags": [
-    "beginner",
-    "bugfight",
-    "concepts"
-  ],
+  "tags": ["beginner", "bugfight", "concepts"],
   "question": {
     "type": "BugFightQuestion",
     "description": {
@@ -238,25 +234,7 @@
         "sw",
         "sx"
       ],
-      [
-        "sa",
-        "sb",
-        "sc",
-        "sd",
-        "se",
-        "sg",
-        "sh",
-        "si",
-        "sj",
-        "sk",
-        "sm",
-        "sn",
-        "so",
-        "su",
-        "sv",
-        "sw",
-        "sx"
-      ]
+      ["sa", "sb", "sc", "sd", "se", "sg", "sh", "si", "sj", "sk", "sm", "sn", "so", "su", "sv", "sw", "sx"]
     ]
   }
 }

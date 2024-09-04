@@ -1,9 +1,6 @@
 {
   "language": "html",
-  "tags": [
-    "beginner",
-    "main"
-  ],
+  "tags": ["beginner", "main"],
   "question": {
     "type": "FillInTheBlankQuestion",
     "description": {
@@ -72,8 +69,6 @@
         }
       }
     ],
-    "correctAnswer": [
-      "b"
-    ]
+    "correctAnswer": ["b"]
   }
 }

@@ -3,6 +3,11 @@
 import { revalidateTag } from "next/cache"
 import { createClient } from "../server"
 import { User } from "../../auth/types"
+import { cache } from "react"
+
+export const fetchCachedUserData = cache(async () => {
+  return await fetchUserData()
+})
 
 export const fetchUserData = async () => {
   const supabase = createClient()
