@@ -31,7 +31,7 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit, unitContent 
         content={<ActivityTooltipContent lesson={lesson} unit={unit} unitContent={unitContent} />}
         visible={tooltipVisible}
       >
-        <PathwayButton size="large" onClick={() => setTooltipVisible(!tooltipVisible)} />
+        <PathwayButton size="large" type={unit.unitType} onClick={() => setTooltipVisible(!tooltipVisible)} />
       </TooltipClick>
     </div>
   )

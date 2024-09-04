@@ -9,8 +9,8 @@ type TextOptionContentProps = {
 
 export const TextOptionContent: FC<TextOptionContentProps> = ({ token, onClick, className }) => {
   return (
-    <div onClick={onClick} className={className + " inline-flex "}>
+    <span onClick={onClick} className={className}>
       {token.content.toString()}
-    </div>
+    </span>
   )
 }

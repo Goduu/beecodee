@@ -6,6 +6,7 @@ import { SingleChoiceAnswer } from "./Answer/SingleChoiceAnswer"
 import { CodeOutputAnswer } from "./Answer/CodeOutputAnswer"
 import { PairMatchingAnswer } from "./Answer/PairMatchingAnswer"
 import { LessonState } from "./types"
+import { BugFightAnswers } from "./Answer/BugFightAnswers"
 
 type ActivitySwitcherProps = {
   activity: Activity | null
@@ -44,12 +45,18 @@ export const ActivitySwitcher: FC<ActivitySwitcherProps> = ({ activity, isAction
       isActionDisabled={isActionDisabled}
       setLessonState={setLessonState}
     />
-  ) : (
-    <PairMatchingAnswer
+  ) : activity.question.type === "BugFightQuestion" ? (
+    <BugFightAnswers
       question={activity.question}
       language={activity.language}
       isActionDisabled={isActionDisabled}
       setLessonState={setLessonState}
     />
+  ) : (<PairMatchingAnswer
+    question={activity.question}
+    language={activity.language}
+    isActionDisabled={isActionDisabled}
+    setLessonState={setLessonState}
+  />
   )
 }

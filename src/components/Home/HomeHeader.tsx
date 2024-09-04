@@ -38,8 +38,8 @@ export const HomeHeader = () => {
       >
 
         <div className="flex w-screen items-center mx-4  gap-1 backdrop-blur-md">
-          <ModeToggle className="z-20"/>
           <LanguageButton />
+          <ModeToggle className="z-20"/>
           <div className="flex w-screen items-center -ml-10 sm:-ml-28 justify-center">
             <Beecodee className="w-64 sm:w-72" />
           </div>

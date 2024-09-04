@@ -29,14 +29,7 @@ export const useFillInTheBlankAnswerStates = (
   const initializeOptionsAndSegments = useCallback(() => {
     const optionTokens: OptionWithTokens[] = []
     question.options?.forEach((item) => {
-      if (item.option.type === "CodeOption") {
-        optionTokens.push(highlightCode(item.option, language || "text", locale))
-      } else {
-        optionTokens.push({
-          ...item.option,
-          tokens: [{ content: item.option.content[locale], type: "text" }],
-        })
-      }
+      optionTokens.push(highlightCode(item.option, language || "text", locale))
     })
     setOptions(optionTokens)
     const segmentTokens: OptionWithTokens[] = []
@@ -117,15 +110,15 @@ export const useFillInTheBlankAnswerStates = (
       return prevSegments.map((segment, index) =>
         index === segmentIndex
           ? ({
-              ...segment,
-              status: "filled",
-              type: "GapOption",
-              content: option.id,
-              tokens: option.tokens.map((t) => ({
-                ...t,
-                size: segment.tokens[0]?.size || 0,
-              })),
-            } satisfies OptionWithTokens)
+            ...segment,
+            status: "filled",
+            type: "GapOption",
+            content: option.id,
+            tokens: option.tokens.map((t) => ({
+              ...t,
+              size: segment.tokens[0]?.size || 0,
+            })),
+          } satisfies OptionWithTokens)
           : segment,
       )
     })
@@ -134,9 +127,9 @@ export const useFillInTheBlankAnswerStates = (
       prevOptions.map((prevOption) =>
         prevOption.id === option.id
           ? {
-              ...prevOption,
-              status: "used",
-            }
+            ...prevOption,
+            status: "used",
+          }
           : prevOption,
       ),
     )

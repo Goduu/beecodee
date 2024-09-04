@@ -35,8 +35,7 @@ const TextOption = defineNestedType(() => ({
   name: "TextOption",
   fields: {
     id: {
-      type: "enum",
-      options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "ft", "fn", "fs"],
+      type: "string",
       required: true,
     },
     content: { type: "nested", of: TranslatedText, required: true },
@@ -47,8 +46,7 @@ const CodeOption = defineNestedType(() => ({
   name: "CodeOption",
   fields: {
     id: {
-      type: "enum",
-      options: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "ft", "fn", "fs"],
+      type: "string",
       required: true,
     },
     content: {
@@ -102,6 +100,27 @@ export const MultipleChoiceQuestion = defineNestedType(() => ({
     correctAnswer: {
       type: "list",
       of: { type: "string" },
+      required: true,
+    },
+  },
+}))
+
+export const BugFightQuestion = defineNestedType(() => ({
+  name: "BugFightQuestion",
+  fields: {
+    description: { type: "nested", of: TranslatedText, required: true },
+    segments: {
+      type: "list",
+      of: Option,
+      required: true,
+    },
+    options: {
+      type: "list",
+      of: Option,
+      required: true,
+    },
+    correctAnswers: {
+      type: "json",
       required: true,
     },
   },
@@ -271,6 +290,7 @@ const Unit = defineDocumentType(() => ({
     title: { type: "nested", of: TranslatedText, required: true },
     description: { type: "nested", of: TranslatedText, required: true },
     language: { type: "string", required: true },
+    unitType: { type: "enum", options: ["theory", "bugFight"], required: true, default: "theory" },
     lessonRefs: {
       type: "list",
       of: LessonReference,
@@ -358,6 +378,7 @@ const Activity = defineDocumentType(() => ({
         FillInTheBlankQuestion,
         PairMatchingQuestion,
         CodeOutputQuestion,
+        BugFightQuestion
       ],
       required: true,
     },

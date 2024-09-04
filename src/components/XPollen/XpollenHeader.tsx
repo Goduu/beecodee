@@ -7,7 +7,7 @@ export const XpollenHeader: FC = async () => {
   const userXpollen = await fetchUserXpollen()
 
   return (
-    <IconButton className="flex items-center gap-1">
+    <IconButton className="flex items-center gap-1 px-5 py-2 ">
       <Pollen className="w-10" />
       <div className="text-xl text-amber-500">{userXpollen || 0}</div>
     </IconButton>

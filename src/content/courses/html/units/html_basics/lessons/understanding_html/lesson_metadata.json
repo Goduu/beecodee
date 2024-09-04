@@ -22,6 +22,10 @@
     {
       "id": 2,
       "activity": "title_head_body_tags"
+    },
+    {
+      "id": 3,
+      "activity": "main_content"
     }
   ]
 }

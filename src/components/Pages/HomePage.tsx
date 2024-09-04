@@ -10,12 +10,15 @@ import { FC } from "react"
 import { FlyingBee } from "../Svgs/Animations/FlyingBee"
 import { TypingText } from "../Svgs/Animations/TypingText"
 import { AnimatedCircles } from "./AnimatedCircles"
+import { fetchUserData } from "@/lib/supabase/api/fetchUserData"
 
 type HomePageProps = {
   locale: BeeLocale
 }
 
 export const HomePage: FC<HomePageProps> = async ({ locale = "en" }) => {
+  const userData = await fetchUserData()
+
   return (
     <>
       <div className="mt-20 flex flex-col items-center gap-14 sm:gap-20">
@@ -24,7 +27,7 @@ export const HomePage: FC<HomePageProps> = async ({ locale = "en" }) => {
           <TypingText text={T[locale].title} />
         </div>
         <div className="flex flex-col items-center gap-4">
-          <GetStartedButton />
+          <GetStartedButton userData={userData} />
           <LoginInButton />
         </div>
         <AnimatedCircles />
@@ -36,7 +39,7 @@ export const HomePage: FC<HomePageProps> = async ({ locale = "en" }) => {
         </div>
       </div>
       <div className="z-50 flex animate-bounce flex-col items-center ">
-        <GetStartedButton />
+        <GetStartedButton userData={userData} />
       </div>
       <HomeFooter />
     </>

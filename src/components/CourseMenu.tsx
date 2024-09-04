@@ -40,7 +40,7 @@ export const CourseMenu = () => {
       <IconButton
         id="dropdownTopButton"
         onClick={toggleDropdown}
-        className="mb-3 inline-flex items-center rounded-lg  px-5 py-2.5 text-center text-sm font-medium hover:bg-slate-100 hover:dark:bg-slate-500 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mb-0 dark:focus:ring-indigo-800"
+        className="mb-3 inline-flex items-center rounded-lg px-5 py-2.5 text-center text-sm font-medium focus:outline-none focus:ring-4 focus:ring-blue-300 md:mb-0 dark:focus:ring-indigo-800"
       >
 
         {courseOptions.find((option) => option.course === course)?.icon}

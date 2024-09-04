@@ -17,7 +17,7 @@ import {
 } from "@dnd-kit/core"
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable"
 
-export const useMultipleChoiceAnswerStates = (
+export const useBugFightAnswersStates = (
   question: BugFightQuestion,
   language: string,
   isActionDisabled: boolean,
@@ -41,11 +41,14 @@ export const useMultipleChoiceAnswerStates = (
     if (!("options" in question)) return
     const questionOptions = question.options.map((o) => o.option)
     const optionTokens = highlightArray(questionOptions, language || "text", locale)
-    setOptions(optionTokens.map((o) => ({ ...o })))
+    setOptions(optionTokens)
+    const questionSegments = question.segments.map((s) => s.option)
+    const segmentTokens = highlightArray(questionSegments, language || "text", locale)
+    console.log("segmentTokens", segmentTokens)
+    setAnswer(segmentTokens)
   }, [question, language])
 
   const resetStates = () => {
-    setAnswer([])
     setStatus("neutral")
   }
 
@@ -91,10 +94,13 @@ export const useMultipleChoiceAnswerStates = (
   }
 
   const handleCheckStatus = useCallback(() => {
-    const correctAnswer = question.correctAnswer
+    const regex = /^f/;
+
+    const correctAnswers = question.correctAnswers as string[][]
     if (
-      answer.length === correctAnswer.length &&
-      answer.every((token, index) => token.id.split("-")[0] === correctAnswer[index])
+      correctAnswers.find((correctAnswer) => (
+        answer.every((token, index) => token.id.split("-")[0] === correctAnswer[index]))
+      )
     ) {
       playSound(correctAnswerSound)
       setStatus("correct")

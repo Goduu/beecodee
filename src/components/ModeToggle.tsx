@@ -23,7 +23,7 @@ export function ModeToggle({ className }: ModeToggleProps) {
   return (
     <button
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      className={`border rounded-md w-7 h-7 flex items-center justify-center ${className}`}>
+      className="mb-3 z-20 inline-flex items-center rounded-lg  px-5 h-8 text-center text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-500 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mb-0 dark:focus:ring-blue-800" >
       <span className="sr-only">Toggle mode</span>
       {theme !== "dark" ? (
         <FiSun className="w-5 h-5" />

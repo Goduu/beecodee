@@ -1,0 +1,25 @@
+{
+  "id": 2,
+  "title": {
+    "en": "Bug Fight 1",
+    "pt": "Luta de Bugs 1",
+    "fr": "Combat de Bugs 1",
+    "de": "Bugskampf 1",
+    "es": "Lucha de Bugs 1"
+  },
+  "description": {
+    "en": "Whitespace, line breaks, indentation, reserved words, strict mode, and Unicode in JavaScript",
+    "pt": "Espaço em branco, quebras de linha, indentação, palavras reservadas, modo estrito e Unicode em JavaScript",
+    "fr": "Espace blanc, sauts de ligne, indentation, mots réservés, mode strict et Unicode en JavaScript",
+    "de": "Leerzeichen, Zeilenumbrüche, Einrückung, reservierte Wörter, Strikter Modus und Unicode in JavaScript",
+    "es": "Espacio en blanco, saltos de línea, sangría, palabras reservadas, modo estricto y Unicode en JavaScript"
+  },
+  "unitType": "bugFight",
+  "language": "javascript",
+  "lessonRefs": [
+    {
+      "id": 1,
+      "lesson": "bug_fight_lesson1"
+    }
+  ]
+}

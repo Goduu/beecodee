@@ -1,0 +1,79 @@
+{
+  "language": "html",
+  "tags": [
+    "beginner",
+    "main"
+  ],
+  "question": {
+    "type": "FillInTheBlankQuestion",
+    "description": {
+      "en": "The main content of a HTML page should be unique to the document.",
+      "pt": "O conteúdo principal de uma página HTML deve ser único para o documento.",
+      "fr": "Le contenu principal d'une page HTML doit être unique au document.",
+      "de": "Der Hauptinhalt einer HTML-Seite sollte eindeutig für das Dokument sein.",
+      "es": "El contenido principal de una página HTML debe ser único para el documento."
+    },
+    "segments": [
+      {
+        "segment": {
+          "id": "a",
+          "type": "TextOption",
+          "content": {
+            "en": "The ",
+            "pt": "O ",
+            "fr": "Le ",
+            "de": "Das ",
+            "es": "El "
+          }
+        }
+      },
+      {
+        "segment": {
+          "id": "b",
+          "type": "GapOption",
+          "content": "",
+          "size": 6
+        }
+      },
+      {
+        "segment": {
+          "id": "c",
+          "type": "TextOption",
+          "content": {
+            "en": " element is used to contain the main content of the document.",
+            "pt": " elemento é usado para conter o conteúdo principal do documento.",
+            "fr": " élément est utilisé pour contenir le contenu principal du document.",
+            "de": " Element wird verwendet, um den Hauptinhalt des Dokuments zu enthalten.",
+            "es": " elemento se utiliza para contener el contenido principal del documento."
+          }
+        }
+      }
+    ],
+    "options": [
+      {
+        "option": {
+          "id": "a",
+          "content": "<h1>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "b",
+          "content": "<main>",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
+          "content": "<footer>",
+          "type": "CodeOption"
+        }
+      }
+    ],
+    "correctAnswer": [
+      "b"
+    ]
+  }
+}

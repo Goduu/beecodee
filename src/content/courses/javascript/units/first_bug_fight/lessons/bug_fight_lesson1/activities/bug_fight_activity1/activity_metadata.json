@@ -1,0 +1,262 @@
+{
+  "language": "javascript",
+  "tags": [
+    "beginner",
+    "bugfight",
+    "concepts"
+  ],
+  "question": {
+    "type": "BugFightQuestion",
+    "description": {
+      "en": "Let's solve our first bug",
+      "pt": "Vamos resolver nosso primeiro bug",
+      "fr": "Résolvons notre premier bug",
+      "de": "Lösen wir unseren ersten Fehler",
+      "es": "Resolvamos nuestro primer error"
+    },
+    "segments": [
+      {
+        "option": {
+          "id": "sa",
+          "content": "let",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "sb",
+          "content": "length",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "sc",
+          "content": "=",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "sd",
+          "content": "5",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "se",
+          "content": ";",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "ff",
+          "content": "\n",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "sg",
+          "content": "let",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "sh",
+          "content": "width",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "si",
+          "content": "=",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "sj",
+          "content": "10",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "sk",
+          "content": ";",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "fl",
+          "content": "\n",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "sm",
+          "content": "const",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "sn",
+          "content": "area",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "so",
+          "content": "=",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "sp",
+          "content": "0",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "sq",
+          "content": ";",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "fr",
+          "content": "\n",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "ss",
+          "content": "area",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "st",
+          "content": "=",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "su",
+          "content": "lenght",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "sv",
+          "content": "*",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "sw",
+          "content": "width",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "sx",
+          "content": ";",
+          "type": "CodeOption"
+        }
+      }
+    ],
+    "options": [
+      {
+        "option": {
+          "id": "oa",
+          "content": "==",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "ob",
+          "content": "const",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "oc",
+          "content": "length",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "od",
+          "content": "let",
+          "type": "CodeOption"
+        }
+      }
+    ],
+    "correctAnswers": [
+      [
+        "sa",
+        "sb",
+        "sc",
+        "sd",
+        "se",
+        "sg",
+        "sh",
+        "si",
+        "sj",
+        "sk",
+        "od",
+        "sn",
+        "so",
+        "sp",
+        "sq",
+        "ss",
+        "st",
+        "oc",
+        "sv",
+        "sw",
+        "sx"
+      ],
+      [
+        "sa",
+        "sb",
+        "sc",
+        "sd",
+        "se",
+        "sg",
+        "sh",
+        "si",
+        "sj",
+        "sk",
+        "sm",
+        "sn",
+        "so",
+        "su",
+        "sv",
+        "sw",
+        "sx"
+      ]
+    ]
+  }
+}

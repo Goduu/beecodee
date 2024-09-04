@@ -44,27 +44,6 @@
             "es": "elemento y debe ser la primera línea en su documento HTML."
           }
         }
-      },
-      {
-        "segment": {
-          "id": "d",
-          "type": "GapOption",
-          "content": "",
-          "size": 6
-        }
-      },
-      {
-        "segment": {
-          "id": "e",
-          "type": "TextOption",
-          "content": {
-            "en": " element is used to contain the main content of the document.",
-            "pt": " elemento é usado para conter o conteúdo principal do documento.",
-            "fr": " élément est utilisé pour contenir le contenu principal du document.",
-            "de": " Element wird verwendet, um den Hauptinhalt des Dokuments zu enthalten.",
-            "es": " elemento se utiliza para contener el contenido principal del documento."
-          }
-        }
       }
     ],
     "options": [
@@ -85,18 +64,11 @@
       {
         "option": {
           "id": "c",
-          "content": "<footer>",
-          "type": "CodeOption"
-        }
-      },
-      {
-        "option": {
-          "id": "d",
           "content": "<!DOCTYPE html>",
           "type": "CodeOption"
         }
       }
     ],
-    "correctAnswer": ["d", "b"]
+    "correctAnswer": ["c"]
   }
 }

@@ -24,15 +24,15 @@ export const SiteNumbers: FC<SiteNumbersProps> = ({ locale }) => {
   const opacity = useSpring(useTransform(scrollYProgress, [0.14, 0.525, 0.98, 1], [0, 0.5, 1, 1]))
 
   return (
-    <section className="max-w-screen-sm md:max-w-screen-md text-white lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl pb-8 pt-16 md:py-20">
+    <section className="max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl pb-8 pt-16 md:py-20">
       <h2 className="flex w-full flex-col items-center justify-center gap-4 text-6xl sm:flex-row">
         {T[locale].our}
         <span>
           <span className="text-amber-500">bee</span>
-          <span className=" decoration-wavy">{T[locale].content}</span>
+          <span className="decoration-wavy">{T[locale].content}</span>
         </span>
       </h2>
-      <ul ref={ref} className="relative mt-24 grid grid-cols-12 pb-40 sm:grid-cols-9 lg:px-[15%]">
+      <ul ref={ref} className="relative mt-24 grid grid-cols-12 pb-40 sm:grid-cols-9 lg:px-[15%] text-white ">
         <li className="sticky top-[20%] col-start-2 col-end-12 pb-8 sm:col-start-3 sm:col-end-8 sm:pb-16 lg:top-[10%] lg:pb-40">
           <MetricsItem
             className="bg-red-500"

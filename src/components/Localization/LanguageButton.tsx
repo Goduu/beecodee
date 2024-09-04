@@ -33,7 +33,7 @@ export const LanguageButton = () => {
       <button
         id="dropdownTopButton"
         onClick={toggleDropdown}
-        className="mb-3 inline-flex items-center rounded-lg  px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-slate-100 dark:hover:bg-slate-500 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mb-0 dark:focus:ring-blue-800"
+        className="mb-3 inline-flex items-center rounded-lg  px-5 h-8 text-center text-sm font-medium text-white hover:bg-slate-100 dark:hover:bg-slate-500 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mb-0 dark:focus:ring-blue-800"
         type="button"
       >
         {languagesOptions.find((option) => option.locale === locale)?.icon}

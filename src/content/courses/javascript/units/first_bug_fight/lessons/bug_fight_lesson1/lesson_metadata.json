@@ -1,0 +1,23 @@
+{
+  "title": {
+    "en": "Line Breaks 1",
+    "pt": "Quebras de Linha 1",
+    "fr": "Sauts de ligne 1",
+    "de": "Zeilenumbrüche 1",
+    "es": "Saltos de línea 1"
+  },
+  "xp": 10,
+  "description": {
+    "en": "Line Breaks",
+    "pt": "Quebras de Linha",
+    "fr": "Sauts de ligne",
+    "de": "Zeilenumbrüche",
+    "es": "Saltos de línea"
+  },
+  "activityRefs": [
+    {
+      "id": 1,
+      "activity": "bug_fight_activity1"
+    }
+  ]
+}

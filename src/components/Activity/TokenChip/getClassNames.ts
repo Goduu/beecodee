@@ -10,8 +10,8 @@ type ClassNameParams = {
 export const getClassNames = ({ status, type, hasClickFunction, isOneLined }: ClassNameParams) => {
   return `
         bg-gray-300 dark:bg-gray-800 py-1 px-2
+        text-xl font-extrabold
         ${isOneLined ? "rounded-lg min-w-20 justify-center" : "rounded-md"}
-        text-xl font-extrabold inline-block
         ${hasClickFunction ? "cursor-pointer" : ""}
         ${status && type === "option" ? getStatusClass(status) : ""}
   `
