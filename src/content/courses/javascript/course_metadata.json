@@ -1,1 +1,10 @@
-{}
+{
+    "label": "Javascript",
+    "identifier": "javascript",
+    "sectionRefs": [
+        {
+            "id": 0,
+            "section": "basics"
+        }
+    ]
+}
