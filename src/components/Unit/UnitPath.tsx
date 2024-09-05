@@ -1,72 +1,66 @@
-"use client"
-import { allLessons, Unit, UnitContent } from "@contentlayer/generated"
-import React, { FC, useEffect } from "react"
+import { allUnitContents, allUnits, UnitReference } from "@contentlayer/generated"
+import React, { cache, FC, memo } from "react"
 import { CircularProgress } from "../Activity/CircularProgress"
 import { ActivityPath } from "../Activity/ActivityPath"
-import { initiateCompletedUnitLessons, unitStore } from "./unitStore"
 import { ReviewUnit } from "./ReviewUnit"
-import { useStore } from "../useStore"
 import { getPathZigzagClass } from "./getPathZigzagClass"
 import { CircleSkeleton } from "../Skeletons/CircleSkeleton"
-import { StartBallon } from "../Activity/StartBallon"
+import { getLessonDataByLessonId } from "../Pages/getLessonDataByLessonId"
+import { getSectionPathIndexClass } from "../Pages/getSectionPathIndexClass"
+import { getUnitCompanion } from "./getUnitCompanion"
 
-type UnitProps = {
-  unit: Unit
-  unitContent: UnitContent | undefined
-  pathPosition: number
-  completedLessons: Set<string> | undefined
-  isFirstUncompletedUnit: boolean
+const getSortedLessonsAndUnitData = cache((unit: string) => {
+  const unitData = allUnits.find((u) => u.slugAsParams === unit)
+  const sortedLessons = unitData?.lessonRefs.sort((a, b) => a.id - b.id).map((lessonRef) => lessonRef.lesson)
+
+  return { sortedLessons, unitData }
+})
+
+type UnitPathProps = {
+  unitRef: UnitReference
+  completedUnitLessons: Set<string> | undefined
+  sectionPathIndex: number
 }
 
-export const UnitPath: FC<UnitProps> = ({
-  unit,
-  pathPosition,
-  completedLessons,
-  unitContent,
-  isFirstUncompletedUnit,
-}) => {
-  const nextLesson = useUnitNextLesson(unit)
+export const UnitPath: FC<UnitPathProps> = memo(async ({ unitRef, completedUnitLessons, sectionPathIndex }) => {
+  const { sortedLessons, unitData } = await getSortedLessonsAndUnitData(unitRef.unit)
+  const percentageConcluded = ((completedUnitLessons?.size || 0) / (sortedLessons?.length || 1)) * 100
+  const zigZagClass = getPathZigzagClass(unitRef.id || 0)
+  const lessonDataByLessonId = await getLessonDataByLessonId()
+  const unitContent = unitData ? allUnitContents.find((u) => u.unit === unitRef.unit) : undefined
+  const sectionClass = getSectionPathIndexClass(sectionPathIndex)
 
-  useEffect(() => {
-    completedLessons && initiateCompletedUnitLessons(completedLessons)
-  }, [completedLessons])
+  if (!unitData) return null
 
-  const percentage = ((completedLessons?.size || 0) / unit.lessonRefs.length) * 100
-  const zigZagClass = getPathZigzagClass(pathPosition)
+  const nextLessonSlug = unitData.lessonRefs.find((l) => !completedUnitLessons?.has(l.lesson))
+  const nextLesson = lessonDataByLessonId?.get(nextLessonSlug?.lesson || "")
 
-  if (percentage >= 100) {
+  if (percentageConcluded >= 100) {
     return (
       <div className={zigZagClass}>
-        <ReviewUnit unit={unit} />
+        <ReviewUnit unit={unitData} className={sectionClass} />
       </div>
     )
   }
 
-  if (!nextLesson) return <CircleSkeleton className={zigZagClass} />
+  if (!nextLesson) {
+    return (
+      <div className={`${zigZagClass} h-40`}>
+        <CircleSkeleton size="medium" />
+      </div>
+    )
+  }
 
   return (
-    <div className={zigZagClass}>
-      <CircularProgress percent={percentage}>
-        {isFirstUncompletedUnit && <StartBallon />}
-        <ActivityPath lesson={nextLesson} unit={unit} unitContent={unitContent} />
-      </CircularProgress>
+    <div className="relative flex w-full items-center justify-center">
+      {getUnitCompanion(unitRef.id, sectionPathIndex, "left")}
+      <div className={zigZagClass}>
+        <CircularProgress size="small" percent={percentageConcluded}>
+          {/* {isFirstUncompletedUnit && <StartBallon />} */}
+          <ActivityPath lesson={nextLesson} unit={unitData} unitContent={unitContent} className={sectionClass} />
+        </CircularProgress>
+      </div>
+      {getUnitCompanion(unitRef.id, sectionPathIndex, "right")}
     </div>
   )
-}
-
-const useUnitNextLesson = (unit: Unit) => {
-  const completedLessons = useStore(unitStore, (state) => state.completedLessons)
-  if (!completedLessons) return
-
-  const unitLessonSlugs = unit.lessonRefs.map((l) => l.lesson)
-  // @ToDo improve this logic
-  const unitUncompletedLessons = allLessons
-    .filter((lesson) => unitLessonSlugs.includes(lesson.slugAsParams) && !completedLessons.has(lesson.slugAsParams))
-    .sort(
-      (a, b) =>
-        unit.lessonRefs.find((l) => l.lesson === a.slugAsParams)!.id -
-        unit.lessonRefs.find((l) => l.lesson === b.slugAsParams)!.id,
-    )
-  const nextLesson = unitUncompletedLessons[0]
-  return nextLesson
-}
+})

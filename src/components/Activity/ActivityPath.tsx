@@ -17,8 +17,9 @@ type ActivityLinkProps = {
   lesson: Lesson
   unit: Unit
   unitContent: UnitContent | undefined
+  className?: string
 }
-export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit, unitContent }) => {
+export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit, unitContent, className }) => {
   const [tooltipVisible, setTooltipVisible] = useState(false)
   const clickOutSideRef = useRef<HTMLDivElement>(null)
   useDetectOuterClickAndEsc({
@@ -32,7 +33,12 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit, unitContent 
         content={<ActivityTooltipContent lesson={lesson} unit={unit} unitContent={unitContent} />}
         visible={tooltipVisible}
       >
-        <PathwayButton size="large" type={unit.unitType} onClick={() => setTooltipVisible(!tooltipVisible)} />
+        <PathwayButton
+          size="small"
+          type={unit.unitType}
+          onClick={() => setTooltipVisible(!tooltipVisible)}
+          className={className || ""}
+        />
       </TooltipClick>
     </div>
   )

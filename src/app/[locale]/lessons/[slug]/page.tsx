@@ -4,6 +4,7 @@ import { Metadata } from "next"
 import { Activity, allActivities, allLessons } from "@contentlayer/generated"
 import { Quiz } from "@/components/Activity/Quiz"
 import { QuizContextWrapper } from "@/components/Activity/Quiz.context"
+import { cache } from "react"
 
 interface ActivityProps {
   params: {
@@ -11,20 +12,18 @@ interface ActivityProps {
   }
 }
 
-async function getLessonFromParams(params: ActivityProps["params"]) {
-  const slug = params?.slug
-
-  const lesson = allLessons.find((lesson) => lesson.slugAsParams === slug)
+const getLessonFromLessonSlug = cache(async (lessonSlug: ActivityProps["params"]["slug"]) => {
+  const lesson = allLessons.find((lesson) => lesson.slugAsParams === lessonSlug)
 
   if (!lesson) {
     null
   }
 
   return lesson
-}
+})
 
 export async function generateMetadata({ params }: ActivityProps): Promise<Metadata> {
-  const lesson = await getLessonFromParams(params)
+  const lesson = await getLessonFromLessonSlug(params.slug)
 
   if (!lesson) {
     return {}
@@ -36,7 +35,7 @@ export async function generateMetadata({ params }: ActivityProps): Promise<Metad
 }
 
 export default async function Page({ params }: ActivityProps) {
-  const lesson = await getLessonFromParams(params)
+  const lesson = await getLessonFromLessonSlug(params.slug)
   if (!lesson) {
     notFound()
   }

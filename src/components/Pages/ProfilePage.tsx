@@ -1,10 +1,13 @@
 "use client"
-import React, { FC } from "react"
+import React, { FC, startTransition } from "react"
 import { Pollen } from "../Svgs/Pollen"
-import { FaBookBookmark, SiJavascript } from "../Svgs/Icons"
+import { FaBookBookmark, IoMdLogOut, SiJavascript } from "../Svgs/Icons"
 import { useLocaleContext } from "../Localization/LocaleContext"
 import { User } from "@/lib/auth/types"
 import { CompletedLessonIdsByUnitId } from "@/lib/supabase/api/fetchUserFinishedLessons"
+import { signOut } from "@/lib/auth/auth"
+import { ModeToggle } from "../ModeToggle"
+import { LanguageButton } from "../Localization/LanguageButton"
 
 type ProfilePageProps = {
   userData: User | null | undefined
@@ -22,6 +25,11 @@ export const ProfilePage: FC<ProfilePageProps> = ({ userData, userXpollen, userF
         year: "numeric",
       })) ||
     ""
+  const handleLogout = () => {
+    startTransition(async () => {
+      await signOut()
+    })
+  }
 
   return (
     <div className="flex min-h-[450px] w-[450px] flex-col flex-wrap items-center justify-center gap-16 px-5 sm:w-[600px]">
@@ -44,6 +52,18 @@ export const ProfilePage: FC<ProfilePageProps> = ({ userData, userXpollen, userF
             <span>{T[locale].finishedLessons}</span>
           </div>
           <SiJavascript className="w-7 py-2" />
+          <div className="flex w-full items-center justify-center gap-2">
+            <LanguageButton />
+            <ModeToggle />
+          </div>
+          <button
+            onClick={handleLogout}
+            className="flex h-16 items-center justify-center gap-2 rounded-lg hover:bg-red-400 focus:outline-none 
+            dark:hover:bg-red-900 sm:bottom-4 sm:w-full"
+          >
+            <IoMdLogOut className="w-12" />
+            <span className="hidden text-xs font-black md:block">LOGOUT</span>
+          </button>
         </div>
       </div>
     </div>

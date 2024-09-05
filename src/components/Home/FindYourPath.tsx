@@ -3,28 +3,31 @@ import { PathWayCompleteButton } from "../Unit/PathWayCompleteButton"
 import { CircularProgress } from "../Activity/CircularProgress"
 import { PathwayButton } from "../Activity/PathwayButton"
 import { BeeLocale } from "../Localization/localization"
+import { getSectionPathIndexClass } from "../Pages/getSectionPathIndexClass"
 
 type FindYourPathProps = {
   locale: BeeLocale
 }
 
 export const FindYourPath: FC<FindYourPathProps> = ({ locale }) => {
+  const sectionPathIndexClass = getSectionPathIndexClass(0)
+
   return (
     <div className="flex w-screen flex-col items-center justify-center gap-10 sm:flex-row sm:gap-4">
       <div className="flex w-4/5 flex-col items-center justify-center gap-6 sm:flex-row sm:gap-1">
         <div className="flex w-full flex-col items-center sm:w-1/2">
           <div className="flex flex-col items-center gap-2">
             <div className="">
-              <PathWayCompleteButton size="small" />
+              <PathWayCompleteButton size="small" className={sectionPathIndexClass} />
             </div>
             <div className="mr-24">
               <CircularProgress percent={75} size="small">
-                <PathwayButton size="small" />
+                <PathwayButton size="small" className={sectionPathIndexClass} />
               </CircularProgress>
             </div>
             <div className="mr-24">
               <CircularProgress percent={0} size="small">
-                <PathwayButton size="small" />
+                <PathwayButton size="small" className={sectionPathIndexClass} />
               </CircularProgress>
             </div>
           </div>

@@ -1,30 +1,30 @@
 {
-    "label": {
-        "en": "Basics",
-        "pt": "Conceitos Básico",
-        "fr": "Bases",
-        "de": "Grundlagen",
-        "es": "Conceptos básicos"
+  "label": {
+    "en": "Basics",
+    "pt": "Conceitos Básico",
+    "fr": "Bases",
+    "de": "Grundlagen",
+    "es": "Conceptos básicos"
+  },
+  "description": {
+    "en": "Basics concepts of javascript and the essentials to start coding.",
+    "pt": "Conceitos básicos de javascript e o essencial para começar a programar.",
+    "fr": "Concepts de base de javascript et l'essentiel pour commencer à coder.",
+    "de": "Grundlegende Konzepte von javascript und das Wesentliche zum Programmieren.",
+    "es": "Conceptos básicos de javascript y lo esencial para comenzar a programar."
+  },
+  "unitRefs": [
+    {
+      "id": 0,
+      "unit": "basic_syntax"
     },
-    "description": {
-        "en": "Basics concepts of javascript and the essentials to start coding.",
-        "pt": "Conceitos básicos de javascript e o essencial para começar a programar.",
-        "fr": "Concepts de base de javascript et l'essentiel pour commencer à coder.",
-        "de": "Grundlegende Konzepte von javascript und das Wesentliche zum Programmieren.",
-        "es": "Conceptos básicos de javascript y lo esencial para comenzar a programar."
+    {
+      "id": 1,
+      "unit": "syntax_essentials"
     },
-    "unitRefs": [
-        {
-            "id": 0,
-            "unit": "basic_syntax"
-        },
-        {
-            "id": 1,
-            "unit": "syntax_essentials"
-        },
-        {
-            "id": 2,
-            "unit": "first_bug_fight"
-        }
-    ]
+    {
+      "id": 2,
+      "unit": "first_bug_fight"
+    }
+  ]
 }

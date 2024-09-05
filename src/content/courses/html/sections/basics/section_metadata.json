@@ -1,26 +1,26 @@
 {
-    "label": {
-        "en": "Basics",
-        "pt": "Conceitos Básico",
-        "fr": "Bases",
-        "de": "Grundlagen",
-        "es": "Conceptos básicos"
+  "label": {
+    "en": "Basics",
+    "pt": "Conceitos Básico",
+    "fr": "Bases",
+    "de": "Grundlagen",
+    "es": "Conceptos básicos"
+  },
+  "description": {
+    "en": "Basic concepts from HTML and the first tags.",
+    "pt": "Conceitos básicos de HTML e as primeiras tags.",
+    "fr": "Concepts de base de HTML et les premières balises.",
+    "de": "Grundlegende Konzepte von HTML und die ersten Tags.",
+    "es": "Conceptos básicos de HTML y las primeras etiquetas."
+  },
+  "unitRefs": [
+    {
+      "id": 0,
+      "unit": "html_basics"
     },
-    "description": {
-        "en": "Basic concepts from HTML and the first tags.",
-        "pt": "Conceitos básicos de HTML e as primeiras tags.",
-        "fr": "Concepts de base de HTML et les premières balises.",
-        "de": "Grundlegende Konzepte von HTML und die ersten Tags.",
-        "es": "Conceptos básicos de HTML y las primeras etiquetas."
-    },
-    "unitRefs": [
-        {
-            "id": 0,
-            "unit": "html_basics"
-        },
-        {
-            "id": 1,
-            "unit": "document_structure"
-        }
-    ]
+    {
+      "id": 1,
+      "unit": "document_structure"
+    }
+  ]
 }

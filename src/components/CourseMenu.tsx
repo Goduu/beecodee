@@ -36,11 +36,7 @@ export const CourseMenu = () => {
 
   return (
     <div className="relative inline-block text-left" ref={menuRef}>
-      <IconButton
-        id="dropdownTopButton"
-        onClick={toggleDropdown}
-        className="mb-3 inline-flex items-center rounded-lg px-5 py-2.5 text-center text-sm font-medium focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-indigo-800 md:mb-0"
-      >
+      <IconButton id="dropdownTopButton" onClick={toggleDropdown} className="flex items-center gap-1 px-5 py-2">
         {courseOptions.find((option) => option.course === course)?.icon}
       </IconButton>
 

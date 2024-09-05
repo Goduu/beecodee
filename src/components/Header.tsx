@@ -5,7 +5,7 @@ import { CourseMenu } from "./CourseMenu"
 
 export const Header = async () => {
   return (
-    <header className="absolute top-2 flex w-full items-center justify-center px-10 sm:justify-between">
+    <header className="sticky top-0 z-30 flex h-14 w-full items-center justify-center bg-white px-10 dark:bg-slate-900 sm:justify-between">
       <div className="flex w-full items-center justify-end gap-2">
         <CourseMenu />
         <XpollenHeader />

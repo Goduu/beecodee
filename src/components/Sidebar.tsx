@@ -35,14 +35,14 @@ export const Sidebar = ({ userData }: { userData?: User | null }) => {
   return (
     <div
       className={`sm:t-0 fixed inset-x-0
-        bottom-0 z-40 w-full bg-slate-100 
+        bottom-0 z-40 w-full bg-slate-100
         dark:bg-slate-800 sm:left-0 sm:h-screen sm:w-fit`}
     >
       <div className="flex flex-col items-center gap-2">
         <LanguageButton />
       </div>
       <aside className="flex items-center py-1 shadow sm:h-full sm:flex-col sm:pb-0 sm:pt-10 ">
-        <div className="flex items-center justify-center pl-2 sm:h-16 sm:w-full sm:py-5 sm:pb-10 sm:pl-0">
+        <div className="hidden items-center justify-center pl-2 sm:flex sm:h-16 sm:w-full sm:py-5 sm:pb-10 sm:pl-0">
           <Link href="/">
             <BeecodeeIcon className="w-14 md:hidden" />
             <span className="hidden text-3xl font-black text-amber-500 md:block">beecodee</span>
@@ -52,7 +52,7 @@ export const Sidebar = ({ userData }: { userData?: User | null }) => {
           {menuOptions.map((option, index) => (
             <li
               key={index}
-              className={`rounded-lg p-1 px-1 hover:bg-gray-500 sm:px-6 ${pathname === option.link && "bg-gray-500"}`}
+              className={`rounded-lg p-1 px-1 hover:bg-gray-200 dark:hover:bg-gray-500 sm:px-6 ${pathname === option.link && "bg-gray-200 dark:bg-gray-500"}`}
             >
               <Link href={option.link} className={`flex h-16 w-full items-center justify-start gap-2 `}>
                 {option.icon}
@@ -79,7 +79,7 @@ export const Sidebar = ({ userData }: { userData?: User | null }) => {
 }
 
 const getMenuOptions = (locale: BeeLocale, course: string) => [
-  { icon: <IoMdFlower className="w-10" />, label: T[locale].path, link: routes.path(locale) },
+  { icon: <IoMdFlower className="w-10" />, label: T[locale].path, link: routes.path(locale, course) },
   {
     icon: <GiHoneypot className="w-10" />,
     label: T[locale].honeycomb,

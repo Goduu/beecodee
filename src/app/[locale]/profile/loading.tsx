@@ -13,6 +13,7 @@ export default function Loading() {
           <TextSkeleton size="medium" />
           <TextSkeleton size="medium" />
           <TextSkeleton size="small" />
+          <TextSkeleton size="small" />
         </div>
       </div>
     </div>

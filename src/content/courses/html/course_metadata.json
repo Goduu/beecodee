@@ -1,10 +1,10 @@
 {
-    "label": "HTML",
-    "identifier": "html",
-    "sectionRefs": [
-        {
-            "id": 0,
-            "section": "basics"
-        }
-    ]
+  "label": "HTML",
+  "identifier": "html",
+  "sectionRefs": [
+    {
+      "id": 0,
+      "section": "basics"
+    }
+  ]
 }

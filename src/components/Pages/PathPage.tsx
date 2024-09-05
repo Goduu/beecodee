@@ -1,15 +1,14 @@
-import { UnitPath } from "../Unit/UnitPath"
-import { allUnitContents, allUnits, Unit } from "@contentlayer/generated"
-import { fetchUserCompletedLessonByUnitId } from "@/lib/supabase/api/fetchUserFinishedLessons"
+import { allCourses } from "@contentlayer/generated"
 import { FlyingBee } from "../Svgs/Animations/FlyingBee"
 import { cache, FC } from "react"
+import { SectionPath } from "./SectionPath"
 
-const getUnitContent = (unit: Unit) => {
-  return allUnitContents.find((unitContent) => unitContent.unit === unit.slugAsParams)
-}
+const getSortedSections = cache((course: string) => {
+  const courseData = allCourses.find((c) => c.slugAsParams === course)
+  const sortedSectionRefs = courseData?.sectionRefs.sort((a, b) => a.id - b.id)
+  if (!sortedSectionRefs) return []
 
-const getSortedCourseUnits = cache((course: string) => {
-  return allUnits.filter((unit) => unit.language === course).sort((a, b) => a.id - b.id)
+  return sortedSectionRefs
 })
 
 type PageProps = {
@@ -17,27 +16,14 @@ type PageProps = {
 }
 
 export const PathPage: FC<PageProps> = async ({ course }) => {
-  const completedLessonByUnitId = await fetchUserCompletedLessonByUnitId()
-  const sortedCourseUnits = getSortedCourseUnits(course)
-  const firstUncompletedUnit = sortedCourseUnits.find(
-    (unit) => (completedLessonByUnitId?.get(unit.slugAsParams)?.size || 0) < unit.lessonRefs.length,
-  )
+  const sortedSectionRefs = getSortedSections(course)
 
   return (
-    <div className="flex w-full flex-col items-center gap-2">
+    <div className="flex w-4/6 flex-col items-center gap-2">
       <FlyingBee className="w-44" />
-      {sortedCourseUnits.map((unit) => {
-        return (
-          <UnitPath
-            key={unit.id}
-            unit={unit}
-            unitContent={getUnitContent(unit)}
-            pathPosition={unit.id}
-            completedLessons={completedLessonByUnitId?.get(unit.slugAsParams)}
-            isFirstUncompletedUnit={firstUncompletedUnit?.id === unit.id}
-          />
-        )
-      })}
+      {sortedSectionRefs?.map((sectionRef) => (
+        <SectionPath key={sectionRef.id} sectionRef={sectionRef} courseId={course} />
+      ))}
     </div>
   )
 }

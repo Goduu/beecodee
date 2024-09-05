@@ -103,7 +103,6 @@ export const parseAsQuestion = (markdown: string, questionType: Activity["questi
     _id: "",
     tags: [],
     _raw: raw,
-    slug: "",
     language: "javascript",
     slugAsParams: "",
     type: "Activity",
