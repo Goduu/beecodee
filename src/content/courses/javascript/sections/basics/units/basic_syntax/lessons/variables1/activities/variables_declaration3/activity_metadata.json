@@ -14,46 +14,32 @@
       {
         "option": {
           "id": "a",
-          "content": "let",
-          "type": "CodeOption"
-        }
-      },
-      {
-        "option": {
-          "id": "b",
-          "content": "variable",
-          "type": "CodeOption"
-        }
-      },
-      {
-        "option": {
-          "id": "c",
           "content": "foo",
           "type": "CodeOption"
         }
       },
       {
         "option": {
-          "id": "d",
+          "id": "b",
+          "content": "let",
+          "type": "CodeOption"
+        }
+      },
+      {
+        "option": {
+          "id": "c",
           "content": "11",
           "type": "CodeOption"
         }
       },
       {
         "option": {
-          "id": "e",
-          "content": "==",
-          "type": "CodeOption"
-        }
-      },
-      {
-        "option": {
-          "id": "f",
+          "id": "d",
           "content": "=",
           "type": "CodeOption"
         }
       }
     ],
-    "correctAnswer": ["a", "c", "f", "d"]
+    "correctAnswer": ["b", "a", "d", "c"]
   }
 }

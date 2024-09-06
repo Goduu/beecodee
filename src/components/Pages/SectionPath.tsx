@@ -1,31 +1,33 @@
 import { allSections, SectionReference } from "@contentlayer/generated"
 import React, { cache, FC } from "react"
 import { UnitPath } from "../Unit/UnitPath"
-import { fetchUserCompletedLessonByUnitId } from "@/lib/supabase/api/fetchUserFinishedLessons"
+import { CompletedLessonIdsByUnitId } from "@/lib/supabase/api/fetchUserFinishedLessons"
 import { getSectionPathIndexClass } from "./getSectionPathIndexClass"
 
 const getSectionDataAndSortedUnitRefs = cache((section: string, courseId: string) => {
   const sectionData = allSections.find((t) => t.course === courseId && t.slugAsParams === section)
   if (!sectionData) return { sortedUnitRefs: [], sectionData }
   const sortedUnitRefs = sectionData?.unitRefs.sort((a, b) => a.id - b.id).map((unitRef) => unitRef)
-  return { sortedUnitRefs: sortedUnitRefs, sectionData }
+  const sortedUnitRefs2 = sortedUnitRefs?.map((a) => ({ ...a, id: sortedUnitRefs.length + a.id }))
+  const sortedUnitRefs3 = sortedUnitRefs?.map((a) => ({ ...a, id: 2 * sortedUnitRefs.length + a.id }))
+  return { sortedUnitRefs: [...sortedUnitRefs, ...sortedUnitRefs2, ...sortedUnitRefs3], sectionData }
 })
 
 type SectionPathProps = {
   sectionRef: SectionReference
   courseId: string
+  completedLessons: CompletedLessonIdsByUnitId | undefined
 }
 
-export const SectionPath: FC<SectionPathProps> = async ({ sectionRef, courseId }) => {
+export const SectionPath: FC<SectionPathProps> = async ({ sectionRef, courseId, completedLessons }) => {
   const { sortedUnitRefs, sectionData } = getSectionDataAndSortedUnitRefs(sectionRef.section, courseId)
-  const completedLessons = await fetchUserCompletedLessonByUnitId()
   const sectionClass = getSectionPathIndexClass(sectionRef.id)
 
   return (
     <div className="flex w-full flex-col items-center overflow-visible">
-      <div className={`sticky top-14 z-20 mb-4 w-full rounded-3xl border-b-4 p-6 text-white ${sectionClass}`}>
-        <div className="text-md font-semibold uppercase">{sectionData?.label["en"]}</div>
-        <div className="text-2xl font-bold sm:text-xl">{sectionData?.description["en"]}</div>
+      <div className={`sticky top-14 z-20 mb-4 w-full rounded-xl border-b-4 p-4 sm:p-6  ${sectionClass}`}>
+        <div className="text-md font-semibold uppercase text-slate-50 text-opacity-60">{sectionData?.label["en"]}</div>
+        <div className="text-lg font-bold leading-tight text-white sm:text-xl">{sectionData?.description["en"]}</div>
       </div>
       {sortedUnitRefs?.map((unitRef) => (
         <UnitPath

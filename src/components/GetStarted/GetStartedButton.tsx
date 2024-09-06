@@ -23,7 +23,7 @@ export const GetStartedButton: FC<GetStartedButtonProps> = ({ userData }) => {
   }
 
   return (
-    <Button color="primary" className="w-64 uppercase" size="large" onClick={handleClick}>
+    <Button color="primary" className="w-64 uppercase" size="medium" onClick={handleClick}>
       {userData ? T[locale].continueLearning : T[locale].getStarted}
     </Button>
   )

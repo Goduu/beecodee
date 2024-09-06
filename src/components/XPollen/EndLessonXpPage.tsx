@@ -18,7 +18,7 @@ export const EndLessonXpPage: FC<EndLessonXpPageProps> = ({ lessonXp }) => {
       <KnowledgeBook className="w-56" />
       <div className="flex gap-4">
         <div className="flex h-28 w-44 flex-col gap-1 rounded-lg bg-amber-500">
-          <div className="mt-2 px-3 text-sm">{T[locale].collectedPollen}</div>
+          <div className="mt-2 px-3 text-sm font-bold text-white">{T[locale].collectedPollen}</div>
           <div className="flex h-full items-center justify-center gap-2 rounded-lg border-4 border-amber-500 bg-white text-xl dark:bg-gray-900">
             <Pollen className="w-8" />
             <CounterUp countTo={lessonXp} />

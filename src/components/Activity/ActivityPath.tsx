@@ -1,6 +1,5 @@
 "use client"
 import React, { FC, useRef, useState } from "react"
-import { TooltipClick } from "../TooltipClick"
 import { Button } from "../Button"
 import { Lesson, Unit, UnitContent } from "@contentlayer/generated"
 import { useRouter } from "next/navigation"
@@ -12,14 +11,16 @@ import { HoneyComb } from "../HoneyComb/HoneyComb"
 import { useLocaleContext } from "../Localization/LocaleContext"
 import { routes } from "@/lib/routes"
 import { useTransitionContext } from "../Loading.store"
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 
-type ActivityLinkProps = {
+type ActivityPathProps = {
   lesson: Lesson
   unit: Unit
   unitContent: UnitContent | undefined
   className?: string
 }
-export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit, unitContent, className }) => {
+
+export const ActivityPath: FC<ActivityPathProps> = ({ lesson, unit, unitContent, className }) => {
   const [tooltipVisible, setTooltipVisible] = useState(false)
   const clickOutSideRef = useRef<HTMLDivElement>(null)
   useDetectOuterClickAndEsc({
@@ -29,22 +30,37 @@ export const ActivityPath: FC<ActivityLinkProps> = ({ lesson, unit, unitContent,
 
   return (
     <div ref={clickOutSideRef}>
-      <TooltipClick
-        content={<ActivityTooltipContent lesson={lesson} unit={unit} unitContent={unitContent} />}
-        visible={tooltipVisible}
-      >
-        <PathwayButton
-          size="small"
-          type={unit.unitType}
-          onClick={() => setTooltipVisible(!tooltipVisible)}
-          className={className || ""}
-        />
-      </TooltipClick>
+      <Popover open={tooltipVisible}>
+        <PopoverTrigger>
+          <PathwayButton
+            size="small"
+            type={unit.unitType}
+            className={className || ""}
+            onClick={() => setTooltipVisible((prev) => !prev)}
+          />
+        </PopoverTrigger>
+        <PopoverContent>
+          <ActivityPopoverContent
+            lesson={lesson}
+            unit={unit}
+            unitContent={unitContent}
+            onStart={() => setTooltipVisible(false)}
+          />
+        </PopoverContent>
+      </Popover>
     </div>
   )
 }
 
-const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit, unitContent }) => {
+type ActivityPopoverContentProps = {
+  lesson: Lesson
+  unit: Unit
+  unitContent: UnitContent | undefined
+  onStart: () => void
+  className?: string
+}
+
+const ActivityPopoverContent: FC<ActivityPopoverContentProps> = ({ lesson, unit, unitContent, onStart }) => {
   const { locale } = useLocaleContext()
   const router = useRouter()
   const { startTransition } = useTransitionContext()
@@ -53,6 +69,7 @@ const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit, unitConte
     startTransition(async () => {
       startLesson(unit)
       await router.push(routes.lessons(lesson.slugAsParams))
+      onStart()
     })
   }
 
@@ -61,7 +78,7 @@ const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit, unitConte
       <div className="flex flex-col items-center gap-5 text-center">
         <div className="text-lg">{lesson.description[locale]}</div>
         <div className="flex items-center gap-2 text-sm">
-          <Pollen className="w-7" /> Get {lesson.xp} XPollen
+          <Pollen className="w-7" /> {T[locale].getXPollen(lesson.xp)}
         </div>
         <Button onClick={handleStartLesson}>Start Lesson</Button>
       </div>
@@ -71,3 +88,20 @@ const ActivityTooltipContent: FC<ActivityLinkProps> = ({ lesson, unit, unitConte
     </div>
   )
 }
+const en = {
+  getXPollen: (x: number) => `Get ${x} XPollen`,
+}
+const pt: typeof en = {
+  getXPollen: (x: number) => `Ganhe ${x} XPollen`,
+}
+const es: typeof en = {
+  getXPollen: (x: number) => `Obtén ${x} XPollen`,
+}
+const fr: typeof en = {
+  getXPollen: (x: number) => `Obtenez ${x} XPollen`,
+}
+const de: typeof en = {
+  getXPollen: (x: number) => `Erhalten Sie ${x} XPollen`,
+}
+
+const T = { en, pt, es, fr, de }

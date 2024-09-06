@@ -34,7 +34,7 @@ export default async function Layout({ children, params }: RootLayoutProps) {
     <>
       <Header />
       <UnitHoneyCombModal />
-      <div className="flex min-h-screen flex-col place-items-center px-4 py-12 pl-0 leading-relaxed md:ml-40">
+      <div className="flex min-h-screen flex-col place-items-center px-4 py-3 leading-relaxed md:ml-40">
         {children}
         <MountChecker />
       </div>

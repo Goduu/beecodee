@@ -20,7 +20,7 @@ export const ProgressBar: FC<ProgressBar> = ({ size = "medium", progress, onClos
         </button>
       </form>
       <div
-        className={`bg-secondary relative h-4 w-full overflow-hidden rounded-full bg-gray-200 ${heightClass}`}
+        className={`relative h-4 w-full overflow-hidden rounded-full bg-gray-200 bg-secondary ${heightClass}`}
         role="progressbar"
       >
         <div

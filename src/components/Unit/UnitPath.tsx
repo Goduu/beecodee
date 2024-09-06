@@ -37,8 +37,12 @@ export const UnitPath: FC<UnitPathProps> = memo(async ({ unitRef, completedUnitL
 
   if (percentageConcluded >= 100) {
     return (
-      <div className={zigZagClass}>
-        <ReviewUnit unit={unitData} className={sectionClass} />
+      <div className="relative flex w-full items-center justify-center">
+        {getUnitCompanion(unitRef.id, sectionPathIndex, "left")}
+        <div className={zigZagClass}>
+          <ReviewUnit unit={unitData} className={sectionClass} unitContent={unitContent} />
+        </div>
+        {getUnitCompanion(unitRef.id, sectionPathIndex, "right")}
       </div>
     )
   }

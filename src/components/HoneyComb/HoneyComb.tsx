@@ -25,7 +25,7 @@ export const HoneyComb: FC<HoneyCombProps> = ({ unit, unitContent, size = "mediu
     <TooltipHover text={unit.description[locale]} position="bottom">
       <div className="relative cursor-pointer hover:scale-105" onClick={() => open(unitContent, unit)}>
         <FiHexagon
-          className={`${hexagonSize} p-0 ${completed ? "fill-amber-500 text-amber-600" : "fill-slate-500 text-slate-600"}`}
+          className={`${hexagonSize} p-0 ${completed ? "fill-amber-500 text-amber-600" : "fill-slate-200 text-slate-500 dark:fill-slate-500 dark:text-slate-600"}`}
         />
         <GiHoneypot className={`${honeySize} absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform`} />
       </div>
