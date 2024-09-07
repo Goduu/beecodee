@@ -48,31 +48,16 @@ const getTopicCompanion = (topicPosition: number) => {
 }
 
 const getCompanionIcon = (companion: string, version: "1" | "2", position: "left" | "right"): ReactNode => {
+  const className = `absolute w-32 ${position === "right" ? "right-10 md:right-1/4" : "left-10 md:left-1/4"}`
   switch (companion) {
     case "lime":
-      return version === "1" ? (
-        <FlowerGreen1 className={`absolute w-32 ${position === "right" ? "right-1/4" : "left-1/4"}`} />
-      ) : (
-        <FlowerGreen2 className={`absolute w-32 ${position === "right" ? "right-1/4" : "left-1/4"}`} />
-      )
+      return version === "1" ? <FlowerGreen1 className={className} /> : <FlowerGreen2 className={className} />
     case "amber":
-      return version === "1" ? (
-        <FlowerAmber1 className={`absolute w-32 ${position === "right" ? "right-1/4" : "left-1/4"}`} />
-      ) : (
-        <FlowerAmber2 className={`absolute w-32 ${position === "right" ? "right-1/4" : "left-1/4"}`} />
-      )
+      return version === "1" ? <FlowerAmber1 className={className} /> : <FlowerAmber2 className={className} />
     case "red":
-      return version === "1" ? (
-        <FlowerRed1 className={`absolute w-32 ${position === "right" ? "right-1/4" : "left-1/4"}`} />
-      ) : (
-        <FlowerRed2 className={`absolute w-32 ${position === "right" ? "right-1/4" : "left-1/4"}`} />
-      )
+      return version === "1" ? <FlowerRed1 className={className} /> : <FlowerRed2 className={className} />
     case "indigo":
-      return version === "1" ? (
-        <FlowerIndigo1 className={`absolute w-32 ${position === "right" ? "right-1/4" : "left-1/4"}`} />
-      ) : (
-        <FlowerIndigo2 className={`absolute w-32 ${position === "right" ? "right-1/4" : "left-1/4"}`} />
-      )
+      return version === "1" ? <FlowerIndigo1 className={className} /> : <FlowerIndigo2 className={className} />
     default:
       return null
   }

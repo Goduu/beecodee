@@ -6,6 +6,9 @@ import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable"
 import { DraggableTokenChip } from "./DraggableTokenChip"
 import { useBugFightAnswersStates } from "./BugFightAnswers.states"
 import { BeeVsBug } from "@/components/Svgs/Animations/BeeVsBug"
+import { LuListRestart } from "@/components/Svgs/Icons"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { useLocaleContext } from "@/components/Localization/LocaleContext"
 
 type BugFightAnswersProps = {
   question: BugFightQuestion
@@ -20,6 +23,7 @@ export const BugFightAnswers: FC<BugFightAnswersProps> = ({ question, language, 
     options,
     answer,
     addTokenToAnswer,
+    resetStates,
     removeOptionFromAnswer,
     createFormattingToken,
     handleDragStart,
@@ -28,6 +32,7 @@ export const BugFightAnswers: FC<BugFightAnswersProps> = ({ question, language, 
     activeId,
   } = useBugFightAnswersStates(question, language, isActionDisabled, setLessonState)
   const [opening, setOpening] = useState(true)
+  const { locale } = useLocaleContext()
 
   useEffect(() => {
     setTimeout(() => {
@@ -51,7 +56,9 @@ export const BugFightAnswers: FC<BugFightAnswersProps> = ({ question, language, 
       )}
       <div className={`flex touch-none select-none flex-col items-center gap-10 sm:gap-16`}>
         <div className="flex w-full flex-col  gap-2 sm:flex-row ">
-          <div className={`flex min-h-96 w-full flex-col justify-start rounded-xl border-2 p-2 ${statusClass}`}>
+          <div
+            className={`relative flex min-h-96 w-full flex-col justify-start rounded-xl border-2 p-2 ${statusClass}`}
+          >
             <div className="inline-block px-1 text-start">
               <DndContext
                 sensors={sensors}
@@ -67,7 +74,7 @@ export const BugFightAnswers: FC<BugFightAnswersProps> = ({ question, language, 
                           key={optionWithToken.id}
                           optionWithToken={optionWithToken}
                           removeOptionFromAnswer={removeOptionFromAnswer}
-                          className={isActionDisabled ? "cursor-default px-2" : "px-2"}
+                          className={isActionDisabled ? "cursor-default px-1" : "px-1"}
                         />
                       ))}
                     </SortableContext>
@@ -80,6 +87,16 @@ export const BugFightAnswers: FC<BugFightAnswersProps> = ({ question, language, 
                 )}
               </DndContext>
             </div>
+            <TooltipProvider>
+              <div className="absolute bottom-1 right-1">
+                <Tooltip>
+                  <TooltipTrigger>
+                    <LuListRestart className="w-8" onClick={resetStates} />
+                  </TooltipTrigger>
+                  <TooltipContent>{T[locale].restart}</TooltipContent>
+                </Tooltip>
+              </div>
+            </TooltipProvider>
           </div>
           <div className="flex w-1/6 flex-row gap-1 text-xs sm:flex-col sm:text-sm">
             <span
@@ -116,3 +133,20 @@ export const BugFightAnswers: FC<BugFightAnswersProps> = ({ question, language, 
     </>
   )
 }
+
+const en = {
+  restart: "Restart",
+}
+const pt: typeof en = {
+  restart: "Reiniciar",
+}
+const fr: typeof en = {
+  restart: "Redémarrer",
+}
+const de: typeof en = {
+  restart: "Neustart",
+}
+const es: typeof en = {
+  restart: "Reiniciar",
+}
+export const T = { en, pt, fr, de, es }

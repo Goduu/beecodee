@@ -2,7 +2,6 @@ import React, { FC } from "react"
 import { MultipleChoiceQuestion } from "@contentlayer/generated"
 import { useMultipleChoiceAnswerStates } from "./MultipleChoiceAnswer.states"
 import { TokenGroupChip } from "../TokenChip/TokenGroupChip"
-import { OptionWithTokens } from "@/components/TokenColors/highlightCode"
 import { closestCenter, DndContext, DragOverlay } from "@dnd-kit/core"
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable"
 import { DraggableTokenChip } from "./DraggableTokenChip"
@@ -54,7 +53,7 @@ export const MultipleChoiceAnswer: FC<MultipleChoiceAnswerProps> = ({
                         key={optionWithToken.id}
                         optionWithToken={optionWithToken}
                         removeOptionFromAnswer={removeOptionFromAnswer}
-                        className={isActionDisabled ? "cursor-default px-2" : "px-2"}
+                        className={isActionDisabled ? "cursor-default px-1" : "px-1"}
                       />
                     ))}
                   </SortableContext>

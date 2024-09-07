@@ -22,7 +22,7 @@
         "segment": {
           "id": "b",
           "type": "GapOption",
-          "size": 3
+          "size": 4
         }
       },
       {
@@ -43,7 +43,7 @@
         "segment": {
           "id": "e",
           "type": "GapOption",
-          "size": 3
+          "size": 4
         }
       },
       {
@@ -51,20 +51,6 @@
           "id": "f",
           "type": "CodeOption",
           "content": "\n"
-        }
-      },
-      {
-        "segment": {
-          "id": "g",
-          "type": "GapOption",
-          "size": 6
-        }
-      },
-      {
-        "segment": {
-          "id": "h",
-          "type": "CodeOption",
-          "content": "userIsMember = true"
         }
       }
     ],
@@ -79,14 +65,14 @@
       {
         "option": {
           "id": "b",
-          "content": "const",
+          "content": "==",
           "type": "CodeOption"
         }
       },
       {
         "option": {
           "id": "c",
-          "content": "variable",
+          "content": "is",
           "type": "CodeOption"
         }
       },
@@ -98,6 +84,6 @@
         }
       }
     ],
-    "correctAnswer": ["a", "d", "b"]
+    "correctAnswer": ["a", "d"]
   }
 }

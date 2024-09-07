@@ -11,7 +11,7 @@ type TokenGroupWrapperProps = {
 export const TokenGroupWrapper: FC<TokenGroupWrapperProps> = ({ children, tokenType, onClick, className, used }) => {
   const getClassNames = () => {
     return `
-            inline-block py-1 rounded-md transition duration-500 px-2
+            inline-block py-1 rounded-md transition duration-500 px-1
             bg-gray-300 dark:bg-gray-800 text-xl font-extrabold
             ${!used && onClick ? "cursor-pointer" : ""}
             ${tokenType ? tokenTypeToTailwindClass(tokenType) : ""}

@@ -30,12 +30,26 @@
         "segment": {
           "id": "c",
           "type": "CodeOption",
-          "content": "href=\"https://www.example.com\">Visit Example"
+          "content": "href="
         }
       },
       {
         "segment": {
           "id": "d",
+          "type": "CodeOption",
+          "content": "\"https://www.example.com\">"
+        }
+      },
+      {
+        "segment": {
+          "id": "e",
+          "type": "CodeOption",
+          "content": "Visit Example"
+        }
+      },
+      {
+        "segment": {
+          "id": "f",
           "type": "GapOption",
           "content": "",
           "size": 5
@@ -43,7 +57,7 @@
       },
       {
         "segment": {
-          "id": "e",
+          "id": "g",
           "type": "CodeOption",
           "content": "\n<div>"
         }

@@ -48,15 +48,17 @@ export const useBugFightAnswersStates = (
   }, [question, language])
 
   const resetStates = () => {
-    setStatus("neutral")
+    if (status !== "correct") {
+      if (question) {
+        initializeOptions()
+      }
+      setStatus("neutral")
+    }
   }
 
   useEffect(() => {
-    if (question) {
-      initializeOptions()
-    }
     resetStates()
-  }, [question, initializeOptions])
+  }, [question])
 
   const removeOptionFromAnswer = useCallback(
     (option: OptionWithTokens) => {
@@ -94,7 +96,6 @@ export const useBugFightAnswersStates = (
 
   const handleCheckStatus = useCallback(() => {
     const regex = /^f/
-
     const correctAnswers = question.correctAnswers as string[][]
     if (
       correctAnswers.find((correctAnswer) =>
@@ -173,6 +174,7 @@ export const useBugFightAnswersStates = (
     options,
     status,
     setAnswer,
+    resetStates,
     handleCheckStatus,
     addTokenToAnswer,
     removeOptionFromAnswer,

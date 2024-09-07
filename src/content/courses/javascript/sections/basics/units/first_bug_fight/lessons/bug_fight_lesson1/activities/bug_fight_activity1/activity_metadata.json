@@ -234,7 +234,33 @@
         "sw",
         "sx"
       ],
-      ["sa", "sb", "sc", "sd", "se", "sg", "sh", "si", "sj", "sk", "sm", "sn", "so", "su", "sv", "sw", "sx"]
+      ["sa", "sb", "sc", "sd", "se", "sg", "sh", "si", "sj", "sk", "sm", "sn", "so", "su", "sv", "sw", "sx"],
+      [
+        "sa",
+        "sb",
+        "sc",
+        "sd",
+        "se",
+        "ff",
+        "sg",
+        "sh",
+        "si",
+        "sj",
+        "sk",
+        "fl",
+        "od",
+        "sn",
+        "so",
+        "sp",
+        "sq",
+        "fr",
+        "ss",
+        "st",
+        "oc",
+        "sv",
+        "sw",
+        "sx"
+      ]
     ]
   }
 }
