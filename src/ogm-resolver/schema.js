@@ -39,8 +39,8 @@ type Topic {
 
 type Content {
   id: ID! @id
-  name: TranslatedString
-  description: TranslatedString
+  name: TranslatedString!
+  description: TranslatedString!
 }
 
 type Lesson {

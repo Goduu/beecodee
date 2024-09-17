@@ -9,9 +9,13 @@ import { ScrollArea, ScrollBar } from "../ui/scroll-area"
 import { LessonSelector } from "./LessonSelector"
 import { PrerequisiteArea } from "./PrerequisiteArea"
 import { TagsArea } from "./tag/TagsArea"
+import { Topic } from "@/ogm-resolver/ogm-types"
 
-export const TopicEditPage: FC = () => {
-  const { form, topic, setTopic } = useTopicForm()
+type TopicEditorProps = {
+  topic?: Topic
+}
+export const TopicEditor: FC<TopicEditorProps> = ({ topic }) => {
+  const { form } = useTopicForm(topic)
 
   return (
     <div className="flex max-w-max flex-col items-start justify-start gap-4">

@@ -2,7 +2,7 @@
 import React, { useState } from "react"
 import { Button } from "../Button"
 import { TbPencilQuestion } from "../Svgs/Icons"
-import { TopicEditPage } from "../QuestionBuilder/TopicEditPage"
+import { TopicEditor } from "../QuestionBuilder/TopicEditor"
 import { TagCreateForm } from "../QuestionBuilder/tag/TagCreateForm"
 
 export const QuestionBuilderPage = () => {
@@ -25,7 +25,7 @@ export const QuestionBuilderPage = () => {
         </div>
       </div>
       <div className="">
-        {objectType === "topic" && <TopicEditPage />}
+        {objectType === "topic" && <TopicEditor />}
         {objectType === "tag" && <TagCreateForm />}
       </div>
     </div>
