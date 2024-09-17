@@ -9,8 +9,8 @@ const NOT_PROTECTED_PATHS = ["home", "get-started", "api"]
 
 const getRouteName = (pathname: string) => {
   return (
-    PROTECTED_PATHS.find((path) => pathname.includes(path)) ||
     NOT_PROTECTED_PATHS.find((path) => pathname.includes(path)) ||
+    PROTECTED_PATHS.find((path) => pathname.includes(path)) ||
     "home"
   )
 }
@@ -101,11 +101,7 @@ export async function middleware(request: NextRequest) {
       request.nextUrl.pathname = routes.review(locale, searchParams.toString())
       return NextResponse.redirect(request.nextUrl)
     case "question-builder":
-      if (request.nextUrl.pathname === routes.questionBuilder(locale)) {
-        return await updateSession(request)
-      }
-      request.nextUrl.pathname = routes.questionBuilder(locale)
-      return NextResponse.redirect(request.nextUrl)
+      return await updateSession(request)
     default:
       return await updateSession(request)
   }

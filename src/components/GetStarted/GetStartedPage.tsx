@@ -68,38 +68,34 @@ export const GetStartedPage = () => {
   }
 
   return (
-    <>
+    <div className="flex max-h-screen flex-col gap-2">
       <ProgressBar onClose={handleClose} size="medium" progress={(currentQuestionIndex / questions.length) * 100} />
-      <div className="flex-1">
-        <div className="flex h-full items-center justify-center">
-          <div className="flex w-full flex-col gap-y-12 px-6 lg:min-h-[350px] lg:w-[600px] lg:px-0">
-            <h1 className="text-center text-lg font-bold text-neutral-700 dark:text-neutral-200 lg:text-start lg:text-3xl">
-              {currentQuestion.description[locale]}
-            </h1>
-            <div>
-              <div className="flex flex-wrap justify-start gap-16">
-                {currentQuestion.options.map((option, index) => (
-                  <div
-                    key={index}
-                    onClick={() => option.released && setSelected(option.id)}
-                    className={`
+      <div className="flex w-full flex-col gap-y-12 px-6 lg:min-h-[350px] lg:w-[600px] lg:px-0">
+        <h1 className="text-center text-lg font-bold text-neutral-700 dark:text-neutral-200 lg:text-start lg:text-3xl">
+          {currentQuestion.description[locale]}
+        </h1>
+        <div>
+          <div className="flex flex-wrap justify-start gap-16 sm:gap-8">
+            {currentQuestion.options.map((option, index) => (
+              <div
+                key={index}
+                onClick={() => option.released && setSelected(option.id)}
+                className={`
                             relative flex w-32 flex-col items-center gap-2 rounded-md border p-4
                             ${option.released ? "cursor-pointer" : "cursor-not-allowed"}
                             ${selected === option.id ? "border-blue-500 text-blue-500" : "border-gray-300"}`}
-                  >
-                    {option.icon}
-                    <div className="text-lg font-bold">{option.label[locale]}</div>
-                    {!option.released && (
-                      <div className="absolute right-2 top-2 overflow-visible">
-                        <TooltipHover text="Coming soon">
-                          <FaTools className="w-4" />
-                        </TooltipHover>
-                      </div>
-                    )}
+              >
+                {option.icon}
+                <div className="text-lg font-bold">{option.label[locale]}</div>
+                {!option.released && (
+                  <div className="absolute right-2 top-2 overflow-visible">
+                    <TooltipHover text="Coming soon">
+                      <FaTools className="w-4" />
+                    </TooltipHover>
                   </div>
-                ))}
+                )}
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -108,7 +104,7 @@ export const GetStartedPage = () => {
         onCheck={questionState === "correct" ? handlesContinue : handleCheck}
         status={questionState}
       />
-    </>
+    </div>
   )
 }
 

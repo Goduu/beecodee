@@ -15,6 +15,8 @@ import { upsertUserCurrentData } from "@/lib/supabase/api/upsertUserCurrentData"
 import { fetchCachedUserData } from "@/lib/supabase/api/fetchUserData"
 import { ThemeProvider } from "@/components/ThemeProvider"
 import { TransitionProvider } from "@/components/Loading.store"
+import { ApolloWrapper } from "@/lib/apollo-provider"
+import { Toaster } from "@/components/ui/toaster"
 
 const varela = Varela_Round({ subsets: ["latin"], weight: "400" })
 
@@ -40,21 +42,24 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
         className={`bg-white text-gray-500 antialiased dark:bg-gray-900 dark:text-slate-50 ${varela.className}`}
         suppressHydrationWarning
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <LocaleContextWrapper locale={params.locale}>
-            <TransitionProvider>
-              <HomeHeader />
-              <Sidebar userData={userData} />
-              <LoginModal />
-              {children}
-              <MountChecker />
-              <DevToolsModal />
-              <DevToolsButton />
-            </TransitionProvider>
-          </LocaleContextWrapper>
-          <Analytics />
-          <SpeedInsights />
-        </ThemeProvider>
+        <ApolloWrapper>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+            <LocaleContextWrapper locale={params.locale}>
+              <TransitionProvider>
+                <HomeHeader />
+                <Sidebar userData={userData} />
+                <LoginModal />
+                {children}
+                <Toaster />
+                <MountChecker />
+                <DevToolsModal />
+                <DevToolsButton />
+              </TransitionProvider>
+            </LocaleContextWrapper>
+            <Analytics />
+            <SpeedInsights />
+          </ThemeProvider>
+        </ApolloWrapper>
       </body>
     </html>
   )

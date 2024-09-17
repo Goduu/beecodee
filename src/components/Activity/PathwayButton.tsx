@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import { FaBug, IoMdFlower } from "../Svgs/Icons"
 
 type PathwayButtonProps = {
-  className: string
+  className?: string
   size?: "small" | "medium" | "large"
   type?: "theory" | "bugFight"
   onClick?: () => void

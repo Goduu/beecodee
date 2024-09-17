@@ -7,8 +7,8 @@ type CircularProgressProps = {
 }
 
 export const CircularProgress: FC<CircularProgressProps> = ({ percent = 50, size = "medium", children }) => {
-  const radius = size === "small" ? 42 : size === "medium" ? 58 : 70
-  const stroke = size === "small" ? 10 : size === "medium" ? 20 : 28
+  const radius = size === "small" ? 42 : size === "medium" ? 50 : 70
+  const stroke = size === "small" ? 10 : size === "medium" ? 15 : 28
   const initialPosition = radius + stroke
   const circumference = 2 * Math.PI * radius
 

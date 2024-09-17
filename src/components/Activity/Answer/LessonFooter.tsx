@@ -21,7 +21,7 @@ export const LessonFooter = ({ onCheck, status, disabled }: LessonFooterProps) =
   return (
     <footer
       className={cn(
-        "h-[100px] border-t-2 lg:h-[140px]",
+        "h-[200px] border-t-2 lg:h-[140px]",
         status === "none" && "bg-slate-100 dark:bg-slate-800",
         status === "correct" && "border-transparent bg-lime-100 dark:bg-slate-700",
         status === "wrong" && "border-transparent bg-rose-100 dark:bg-slate-700",

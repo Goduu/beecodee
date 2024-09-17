@@ -2,7 +2,8 @@ const { withContentlayer } = require("next-contentlayer")
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // reactStrictMode: true,
+  reactStrictMode: true,
+  serverExternalPackages: ["graphql"],
 }
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
