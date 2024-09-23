@@ -1,5 +1,3 @@
-import { de, faker } from "@faker-js/faker"
-import { useState } from "react"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -7,6 +5,7 @@ import { TranslatedTextSchema } from "./formSchemas"
 import { Topic } from "@/ogm-resolver/ogm-types"
 
 const ContentSchema = z.object({
+    id: z.string(),
     name: TranslatedTextSchema,
     description: TranslatedTextSchema.nullable(),
 })
@@ -23,22 +22,23 @@ const TagSchema = z.object({
     name: TranslatedTextSchema,
 })
 
+const LessonSchema = z.object({
+    name: TranslatedTextSchema,
+    description: TranslatedTextSchema.nullable(),
+})
+
 // Define the FormSchema
 const TopicSchema = z.object({
     name: TranslatedTextSchema,
     description: TranslatedTextSchema,
     difficulty: z.enum(["BEGINNER", "INTERMEDIATE", "ADVANCED"]),
-    content: ContentSchema,
+    content: z.array(ContentSchema),
+    lessons: z.array(LessonSchema),
     prerequisites: z.array(PrerequisiteTopics),
     prerequisiteTo: z.array(PrerequisiteTopics),
     tags: z.array(TagSchema),
 })
 
-const LessonSchema = z.object({
-    name: TranslatedTextSchema,
-    description: TranslatedTextSchema,
-    difficulty: z.enum(["BEGINNER", "INTERMEDIATE", "ADVANCED"]),
-})
 
 // Infer the type from the Zod schema
 export type FormValues = z.infer<typeof TopicSchema>
@@ -80,7 +80,7 @@ export const useTopicForm = (topic?: Topic) => {
             name: topic.name,
             description: topic.description || newTopic.description,
             difficulty: mapTopicDifficulty(topic.difficulty),
-            content: undefined,
+            content: [],
             prerequisites: topic.prerequisites.map(mapTopicToPrerequisite),
             prerequisiteTo: topic.prerequisiteTo.map(mapTopicToPrerequisite),
             tags: topic.tags,

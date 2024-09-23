@@ -10,6 +10,8 @@ import { LessonSelector } from "./LessonSelector"
 import { PrerequisiteArea } from "./PrerequisiteArea"
 import { TagsArea } from "./tag/TagsArea"
 import { Topic } from "@/ogm-resolver/ogm-types"
+import { TopicContentArea } from "./content/TopicContentArea"
+import { TopicLessonArea } from "./lesson/TopicLessonArea"
 
 type TopicEditorProps = {
   topic?: Topic
@@ -39,68 +41,8 @@ export const TopicEditor: FC<TopicEditorProps> = ({ topic }) => {
               <PrerequisiteArea form={form} name="prerequisiteTo" />
             </div>
             <div className="flex flex-col gap-4">
-              <div>
-                <h2 className="">Content</h2>
-                <ScrollArea className="w-[50rem] whitespace-nowrap rounded-md border p-4">
-                  <div className="flex w-max space-x-4 p-4">
-                    <div className="flex cursor-pointer items-center justify-center transition-all duration-200 hover:scale-105">
-                      <LessonSelector />
-                    </div>
-                    {new Array(5).fill(0).map((_, i) => (
-                      <div className="shrink-0">
-                        <div className="flex gap-4 overflow-hidden">
-                          <div className="w-96">
-                            <Card>
-                              <CardHeader>
-                                <CardTitle>Card 2Title</CardTitle>
-                                <CardDescription>Card Description</CardDescription>
-                              </CardHeader>
-                              <CardContent>
-                                <p>Card Content</p>
-                              </CardContent>
-                              <CardFooter>
-                                <p>Card Footer</p>
-                              </CardFooter>
-                            </Card>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <ScrollBar orientation="horizontal" />
-                </ScrollArea>
-              </div>
-              <div>
-                <h2 className="">Lessons</h2>
-                <ScrollArea className="w-[50rem] whitespace-nowrap rounded-md border p-4">
-                  <div className="flex w-max space-x-4 p-4">
-                    <div className="flex cursor-pointer items-center justify-center transition-all duration-200 hover:scale-105">
-                      <LessonSelector />
-                    </div>
-                    {new Array(5).fill(0).map((_, i) => (
-                      <div className="shrink-0">
-                        <div className="flex gap-4 overflow-hidden">
-                          <div className="w-96">
-                            <Card>
-                              <CardHeader>
-                                <CardTitle>Card 2Title</CardTitle>
-                                <CardDescription>Card Description</CardDescription>
-                              </CardHeader>
-                              <CardContent>
-                                <p>Card Content</p>
-                              </CardContent>
-                              <CardFooter>
-                                <p>Card Footer</p>
-                              </CardFooter>
-                            </Card>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <ScrollBar orientation="horizontal" />
-                </ScrollArea>
-              </div>
+              <TopicContentArea form={form} />
+              <TopicLessonArea form={form} />
             </div>
           </form>
         </Form>

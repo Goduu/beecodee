@@ -12,13 +12,15 @@ import { Tag } from "@/ogm-resolver/ogm-types"
 
 type TagSearcherProps = {
   tags: Tag[]
+  selectedTag: Tag | null
+  onSelect: (tag: Tag | null) => void
   onCreateNew: () => void
 }
 
-export const TagSearcher: React.FC<TagSearcherProps> = ({ tags, onCreateNew }) => {
+export const TagSearcher: React.FC<TagSearcherProps> = ({ tags, selectedTag, onSelect, onCreateNew }) => {
   const [open, setOpen] = React.useState(false)
   const isDesktop = useMediaQuery("(min-width: 768px)")
-  const [selectedTag, setSelectedTag] = React.useState<Tag | null>(null)
+
 
   if (isDesktop) {
     return (
@@ -29,7 +31,7 @@ export const TagSearcher: React.FC<TagSearcherProps> = ({ tags, onCreateNew }) =
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-[200px] p-0" align="start">
-          <TagList items={tags} setOpen={setOpen} setSelectedItem={setSelectedTag} onCreateNew={onCreateNew} />
+          <TagList items={tags} setOpen={setOpen} setSelectedItem={onSelect} onCreateNew={onCreateNew} />
         </PopoverContent>
       </Popover>
     )
@@ -44,7 +46,7 @@ export const TagSearcher: React.FC<TagSearcherProps> = ({ tags, onCreateNew }) =
       </DrawerTrigger>
       <DrawerContent>
         <div className="mt-4 border-t">
-          <TagList items={tags} setOpen={setOpen} setSelectedItem={setSelectedTag} onCreateNew={onCreateNew} />
+          <TagList items={tags} setOpen={setOpen} setSelectedItem={onSelect} onCreateNew={onCreateNew} />
         </div>
       </DrawerContent>
     </Drawer>
@@ -59,7 +61,7 @@ function TagList({
 }: {
   items: Tag[]
   setOpen: (open: boolean) => void
-  setSelectedItem: (status: Tag | null) => void
+  setSelectedItem: (tag: Tag | null) => void
   onCreateNew: () => void
 }) {
   return (

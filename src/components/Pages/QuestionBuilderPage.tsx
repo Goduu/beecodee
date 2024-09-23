@@ -4,9 +4,11 @@ import { Button } from "../Button"
 import { TbPencilQuestion } from "../Svgs/Icons"
 import { TopicEditor } from "../QuestionBuilder/TopicEditor"
 import { TagCreateForm } from "../QuestionBuilder/tag/TagCreateForm"
+import { ContentCreator } from "../QuestionBuilder/content/ContentCreator"
+import { LessonCreator } from "../QuestionBuilder/lesson/LessonCreator"
 
 export const QuestionBuilderPage = () => {
-  const [objectType, setObjectType] = useState<"topic" | "tag">("topic")
+  const [objectType, setObjectType] = useState<"topic" | "tag" | "content" | "lesson">("topic")
 
   return (
     <div className="">
@@ -22,11 +24,19 @@ export const QuestionBuilderPage = () => {
           <Button size="small" color="secondary" onClick={() => setObjectType("tag")}>
             Tag
           </Button>
+          <Button size="small" color="secondary" onClick={() => setObjectType("content")}>
+            Content
+          </Button>
+          <Button size="small" color="secondary" onClick={() => setObjectType("lesson")}>
+            Lesson
+          </Button>
         </div>
       </div>
       <div className="">
         {objectType === "topic" && <TopicEditor />}
         {objectType === "tag" && <TagCreateForm />}
+        {objectType === "content" && <ContentCreator />}
+        {objectType === "lesson" && <LessonCreator />}
       </div>
     </div>
   )

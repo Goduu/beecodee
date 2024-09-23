@@ -39,8 +39,9 @@ type Topic {
 
 type Content {
   id: ID! @id
-  name: TranslatedString!
-  description: TranslatedString!
+  name: TranslatedString! @relationship(type: "HAS_NAME", direction: IN)
+  description: TranslatedString! @relationship(type: "HAS_DESCRIPTION", direction: IN)
+  content: TranslatedString! @relationship(type: "HAS_CONTENT", direction: IN)
 }
 
 type Lesson {
@@ -154,7 +155,6 @@ type TranslatedString {
   fr: String
   de: String
   es: String
-  tags: [Tag!]! @relationship(type: "HAS_NAME", direction: OUT)
 }
 
 
