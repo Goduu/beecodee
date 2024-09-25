@@ -27,7 +27,6 @@ export const TranslatedOption: FC<TranslatedTextInputProps> = ({
       name={`${name}."options"`}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{label || capitalize(name)}</FormLabel>
           <Popover>
             <PopoverTrigger asChild>
               <Badge variant="outline" className="cursor-pointer">

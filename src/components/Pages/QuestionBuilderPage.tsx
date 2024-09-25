@@ -6,9 +6,10 @@ import { TopicEditor } from "../QuestionBuilder/TopicEditor"
 import { TagCreateForm } from "../QuestionBuilder/tag/TagCreateForm"
 import { ContentCreator } from "../QuestionBuilder/content/ContentCreator"
 import { LessonCreator } from "../QuestionBuilder/lesson/LessonCreator"
+import { ActivityCreator } from "../QuestionBuilder/lesson/activity/ActivityCreator"
 
 export const QuestionBuilderPage = () => {
-  const [objectType, setObjectType] = useState<"topic" | "tag" | "content" | "lesson">("topic")
+  const [objectType, setObjectType] = useState<"topic" | "tag" | "content" | "lesson" | "activity">("activity")
 
   return (
     <div className="">
@@ -30,6 +31,9 @@ export const QuestionBuilderPage = () => {
           <Button size="small" color="secondary" onClick={() => setObjectType("lesson")}>
             Lesson
           </Button>
+          <Button size="small" color="secondary" onClick={() => setObjectType("activity")}>
+            Activity
+          </Button>
         </div>
       </div>
       <div className="">
@@ -37,6 +41,7 @@ export const QuestionBuilderPage = () => {
         {objectType === "tag" && <TagCreateForm />}
         {objectType === "content" && <ContentCreator />}
         {objectType === "lesson" && <LessonCreator />}
+        {objectType === "activity" && <ActivityCreator />}
       </div>
     </div>
   )

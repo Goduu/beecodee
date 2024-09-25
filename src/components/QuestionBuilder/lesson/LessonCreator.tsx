@@ -1,10 +1,7 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import React, { FC, useEffect, useState } from 'react'
-import { marked } from "marked";
-import { highlightAll } from 'prismjs';
-import { BeeLocale, LOCALES } from '@/components/Localization/localization';
-import { Textarea } from '@/components/ui/textarea';
-import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import React, { FC } from 'react'
+import {  LOCALES } from '@/components/Localization/localization';
+import { Form } from '@/components/ui/form';
 import { LessonFormValues, useLessonForm } from './useLessonForm';
 import { UseFormReturn } from 'react-hook-form';
 import { Input } from '@/components/ui/input';
@@ -85,9 +82,6 @@ export const LessonCreator = () => {
                             ))}
                         </TabsList>
                     </div>
-                    {LOCALES.map((lang) => (
-                        <LocalizedLesson form={form} />
-                    ))}
                 </Tabs>
                 <Tabs defaultValue="en" className="w-full">
                     <div className='flex gap-4'>

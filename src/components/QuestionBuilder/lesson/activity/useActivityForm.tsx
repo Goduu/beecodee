@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { TranslatedTextSchema } from "../formSchemas";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { TranslatedTextSchema } from "../../formSchemas";
 
 
 const OptionSchema = z.object({
@@ -37,38 +37,34 @@ const CodeOutputActivitySchema = z.object({
 })
 
 export const activityTypes = ["singleChoice", "multipleChoice", "pairMatching", "codeOutput"] as const;
-export type ActivityType = typeof activityTypes[number]
 
-const LessonSchema = z.object({
-    name: TranslatedTextSchema,
-    description: TranslatedTextSchema,
-    activityType: z.enum(activityTypes),
-    singleChoiceActivity: SingleChoiceActivitySchema,
-    multipleChoiceActivity: MultipleChoiceActivitySchema,
-    pairMatchingActivity: PairMatchingActivitySchema,
-    codeOutputActivity: CodeOutputActivitySchema
+const ActivitySchema = z.object({
+    type: z.enum(activityTypes),
+    singleChoice: SingleChoiceActivitySchema,
+    multipleChoice: MultipleChoiceActivitySchema,
+    pairMatching: PairMatchingActivitySchema,
+    codeOutput: CodeOutputActivitySchema
 })
 
+export type ActivityType = typeof activityTypes[number]
 
-export type LessonFormValues = z.infer<typeof LessonSchema>
+export type ActivityFormValues = z.infer<typeof ActivitySchema>
 
-export const useLessonForm = () => {
-    const form = useForm<LessonFormValues>({
-        resolver: zodResolver(LessonSchema),
+export const useActivityForm = () => {
+    const form = useForm<ActivityFormValues>({
+        resolver: zodResolver(ActivitySchema),
         defaultValues: {
-            name: {
-                en: "",
-                pt: "",
-                fr: "",
-                de: "",
-                es: "",
-            },
-            description: {
-                en: "",
-                pt: "",
-                fr: "",
-                de: "",
-                es: "",
+            type: "singleChoice",
+            singleChoice: {
+                description: {
+                    en: "",
+                    fr: "",
+                    de: "",
+                    es: "",
+                    pt: ""
+                },
+                options: [],
+                answer: ""
             },
         }
     })

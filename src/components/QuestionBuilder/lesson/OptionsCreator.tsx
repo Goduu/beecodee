@@ -17,10 +17,16 @@ const types = ["text", "code"] as const
 export const OptionsCreator: FC<OptionsCreatorProps> = ({ form }) => {
   const [type, setType] = useState<typeof types[number]>("text")
 
+  const handleChange = (type: string) => {
+    if (type === "text" || type === "code") {
+      setType(type)
+    }
+  }
+
   return (
     <div>
       <div className='p-2 flex'>
-        <RadioGroup value={type} className='flex' onValueChange={setType}>
+        <RadioGroup value={type} className='flex' onValueChange={handleChange}>
           {types.map((t) => (
             <div className="flex items-center space-x-2">
               <RadioGroupItem value={t} key={t} />
@@ -30,7 +36,7 @@ export const OptionsCreator: FC<OptionsCreatorProps> = ({ form }) => {
 
         </RadioGroup>
       </div>
-      <TranslatedOption form={form} name='singleChoiceActivity' description="Option" type={type} />
+      <TranslatedOption form={form} name='singleChoiceActivity' description={`Option ${type}`} type={type} />
     </div>
   )
 }
