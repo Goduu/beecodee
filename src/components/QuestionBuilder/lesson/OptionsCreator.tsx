@@ -5,7 +5,6 @@ import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Button } from '@/components/ui/button'
 import { FormField, FormItem } from '@/components/ui/form'
-import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent } from '@/components/ui/card'
 import { TranslatedOption } from './TranslatedOption'
 import { TranslatedText } from '@contentlayer/generated'
@@ -31,7 +30,7 @@ interface FormValues {
   [key: string]: ActivityOptions
 }
 
-const optionIds = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+export const optionIds = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
 
 type OptionsCreatorProps = {
   activityType: ActivityType
@@ -86,7 +85,9 @@ const OptionField: React.FC<OptionFieldProps> = ({ optionId, form, activityType,
     <Card>
       <CardContent className="p-4">
         <div className='flex gap-2 items-center'>
-          <div className='font-black text-lg rounded-full border w-7 justify-center flex dark:bg-white bg-slate-800 dark:text-slate-800 text-white'>{optionId}</div>
+          <div className='font-black text-lg rounded-full border min-w-7 justify-center flex dark:bg-white bg-slate-800 dark:text-slate-800 text-white'>
+            {optionId}
+          </div>
           <FormField
             control={form.control}
             name={`${activityType}.options.${index}.type` as const}

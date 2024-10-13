@@ -71,7 +71,7 @@ export const TranslatedOption: FC<TranslatedTextInputProps> = ({
       control={form.control}
       name={`${name}.code`}
       render={({ field }) => (
-        <FormItem>
+        <FormItem className="w-full">
           <Textarea
             {...field}
             value={field.value || ''}

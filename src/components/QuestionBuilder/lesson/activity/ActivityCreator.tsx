@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Form, FormField, FormItem, FormLabel } from '@/components/ui/form'
+import { Form, FormField, FormItem } from '@/components/ui/form'
 import { TranslatedTextInput } from '../../TranslatedTextInput'
 import { ActivityFormValues, activityTypes, useActivityForm } from './useActivityForm'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
@@ -7,8 +7,7 @@ import { capitalize } from 'lodash'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { OptionsCreator } from '../OptionsCreator'
-import { Popover } from '@/components/ui/popover'
-import { Input } from '@/components/ui/input'
+import { AnswerSelector } from './AnswerSelector'
 
 type ActivityCreatorProps = {
 }
@@ -27,7 +26,7 @@ export const ActivityCreator: FC<ActivityCreatorProps> = () => {
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
                 className='space-y-2'
-                >
+            >
                 <div>ActivityCreator {activityType}</div>
                 <FormField
                     control={form.control}
@@ -48,20 +47,7 @@ export const ActivityCreator: FC<ActivityCreatorProps> = () => {
                 <TranslatedTextInput name={`${activityType}.description`} description="Activity description" form={form} />
                 {activityType === 'codeOutput' && <TranslatedTextInput name={`${activityType}.codeSnippet`} description="Code Snippet" form={form} />}
                 <OptionsCreator activityType={activityType} form={form} />
-                <FormField
-                    control={form.control}
-                    name={`${activityType}.answer`}
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Answer</FormLabel>
-                            <Input
-                                value={field.value}
-                                className="col-span-2 h-8"
-                                onChange={(e) => field.onChange(e.target.value)}
-                            />
-                        </FormItem>
-                    )}
-                />
+                <AnswerSelector form={form} />
                 <Button type='submit'>Submit</Button>
             </form>
         </Form >

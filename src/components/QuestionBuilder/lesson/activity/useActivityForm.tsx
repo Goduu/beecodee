@@ -55,19 +55,23 @@ export const useActivityForm = () => {
         resolver: zodResolver(ActivitySchema),
         defaultValues: {
             type: "singleChoice",
-            singleChoice: {
-                description: {
-                    en: "",
-                    fr: "",
-                    de: "",
-                    es: "",
-                    pt: ""
-                },
-                options: [],
-                answer: ""
-            },
+            singleChoice: activityDefault,
+            multipleChoice: { ...activityDefault, answer: [] },
+            pairMatching: { ...activityDefault, answer: [] },
+            codeOutput: activityDefault
         }
     })
 
     return { form }
+}
+
+const activityDefault = {
+    description: {
+        en: "",
+        fr: "",
+        de: "",
+        es: "",
+        pt: ""
+    },
+    options: [],
 }
