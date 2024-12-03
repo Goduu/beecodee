@@ -27,65 +27,33 @@ const itemsB = [1, 2, 3, 0]
 const itemsC = [2, 3, 0, 1]
 const itemsD = [3, 0, 1, 2]
 
-export default function BeeContent({ scrollRef }: { scrollRef: React.RefObject<HTMLDivElement> }) {
+export default function BeeContent() {
   const [items, setItems] = useCycle(itemsA, itemsB, itemsC, itemsD)
-  const { scrollYProgress } = useScroll({
-    target: scrollRef,
-    offset: ["75% 75%", `end end`],
-  })
-  const scale = useSpring(useTransform(scrollYProgress, [0, 0.8, 0.9, 1], [0, 8, 8, 2]), {
-    stiffness: 100,
-  })
-  const y = useSpring(useTransform(scrollYProgress, [0, 0.25, 0.5, 1], [0, 0, 0, -300]), {
-    stiffness: 100,
-  })
-  const { locale } = useLocaleContext()
-  React.useEffect(() => {
-    // The scrollYProgress is between 0 and 1, we divide it to change items
-    const unsubscribe = scrollYProgress.onChange((latest) => {
-      if (latest < 0.25) {
-        setItems(0) // First cycle: itemsA
-      } else if (latest >= 0.25 && latest < 0.5) {
-        setItems(1) // Second cycle: itemsB
-      } else if (latest >= 0.5 && latest < 0.75) {
-        setItems(2) // Third cycle: itemsC
-      } else {
-        setItems(3) // Fourth cycle: itemsD
-      }
-    })
 
-    // Cleanup on unmount
-    return () => unsubscribe()
-  }, [scrollYProgress, setItems])
+  const { locale } = useLocaleContext()
 
   return (
-    <div className="fixed left-1/2 top-1/2 z-20 flex h-96 -translate-x-1/2 -translate-y-1/2 transform flex-wrap items-center justify-center gap-20">
+    <div className="flex items-center justify-center gap-20">
       {items.map((item) => {
-        const className = { className: `w-20 aspect-square rounded-full items-center justify-center ${getClass(item)}` }
+        const className = { className: `w-52 aspect-square rounded-full items-center justify-center ${getClass(item)}` }
 
         return (
-          <motion.div
-            style={{ scale, y }}
-            key={item}
-            layout
-            transition={{ type: "spring", stiffness: 350, damping: 25 }}
-            {...className}
-          >
+          <div key={item} {...className}>
             <div
               className={cn(
-                "flex aspect-square flex-col items-center justify-center overflow-hidden rounded-full p-4 text-center dark:text-background",
+                "flex aspect-square scale-125 flex-col items-center justify-center gap-2 overflow-hidden rounded-full p-8 text-center dark:text-background",
                 { ...className },
               )}
             >
-              <span className="absolute top-0 w-1/2">{getFace(item)}</span>
-              <span className="absolute top-1/2 font-bold text-white sm:text-lg">
+              <div className="top-0 w-1/2">{getFace(item)}</div>
+              <div className="text-2xl font-bold text-white">
                 <CounterUp countTo={numbers[item].number} scrollSpyDelay={300} />
-              </span>
-              <span className="block text-balance text-center text-xs text-white sm:text-sm">
+              </div>
+              <div className="text-balance text-center text-xs text-white sm:text-sm">
                 {getLabel(locale, numbers[item].label)}
-              </span>
+              </div>
             </div>
-          </motion.div>
+          </div>
         )
       })}
     </div>

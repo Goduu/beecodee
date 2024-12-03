@@ -11,7 +11,7 @@ export const SiteNumbers: FC<SiteNumbersProps> = ({ locale }) => {
   const ref = useRef<HTMLDivElement>(null!)
 
   return (
-    <div ref={ref} className="h-[600px]">
+    <div ref={ref} className="flex h-[600px] flex-col gap-16">
       <h2 className="top-[20%] flex w-full flex-col items-center justify-center gap-4 text-6xl sm:flex-row">
         {T[locale].our}
         <span>
@@ -19,7 +19,7 @@ export const SiteNumbers: FC<SiteNumbersProps> = ({ locale }) => {
           <span className="decoration-wavy">{T[locale].content}</span>
         </span>
       </h2>
-      <BeeContent scrollRef={ref} />
+      <BeeContent />
     </div>
   )
 }

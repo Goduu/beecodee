@@ -1,18 +1,18 @@
-import React from 'react'
-import { UseFormReturn, useFieldArray, useWatch } from 'react-hook-form'
-import { capitalize } from 'lodash'
-import { Label } from '@/components/ui/label'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { Button } from '@/components/ui/button'
-import { FormField, FormItem } from '@/components/ui/form'
-import { Card, CardContent } from '@/components/ui/card'
-import { TranslatedOption } from './TranslatedOption'
-import { TranslatedText } from '@contentlayer/generated'
-import { ActivityFormValues } from './activity/useActivityForm'
-import { FaRegTrashAlt } from '@/components/Svgs/Icons'
+import React from "react"
+import { UseFormReturn, useFieldArray, useWatch } from "react-hook-form"
+import { capitalize } from "lodash"
+import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Button } from "@/components/ui/button"
+import { FormField, FormItem } from "@/components/ui/form"
+import { Card, CardContent } from "@/components/ui/card"
+import { TranslatedOption } from "./TranslatedOption"
+import { TranslatedText } from "@contentlayer/generated"
+import { ActivityFormValues } from "./activity/useActivityForm"
+import { FaRegTrashAlt } from "@/components/Svgs/Icons"
 
 const types = ["text", "code"] as const
-type OptionType = typeof types[number]
+type OptionType = (typeof types)[number]
 
 interface Option {
   type: OptionType
@@ -45,12 +45,12 @@ export const OptionsCreator: React.FC<OptionsCreatorProps> = ({ activityType, fo
 
   const addOption = () => {
     if (fields.length < 10) {
-      append({ type: 'text', code: null, text: null })
+      append({ type: "text", code: null, text: null })
     }
   }
 
   return (
-    <div className="space-y-2 w-fit">
+    <div className="w-fit space-y-2">
       <Button onClick={addOption}>Add Option</Button>
       {fields.map((field, index) => (
         <OptionField
@@ -74,7 +74,6 @@ interface OptionFieldProps {
   remove: () => void
 }
 
-
 const OptionField: React.FC<OptionFieldProps> = ({ optionId, form, activityType, index, remove }) => {
   const optionType = useWatch({
     control: form.control,
@@ -84,8 +83,8 @@ const OptionField: React.FC<OptionFieldProps> = ({ optionId, form, activityType,
   return (
     <Card>
       <CardContent className="p-4">
-        <div className='flex gap-2 items-center'>
-          <div className='font-black text-lg rounded-full border min-w-7 justify-center flex dark:bg-white bg-slate-800 dark:text-slate-800 text-white'>
+        <div className="flex items-center gap-2">
+          <div className="flex min-w-7 justify-center rounded-full border bg-slate-800 text-lg font-black text-white dark:bg-white dark:text-slate-800">
             {optionId}
           </div>
           <FormField
@@ -93,11 +92,7 @@ const OptionField: React.FC<OptionFieldProps> = ({ optionId, form, activityType,
             name={`${activityType}.options.${index}.type` as const}
             render={({ field: typeField }) => (
               <FormItem>
-                <RadioGroup
-                  value={typeField.value}
-                  onValueChange={typeField.onChange}
-                  className="flex space-x-1"
-                >
+                <RadioGroup value={typeField.value} onValueChange={typeField.onChange} className="flex space-x-1">
                   {types.map((t) => (
                     <div key={t} className="flex items-center space-x-2">
                       <RadioGroupItem value={t} id={`${typeField.name}-${t}`} />
@@ -114,11 +109,7 @@ const OptionField: React.FC<OptionFieldProps> = ({ optionId, form, activityType,
             name={`${activityType}.options.${index}`}
             description={`Option Text`}
           />
-          <Button
-            variant="destructive"
-            size="sm"
-            onClick={remove}
-          >
+          <Button variant="destructive" size="sm" onClick={remove}>
             <FaRegTrashAlt className="w-15" />
           </Button>
         </div>

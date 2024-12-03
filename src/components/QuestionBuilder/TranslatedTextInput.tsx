@@ -8,13 +8,13 @@ import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/
 import { TranslatedText } from "@contentlayer/generated"
 
 type TranslatedTextInputProps<TFieldValues extends FieldValues> = {
-  name: FieldPath<TFieldValues>;
-  description: string;
-  label?: string;
-  form: UseFormReturn<TFieldValues>;
-};
+  name: FieldPath<TFieldValues>
+  description: string
+  label?: string
+  form: UseFormReturn<TFieldValues>
+}
 
-const LANGUAGES = ['en', 'pt', 'fr', 'de', 'es'] as const;
+const LANGUAGES = ["en", "pt", "fr", "de", "es"] as const
 
 export const TranslatedTextInput = <TFieldValues extends FieldValues>({
   name,
@@ -22,14 +22,13 @@ export const TranslatedTextInput = <TFieldValues extends FieldValues>({
   label,
   form,
 }: TranslatedTextInputProps<TFieldValues>) => {
-
   return (
     <FormField
       control={form.control}
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{label || name.split('.').pop()}</FormLabel>
+          <FormLabel>{label || name.split(".").pop()}</FormLabel>
           <Popover>
             <PopoverTrigger asChild>
               <Badge variant="outline" className="cursor-pointer text-xl">
@@ -39,7 +38,7 @@ export const TranslatedTextInput = <TFieldValues extends FieldValues>({
             <PopoverContent className="w-80">
               <div className="grid gap-4">
                 <div className="space-y-2">
-                  <h4 className="font-medium leading-none">{label || name.split('.').pop()}</h4>
+                  <h4 className="font-medium leading-none">{label || name.split(".").pop()}</h4>
                   <p className="text-sm text-muted-foreground">{description}</p>
                 </div>
                 <div className="grid gap-2">
@@ -54,9 +53,9 @@ export const TranslatedTextInput = <TFieldValues extends FieldValues>({
                           onChange={(e) => {
                             const updatedValue = {
                               ...(field.value as TranslatedText),
-                              [lang]: e.target.value
-                            };
-                            field.onChange(updatedValue);
+                              [lang]: e.target.value,
+                            }
+                            field.onChange(updatedValue)
                           }}
                         />
                       </FormControl>
@@ -70,5 +69,5 @@ export const TranslatedTextInput = <TFieldValues extends FieldValues>({
         </FormItem>
       )}
     />
-  );
-};
+  )
+}

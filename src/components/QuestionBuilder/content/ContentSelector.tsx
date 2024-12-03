@@ -25,19 +25,18 @@ export const ContentSelector: FC<ContentSelectorProps> = ({ onAdd }) => {
   const { loading, error, data } = useQuery<{ contents: Content[] }>(GET_CONTENT)
   const [selectedContent, setSelectedContent] = useState<Content | null>(null)
 
-  const contentItems = data?.contents.map(content => ({ id: content.id, label: content.name.en })) ?? []
+  const contentItems = data?.contents.map((content) => ({ id: content.id, label: content.name.en })) ?? []
 
-  const handleSelectContent = (item: Content) => {
-  }
+  const handleSelectContent = (item: Content) => {}
 
   const handleAdd = () => {
-    selectedContent && onAdd({
-      id: selectedContent.id,
-      name: selectedContent.name,
-      description: selectedContent.description,
-    })
+    selectedContent &&
+      onAdd({
+        id: selectedContent.id,
+        name: selectedContent.name,
+        description: selectedContent.description,
+      })
   }
-
 
   return (
     <Dialog>
@@ -54,7 +53,14 @@ export const ContentSelector: FC<ContentSelectorProps> = ({ onAdd }) => {
         </DialogHeader>
         <div className="flex items-center space-x-2">
           <div className="grid w-full flex-1 gap-2">
-            {data?.contents && <ItemSearcher items={data?.contents} selectedItem={selectedContent} labelKey={"name"} onSelect={setSelectedContent} />}
+            {data?.contents && (
+              <ItemSearcher
+                items={data?.contents}
+                selectedItem={selectedContent}
+                labelKey={"name"}
+                onSelect={setSelectedContent}
+              />
+            )}
           </div>
         </div>
         <DialogFooter className="sm:justify-start">

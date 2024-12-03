@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { FiPlusCircle } from "../Svgs/Icons"
-import { Item, ItemSearcher } from "./ItemSearcher"
+import { ItemSearcher } from "./ItemSearcher"
 
 export function LessonSelector() {
   return (
@@ -28,7 +28,7 @@ export function LessonSelector() {
         </DialogHeader>
         <div className="flex items-center space-x-2">
           <div className="grid w-full flex-1 gap-2">
-            <ItemSearcher items={lessons} />
+            {/* <ItemSearcher items={lessons} /> */}
           </div>
         </div>
         <DialogFooter className="sm:justify-start">
@@ -43,7 +43,7 @@ export function LessonSelector() {
   )
 }
 
-const lessons: Item[] = [
+const lessons: any[] = [
   {
     id: "lesson1",
     label: "Lesson1",

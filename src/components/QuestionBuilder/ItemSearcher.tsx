@@ -23,8 +23,8 @@ export function ItemSearcher<T extends Record<string, any>>({
   labelKey,
   selectedItem,
   onSelect,
-  idKey = 'id',
-  tagsKey = 'tags'
+  idKey = "id",
+  tagsKey = "tags",
 }: ItemSearcherProps<T>) {
   const [open, setOpen] = React.useState(false)
   const isDesktop = useMediaQuery("(min-width: 768px)")
@@ -38,7 +38,8 @@ export function ItemSearcher<T extends Record<string, any>>({
           </Button>
         </PopoverTrigger>
         <div className="flex gap-2">
-          {selectedItem && Array.isArray(selectedItem[tagsKey]) &&
+          {selectedItem &&
+            Array.isArray(selectedItem[tagsKey]) &&
             selectedItem[tagsKey].map((tag: string, index: number) => <Badge key={index}>{tag}</Badge>)}
         </div>
         <PopoverContent className="w-[200px] p-0" align="start">
@@ -55,7 +56,8 @@ export function ItemSearcher<T extends Record<string, any>>({
           {selectedItem ? <>{selectedItem[labelKey].eb}</> : <>Select Item</>}
         </Button>
       </DrawerTrigger>
-      {selectedItem && Array.isArray(selectedItem[tagsKey]) &&
+      {selectedItem &&
+        Array.isArray(selectedItem[tagsKey]) &&
         selectedItem[tagsKey].map((tag: string, index: number) => <Badge key={index}>{tag}</Badge>)}
       <DrawerContent>
         <div className="mt-4 border-t">
@@ -83,9 +85,7 @@ function ItemList<T extends Record<string, any>>({
     <Command>
       <CommandInput placeholder="Filter items..." />
       <CommandList>
-        <CommandEmpty>
-          No results found.
-        </CommandEmpty>
+        <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup>
           {items.map((item) => (
             <CommandItem

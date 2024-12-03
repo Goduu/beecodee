@@ -21,7 +21,6 @@ export const TagSearcher: React.FC<TagSearcherProps> = ({ tags, selectedTag, onS
   const [open, setOpen] = React.useState(false)
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
-
   if (isDesktop) {
     return (
       <Popover open={open} onOpenChange={setOpen}>

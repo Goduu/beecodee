@@ -16,13 +16,7 @@ export type TranslatedTextInputProps = {
   form: UseFormReturn<any>
 }
 
-export const TranslatedOption: FC<TranslatedTextInputProps> = ({
-  name,
-  type,
-  description,
-  label,
-  form,
-}) => {
+export const TranslatedOption: FC<TranslatedTextInputProps> = ({ name, type, description, label, form }) => {
   if (type === "text") {
     return (
       <FormField
@@ -32,7 +26,7 @@ export const TranslatedOption: FC<TranslatedTextInputProps> = ({
           <FormItem>
             <Popover>
               <PopoverTrigger asChild>
-                <Badge variant="outline" className="cursor-pointer p-2 min-w-96">
+                <Badge variant="outline" className="min-w-96 cursor-pointer p-2">
                   {field.value?.en || "Click to edit"}
                 </Badge>
               </PopoverTrigger>
@@ -72,11 +66,7 @@ export const TranslatedOption: FC<TranslatedTextInputProps> = ({
       name={`${name}.code`}
       render={({ field }) => (
         <FormItem className="w-full">
-          <Textarea
-            {...field}
-            value={field.value || ''}
-            placeholder="Enter code here"
-          />
+          <Textarea {...field} value={field.value || ""} placeholder="Enter code here" />
           <FormMessage />
         </FormItem>
       )}

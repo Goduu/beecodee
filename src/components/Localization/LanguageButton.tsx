@@ -29,7 +29,7 @@ export const LanguageButton = () => {
   }
 
   return (
-    <div className="relative hidden text-left sm:inline-block" ref={menuRef}>
+    <div className="relative z-20 hidden text-left sm:inline-block" ref={menuRef}>
       <button
         id="dropdownTopButton"
         onClick={toggleDropdown}
